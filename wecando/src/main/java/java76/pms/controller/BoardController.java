@@ -90,4 +90,6 @@ public class BoardController {
     boardService.remove(no, password);
     return "redirect:list.do";
   }
+  
+  // askdfjlasfjals
 }
