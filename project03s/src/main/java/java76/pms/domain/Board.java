@@ -78,6 +78,6 @@ public class Board  implements Serializable {
     this.password = password;
   }
   
-  
+  //정신차리자유동아 
   
 }
