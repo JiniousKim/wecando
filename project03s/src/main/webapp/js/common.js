@@ -1,1 +1,0 @@
-var contextRoot = 'http://localhost:8080/project03t';
