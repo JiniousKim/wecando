@@ -38,14 +38,14 @@
   <jee:jndi-lookup id="dataSource" 
         jndi-name="java:comp/env/jdbc/java76db"/>
       
-  <!-- <bean id="dataSource" 
+  <bean id="dataSource" 
         class="org.apache.commons.dbcp.BasicDataSource" 
         destroy-method="close">
     <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
     <property name="url" value="jdbc:mysql://localhost:3306/java76db"/>
     <property name="username" value="java76"/>
     <property name="password" value="1111"/>
-  </bean> -->
+  </bean>
  
   
   <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
