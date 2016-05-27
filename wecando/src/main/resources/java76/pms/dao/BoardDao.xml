@@ -18,6 +18,7 @@
       views,
       cre_dt 
     from board
+    <!-- 
     order by 
     <choose>
       <when test="keyword == 'title'">title </when>
@@ -29,11 +30,13 @@
       <otherwise>desc</otherwise>
     </choose>
     limit #{startIndex}, #{length}
+     -->
   </select>
   
   <insert id="insert" parameterType="board">
-    insert into board(title,content,pwd,cre_dt,afile) 
-    values(#{title},#{content},#{password},now(),#{attachFile})
+    insert into board(bno,title,content,pwd,cre_dt,afile) 
+    values(aaa.nextval,#{title, jdbcType=VARCHAR},#{content, jdbcType=VARCHAR},
+    #{password, jdbcType=VARCHAR},sysdate,#{attachFile, jdbcType=VARCHAR})
   </insert>
   
   <delete id="delete" parameterType="map">
