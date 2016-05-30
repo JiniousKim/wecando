@@ -335,3 +335,6 @@ ALTER TABLE COURT
 		REFERENCES SCHOOL ( -- 학교
 			SCH_NUM -- 학교번호
 		) ON DELETE CASCADE;
+		
+alter table member 
+add (MEMBER_NICK varchar(50) not null);
