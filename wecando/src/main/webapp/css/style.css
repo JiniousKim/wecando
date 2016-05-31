@@ -1952,11 +1952,13 @@ label {
 }
 .login-wrap .registration {
 	text-align: center;
+	color: #797979;
 }
 .login-social-link {
 	display: block;
 	margin-top: 20px;
 	margin-bottom: 15px;
+	color: #797979;
 }
 
 

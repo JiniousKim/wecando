@@ -24,7 +24,66 @@
     <script src="js/chart-master/Chart.js"></script>
   </head>
   <body>
-  <section id="container" >
+
+	<div id="login-page">
+		<div class="container">
+			<!-- Modal -->
+			<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" id="myModal1"
+				class="modal fade">
+				<form class="form-login" action="index.html">
+					<div class="modal-header">
+						<h2 class="form-login-heading">sign in now</h2>
+					</div>
+					<div class="login-wrap">
+						<input type="text" class="form-control" placeholder="User ID" autofocus> <br>
+						<input type="password" class="form-control" placeholder="Password"> <label
+							class="checkbox"> <span class="pull-right"> <a data-toggle="modal"
+								href="index.html#myModal2"> Forgot Password?</a>
+						</span>
+						</label>
+						<button class="btn btn-theme btn-block" href="index.html" type="submit">
+							<i class="fa fa-lock"></i> SIGN IN
+						</button>
+						<hr>
+						<div class="login-social-link centered">
+							<p>or you can sign in via your social network</p>
+							<button class="btn btn-facebook" type="submit">
+								<i class="fa fa-facebook"></i> Facebook
+							</button>
+						</div>
+						<div class="registration">
+							Don't have an account yet?<br /> <a class="" href="#"> Create an account </a>
+						</div>
+					</div>
+				</form>
+			</div>
+
+			<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+				id="myModal2" class="modal fade">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title">Forgot Password ?</h4>
+						</div>
+						<div class="modal-body">
+							<p>Enter your e-mail address below to reset your password.</p>
+							<input type="text" name="email" placeholder="Email" autocomplete="off"
+								class="form-control placeholder-no-fix">
+						</div>
+						<div class="modal-footer">
+							<button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+							<button class="btn btn-theme" type="button">Submit</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- modal -->
+
+		</div>
+	</div>
+
+	<section id="container" >
       <header class="header black-bg">
               <div class="sidebar-toggle-box">
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
@@ -168,7 +227,7 @@
             </div>
             <div class="top-menu">
               <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.html">Logout</a></li>
+                    <li><a class="logout" data-toggle="modal" href="index.html#myModal1">Logout</a></li>
               </ul>
             </div>
         </header>
