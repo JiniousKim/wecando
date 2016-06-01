@@ -49,7 +49,7 @@ var Script = function () {
     });
 
     $('.fa-bars').click(function () {
-        if ($('#sidebar > ul').is(":visible") === true) {
+        if (!$('#container').hasClass('sidebar-closed')) {
             $('#main-content').css({
                 'margin-left': '0px'
             });
