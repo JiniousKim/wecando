@@ -810,15 +810,15 @@ ul.top-menu>li>a:hover, ul.top-menu>li>a:focus {
 
 /* LINE ICONS CONFIGURATION */
 .mtbox {
-	margin-top: 80px;
+	margin-top: 35px;
 	margin-bottom: 40px;
 }
 
 .box1 {
 	padding: 15px;
 	text-align: center;
-	color: #989898;
-	border-bottom: 1px solid #989898;
+	color: #555;
+	border-bottom: 1px solid #555;
 }
 
 .box1 span {
@@ -2336,6 +2336,8 @@ label {
 
 #auth > i {
     margin-top: 10px;
+    margin-left: 83px;
+    padding-top: 41px;
     color: #000000;
     text-decoration: none;
     display: block;
@@ -2355,4 +2357,9 @@ label {
 
 #auth > .window > #input {
     
+}
+
+ #joinus {
+    width: 500px;
+    margin-left: 35px;
 }
