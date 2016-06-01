@@ -2328,3 +2328,31 @@ label {
     margin-left: 7px;
 	border: solid 1px red;
 }
+
+#auth {
+    margin-top: 30px;
+    margin-left: 10px;
+}
+
+#auth > i {
+    margin-top: 10px;
+    color: #000000;
+    text-decoration: none;
+    display: block;
+    outline: none;
+    font-size: 80px;
+}
+
+#auth > .window {
+    background-color: gainsboro;
+    width : 650px;
+    height : 300px;
+    margin-top : 30px;
+    padding-left : 40px;
+    border : 1px solid black;
+    color: black;
+}
+
+#auth > .window > #input {
+    
+}
