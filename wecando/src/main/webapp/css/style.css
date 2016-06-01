@@ -769,7 +769,8 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 
 .ds {
 	background: #ffffff;
-	padding-top: 20px;
+	padding-top: 25px;
+    margin-left: -14px;
 }
 
 .ds h4 {
@@ -1058,7 +1059,8 @@ PANELS CONFIGURATIONS
 /*Green Panel*/
 .green-panel {
 	text-align: center;
-	background: #68dff0;
+	background: #555;
+    margin: 10px 5px;
 }
 .green-panel .green-header {
 	background: #43b1a9;
@@ -1417,7 +1419,7 @@ PANELS CONFIGURATIONS
 	padding: 0px !important;
 }
 .calendar-month-header {
-	background: #43b1a9;
+	background: #777;
 }
 
 /* TODO PANEL */
@@ -2257,4 +2259,5 @@ label {
     width:300px;
     height:200px;
     margin-left : 1px;
+    border: solid 1px red;
 }
