@@ -338,3 +338,31 @@ ALTER TABLE COURT
 		
 alter table member 
 add (MEMBER_NICK varchar(50) not null);
+
+--대진 sql 추가 6/1
+alter table member
+add (EMAIL_CODE varchar(255) not null);
+
+alter table member
+add (EMAIL_AVA varchar(1) not null);
+
+alter table member
+modify (EMAIL_AVA varchar(1) default '0');
+
+alter table member
+modify (MEMBER_NICK varchar(50) default 'nickname');
+
+alter table member
+modify (MEMBER_GRADE number default 0);
+
+alter table member
+modify (MEMBER_NAME varchar(50) default 'name');
+
+alter table member
+modify (MEMBER_TEL varchar(50) default '010-0000-0000');
+
+alter table member
+modify (MEMBER_PWD varchar(100) default '1234');
+
+alter table member
+modify (MEMBER_AVA number default 0);
