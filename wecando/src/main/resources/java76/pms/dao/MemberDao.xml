@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="java76.pms.dao.MemberDao">
+  <resultMap type="member" id="memberMap">
+    <id column="member_num" property="m_no"/>
+    <result column="member_grade" property="m_grade"/>
+    <result column="member_email" property="m_email" />
+    <result column="member_name" property="m_name" />
+    <result column="member_tel" property="m_tel" />
+    <result column="member_pwd" property="m_password" />
+    <result column="member_ava" property="m_ava" />
+    <result column="member_nickname" property="m_nick" />
+  </resultMap>
+  
+  
+
+</mapper>

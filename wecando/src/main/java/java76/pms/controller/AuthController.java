@@ -9,13 +9,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java76.pms.domain.Student;
-import java76.pms.service.StudentService;
+import java76.pms.domain.Member;
+import java76.pms.service.MemberService;
 
 @Controller
 @RequestMapping("/auth/*")
 public class AuthController {  
-  @Autowired StudentService studentService;
+  @Autowired MemberService memberService;
 
   @RequestMapping(value="login", method=RequestMethod.GET)
   public String loginform() {
@@ -24,15 +24,15 @@ public class AuthController {
       
   @RequestMapping(value="login", method=RequestMethod.POST)
   public String login(
-      String email,
-      String password,
+      String m_email,
+      String m_password,
       String saveEmail,
       HttpServletResponse response, 
       HttpSession session) {
 
     Cookie emailCookie = null;
     if (saveEmail != null) { // 이메일 저장을 체크했으면,
-      emailCookie = new Cookie("email", email);
+      emailCookie = new Cookie("email", m_email);
       emailCookie.setMaxAge(60 * 60 * 24 * 15);
     } else {
       emailCookie = new Cookie("email", "");
@@ -40,14 +40,14 @@ public class AuthController {
     }
     response.addCookie(emailCookie);
 
-    Student student = studentService.retrieve(email, password);
+    Member member = memberService.retrieve(m_email, m_password);
 
-    if (student == null) { // 로그인 실패!
+    if (member == null) { // 로그인 실패!
       session.invalidate(); // 세션을 무효화시킴. => 새로 세션 객체 생성!
       return "auth/LoginFail";
     }
 
-    session.setAttribute("loginUser", student);
+    session.setAttribute("loginUser", member);
     return "redirect:../board/list.do";
   }
   
