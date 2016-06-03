@@ -235,16 +235,27 @@
 		</aside>
 		<section id="main-content">
 			<section class="wrapper">
-				<div id="auth">
-                    <i class="fa fa-child">JOIN US!</i>
-                    <div class="window">
-                    <h1>Email 인증</h1>
-                        <form>
-                          <input type="text" id="m_e">
-                          <button id="btn-auth">인증하기</button>
-                        </form>
-                </div>
-                </div>
+                <div id="auth">
+                    <img id="joinus" src="../img/joinus.png">
+				<!-- INLINE FORM ELELEMNTS -->
+          	<div class="row mt">
+          		<div class="col-lg-12">
+          			<div class="form-panel-email">
+                  	  <h1 class="email"><i class="fa fa-angle-right"></i> 이메일 인증 </h1>
+                      <form class="form-inline" role="form">
+                          <div class="form-group">
+                              <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                              <input type="email" class="form-control" id="m_e" placeholder="Enter email" style="width: 300px;" >
+                          </div>
+                          
+                          <button type="submit" class="btn btn-theme" id="btn-auth">인증하기</button>
+							  <p>이메일을 입력하고 인증하기를 눌러 해당 이메일로 전송된 링크를 클릭하면 회원가입을 진행하실 수 있습니다.</p>
+                      </form>
+          			</div><!-- /form-panel -->
+          		</div><!-- /col-lg-12 -->
+          	</div><!-- /row -->
+                  	
+                  	</div><!-- /row mt -->
 			</section>
 		</section>
 		<footer class="site-footer">

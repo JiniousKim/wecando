@@ -1792,7 +1792,7 @@ PANELS CONFIGURATIONS
 .form-panel {
 	background: #ffffff;
 	margin: 10px;
-	padding: 10px;
+	padding-left: 10px;
 	box-shadow: 0px 3px 2px #aab2bd;
 	text-align: left;
 }
@@ -2362,4 +2362,26 @@ label {
  #joinus {
     width: 500px;
     margin-left: 35px;
+}
+
+.email {
+	margin-bottom: 20px;
+	font-size: 20px;
+	color: #777;
+}
+
+.form-panel-email {
+	background: #ffffff;
+	margin: -33px 10px 0 10px;
+	padding-left: 34px;
+    padding-top: 17px;
+    padding-bottom: 30px;
+	box-shadow: 0px 3px 2px #aab2bd;
+	text-align: left;
+	width: 730px;
+}
+
+.form-inline p {
+	color: #ff865c;
+	margin-top: 13px;
 }
