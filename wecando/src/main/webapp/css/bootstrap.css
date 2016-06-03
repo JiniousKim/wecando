@@ -2352,7 +2352,7 @@ output {
 }
 .form-control {
   display: block;
-  width: 100%;
+  width: 35%;
   height: 34px;
   padding: 6px 12px;
   font-size: 14px;
@@ -2772,6 +2772,7 @@ fieldset[disabled] .btn {
   color: #333;
   background-color: #fff;
   border-color: #ccc;
+  margin-left: 15px;
 }
 .btn-default:hover,
 .btn-default:focus,
