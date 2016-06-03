@@ -19,8 +19,9 @@
   </select> 
   
   <insert id="insert" parameterType="member">
-    insert into member(member_num,member_email)
-    values(member_incre.nextval,#{member_email, jdbcType=VARCHAR})
+    insert into member(member_num,member_email,email_code)
+    values(member_incre.nextval,#{m_email, jdbcType=VARCHAR},#{email_code,
+     jdbcType=VARCHAR})
   </insert>
 
 </mapper>

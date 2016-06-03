@@ -244,7 +244,7 @@
                   	  <h1 class="email"><i class="fa fa-angle-right"></i> 이메일 인증 </h1>
                       <form class="form-inline" role="form">
                           <div class="form-group">
-                              <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                              <label class="sr-only" for="m_e">Email address</label>
                               <input type="email" class="form-control" id="m_e" placeholder="Enter email" style="width: 300px;" >
                           </div>
                           
@@ -278,7 +278,7 @@
     <script>
     $('#btn-auth').click(function(event) {
 	$.post(contextRoot + '/member/ajax/add.do', {
-		member_email: $('#m_e').val(),
+		m_email: $('#m_e').val(),
 	}, function(resultObj) {
 		var ajaxResult = resultObj.ajaxResult;
 		if (ajaxResult.status == "success") {
