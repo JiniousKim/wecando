@@ -15,6 +15,12 @@
     <result column="member_nickname" property="m_nick" />
   </resultMap>
   
+  <select id="selectList" resultType="member" parameterType="map">
+  </select> 
   
+  <insert id="insert" parameterType="member">
+    insert into member(member_num,member_email)
+    values(member_incre.nextval,#{member_email, jdbcType=VARCHAR})
+  </insert>
 
 </mapper>

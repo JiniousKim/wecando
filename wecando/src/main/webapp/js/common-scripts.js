@@ -13,6 +13,8 @@ $(function() {
     });
 });
 
+var contextRoot = 'http://localhost:8080/wecando';
+
 var Script = function () {
 
 

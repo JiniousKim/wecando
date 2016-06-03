@@ -2,6 +2,7 @@ package java76.pms.controller.ajax;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.ServletContext;
 
@@ -23,6 +24,8 @@ public class MemberController {
   
   @Autowired MemberDao memberDao;
   @Autowired ServletContext servletContext;
+  @Autowired Random rnd;
+  @Autowired StringBuffer buf;
   
   @RequestMapping("list")
   public Object list(
@@ -53,7 +56,16 @@ public class MemberController {
       
   @RequestMapping(value="add", method=RequestMethod.POST)
   public AjaxResult add(Member member) throws Exception {
-    memberDao.insert(member);
+    for (int i = 0; i < 20; i++) {
+    		if (rnd.nextBoolean()) {
+    			buf.append((char)((int)(rnd.nextInt(26)) + 97));
+    		} else {
+    			buf.append((rnd.nextInt(10)));
+    		}
+    }
+  	  member.setEmail_code(buf.toString());
+  	  
+  		memberDao.insert(member);
     
     return new AjaxResult("success", null);
   }

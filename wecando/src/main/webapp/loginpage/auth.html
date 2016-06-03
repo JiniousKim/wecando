@@ -240,7 +240,7 @@
                     <div class="window">
                     <h1>Email 인증</h1>
                         <form>
-                          <input>
+                          <input type="text" id="m_e">
                           <button id="btn-auth">인증하기</button>
                         </form>
                 </div>
@@ -266,15 +266,16 @@
 	<script src="../js/common-scripts.js"></script>
     <script>
     $('#btn-auth').click(function(event) {
-	$.post(contextRoot + '/board/ajax/add.do', {
-		title: $('#ftitle').val(),
-		content: $('#fcontent').val(),
-		password: $('#fpassword').val()
+	$.post(contextRoot + '/member/ajax/add.do', {
+		member_email: $('#m_e').val(),
 	}, function(resultObj) {
 		var ajaxResult = resultObj.ajaxResult;
 		if (ajaxResult.status == "success") {
         alert("Email이 전송되었습니다.");
     }
+		else {
+			alert("다시 시도해 주세요.");
+		}
 	}, 'json');
 });
         </script>
