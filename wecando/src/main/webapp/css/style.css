@@ -1810,6 +1810,12 @@ label {
 	margin-right: 30px;
 }
 
+ .form-group1 {
+	padding-bottom: 15px;
+	margin-bottom: 29px;
+	margin-right: 30px;
+}
+
 .round-form {
 	border-radius: 500px;
 	-webkit-border-radius: 500px;
@@ -2394,3 +2400,4 @@ label {
 	color: #ff865c;
 	margin-top: 13px;
 }
+
