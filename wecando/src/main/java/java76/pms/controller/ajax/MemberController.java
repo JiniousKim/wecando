@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java76.pms.dao.MemberDao;
 import java76.pms.domain.AjaxResult;
 import java76.pms.domain.Member;
+import java76.pms.util.MailServlet;
 
 @Controller("ajax.MemberController")
 @RequestMapping("/member/ajax/*")
@@ -23,6 +24,7 @@ public class MemberController {
 
 	@Autowired MemberDao memberDao;
 	@Autowired ServletContext servletContext;
+	@Autowired MailServlet mail;
 
 	@RequestMapping("list")
 	public Object list(
@@ -66,6 +68,8 @@ public class MemberController {
 		member.setEmail_code(buf.toString());
 		
 		memberDao.insert(member);
+		
+		mail.doPost(member);
 		
 		return new AjaxResult("success", null);
 	}
