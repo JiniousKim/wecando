@@ -19,6 +19,7 @@ public class MailServlet extends HttpServlet {
 	
 	public void doPost(Member member) 
 			throws ServletException, IOException{
+		System.out.println("시작");
 		String to = member.getM_email();
 		String from = "localhost@wecando.com";
 		String subject = "Wecando 메일 가입 인증 절차";
@@ -40,5 +41,6 @@ public class MailServlet extends HttpServlet {
 		}catch(Exception e){
 		}finally{
 		}
+		System.out.println("끝");
 	}
 }
