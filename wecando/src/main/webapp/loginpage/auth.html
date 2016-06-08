@@ -235,27 +235,35 @@
 		</aside>
 		<section id="main-content">
 			<section class="wrapper">
-                <div id="auth">
-                    <img id="joinus" src="../img/joinus.png">
-				<!-- INLINE FORM ELELEMNTS -->
-          	<div class="row mt">
-          		<div class="col-lg-12">
-          			<div class="form-panel-email">
-                  	  <h1 class="email"><i class="fa fa-angle-right"></i> 이메일 인증 </h1>
-                      <form class="form-inline" role="form">
-                          <div class="form-group">
-                              <label class="sr-only" for="m_e">Email address</label>
-                              <input type="email" class="form-control" id="m_e" placeholder="Enter email" style="width: 300px;" >
-                          </div>
-                          
-                          <button type="submit" class="btn btn-theme" id="btn-auth">인증하기</button>
-							  <p>이메일을 입력하고 인증하기를 눌러 해당 이메일로 전송된 링크를 클릭하면 회원가입을 진행하실 수 있습니다.</p>
-                      </form>
-          			</div><!-- /form-panel -->
-          		</div><!-- /col-lg-12 -->
-          	</div><!-- /row -->
-                  	
-                  	</div><!-- /row mt -->
+				<div id="auth">
+					<img id="joinus" src="../img/joinus.png">
+					<!-- INLINE FORM ELELEMNTS -->
+					<div class="row mt">
+						<div class="col-lg-12">
+							<div class="form-panel-email">
+								<h1 class="email">
+									<i class="fa fa-angle-right"></i> 이메일 인증
+								</h1>
+								<form class="form-inline" role="form">
+									<div class="form-group">
+										<label class="sr-only" for="m_e">Email address</label> <input
+											type="email" class="form-control" id="m_e"
+											placeholder="Enter email" style="width: 300px;">
+									</div>
+
+									<button type="submit" class="btn btn-theme" id="btn-auth">인증하기</button>
+									<p>이메일을 입력하고 인증하기를 눌러 해당 이메일로 전송된 링크를 클릭하면 회원가입을 진행하실 수
+										있습니다.</p>
+								</form>
+							</div>
+							<!-- /form-panel -->
+						</div>
+						<!-- /col-lg-12 -->
+					</div>
+					<!-- /row -->
+
+				</div>
+				<!-- /row mt -->
 			</section>
 		</section>
 		<footer class="site-footer">
@@ -275,12 +283,12 @@
 	<script src="../js/jquery.nicescroll.js" type="text/javascript"></script>
 	<script src="../js/jquery.sparkline.js"></script>
 	<script src="../js/common-scripts.js"></script>
-    <script>
+	<script>
     $('#btn-auth').click(function(event) {
 	$.post(contextRoot + '/member/ajax/add.do', {
 		m_email: $('#m_e').val(),
 	}, function(resultObj) {
-		var ajaxResult = resultObj.ajaxResult;
+		var ajaxResult = resultObj.AjaxResult;
 		if (ajaxResult.status == "success") {
         alert("Email이 전송되었습니다.");
     }
