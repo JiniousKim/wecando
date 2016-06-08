@@ -12,17 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java76.pms.dao.MemberDao;
 import java76.pms.domain.AjaxResult;
 import java76.pms.domain.Member;
+import java76.pms.service.MemberService;
 import java76.pms.util.MailServlet;
 
 @Controller("ajax.MemberController")
 @RequestMapping("/member/ajax/*")
 public class MemberController { 
-	public static final String SAVED_DIR = "/attachfile";
-
-	@Autowired MemberDao memberDao;
+	@Autowired MemberService memberService;
 	@Autowired ServletContext servletContext;
 
 	@RequestMapping("list")
@@ -38,7 +36,8 @@ public class MemberController {
 		paramMap.put("keyword", keyword);
 		paramMap.put("align", align);
 
-		List<Member> members = memberDao.selectList(paramMap);
+		List<Member> members = memberService.getMemberList(
+				pageNo, pageSize, keyword, align);
 
 		HashMap<String,Object> resultMap = new HashMap<>();
 		resultMap.put("status", "success");
@@ -57,7 +56,7 @@ public class MemberController {
 		Random rnd = new Random();
 		StringBuffer buf = new StringBuffer();
 		MailServlet mail = new MailServlet();
-
+		
 		for (int i = 0; i < 20; i++) {
 			if (rnd.nextBoolean()) {
 				buf.append((char)((int)(rnd.nextInt(26)) + 97));
@@ -67,22 +66,22 @@ public class MemberController {
 		}
 		member.setEmail_code(buf.toString());
 		
-		memberDao.insert(member);
-		
+		if (memberService.register(member) <= 0) {
+			return new AjaxResult("failure", null);
+		}
 		mail.doPost(member);
-		
 		return new AjaxResult("success", null);
 	}
 
 	@RequestMapping("detail")
 	public Object detail(int m_no) throws Exception {
-		Member member = memberDao.selectOne(m_no);
+		Member member = memberService.retrieve(m_no);
 		return new AjaxResult("success", member);
 	}
 
 	@RequestMapping(value="update", method=RequestMethod.POST)
 	public AjaxResult update(Member member) throws Exception {
-		if (memberDao.update(member) <= 0) {
+		if (memberService.change(member) <= 0) {
 			return new AjaxResult("failure", null);
 		} 
 		return new AjaxResult("success", null);
@@ -94,7 +93,7 @@ public class MemberController {
 		paramMap.put("no", m_no);
 		paramMap.put("password", m_password);
 
-		if (memberDao.delete(paramMap) <= 0) {
+		if (memberService.remove(m_no, m_password) <= 0) {
 			return new AjaxResult("failure", null);
 		} 
 		return new AjaxResult("success", null);
@@ -102,7 +101,7 @@ public class MemberController {
 	
 	@RequestMapping(value="create", method=RequestMethod.POST)
 	public AjaxResult create(Member member) throws Exception {
-		if (memberDao.create(member) <= 0) {
+		if (memberService.create(member) <= 0) {
 			return new AjaxResult("failure", null);
 		}
 		return new AjaxResult("success", null);

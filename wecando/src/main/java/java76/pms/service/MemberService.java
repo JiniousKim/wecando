@@ -8,11 +8,11 @@ public interface MemberService {
   List<Member> getMemberList(
       int pageNo, int pageSize, 
       String keyword, String align);
-  void register(Member member);
-  void remove(int m_no, String m_password);
-  void change(Member member);
-  void create(Member member);
-  Member retieve(int m_no);
+  int register(Member member);
+  int remove(int m_no, String m_password);
+  int change(Member member);
+  int create(Member member);
+  Member retrieve(int m_no);
   Member retrieve(String m_email, String m_password);
 }
 

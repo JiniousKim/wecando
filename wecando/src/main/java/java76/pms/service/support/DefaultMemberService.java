@@ -25,23 +25,23 @@ public class DefaultMemberService implements MemberService {
 		return memberDao.selectList(paramMap);
 	}
 
-	public void register(Member member) {
-		memberDao.insert(member);
+	public int register(Member member) {
+		return memberDao.insert(member);
 	}
 
-	public void remove(int no, String password) {
+	public int remove(int no, String password) {
 		HashMap<String,Object> paramMap = new HashMap<>();
 		paramMap.put("no", no);
 		paramMap.put("password", password);
 
-		memberDao.delete(paramMap);
+		return memberDao.delete(paramMap);
 	}
 
-	public void change(Member member) {
-		memberDao.update(member);
+	public int change(Member member) {
+		return memberDao.update(member);
 	}
 
-	public Member retieve(int no) {
+	public Member retrieve(int no) {
 		return memberDao.selectOne(no);
 	}
 	
@@ -53,8 +53,8 @@ public class DefaultMemberService implements MemberService {
     return memberDao.selectOneByEmailPassword(paramMap);
   }
 	
-	public void create(Member member) {
-		memberDao.create(member);
+	public int create(Member member) {
+		return memberDao.create(member);
 	}
 }
 

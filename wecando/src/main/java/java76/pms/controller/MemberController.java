@@ -17,9 +17,6 @@ import java76.pms.service.MemberService;
 @Controller
 @RequestMapping("/member/*")
 public class MemberController { 
-
-	public static final String SAVED_DIR = "/attachfile";
-
 	@Autowired MemberService memberService;
 	@Autowired ServletContext servletContext;
 
@@ -51,7 +48,7 @@ public class MemberController {
 
 	@RequestMapping("detail")
 	public String detail(int m_no, Model model) throws Exception {
-		Member member = memberService.retieve(m_no);
+		Member member = memberService.retrieve(m_no);
 		model.addAttribute("member", member);
 		return "member/MemberDetail";
 	}
