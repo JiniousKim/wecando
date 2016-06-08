@@ -24,7 +24,6 @@ public class MemberController {
 
 	@Autowired MemberDao memberDao;
 	@Autowired ServletContext servletContext;
-	@Autowired MailServlet mail;
 
 	@RequestMapping("list")
 	public Object list(
@@ -55,8 +54,9 @@ public class MemberController {
 
 	@RequestMapping(value="add", method=RequestMethod.POST)
 	public AjaxResult add(Member member) throws Exception {
-		Random rnd =new Random();
-		StringBuffer buf =new StringBuffer();
+		Random rnd = new Random();
+		StringBuffer buf = new StringBuffer();
+		MailServlet mail = new MailServlet();
 
 		for (int i = 0; i < 20; i++) {
 			if (rnd.nextBoolean()) {
