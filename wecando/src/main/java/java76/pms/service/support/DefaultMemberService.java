@@ -52,6 +52,10 @@ public class DefaultMemberService implements MemberService {
     
     return memberDao.selectOneByEmailPassword(paramMap);
   }
+	
+	public void create(Member member) {
+		memberDao.create(member);
+	}
 }
 
 

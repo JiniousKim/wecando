@@ -12,6 +12,8 @@ public interface MemberDao {
   
   int delete(Map<String,Object> paramMap);
   
+  int create(Member member);   //이메일 인증하고 아이디 생성 시 사용할 쿼리
+  
   int update(Member member);
 
   Member selectOne(int m_no);

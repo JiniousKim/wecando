@@ -11,6 +11,7 @@ public interface MemberService {
   void register(Member member);
   void remove(int m_no, String m_password);
   void change(Member member);
+  void create(Member member);
   Member retieve(int m_no);
   Member retrieve(String m_email, String m_password);
 }

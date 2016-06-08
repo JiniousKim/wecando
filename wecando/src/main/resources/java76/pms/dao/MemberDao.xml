@@ -23,5 +23,17 @@
     values(member_incre.nextval,#{m_email, jdbcType=VARCHAR},#{email_code,
      jdbcType=VARCHAR})
   </insert>
+  
+  <update id="create" parameterType="member">
+  update member set
+    member_grade=#{m_grade},
+    member_name=#{m_name, jdbcType=VARCHAR},
+    member_tel=#{m_tel, jdbcType=VARCHAR},
+    member_pwd=#{m_password, jdbcType=VARCHAR},
+    member_nickname=#{m_nick, jdbcType=VARCHAR},
+    email_ava=#{email_ava, jdbcType=VARCHAR}
+  where 
+    member_num=#{m_no} and email_code=#{email_code}
+  </update>
 
 </mapper>

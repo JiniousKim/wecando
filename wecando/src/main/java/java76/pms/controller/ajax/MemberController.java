@@ -19,7 +19,6 @@ import java76.pms.domain.Member;
 @Controller("ajax.MemberController")
 @RequestMapping("/member/ajax/*")
 public class MemberController { 
-
 	public static final String SAVED_DIR = "/attachfile";
 
 	@Autowired MemberDao memberDao;
@@ -65,9 +64,9 @@ public class MemberController {
 			}
 		}
 		member.setEmail_code(buf.toString());
-
+		
 		memberDao.insert(member);
-
+		
 		return new AjaxResult("success", null);
 	}
 
@@ -82,7 +81,6 @@ public class MemberController {
 		if (memberDao.update(member) <= 0) {
 			return new AjaxResult("failure", null);
 		} 
-
 		return new AjaxResult("success", null);
 	}
 
@@ -95,6 +93,14 @@ public class MemberController {
 		if (memberDao.delete(paramMap) <= 0) {
 			return new AjaxResult("failure", null);
 		} 
+		return new AjaxResult("success", null);
+	}
+	
+	@RequestMapping(value="create", method=RequestMethod.POST)
+	public AjaxResult create(Member member) throws Exception {
+		if (memberDao.create(member) <= 0) {
+			return new AjaxResult("failure", null);
+		}
 		return new AjaxResult("success", null);
 	}
 }

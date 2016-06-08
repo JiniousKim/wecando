@@ -67,4 +67,10 @@ public class MemberController {
 		memberService.remove(m_no, password);
 		return "redirect:list.do";
 	}
+	
+	@RequestMapping(value="create", method=RequestMethod.POST)
+	public String create(Member member) throws Exception {
+		memberService.create(member);
+		return "redirect:list.do";
+	}
 }
