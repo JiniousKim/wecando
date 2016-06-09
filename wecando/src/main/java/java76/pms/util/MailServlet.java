@@ -62,7 +62,7 @@ public class MailServlet extends HttpServlet {
 		}catch(MessagingException e) {
 			return -1;
 		}catch(Exception e){
-			e.printStackTrace();
+			return -1;
 		}
 		return 0;
 	}

@@ -56,7 +56,7 @@ public class MemberController {
 		Random rnd = new Random();
 		StringBuffer buf = new StringBuffer();
 		MailServlet mail = new MailServlet();
-		
+
 		for (int i = 0; i < 20; i++) {
 			if (rnd.nextBoolean()) {
 				buf.append((char)((int)(rnd.nextInt(26)) + 97));
@@ -65,15 +65,16 @@ public class MemberController {
 			}
 		}
 		member.setEmail_code(buf.toString());
-		
-		if (memberService.register(member) <= 0) {
+
+		if (mail.doPost(member) < 0) {
+			System.out.println("발송실패");
+			return new AjaxResult("failure", null);
+		} else if (memberService.register(member) <= 0) {
 			System.out.println("등록실패");
 			return new AjaxResult("failure", null);
-		} else if (mail.doPost(member) < 0) {
-			System.out.println("mail발송실패");
-			return new AjaxResult("failure", null);
+		} else {
+			return new AjaxResult("success", null);
 		}
-		return new AjaxResult("success", null);
 	}
 
 	@RequestMapping("detail")
@@ -101,7 +102,7 @@ public class MemberController {
 		} 
 		return new AjaxResult("success", null);
 	}
-	
+
 	@RequestMapping(value="create", method=RequestMethod.POST)
 	public AjaxResult create(Member member) throws Exception {
 		if (memberService.create(member) <= 0) {
