@@ -19,7 +19,7 @@ import java76.pms.domain.Member;
 public class MailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	public void doPost(Member member) 
+	public int doPost(Member member) 
 			throws ServletException, IOException{
 		String host = "smtp.gmail.com";
 		String to = member.getM_email();
@@ -60,9 +60,10 @@ public class MailServlet extends HttpServlet {
 			Transport.send(msg);
 			
 		}catch(MessagingException e) {
-			e.printStackTrace();
+			return -1;
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		return 0;
 	}
 }
