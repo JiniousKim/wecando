@@ -288,7 +288,8 @@
 	$.post(contextRoot + '/member/ajax/add.do', {
 		m_email: $('#m_e').val(),
 	}, function(resultObj) {
-		var ajaxResult = resultObj.AjaxResult;
+		var ajaxResult = resultObj.ajaxResult;
+		console.log(ajaxResult.status);
 		if (ajaxResult.status == "success") {
         alert("Email이 전송되었습니다.");
     }
