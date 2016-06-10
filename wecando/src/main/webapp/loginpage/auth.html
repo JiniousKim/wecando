@@ -178,6 +178,8 @@
 	    data : form_data,
 	    success : function(resultObj) {
 	      var ajaxResult = resultObj.ajaxResult;
+	      console.log(ajaxResult);
+	      console.log(ajaxResult.status);
 	      if (ajaxResult.status == 'success') {
 	        alert('Email 전송이 완료되었습니다.');
 	      } else {
