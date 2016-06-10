@@ -15,6 +15,10 @@
     "test",
     "tests"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:t4t5/sweetalert.git"
+  },
   "dependencies": {
     "bootstrap": "~3.3.6",
     "jquery": "1.11.3",

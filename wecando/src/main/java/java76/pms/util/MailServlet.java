@@ -26,10 +26,13 @@ public class MailServlet extends HttpServlet {
 		String from = "daejinious@gmail.com";
 		String subject = "Wecando 메일 가입 인증 절차";
 		String content = "Wecando 메일 가입 인증 절차입니다.<br>"
-				+ "아래 링크를 클릭하여 계속 진행해 주시기 바랍니다.<br>"
-				+ "<a href='http://localhost:8080/wecando/choose_auth?m_no="
-				+ member.getM_no() + "&email_code="
-				+ member.getEmail_code() + "'>link</a>";
+				+ "아래 버튼을 클릭하여 계속 진행해 주시기 바랍니다.<br>"
+				+ "<form action='http://localhost:8080/wecando/loginpage/choose_auth.html' method='post'>"
+				+ "<input type='hidden' name='m_no' value='"
+				+ member.getM_no() + "'>"
+				+ "<input type='hidden' name='email_code' value='"
+				+ member.getEmail_code() + "'>"
+				+ "<button type='submit'>등록하러가기</button></form>";
 		try{
 			Properties props = new Properties();
 			
