@@ -366,3 +366,6 @@ modify (MEMBER_PWD varchar(100) default '1234');
 
 alter table member
 modify (MEMBER_AVA number default 0);
+
+alter table member
+add (EMAIL_TIME DATE not null default SYSDATE);
