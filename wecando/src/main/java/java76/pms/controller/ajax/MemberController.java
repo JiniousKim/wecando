@@ -69,7 +69,7 @@ public class MemberController {
 		if (memberService.register(member) < 0) {
 			System.out.println("등록실패");
 			return new AjaxResult("failure", null);
-		} else if (mail.doPost(member) <= 0) {
+		} else if (mail.doPost(member) < 0) {
 			System.out.println("발송실패");
 			return new AjaxResult("failure", null);
 		} else {

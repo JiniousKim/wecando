@@ -15,29 +15,6 @@ $(function() {
 
 var contextRoot = 'http://localhost:8080/wecando';
 
-$(document).on("click", '#btn-auth', function() {
-	var form_data = new FormData();
-	form_data.append("m_email", $('#m_e').val())
-	
-	$.ajax({
-		url: contextRoot + '/member/ajax/add.do', 
-		type : 'post',
-		dataType : 'json',
-		cache : false,
-		contentType : false,
-		processData : false,
-		data : form_data,
-		success : function(resultObj) {
-			var ajaxResult = resultObj.ajaxResult;
-			if (ajaxResult.status == 'success') {
-				alert('Email 전송이 완료되었습니다.');
-			} else {
-				alert('다시 시도해 주세요');
-			}
-		}
-	})
-});
-
 var Script = function () {
 
 
