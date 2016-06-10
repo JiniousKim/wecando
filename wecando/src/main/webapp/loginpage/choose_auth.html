@@ -184,8 +184,6 @@
       data : form_data,
       success : function(resultObj) {
         var ajaxResult = resultObj.ajaxResult;
-        console.log(ajaxResult);
-        console.log(ajaxResult.status);
         if (ajaxResult.status == 'success') {
           swal("Good job!", "Email 전송이 완료되었습니다", "success")
           e.preventDefault();

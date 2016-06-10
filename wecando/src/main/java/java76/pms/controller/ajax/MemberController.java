@@ -66,15 +66,11 @@ public class MemberController {
 		}
 		member.setEmail_code(buf.toString());
 		
-		System.out.println(member.getM_no());
 		if (memberService.register(member) < 0) {
-			System.out.println("등록실패");
 			return new AjaxResult("failure", null);
 		} else if (mail.doPost(member) < 0) {
-			System.out.println("발송실패");
 			return new AjaxResult("failure", null);
 		} else {
-			System.out.println(member.getM_no());
 			return new AjaxResult("success", null);
 		}
 	}

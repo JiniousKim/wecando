@@ -24,13 +24,12 @@ public class MailServlet extends HttpServlet {
 		String host = "smtp.gmail.com";
 		String to = member.getM_email();
 		String from = "daejinious@gmail.com";
-		System.out.println("mailServlet" + member.getM_no());
 		String subject = "Wecando 메일 가입 인증 절차";
 		String content = "Wecando 메일 가입 인증 절차입니다.<br>"
 				+ "아래 버튼을 클릭하여 계속 진행해 주시기 바랍니다.<br>"
 				+ "<form action='http://localhost:8080/wecando/loginpage/choose_auth.html' method='post'>"
-				+ "<input type='hidden' name='m_no' value='"
-				+ member.getM_no() + "'>"
+				+ "<input type='hidden' name='m_email' value='"
+				+ member.getM_email() + "'>"
 				+ "<input type='hidden' name='email_code' value='"
 				+ member.getEmail_code() + "'>"
 				+ "<input type='hidden' name='email_ava' value='"
