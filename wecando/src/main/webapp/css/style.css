@@ -2428,3 +2428,12 @@ div.col-md-4 a {
 	border: 1px solid transparent;
 	border-radius: 4px;
 }
+
+.control-label {
+	margin-top : 3px;
+	color: #a94442;
+}
+
+.form-group2 {
+	margin-top : 23px;
+}

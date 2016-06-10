@@ -8,7 +8,7 @@
 <meta name="keyword"
 	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-<title>DASHGUM - FREE Bootstrap Admin Template</title>
+<title>Wecando</title>
 
 <!-- Bootstrap core CSS -->
 <link href="../css/bootstrap.css" rel="stylesheet">
@@ -25,6 +25,9 @@
 
 <!-- Custom styles for this template -->
 <link href="../css/style.css" rel="stylesheet">
+
+<!-- check js -->
+<script src="../js/dj_check.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -142,16 +145,16 @@
 									<i class="fa fa-angle-right"></i> 이메일 인증
 								</h1>
 								<form class="form-inline" role="form">
-									<div class="form-group">
-										<label class="sr-only" for="m_e">Email address</label> <input
-											type="email" class="form-control" id="m_e"
-											placeholder="Enter email" style="width: 300px;">
-									</div>
-
-									<button type="submit" class="btn1" id="btn-auth">인증하기</button>
-
 									<p>이메일을 입력하고 인증하기를 눌러 해당 이메일로 전송된 링크를 클릭하면 회원가입을 진행하실 수
 										있습니다.</p>
+									<div class="form-group2 has-feedback">
+										<label class="sr-only" for="m_e">Email address</label> <input
+											type="text" class="form-control" id="m_e" name='m_e'
+											onchange="check(this.id);" placeholder="Enter email" style="width: 300px;">
+										<button type="submit" class="btn1" id="btn-auth">인증하기</button>
+										<div class="control-label" id="m_eMsg" style="display: none;">이메일
+											형식이 아닙니다.</div>
+									</div>
 								</form>
 							</div>
 						</div>
