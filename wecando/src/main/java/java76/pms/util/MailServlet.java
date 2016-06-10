@@ -32,6 +32,8 @@ public class MailServlet extends HttpServlet {
 				+ member.getM_no() + "'>"
 				+ "<input type='hidden' name='email_code' value='"
 				+ member.getEmail_code() + "'>"
+				+ "<input type='hidden' name='email_ava' value='"
+				+ member.getEmail_ava() + "'>"
 				+ "<button type='submit'>등록하러가기</button></form>";
 		try{
 			Properties props = new Properties();
