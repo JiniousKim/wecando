@@ -24,6 +24,7 @@ public class MailServlet extends HttpServlet {
 		String host = "smtp.gmail.com";
 		String to = member.getM_email();
 		String from = "daejinious@gmail.com";
+		System.out.println("mailServlet" + member.getM_no());
 		String subject = "Wecando 메일 가입 인증 절차";
 		String content = "Wecando 메일 가입 인증 절차입니다.<br>"
 				+ "아래 버튼을 클릭하여 계속 진행해 주시기 바랍니다.<br>"
