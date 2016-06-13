@@ -138,9 +138,8 @@
 							<div class="box1">
 								<span class="li_user"></span>
 								<form action='join.html' method="post">
-								  <input type='hidden' id='#hi'>
-									<input type='hidden' name='m_email'>
-									<input type='hidden' name='email_code'>
+									<input type='hidden' id='#hi'> <input type='hidden'
+										name='m_email'> <input type='hidden' name='email_code'>
 								</form>
 								<h3>개인 회원</h3>
 							</div>
@@ -169,13 +168,20 @@
 	<script src="../js/common-scripts.js"></script>
 
 	<script>
-		$(document).ready(function(request, response) {
+		$(document).ready(function() {
+			var http = require('http');
+			var fs = require('fs');
+			http.createServer (function	(request , 	response) {
+			 if (request.method == 'POST') {
+				 request.on('data', function(data) {
+					 console.log(data);
+				 })
+			 }
+			)};
 			var show = $('#hi');
-			request.on('data', function(data) {
-				console.log(data);
-				console.log(data.m_email);
-				console.log(data.email_code);
-			})
+			
+			console.log(request);
+			console.log(request.param);
 			
 			var form_data = new FormData();
 			form_data.append("m_email", $('#m_email').val())
