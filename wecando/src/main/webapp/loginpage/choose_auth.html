@@ -168,12 +168,15 @@
 	<script src="../js/common-scripts.js"></script>
 
 	<script>
-		$(document).ready(function() {
+		$(document).ready(function(request, response) {
+			console.log(request);
+			console.log(request.m_email);
+			
 			var form_data = new FormData();
 			form_data.append("m_email", $('#m_email').val())
       form_data.append("email_code", $('#email_code').val())
 			$.ajax({
-				url : contextRoot + '/member/ajax/add.do',
+				url : contextRoot + '/member/ajax/choose_auth.do',
 				type : 'post',
 				dataType : 'json',
 				async : false,
@@ -193,6 +196,8 @@
 				}
 			})
 		});
+		
+		var postVar = http
 	</script>
 </body>
 </html>
