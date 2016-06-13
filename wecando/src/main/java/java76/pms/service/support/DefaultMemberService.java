@@ -2,6 +2,7 @@ package java76.pms.service.support;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,6 +56,10 @@ public class DefaultMemberService implements MemberService {
 	
 	public int create(Member member) {
 		return memberDao.create(member);
+	}
+	
+	public int auth(Map<String, String> paramMap) {
+		return memberDao.auth(paramMap);
 	}
 }
 

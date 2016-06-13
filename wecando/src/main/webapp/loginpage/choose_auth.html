@@ -136,9 +136,10 @@
 					<div class="row mtbox">
 						<div class="col-md-4 col-md-offset-1 box0">
 							<div class="box1">
-								<span class="li_user"></span> 
-								<form action='join.html'>
-								<input type='hidden' name='m_no' value='m_no'>
+								<span class="li_user"></span>
+								<form action='join.html' method="post">
+									<input type='hidden' name='m_email' value='m_email'>
+									<input type='hidden' name='email_code' value='email_code'>
 								</form>
 								<h3>개인 회원</h3>
 							</div>
@@ -167,33 +168,31 @@
 	<script src="../js/common-scripts.js"></script>
 
 	<script>
-	
-	
-  $(document).on("click", '#btn-auth', function(e) {
-    var form_data = new FormData();
-    form_data.append("m_email", $('#m_e').val())
-    
-    $.ajax({
-      url: contextRoot + '/member/ajax/add.do', 
-      type : 'post',
-      dataType : 'json',
-      async : false,
-      cache : false,
-      contentType : false,
-      processData : false,
-      data : form_data,
-      success : function(resultObj) {
-        var ajaxResult = resultObj.ajaxResult;
-        if (ajaxResult.status == 'success') {
-          swal("Good job!", "Email 전송이 완료되었습니다", "success")
-          e.preventDefault();
-        } else {
-          sweetAlert("Oops...","다시 시도해 주세요","error");
-          e.preventDefault();
-        }
-      }
-    })
-  });
-  </script>
+		$(document).ready(function() {
+			var form_data = new FormData();
+			form_data.append("m_email", $('#m_email').val())
+      form_data.append("email_code", $('#email_code').val())
+			$.ajax({
+				url : contextRoot + '/member/ajax/add.do',
+				type : 'post',
+				dataType : 'json',
+				async : false,
+				cache : false,
+				contentType : false,
+				processData : false,
+				data : form_data,
+				success : function(resultObj) {
+					var ajaxResult = resultObj.ajaxResult;
+					if (ajaxResult.status == 'success') {
+						swal("Good job!", "Email 전송이 완료되었습니다", "success")
+						e.preventDefault();
+					} else {
+						sweetAlert("Oops...", "다시 시도해 주세요", "error");
+						e.preventDefault();
+					}
+				}
+			})
+		});
+	</script>
 </body>
 </html>

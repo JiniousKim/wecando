@@ -66,7 +66,7 @@ public class MemberController {
 		}
 		member.setEmail_code(buf.toString());
 		
-		if (memberService.register(member) < 0) {
+		if (memberService.register(member) <= 0) {
 			return new AjaxResult("failure", null);
 		} else if (mail.doPost(member) < 0) {
 			return new AjaxResult("failure", null);
@@ -104,6 +104,18 @@ public class MemberController {
 	@RequestMapping(value="create", method=RequestMethod.POST)
 	public AjaxResult create(Member member) throws Exception {
 		if (memberService.create(member) <= 0) {
+			return new AjaxResult("failure", null);
+		}
+		return new AjaxResult("success", null);
+	}
+	
+	@RequestMapping(value="choose_auth", method=RequestMethod.POST)
+	public AjaxResult auth(String m_email, String email_code) throws Exception {
+		HashMap<String, String> paramMap = new HashMap<>();
+		paramMap.put("m_email", m_email);
+		paramMap.put("email_code", email_code);
+		
+		if (memberService.auth(paramMap) != 0) {
 			return new AjaxResult("failure", null);
 		}
 		return new AjaxResult("success", null);
