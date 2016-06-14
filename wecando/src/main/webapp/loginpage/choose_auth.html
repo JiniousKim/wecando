@@ -1,4 +1,5 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -10,16 +11,16 @@
 
 <title>DASHGUM - FREE Bootstrap Admin Template</title>
 
-Bootstrap core CSS
+<!-- Bootstrap core CSS -->
 <link href="../css/bootstrap.css" rel="stylesheet">
-external css
+<!--external css-->
 <link href="../font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="../css/zabuto_calendar.css">
 <link rel="stylesheet" type="text/css"
 	href="../js/gritter/css/jquery.gritter.css" />
 <link rel="stylesheet" type="text/css" href="../lineicons/style.css">
 
-Custom styles for this template
+<!-- Custom styles for this template -->
 <link href="../css/style.css" rel="stylesheet">
 <link href="../css/style-responsive.css" rel="stylesheet">
 
@@ -28,7 +29,7 @@ Custom styles for this template
 
 	<div id="login-page">
 		<div class="container">
-			Modal
+			<!-- Modal -->
 			<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog"
 				id="myModal1" class="modal fade">
 				<form class="form-login" action="auth.html">
@@ -85,7 +86,7 @@ Custom styles for this template
 					</div>
 				</div>
 			</div>
-			modal
+			<!-- modal -->
 
 		</div>
 	</div>
@@ -138,8 +139,9 @@ Custom styles for this template
 							<div class="box1">
 								<span class="li_user"></span>
 								<form action='join.html' method="post">
-									<input type='hidden' id='#hi'> <input type='hidden'
-										name='m_email'> <input type='hidden' name='email_code'>
+									<input type='hidden' id='#hi'> 
+									<input type='hidden' name='m_email' value= '<%= request.getParameter("m_email") %>'> 
+									<input type='hidden' name='email_code'>
 								</form>
 								<h3>개인 회원</h3>
 							</div>
@@ -170,10 +172,8 @@ Custom styles for this template
 	<script>
 		$(document).ready(function() {
 			var show = $('#hi');
-			
-			console.log(request);
-			console.log(request.param);
-			
+			console.log($('m_email'));
+						
 			var form_data = new FormData();
 			form_data.append("m_email", $('#m_email').val())
       form_data.append("email_code", $('#email_code').val())
@@ -201,4 +201,3 @@ Custom styles for this template
 	</script>
 </body>
 </html>
- -->
