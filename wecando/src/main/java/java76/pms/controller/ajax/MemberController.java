@@ -110,7 +110,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="choose_auth", method=RequestMethod.POST)
-	public AjaxResult auth(String m_email, String email_code) throws Exception {
+	public String auth(String m_email, String email_code) throws Exception {
 		System.out.println(m_email);
 		System.out.println(email_code);
 		HashMap<String, String> paramMap = new HashMap<>();
@@ -118,8 +118,8 @@ public class MemberController {
 		paramMap.put("email_code", email_code);
 		
 		if (memberService.auth(paramMap) != "0") {
-			return new AjaxResult("failure", null);
+			return "/loginpage/choose_auth.jsp";
 		}
-		return new AjaxResult("success", null);
+		return "/loginpage/choose_auth.jsp";
 	}
 }
