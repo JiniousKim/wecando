@@ -368,4 +368,7 @@ alter table member
 modify (MEMBER_AVA number default 0);
 
 alter table member
-add (EMAIL_TIME DATE not null default SYSDATE);
+add (EMAIL_TIME DATE default SYSDATE);
+
+alter table member
+modify (EMAIL_TIME DATE not null);
