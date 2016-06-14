@@ -14,7 +14,7 @@ public interface MemberDao {
   
   int create(Member member);   //이메일 인증하고 아이디 생성 시 사용할 쿼리
   
-  int auth(Map<String,String> paramMap);     //이메일 사용 여부 확인 시 사용.
+  String auth(Map<String,String> paramMap);     //이메일 사용 여부 확인 시 사용.
   
   int update(Member member);
 

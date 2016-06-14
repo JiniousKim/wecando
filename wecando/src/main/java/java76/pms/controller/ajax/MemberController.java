@@ -113,15 +113,17 @@ public class MemberController extends TimerTask {
 	}
 	
 	@RequestMapping(value="choose_auth", method=RequestMethod.POST)
-	public AjaxResult auth(String m_email, String email_code) throws Exception {
+	public String auth(String m_email, String email_code) throws Exception {
+		System.out.println(m_email);
+		System.out.println(email_code);
 		HashMap<String, String> paramMap = new HashMap<>();
 		paramMap.put("m_email", m_email);
 		paramMap.put("email_code", email_code);
 		
-		if (memberService.auth(paramMap) != 0) {
-			return new AjaxResult("failure", null);
+		if (memberService.auth(paramMap) != "0") {
+			return "/member/choose_auth";
 		}
-		return new AjaxResult("success", null);
+		return "/member/choose_auth";
 	}
 	
   @RequestMapping(value="check", method=RequestMethod.GET)

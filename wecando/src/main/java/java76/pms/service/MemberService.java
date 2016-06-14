@@ -13,7 +13,7 @@ public interface MemberService {
   int remove(int m_no, String m_password);
   int change(Member member);
   int create(Member member);
-  int auth(Map<String,String>paramMap);
+  String auth(Map<String,String>paramMap);
   Member retrieve(int m_no);
   Member retrieve(String m_email, String m_password);
   int removeExpirationMember(int num);
