@@ -56,6 +56,10 @@ public class DefaultMemberService implements MemberService {
 	public int create(Member member) {
 		return memberDao.create(member);
 	}
+	
+	public void removeExpirationMember() {
+	  memberDao.deleteExpirationMember();
+	}
 }
 
 

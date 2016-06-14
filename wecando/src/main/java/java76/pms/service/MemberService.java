@@ -14,6 +14,7 @@ public interface MemberService {
   int create(Member member);
   Member retrieve(int m_no);
   Member retrieve(String m_email, String m_password);
+  void removeExpirationMember();
 }
 
 

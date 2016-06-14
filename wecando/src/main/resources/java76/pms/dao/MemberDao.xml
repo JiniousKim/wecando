@@ -36,4 +36,10 @@
     member_num=#{m_no} and email_code=#{email_code}
   </update>
 
+  <delete id="deleteExpirationMember">
+    delete from member
+      where to_char(sysdate,'YYYYMMDDHH24MISS')-to_char(email_time,'YYYYMMDDHH24MISS') > 1000000
+      and email_ava='0'
+  </delete>
+
 </mapper>

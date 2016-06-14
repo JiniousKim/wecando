@@ -19,6 +19,8 @@ public interface MemberDao {
   Member selectOne(int m_no);
   
   Member selectOneByEmailPassword(Map<String,Object> paramMap);
+  
+  void deleteExpirationMember();
 }
 
 

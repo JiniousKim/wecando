@@ -20,94 +20,94 @@ import java76.pms.util.MailServlet;
 @Controller("ajax.MemberController")
 @RequestMapping("/member/ajax/*")
 public class MemberController { 
-	@Autowired MemberService memberService;
-	@Autowired ServletContext servletContext;
+  @Autowired MemberService memberService;
+  @Autowired ServletContext servletContext;
 
-	@RequestMapping("list")
-	public Object list(
-			@RequestParam(defaultValue="1") int pageNo,
-			@RequestParam(defaultValue="10") int pageSize,
-			@RequestParam(defaultValue="no") String keyword,
-			@RequestParam(defaultValue="desc") String align) throws Exception {
+  @RequestMapping("list")
+  public Object list(
+      @RequestParam(defaultValue="1") int pageNo,
+      @RequestParam(defaultValue="10") int pageSize,
+      @RequestParam(defaultValue="no") String keyword,
+      @RequestParam(defaultValue="desc") String align) throws Exception {
 
-		HashMap<String,Object> paramMap = new HashMap<>();
-		paramMap.put("startIndex", (pageNo - 1) * pageSize);
-		paramMap.put("length", pageSize);
-		paramMap.put("keyword", keyword);
-		paramMap.put("align", align);
+    HashMap<String,Object> paramMap = new HashMap<>();
+    paramMap.put("startIndex", (pageNo - 1) * pageSize);
+    paramMap.put("length", pageSize);
+    paramMap.put("keyword", keyword);
+    paramMap.put("align", align);
 
-		List<Member> members = memberService.getMemberList(
-				pageNo, pageSize, keyword, align);
+    List<Member> members = memberService.getMemberList(
+        pageNo, pageSize, keyword, align);
 
-		HashMap<String,Object> resultMap = new HashMap<>();
-		resultMap.put("status", "success");
-		resultMap.put("data", members);
+    HashMap<String,Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");
+    resultMap.put("data", members);
 
-		return resultMap;
-	}
-	
-	@RequestMapping(value="add", method=RequestMethod.GET)
-	public String form() {
-		return "member/MemberForm";
-	}
+    return resultMap;
+  }
 
-	@RequestMapping(value="add", method=RequestMethod.POST)
-	public AjaxResult add(Member member) throws Exception {
-		Random rnd = new Random();
-		StringBuffer buf = new StringBuffer();
-		MailServlet mail = new MailServlet();
+  @RequestMapping(value="add", method=RequestMethod.GET)
+  public String form() {
+    return "member/MemberForm";
+  }
 
-		for (int i = 0; i < 20; i++) {
-			if (rnd.nextBoolean()) {
-				buf.append((char)((int)(rnd.nextInt(26)) + 97));
-			} else {
-				buf.append((rnd.nextInt(10)));
-			}
-		}
-		member.setEmail_code(buf.toString());
+  @RequestMapping(value="add", method=RequestMethod.POST)
+  public AjaxResult add(Member member) throws Exception {
+    Random rnd = new Random();
+    StringBuffer buf = new StringBuffer();
+    MailServlet mail = new MailServlet();
 
-		if (memberService.register(member) < 0) {
-			System.out.println("등록실패");
-			return new AjaxResult("failure", null);
-		} else if (mail.doPost(member) < 0) {
-			System.out.println("발송실패");
-			return new AjaxResult("failure", null);
-		} else {
-			return new AjaxResult("success", null);
-		}
-	}
+    for (int i = 0; i < 20; i++) {
+      if (rnd.nextBoolean()) {
+        buf.append((char)((int)(rnd.nextInt(26)) + 97));
+      } else {
+        buf.append((rnd.nextInt(10)));
+      }
+    }
+    member.setEmail_code(buf.toString());
 
-	@RequestMapping("detail")
-	public Object detail(int m_no) throws Exception {
-		Member member = memberService.retrieve(m_no);
-		return new AjaxResult("success", member);
-	}
+    if (memberService.register(member) < 0) {
+      System.out.println("등록실패");
+      return new AjaxResult("failure", null);
+    } else if (mail.doPost(member) < 0) {
+      System.out.println("발송실패");
+      return new AjaxResult("failure", null);
+    } else {
+      return new AjaxResult("success", null);
+    }
+  }
 
-	@RequestMapping(value="update", method=RequestMethod.POST)
-	public AjaxResult update(Member member) throws Exception {
-		if (memberService.change(member) <= 0) {
-			return new AjaxResult("failure", null);
-		} 
-		return new AjaxResult("success", null);
-	}
+  @RequestMapping("detail")
+  public Object detail(int m_no) throws Exception {
+    Member member = memberService.retrieve(m_no);
+    return new AjaxResult("success", member);
+  }
 
-	@RequestMapping("delete.do")
-	public AjaxResult delete(int m_no, String m_password) throws Exception {
-		HashMap<String,Object> paramMap = new HashMap<>();
-		paramMap.put("no", m_no);
-		paramMap.put("password", m_password);
+  @RequestMapping(value="update", method=RequestMethod.POST)
+  public AjaxResult update(Member member) throws Exception {
+    if (memberService.change(member) <= 0) {
+      return new AjaxResult("failure", null);
+    } 
+    return new AjaxResult("success", null);
+  }
 
-		if (memberService.remove(m_no, m_password) <= 0) {
-			return new AjaxResult("failure", null);
-		} 
-		return new AjaxResult("success", null);
-	}
+  @RequestMapping("delete.do")
+  public AjaxResult delete(int m_no, String m_password) throws Exception {
+    HashMap<String,Object> paramMap = new HashMap<>();
+    paramMap.put("no", m_no);
+    paramMap.put("password", m_password);
 
-	@RequestMapping(value="create", method=RequestMethod.POST)
-	public AjaxResult create(Member member) throws Exception {
-		if (memberService.create(member) <= 0) {
-			return new AjaxResult("failure", null);
-		}
-		return new AjaxResult("success", null);
-	}
+    if (memberService.remove(m_no, m_password) <= 0) {
+      return new AjaxResult("failure", null);
+    } 
+    return new AjaxResult("success", null);
+  }
+
+  @RequestMapping(value="create", method=RequestMethod.POST)
+  public AjaxResult create(Member member) throws Exception {
+    if (memberService.create(member) <= 0) {
+      return new AjaxResult("failure", null);
+    }
+    return new AjaxResult("success", null);
+  }
 }

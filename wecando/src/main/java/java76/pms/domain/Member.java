@@ -1,6 +1,7 @@
 package java76.pms.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Member  implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -15,6 +16,7 @@ public class Member  implements Serializable {
 	protected String			m_nick;
 	protected	String			email_code;
 	protected	String			email_ava;
+	protected Date        email_time;
 
 	public Member() {}
 
@@ -98,12 +100,19 @@ public class Member  implements Serializable {
 		this.m_nick = m_nick;
 	}
 
-	@Override
-	public String toString() {
-		return "Member [m_no=" + m_no + ", m_grade=" + m_grade + ", m_email=" + m_email + ", m_name=" + m_name + ", m_tel="
-		    + m_tel + ", m_password=" + m_password + ", m_ava=" + m_ava + ", m_nick=" + m_nick + ", email_code="
-		    + email_code + ", email_ava=" + email_ava + "]";
-	}
+	public Date getEmail_time() {
+    return email_time;
+  }
 
-	
+  public void setEmail_time(Date email_time) {
+    this.email_time = email_time;
+  }
+
+  @Override
+  public String toString() {
+    return "Member [m_no=" + m_no + ", m_grade=" + m_grade + ", m_email=" + m_email + ", m_name=" + m_name + ", m_tel="
+        + m_tel + ", m_password=" + m_password + ", m_ava=" + m_ava + ", m_nick=" + m_nick + ", email_code="
+        + email_code + ", email_ava=" + email_ava + ", email_time=" + email_time + "]";
+  }
+
 }
