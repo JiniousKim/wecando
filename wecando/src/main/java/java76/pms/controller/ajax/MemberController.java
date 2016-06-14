@@ -118,8 +118,8 @@ public class MemberController {
 		paramMap.put("email_code", email_code);
 		
 		if (memberService.auth(paramMap) != "0") {
-			return "/loginpage/choose_auth.jsp";
+			return "/member/choose_auth";
 		}
-		return "/loginpage/choose_auth.jsp";
+		return "/member/choose_auth";
 	}
 }

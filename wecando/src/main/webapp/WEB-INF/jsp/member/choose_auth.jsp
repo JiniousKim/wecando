@@ -14,17 +14,17 @@
 <title>DASHGUM - FREE Bootstrap Admin Template</title>
 
 <!-- Bootstrap core CSS -->
-<link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../../css/bootstrap.css" rel="stylesheet">
 <!--external css-->
-<link href="../font-awesome/css/font-awesome.css" rel="stylesheet" />
-<link rel="stylesheet" type="text/css" href="../css/zabuto_calendar.css">
+<link href="../../font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="../../css/zabuto_calendar.css">
 <link rel="stylesheet" type="text/css"
-  href="../js/gritter/css/jquery.gritter.css" />
-<link rel="stylesheet" type="text/css" href="../lineicons/style.css">
+  href="../../js/gritter/css/jquery.gritter.css" />
+<link rel="stylesheet" type="text/css" href="../../lineicons/style.css">
 
 <!-- Custom styles for this template -->
-<link href="../css/style.css" rel="stylesheet">
-<link href="../css/style-responsive.css" rel="stylesheet">
+<link href="../../css/style.css" rel="stylesheet">
+<link href="../../css/style-responsive.css" rel="stylesheet">
 
 </head>
 <body>
@@ -100,19 +100,19 @@
           data-original-title="Toggle Navigation"></div>
       </div>
       <a href="index.html" class="logo"> <img id="wecando_white"
-        src="../img/wecando_white.png">
+        src="../../img/wecando_white.png">
       </a>
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
           <li><a class="logout" data-toggle="modal"
-            href="../index.html#myModal1">Logout</a></li>
+            href="../../index.html#myModal1">Logout</a></li>
         </ul>
       </div>
     </header>
     <aside>
       <div id="sidebar" class="nav-collapse ">
         <ul class="sidebar-menu" id="nav-accordion">
-          <li class="sub-menu"><a href="../javascript:;"> <i
+          <li class="sub-menu"><a href="../../javascript:;"> <i
               class="fa fa-calendar"></i> <span>예약 정보</span>
           </a>
             <ul class="sub">
@@ -121,7 +121,7 @@
               <li><a href="../panels.html">Panels</a></li>
             </ul></li>
 
-          <li class="sub-menu"><a href="../javascript:;"> <i
+          <li class="sub-menu"><a href="../../javascript:;"> <i
               class="fa fa-user"></i> <span>마이 페이지</span>
           </a>
             <ul class="sub">
@@ -135,7 +135,7 @@
     <section id="main-content">
       <section class="wrapper">
         <div id="auth">
-          <img id="joinus" src="../img/joinus.png">
+          <img id="joinus" src="../../img/joinus.png">
           <div class="row mtbox">
             <div class="col-md-4 col-md-offset-1 box0">
               <div class="box1">
@@ -163,15 +163,15 @@
       </section>
     </section>
   </section>
-  <script src="../js/jquery.js"></script>
-  <script src="../js/jquery-1.8.3.min.js"></script>
-  <script src="../js/bootstrap.min.js"></script>
+  <script src="../../js/jquery.js"></script>
+  <script src="../../js/jquery-1.8.3.min.js"></script>
+  <script src="../../js/bootstrap.min.js"></script>
   <script class="include" type="text/javascript"
-    src="../js/jquery.dcjqaccordion.2.7.js"></script>
-  <script src="../js/jquery.scrollTo.min.js"></script>
-  <script src="../js/jquery.nicescroll.js" type="text/javascript"></script>
-  <script src="../js/jquery.sparkline.js"></script>
-  <script src="../js/common-scripts.js"></script>
+    src="../../js/jquery.dcjqaccordion.2.7.js"></script>
+  <script src="../../js/jquery.scrollTo.min.js"></script>
+  <script src="../../js/jquery.nicescroll.js" type="text/javascript"></script>
+  <script src="../../js/jquery.sparkline.js"></script>
+  <script src="../../js/common-scripts.js"></script>
 
   <script>
     $(document).ready(function() {
