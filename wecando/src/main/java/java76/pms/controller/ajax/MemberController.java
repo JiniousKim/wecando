@@ -3,6 +3,7 @@ package java76.pms.controller.ajax;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
+import java.util.TimerTask;
 
 import javax.servlet.ServletContext;
 
@@ -19,7 +20,7 @@ import java76.pms.util.MailServlet;
 
 @Controller("ajax.MemberController")
 @RequestMapping("/member/ajax/*")
-public class MemberController { 
+public class MemberController extends TimerTask { 
 	@Autowired MemberService memberService;
 	@Autowired ServletContext servletContext;
 
@@ -65,6 +66,8 @@ public class MemberController {
 			}
 		}
 		member.setEmail_code(buf.toString());
+		
+		memberService.removeExpirationMember(3);
 		
 		if (memberService.register(member) <= 0) {
 			return new AjaxResult("failure", null);
@@ -120,4 +123,17 @@ public class MemberController {
 		}
 		return new AjaxResult("success", null);
 	}
+	
+  @RequestMapping(value="check", method=RequestMethod.GET)
+  public AjaxResult check() {
+    memberService.removeExpirationMember(3);
+    return new AjaxResult("success", null);
+  }
+  
+  public void run() {
+    System.out.println("시작");
+    int num = 3;
+    System.out.println(num);
+    System.out.println("runrunrun");
+  }
 }

@@ -16,7 +16,7 @@ public interface MemberService {
   int auth(Map<String,String>paramMap);
   Member retrieve(int m_no);
   Member retrieve(String m_email, String m_password);
-  void removeExpirationMember();
+  int removeExpirationMember(int num);
 }
 
 

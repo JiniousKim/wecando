@@ -8,9 +8,7 @@ import java.util.concurrent.TimeUnit;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import java76.pms.service.MemberService;
+import java76.pms.controller.ajax.MemberController;
 
 @SuppressWarnings("serial")
 public class DatabaseCheck extends HttpServlet {
@@ -21,7 +19,8 @@ public class DatabaseCheck extends HttpServlet {
     ScheduledJob job = new ScheduledJob();
 
     ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-    scheduler.scheduleAtFixedRate(job, 0, 1, TimeUnit.DAYS);
+    
+    scheduler.scheduleAtFixedRate(new MemberController(), 0, 1, TimeUnit.DAYS);
 
     /*
         Timer jobScheduler = new Timer();
@@ -37,10 +36,8 @@ public class DatabaseCheck extends HttpServlet {
 }
 
 class ScheduledJob extends TimerTask {
-  @Autowired MemberService memberService;
 
   public void run() {
     System.out.println("run");
-    memberService.removeExpirationMember();
   }
 }
