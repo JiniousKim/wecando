@@ -28,7 +28,7 @@ public class MailServlet extends HttpServlet {
 		String content = "Wecando 메일 가입 인증 절차입니다.<br>"
 				+ "아래 버튼을 클릭하여 계속 진행해 주시기 바랍니다.<br>"
 				+ "24시간 이내 진행하지 않을 시 무효 처리 됩니다."
-				+ "<form action='http://localhost:8080/wecando/loginpage/choose_auth.html' method='post'>"
+				+ "<form action='http://localhost:8080/wecando/loginpage/choose_auth.do' method='post'>"
 				+ "<input type='hidden' name='m_email' value='"
 				+ member.getM_email() + "'>"
 				+ "<input type='hidden' name='email_code' value='"
