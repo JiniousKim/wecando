@@ -36,7 +36,7 @@
     member_num=#{m_no} and email_code=#{email_code}
   </update>
   
-  <select id="auth" parameterType="map">
+  <select id="auth" parameterType="map" resultType="String">
     select email_ava
     from member
     where member_email=#{m_email} and email_code=#{email_code} 

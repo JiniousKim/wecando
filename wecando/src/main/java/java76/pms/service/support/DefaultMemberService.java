@@ -62,7 +62,7 @@ public class DefaultMemberService implements MemberService {
     memberDao.deleteExpirationMember();
   }
   
-  public int auth(Map<String, String> paramMap) {
+  public String auth(Map<String, String> paramMap) {
     return memberDao.auth(paramMap);
   }
 }

@@ -117,7 +117,7 @@ public class MemberController {
 		paramMap.put("m_email", m_email);
 		paramMap.put("email_code", email_code);
 		
-		if (memberService.auth(paramMap) != 0) {
+		if (memberService.auth(paramMap) != "0") {
 			return new AjaxResult("failure", null);
 		}
 		return new AjaxResult("success", null);
