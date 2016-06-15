@@ -151,6 +151,7 @@
                       <p class="form-control-static" style="color: #777;">email@example.com</p>
                     </div>
                   </div>
+                  <input type='hidden' id='email_ava' value=<%= request.getParameter("email_ava") %>>
                   <div class="form-group">
                     <label class="col-sm-2 col-sm-2 control-label"> 비밀번호</label>
                     <div class="col-sm-10">
@@ -199,13 +200,6 @@
         <!-- /row mt -->
       </section>
     </section>
-    <footer class="site-footer">
-      <div class="text-center">
-        2014 - Alvarez.is <a href="../index.html#" class="go-top"> <i
-          class="fa fa-angle-up"></i>
-        </a>
-      </div>
-    </footer>
   </section>
   <script src="../../js/jquery.js"></script>
   <script src="../../js/jquery-1.8.3.min.js"></script>
@@ -217,6 +211,8 @@
   <script src="../../js/jquery.sparkline.js"></script>
   <script src="../../js/common-scripts.js"></script>
   <script>
+  var ava = $('#email_ava');
+  console.log(ava);
   </script>
 </body>
 </html>

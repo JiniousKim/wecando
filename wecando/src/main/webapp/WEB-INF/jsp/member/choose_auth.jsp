@@ -138,7 +138,7 @@
 				<div id="auth">
 					<img id="joinus" src="../../img/joinus.png">
 					<div class="row mtbox">
-						<form action='join.jsp' method="post" id='select'>
+						<form action='http://localhost:8080/wecando/member/ajax/join.do' method="post" id='select'>
 							<input type='hidden' name='m_email' value=<%= request.getParameter("m_email") %>> 
 							<input type='hidden' name='email_code' value=<%= request.getParameter("email_code") %>> 
 							<div class="col-md-4 col-md-offset-1 box0">
