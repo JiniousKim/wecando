@@ -125,8 +125,10 @@ public class MemberController extends TimerTask {
 	}
 	
   @RequestMapping(value="check", method=RequestMethod.GET)
-  public void check() {
+  public AjaxResult check() {
+    System.out.println("check => " + memberService);
     memberService.removeExpirationMember();
+    return new AjaxResult("success", null);
   }
   
   public void run() {
@@ -134,7 +136,10 @@ public class MemberController extends TimerTask {
     int num = 3;
     System.out.println(num);
     System.out.println("runrunrun");
-    memberService.removeExpirationMember();
+    System.out.println("run => " + memberService);
+    if (memberService != null) {
+      memberService.removeExpirationMember();
+    }
     System.out.println("runrunrun끝");
   }
 }

@@ -21,7 +21,7 @@ public class DatabaseCheck extends HttpServlet {
 //    scheduler.scheduleAtFixedRate(new MemberController(), 0, 1, TimeUnit.DAYS);
 
         Timer jobScheduler = new Timer();
-        jobScheduler.scheduleAtFixedRate(new MemberController(), 1000, 3000000);
+        jobScheduler.scheduleAtFixedRate(job, 1000, 3000);
         try {
           Thread.sleep(2000000000);
         } catch(InterruptedException ex) {
