@@ -148,10 +148,10 @@
                   <div class="form-group">
                     <label class="col-lg-2 col-sm-2 control-label"> 이메일</label>
                     <div class="col-lg-10">
-                      <p class="form-control-static" style="color: #777;">email@example.com</p>
+                      <p class="form-control-static" style="color: #777;"><%= request.getParameter("m_email") %></p>
                     </div>
                   </div>
-                  <input type='hidden' id='email_ava' value=<%= request.getParameter("email_ava") %>>
+                  <input type='hidden' id='m_grade' value=<%= request.getParameter("m_grage") %>>
                   <div class="form-group">
                     <label class="col-sm-2 col-sm-2 control-label"> 비밀번호</label>
                     <div class="col-sm-10">
