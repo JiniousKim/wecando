@@ -121,7 +121,7 @@ public class MemberController extends TimerTask {
 		paramMap.put("email_code", email_code);
 		
 		if (memberService.auth(paramMap) != "0") {
-			return "/member/choose_auth";
+			return "/loginpage/error.html";
 		}
 		return "/member/choose_auth";
 	}

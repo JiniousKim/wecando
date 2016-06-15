@@ -174,33 +174,7 @@
   <script src="../../js/common-scripts.js"></script>
 
   <script>
-    $(document).ready(function() {
-      console.log($('m_email'));
-            
-      var form_data = new FormData();
-      form_data.append("m_email", $('#m_email').val())
-      form_data.append("email_code", $('#email_code').val())
-      $.ajax({
-        url : contextRoot + '/member/ajax/choose_auth.do',
-        type : 'post',
-        dataType : 'json',
-        async : false,
-        cache : false,
-        contentType : false,
-        processData : false,
-        data : form_data,
-        success : function(resultObj) {
-          var ajaxResult = resultObj.ajaxResult;
-          if (ajaxResult.status == 'success') {
-            swal("Good job!", "Email 전송이 완료되었습니다", "success")
-            e.preventDefault();
-          } else {
-            sweetAlert("Oops...", "다시 시도해 주세요", "error");
-            e.preventDefault();
-          }
-        }
-      })
-    });
+    
   </script>
 </body>
 </html>
