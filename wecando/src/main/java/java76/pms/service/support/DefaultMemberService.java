@@ -58,10 +58,8 @@ public class DefaultMemberService implements MemberService {
     return memberDao.create(member);
   }
 
-  public int removeExpirationMember(int num) {
-    System.out.println(num);
+  public void removeExpirationMember() {
     System.out.println("remove");
-    return 0;
     //memberDao.deleteExpirationMember();
   }
   
