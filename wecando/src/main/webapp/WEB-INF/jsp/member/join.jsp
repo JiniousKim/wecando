@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -11,7 +11,7 @@
 <meta name="keyword"
   content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-<title>DASHGUM - FREE Bootstrap Admin Template</title>
+<title>Wecando</title>
 
 <!-- Bootstrap core CSS -->
 <link href="../../css/bootstrap.css" rel="stylesheet">
@@ -136,35 +136,76 @@
       <section class="wrapper">
         <div id="auth">
           <img id="joinus" src="../../img/joinus.png">
-          <div class="row mtbox">
-            <div class="col-md-4 col-md-offset-1 box0">
-              <div class="box1">
-                <span class="li_user"></span>
-                <form action='join.jsp' method="post">
-                  <input type='hidden' name='m_email' value= <%= request.getParameter("m_email") %>> 
-                  <input type='hidden' name='email_code' value= <%= request.getParameter("email_code") %>>
-                  <input type='hidden' name='m_grade' value=1>
+          <!-- INLINE FORM ELELEMNTS -->
+
+          <div class="row mt">
+            <div class="col-lg-12">
+              <div class="form-panel-email">
+                <h1 class="email">
+                  <i class="fa fa-angle-right"></i> 회원가입
+                </h1>
+                <form class="form-horizontal style-form" method="get">
+                  <div class="form-group">
+                    <label class="col-lg-2 col-sm-2 control-label"> 이메일</label>
+                    <div class="col-lg-10">
+                      <p class="form-control-static" style="color: #777;">email@example.com</p>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 col-sm-2 control-label"> 비밀번호</label>
+                    <div class="col-sm-10">
+                      <input type="password" class="form-control" placeholder="">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 col-sm-2 control-label"> 비밀번호
+                      확인</label>
+                    <div class="col-sm-10">
+                      <input type="password" class="form-control" placeholder="">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 col-sm-2 control-label"> 이름</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 col-sm-2 control-label"> 닉네임</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control col-sm-3">
+                      <button type="button" class="btn btn-default col-sm-2">중복확인</button>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 col-sm-2 control-label"> 전화번호</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
+
+                  <input type="button" class="btn btn-theme04" value="취소"
+                    onclick="window.location.href='choose_auth.html'">
+                  <button type="button" class="btn btn-theme">가입하기</button>
+
+
                 </form>
-                <h3>개인 회원</h3>
               </div>
-              <p>학교 시설을 예약하고 사용하실 수 있습니다.</p>
             </div>
-            <div class="col-md-4 box0">
-              <div class="box1">
-                <span class="li_shop"></span>
-                <form action='join.jsp' method="post">
-                  <input type='hidden' name='m_email' value= <%= request.getParameter("m_email") %>> 
-                  <input type='hidden' name='email_code' value= <%= request.getParameter("email_code") %>>
-                  <input type='hidden' name='m_grade' value=2>
-                </form>
-                <h3>학교 관리자</h3>
-              </div>
-              <p>학교 시설을 등록하고 대관할 수 있습니다.</p>
-            </div>
+            <!-- col-lg-12-->
           </div>
+          <!-- /row -->
         </div>
+        <!-- /row mt -->
       </section>
     </section>
+    <footer class="site-footer">
+      <div class="text-center">
+        2014 - Alvarez.is <a href="../index.html#" class="go-top"> <i
+          class="fa fa-angle-up"></i>
+        </a>
+      </div>
+    </footer>
   </section>
   <script src="../../js/jquery.js"></script>
   <script src="../../js/jquery-1.8.3.min.js"></script>
@@ -175,15 +216,7 @@
   <script src="../../js/jquery.nicescroll.js" type="text/javascript"></script>
   <script src="../../js/jquery.sparkline.js"></script>
   <script src="../../js/common-scripts.js"></script>
-
   <script>
-    
   </script>
 </body>
 </html>
-
-
-
-
-
-
