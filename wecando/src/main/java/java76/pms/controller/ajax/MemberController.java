@@ -114,13 +114,12 @@ public class MemberController extends TimerTask {
 	
 	@RequestMapping(value="choose_auth", method=RequestMethod.POST)
 	public String auth(String m_email, String email_code) throws Exception {
-		System.out.println(m_email);
-		System.out.println(email_code);
 		HashMap<String, String> paramMap = new HashMap<>();
 		paramMap.put("m_email", m_email);
 		paramMap.put("email_code", email_code);
+		String str = "0";
 		
-		if (memberService.auth(paramMap) != "0") {
+		if (memberService.auth(paramMap) != str) {
 			System.out.println("error");
 			return "redirect:../../loginpage/error.html";
 		}
