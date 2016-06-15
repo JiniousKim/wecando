@@ -161,8 +161,8 @@
 								value=<%=request.getParameter("email_code")%>>
 							<div class="col-md-4 box0">
 								<div class="box1">
-									<input type='hidden' name='m_grade' value=2> <span
-										class="li_shop"> </span><a href="#" onclick='submit()'></a>
+									<input type='hidden' name='m_grade1' value=2> <span
+										class="li_shop"> </span><a href="#" onclick='submit_school()'></a>
 									<h3>학교 관리자</h3>
 								</div>
 								<p>학교 시설을 등록하고 대관할 수 있습니다.</p>
