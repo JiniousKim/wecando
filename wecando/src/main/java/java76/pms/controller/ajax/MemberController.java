@@ -117,9 +117,8 @@ public class MemberController extends TimerTask {
 		HashMap<String, String> paramMap = new HashMap<>();
 		paramMap.put("m_email", m_email);
 		paramMap.put("email_code", email_code);
-		String str = "0";
 		
-		if (memberService.auth(paramMap) != str) {
+		if (memberService.auth(paramMap).equals("0")) {
 			System.out.println("error");
 			return "redirect:../../loginpage/error.html";
 		}
