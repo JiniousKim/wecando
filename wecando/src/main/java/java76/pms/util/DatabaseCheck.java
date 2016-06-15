@@ -1,7 +1,9 @@
 package java76.pms.util;
 
-import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,10 +18,11 @@ public class DatabaseCheck extends HttpServlet {
     System.out.println("DBCheck");
     ScheduledJob job = new ScheduledJob();
 
-//    ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-//    
-//    scheduler.scheduleAtFixedRate(new MemberController(), 0, 1, TimeUnit.DAYS);
+    ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+    
+    scheduler.scheduleAtFixedRate(new MemberController(), 0, 1, TimeUnit.DAYS);
 
+    /*
         Timer jobScheduler = new Timer();
         jobScheduler.scheduleAtFixedRate(job, 1000, 3000);
         try {
@@ -28,6 +31,8 @@ public class DatabaseCheck extends HttpServlet {
 
         }
         jobScheduler.cancel();
+        
+        */
   }
 }
 
