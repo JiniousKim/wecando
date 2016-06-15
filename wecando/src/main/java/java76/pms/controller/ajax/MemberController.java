@@ -67,8 +67,6 @@ public class MemberController extends TimerTask {
 		}
 		member.setEmail_code(buf.toString());
 		
-		memberService.removeExpirationMember(3);
-		
 		if (memberService.register(member) <= 0) {
 			return new AjaxResult("failure", null);
 		} else if (mail.doPost(member) < 0) {
@@ -128,7 +126,8 @@ public class MemberController extends TimerTask {
 	
   @RequestMapping(value="check", method=RequestMethod.GET)
   public AjaxResult check() {
-    memberService.removeExpirationMember(3);
+    System.out.println("check => " + memberService);
+    memberService.removeExpirationMember();
     return new AjaxResult("success", null);
   }
   
@@ -142,5 +141,10 @@ public class MemberController extends TimerTask {
     int num = 3;
     System.out.println(num);
     System.out.println("runrunrun");
+    System.out.println("run => " + memberService);
+    if (memberService != null) {
+      memberService.removeExpirationMember();
+    }
+    System.out.println("runrunrun끝");
   }
 }
