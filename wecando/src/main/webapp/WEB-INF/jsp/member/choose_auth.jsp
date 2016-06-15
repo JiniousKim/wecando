@@ -138,14 +138,14 @@
 				<div id="auth">
 					<img id="joinus" src="../../img/joinus.png">
 					<div class="row mtbox">
-						<form action='join.jsp' method="post">
+						<form action='join.jsp' method="post" id='select'>
 							<input type='hidden' name='m_email' value=<%= request.getParameter("m_email") %>> 
 							<input type='hidden' name='email_code' value=<%= request.getParameter("email_code") %>> 
 							<div class="col-md-4 col-md-offset-1 box0">
 								<div class="box1">
 									<input type='hidden' name='m_grade' value=1>
 									<span class="li_user"></span>
-									<a href="../../javascript:document.test.submit()"></a>
+									<a href="#" onclick='submit()'></a>
 									<h3>개인 회원</h3>
 								</div>
 								<p>학교 시설을 예약하고 사용하실 수 있습니다.</p>
@@ -154,7 +154,7 @@
 								<div class="box1">
 									<input type='hidden' name='m_grade' value=2>
 									<span class="li_shop">
-									</span><a href="../../javascript:document.test.submit()"></a> 
+									</span><a href="#" onclick='submit()'"></a> 
 									<h3>학교 관리자</h3>
 								</div>
 								<p>학교 시설을 등록하고 대관할 수 있습니다.</p>
@@ -176,7 +176,9 @@
 	<script src="../../js/common-scripts.js"></script>
 
 	<script>
-    
+	function submit() {
+		  document.getElementById('select').submit();
+		}
   </script>
 </body>
 </html>

@@ -132,6 +132,11 @@ public class MemberController extends TimerTask {
     return new AjaxResult("success", null);
   }
   
+  @RequestMapping(value="join", method=RequestMethod.POST)
+  public String join() {
+  		return "/member/join";
+  }
+  
   public void run() {
     System.out.println("시작");
     int num = 3;
