@@ -151,7 +151,7 @@
                       <p class="form-control-static" style="color: #777;"><%= request.getParameter("m_email") %></p>
                     </div>
                   </div>
-                  <input type='hidden' id='m_grade' value=<%= request.getParameter("m_grage") %>>
+                  <input type='hidden' id='m_grade' value=<%= request.getParameter("m_grade") %>>
                   <div class="form-group">
                     <label class="col-sm-2 col-sm-2 control-label"> 비밀번호</label>
                     <div class="col-sm-10">
@@ -211,7 +211,7 @@
   <script src="../../js/jquery.sparkline.js"></script>
   <script src="../../js/common-scripts.js"></script>
   <script>
-  var ava = $('#email_ava');
+  var ava = $('#m_grade').val();
   console.log(ava);
   </script>
 </body>
