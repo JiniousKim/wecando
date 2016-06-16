@@ -118,11 +118,13 @@ public class MemberController extends TimerTask {
 		paramMap.put("m_email", m_email);
 		paramMap.put("email_code", email_code);
 		
-		if (!(memberService.auth(paramMap).equals("0"))) {
-			System.out.println("error");
+		try {
+			if( !(memberService.auth(paramMap).equals("0"))) {
+				System.out.println("hihi");
+			}
+		} catch (Exception e) {
 			return "redirect:../../loginpage/error.html";
 		}
-		System.out.println("not error");
 		return "/member/choose_auth";
 	}
 	
@@ -131,6 +133,11 @@ public class MemberController extends TimerTask {
     System.out.println("check => " + memberService);
     memberService.removeExpirationMember();
     return new AjaxResult("success", null);
+  }
+  
+  @RequestMapping(value="join", method=RequestMethod.POST)
+  public String join() {
+  		return "/member/join";
   }
   
   @PostConstruct

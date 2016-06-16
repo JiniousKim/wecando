@@ -25,7 +25,10 @@
 <!-- Custom styles for this template -->
 <link href="../../css/style.css" rel="stylesheet">
 <link href="../../css/style-responsive.css" rel="stylesheet">
+<script src="../../js/dj_check.js" type="text/javascript"></script>
 
+<link rel="stylesheet" type="text/css"
+  href="../../lib/sweetalert/sweetalert.css">
 </head>
 <body>
 
@@ -144,28 +147,32 @@
                 <h1 class="email">
                   <i class="fa fa-angle-right"></i> 회원가입
                 </h1>
-                <form class="form-horizontal style-form" method="get">
+                <form class="form-horizontal style-form" method="post">
                   <div class="form-group">
                     <label class="col-lg-2 col-sm-2 control-label"> 이메일</label>
                     <div class="col-lg-10">
-                      <p class="form-control-static" style="color: #777;">email@example.com</p>
+                      <p class="form-control-static" style="color: #777;"><%= request.getParameter("m_email") %></p>
                     </div>
                   </div>
+                  <input type='hidden' id="m_email" value=<%= request.getParameter("m_email") %>>
+                  <input type='hidden' id='m_grade' value=<%= request.getParameter("m_grade") %>>
+                  <input type='hidden' id='email_ava' value="1">
                   <div class="form-group">
                     <label class="col-sm-2 col-sm-2 control-label"> 비밀번호</label>
                     <div class="col-sm-10">
-                      <input type="password" class="form-control" placeholder="">
+                      <input type="password" id='password' onchange="check(this.id);" 
+                                                class="form-control" placeholder="">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-2 col-sm-2 control-label"> 비밀번호
-                      확인</label>
+                    <label class="col-sm-2 col-sm-2 control-label"> 비밀번호 확인</label>
                     <div class="col-sm-10">
-                      <input type="password" class="form-control" placeholder="">
+                      <input type="password" id="password2" onchange="check(this.id);" 
+                                                class="form-control" placeholder="">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-2 col-sm-2 control-label"> 이름</label>
+                    <label class="col-sm-2 col-sm-2 control-label" id="m_name"> 이름</label>
                     <div class="col-sm-10">
                       <input type="text" class="form-control">
                     </div>
@@ -173,22 +180,20 @@
                   <div class="form-group">
                     <label class="col-sm-2 col-sm-2 control-label"> 닉네임</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control col-sm-3">
+                      <input type="text" class="form-control col-sm-3" id="m_nick">
                       <button type="button" class="btn btn-default col-sm-2">중복확인</button>
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-sm-2 col-sm-2 control-label"> 전화번호</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" id="m_tel">
                     </div>
                   </div>
 
                   <input type="button" class="btn btn-theme04" value="취소"
-                    onclick="window.location.href='choose_auth.html'">
-                  <button type="button" class="btn btn-theme">가입하기</button>
-
-
+                    onclick="window.location.href='choose_auth.do'">
+                  <button type="button" class="btn btn-theme" id="create">가입하기</button>
                 </form>
               </div>
             </div>
@@ -199,13 +204,6 @@
         <!-- /row mt -->
       </section>
     </section>
-    <footer class="site-footer">
-      <div class="text-center">
-        2014 - Alvarez.is <a href="../index.html#" class="go-top"> <i
-          class="fa fa-angle-up"></i>
-        </a>
-      </div>
-    </footer>
   </section>
   <script src="../../js/jquery.js"></script>
   <script src="../../js/jquery-1.8.3.min.js"></script>
@@ -216,7 +214,41 @@
   <script src="../../js/jquery.nicescroll.js" type="text/javascript"></script>
   <script src="../../js/jquery.sparkline.js"></script>
   <script src="../../js/common-scripts.js"></script>
+  <script src="../lib/sweetalert/sweetalert.min.js"></script>
+  
   <script>
+  <!-- 회원 가입 동작 -->
+  $(document).on("click", '#create', function(e) {
+	    var form_data = new FormData();
+	    form_data.append("m_email", $('#m_email').val());
+	    form_data.append("m_grade", $('#m_grade').val());
+	    form_data.append("m_name", $('#m_name').val());
+	    form_data.append("m_tel", $('#m_tel').val());
+	    form_data.append("m_nick", $('#m_nick').val());
+	    form_data.append("email_ava", $('#email_ava').val());
+	    form_data.append("m_password", $('#password').val());
+	    
+	    $.ajax({
+	      url: contextRoot + '/member/ajax/create.do', 
+	      type : 'post',
+	      dataType : 'json',
+	      async : false,
+	      cache : false,
+	      contentType : false,
+	      processData : false,
+	      data : form_data,
+	      success : function(resultObj) {
+	        var ajaxResult = resultObj.ajaxResult;
+	        if (ajaxResult.status == 'success') {
+	          swal("Good job!", "회원 가입이 완료되었습니다.", "success")
+	          e.preventDefault();
+	        } else {
+	          sweetAlert("Oops...","다시 시도해 주세요","error");
+	          e.preventDefault();
+	        }
+	      }
+	    })
+	  });
   </script>
 </body>
 </html>
