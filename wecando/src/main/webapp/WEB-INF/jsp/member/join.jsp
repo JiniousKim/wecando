@@ -173,9 +173,9 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-2 col-sm-2 control-label" id="m_name"> 이름</label>
+                    <label class="col-sm-2 col-sm-2 control-label"> 이름</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" id="m_name">
                     </div>
                   </div>
                   <div class="form-group">
