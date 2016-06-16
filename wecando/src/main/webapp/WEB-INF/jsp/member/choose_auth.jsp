@@ -146,8 +146,8 @@
 								value=<%=request.getParameter("email_code")%>>
 							<div class="col-md-4 col-md-offset-1 box0">
 								<div class="box1">
-									<input type='hidden' name='m_grade' value=1> <span
-										class="li_user"></span> <a href="#" onclick='submit_person()'></a>
+									<span 	class="li_user"></span> 
+									<a href="#" onclick='submit_person()'></a>
 									<h3>개인 회원</h3>
 								</div>
 								<p>학교 시설을 예약하고 사용하실 수 있습니다.</p>
@@ -161,8 +161,8 @@
 								value=<%=request.getParameter("email_code")%>>
 							<div class="col-md-4 box0">
 								<div class="box1">
-									<input type='hidden' name='m_grade1' value=2> <span
-										class="li_shop"> </span><a href="#" onclick='submit_school()'></a>
+									 <span class="li_shop"></span>
+									 <a href="#" onclick='submit_school()'></a>
 									<h3>학교 관리자</h3>
 								</div>
 								<p>학교 시설을 등록하고 대관할 수 있습니다.</p>
@@ -185,9 +185,24 @@
 
 	<script>
 		function submit_person() {
+			var pf = $('#select_person');
+			
+      var pi = document.createElement("input");
+      pi.setAttribute("type", "hidden");
+      pi.setAttribute("name", "m_grade");
+      pi.setAttribute("value", 1);
+      pf.appendChild(pi);
+      
 			document.getElementById('select_person').submit();
 		}
 		function submit_school() {
+			var pf = $('#select_school');
+		      
+      var pi = document.createElement("input");
+      pi.setAttribute("type", "hidden");
+      pi.setAttribute("name", "m_grade");
+      pi.setAttribute("value", 2);
+      pf.appendChild(pi);
 			document.getElementById('select_school').submit();
 		}
 	</script>

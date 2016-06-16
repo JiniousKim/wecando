@@ -151,14 +151,7 @@
                       <p class="form-control-static" style="color: #777;"><%= request.getParameter("m_email") %></p>
                     </div>
                   </div>
-                  <c:choose>
-                  <c:when test='${m_grade == 1 }'>
-                  <input type='hidden' id='m_grade' value=1>
-                  </c:when>
-                  <c:otherwise>
-                  <input type='hidden' id='m_grade' value=2>
-                  </c:otherwise>
-                  </c:choose>
+                  <input type='hidden' id='m_grade' value=<%= request.getParameter("m_grade") %>>
                   <div class="form-group">
                     <label class="col-sm-2 col-sm-2 control-label"> 비밀번호</label>
                     <div class="col-sm-10">
