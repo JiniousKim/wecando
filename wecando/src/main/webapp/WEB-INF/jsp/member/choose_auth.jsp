@@ -191,7 +191,7 @@
       pi.setAttribute("type", "hidden");
       pi.setAttribute("name", "m_grade");
       pi.setAttribute("value", 1);
-      pf.appendChild(pi);
+      pf.append(pi);
       
 			document.getElementById('select_person').submit();
 		}
@@ -202,7 +202,7 @@
       pi.setAttribute("type", "hidden");
       pi.setAttribute("name", "m_grade");
       pi.setAttribute("value", 2);
-      pf.appendChild(pi);
+      pf.append(pi);
 			document.getElementById('select_school').submit();
 		}
 	</script>
