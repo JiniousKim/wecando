@@ -244,10 +244,12 @@
 	        var ajaxResult = resultObj.ajaxResult;
 	        if (ajaxResult.status == 'success') {
 	          swal("Good job!", "회원 가입이 완료되었습니다.", "success")
+	          e.preventDefault();
 	        } else {
 	          sweetAlert("Oops...","다시 시도해 주세요","error");
 	          e.preventDefault();
 	        }
+	        setTimeout('go_url()', 3000);
 	      }
 	    })
 	    }
@@ -269,12 +271,16 @@
 	                sweetAlert("Oops...","다시 시도해 주세요","error");
 	                e.preventDefault();
 	              }
-	              location.href="http://localhost:8080/wecando/index.html";
+	              setTimeout('go_url()', 3000);
 	            }
 	          })
 	    }
 	    
 	  });
+  
+  function go_url() {
+	    location.replace("{http://localhost:8080/wecando/index.html}");
+	  };
   </script>
 </body>
 </html>
