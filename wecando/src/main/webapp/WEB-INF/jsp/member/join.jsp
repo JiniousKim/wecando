@@ -193,7 +193,7 @@
                   </div>
 
                   <input type="button" class="btn btn-theme04" value="취소"
-                    onclick="window.location.href='choose_auth.do'">
+                    onclick="javascript:history.back()">
                   <button type="button" class="btn btn-theme" id="create">가입하기</button>
                 </form>
               </div>
@@ -230,6 +230,7 @@
 	    form_data.append("m_password", $('#password').val());
 	    form_data.append("email_code", $('#email_code').val());
 	    
+	    if(form_data.m_grade == 1) {
 	    $.ajax({
 	      url: contextRoot + '/member/ajax/create.do', 
 	      type : 'post',
@@ -243,13 +244,36 @@
 	        var ajaxResult = resultObj.ajaxResult;
 	        if (ajaxResult.status == 'success') {
 	          swal("Good job!", "회원 가입이 완료되었습니다.", "success")
-	          e.preventDefault();
 	        } else {
 	          sweetAlert("Oops...","다시 시도해 주세요","error");
 	          e.preventDefault();
 	        }
 	      }
 	    })
+	    }
+	    else {
+	        $.ajax({
+	            url: contextRoot + '/member/ajax/create.do', 
+	            type : 'post',
+	            dataType : 'json',
+	            async : false,
+	            cache : false,
+	            contentType : false,
+	            processData : false,
+	            data : form_data,
+	            success : function(resultObj) {
+	              var ajaxResult = resultObj.ajaxResult;
+	              if (ajaxResult.status == 'success') {
+	                swal("Good job!", "회원 가입이 완료되었습니다.", "success");
+	              } else {
+	                sweetAlert("Oops...","다시 시도해 주세요","error");
+	                e.preventDefault();
+	              }
+	              location.href="http://localhost:8080/wecando/index.html";
+	            }
+	          })
+	    }
+	    
 	  });
   </script>
 </body>
