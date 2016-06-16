@@ -157,6 +157,7 @@
                   <input type='hidden' id="m_email" value=<%= request.getParameter("m_email") %>>
                   <input type='hidden' id='m_grade' value=<%= request.getParameter("m_grade") %>>
                   <input type='hidden' id='email_ava' value="1">
+                  <input type='hidden' id="email_code" value=<%= request.getParameter("email_code") %>>
                   <div class="form-group">
                     <label class="col-sm-2 col-sm-2 control-label"> 비밀번호</label>
                     <div class="col-sm-10">
@@ -214,7 +215,7 @@
   <script src="../../js/jquery.nicescroll.js" type="text/javascript"></script>
   <script src="../../js/jquery.sparkline.js"></script>
   <script src="../../js/common-scripts.js"></script>
-  <script src="../lib/sweetalert/sweetalert.min.js"></script>
+  <script src="../../lib/sweetalert/sweetalert.min.js"></script>
   
   <script>
   <!-- 회원 가입 동작 -->
@@ -227,6 +228,7 @@
 	    form_data.append("m_nick", $('#m_nick').val());
 	    form_data.append("email_ava", $('#email_ava').val());
 	    form_data.append("m_password", $('#password').val());
+	    form_data.append("email_code", $('#email_code').val());
 	    
 	    $.ajax({
 	      url: contextRoot + '/member/ajax/create.do', 

@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java76.pms.domain.AjaxResult;
 import java76.pms.domain.Member;
 import java76.pms.service.MemberService;
-import java76.pms.util.DatabaseCheck;
 import java76.pms.util.MailServlet;
 
 @Controller("ajax.MemberController")

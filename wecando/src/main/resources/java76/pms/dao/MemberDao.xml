@@ -33,7 +33,7 @@
     member_nickname=#{m_nick, jdbcType=VARCHAR},
     email_ava=#{email_ava, jdbcType=VARCHAR}
   where 
-    member_num=#{m_no} and email_code=#{email_code}
+    member_email=#{m_email} and email_code=#{email_code}
   </update>
   
   <select id="auth" parameterType="map" resultType="String">
