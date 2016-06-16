@@ -5,15 +5,14 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
+import javax.annotation.PostConstruct;
 
 import java76.pms.controller.ajax.MemberController;
 
-@SuppressWarnings("serial")
-public class DatabaseCheck extends HttpServlet {
+public class DatabaseCheck{
 
-  public void init() throws ServletException
+  @PostConstruct
+  public void DatabaseCheck1()
   {
     System.out.println("DBCheck");
     ScheduledJob job = new ScheduledJob();

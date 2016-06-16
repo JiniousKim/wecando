@@ -44,11 +44,6 @@
 	  </init-param>
 	  <load-on-startup>1</load-on-startup>
   </servlet>
-  <servlet>
-    <servlet-name>DatabaseCheck</servlet-name>
-    <servlet-class>java76.pms.util.DatabaseCheck</servlet-class>
-    <load-on-startup>2</load-on-startup>
-  </servlet>
 
   <servlet-mapping>
     <servlet-name>dispatch</servlet-name>

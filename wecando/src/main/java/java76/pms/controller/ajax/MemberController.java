@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.TimerTask;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java76.pms.domain.AjaxResult;
 import java76.pms.domain.Member;
 import java76.pms.service.MemberService;
+import java76.pms.util.DatabaseCheck;
 import java76.pms.util.MailServlet;
 
 @Controller("ajax.MemberController")
@@ -131,7 +133,8 @@ public class MemberController extends TimerTask {
     return new AjaxResult("success", null);
   }
   
-  public void run() {
+  @PostConstruct
+  public void init(){
     System.out.println("시작");
     int num = 3;
     System.out.println(num);
@@ -139,7 +142,18 @@ public class MemberController extends TimerTask {
     System.out.println("run => " + memberService);
     if (memberService != null) {
       memberService.removeExpirationMember();
+//      DatabaseCheck databaseCheck = new DatabaseCheck();
+//      databaseCheck.test();
     }
     System.out.println("runrunrun끝");
+  }
+  
+  public void run() {
+    System.out.println("시작1");
+    int num = 4;
+    System.out.println(num);
+    System.out.println("runrunrun1");
+    System.out.println("run1 => " + memberService);
+
   }
 }

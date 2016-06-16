@@ -63,7 +63,7 @@
   <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
     <property name="dataSource" ref="dataSource"/>
   </bean>
-  
+
   <!-- @Transactional 애노테이션을 처리할 객체 등록 -->
   <tx:annotation-driven transaction-manager="txManager"/>
   
