@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.TimerTask;
 
-import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -127,30 +127,17 @@ public class MemberController extends TimerTask {
 		return "/member/choose_auth";
 	}
 	
-  @RequestMapping(value="check", method=RequestMethod.GET)
-  public AjaxResult check() {
-    System.out.println("check => " + memberService);
-    memberService.removeExpirationMember();
-    return new AjaxResult("success", null);
-  }
-  
   @RequestMapping(value="join", method=RequestMethod.POST)
   public String join() {
   		return "/member/join";
   }
   
-  @PostConstruct
+  @Scheduled(cron="0 0 12 * * ?")
   public void init(){
-    System.out.println("시작");
-    int num = 3;
-    System.out.println(num);
-    System.out.println("runrunrun");
     System.out.println("run => " + memberService);
     if (memberService != null) {
       memberService.removeExpirationMember();
-      
     }
-    System.out.println("runrunrun끝");
   }
   
   public void run() {
