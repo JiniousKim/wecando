@@ -1,17 +1,42 @@
 package java76.pms.util;
 
-import java.util.TimerTask;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.ThreadFactory;
 
-import javax.annotation.PostConstruct;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 
-import java76.pms.controller.ajax.MemberController;
+public class DatabaseCheck implements ServletContextListener {
+  private  ExecutorService executor;
 
+  public void contextInitialized(ServletContextEvent arg0) {
+      ServletContext context = arg0.getServletContext();
+      int nr_executors = 1;
+      ThreadFactory daemonFactory = new DaemonThreadFactory();
+      try {
+          nr_executors = Integer.parseInt(context.getInitParameter("nr-executors"));
+      } catch (NumberFormatException ignore ) {}
+
+      if(nr_executors <= 1) {
+      executor = Executors.newSingleThreadExecutor(daemonFactory);
+      } else {
+      executor = Executors.newFixedThreadPool(nr_executors,daemonFactory);
+     }
+        context.setAttribute("MY_EXECUTOR", executor);
+    }
+
+  public void contextDestroyed(ServletContextEvent arg0) {
+      ServletContext context = arg0.getServletContext();
+      executor.shutdownNow(); // or process/wait until all pending jobs are done
+  }
+
+}
+
+/*
 public class DatabaseCheck{
 
-  @PostConstruct
   public void DatabaseCheck1()
   {
     System.out.println("DBCheck");
@@ -21,7 +46,6 @@ public class DatabaseCheck{
     
     scheduler.scheduleAtFixedRate(new MemberController(), 0, 1, TimeUnit.DAYS);
 
-    /*
         Timer jobScheduler = new Timer();
         jobScheduler.scheduleAtFixedRate(job, 1000, 3000);
         try {
@@ -31,7 +55,6 @@ public class DatabaseCheck{
         }
         jobScheduler.cancel();
         
-        */
   }
 }
 
@@ -41,3 +64,4 @@ class ScheduledJob extends TimerTask {
     System.out.println("run");
   }
 }
+ */
