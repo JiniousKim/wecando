@@ -148,8 +148,7 @@ public class MemberController extends TimerTask {
     System.out.println("run => " + memberService);
     if (memberService != null) {
       memberService.removeExpirationMember();
-//      DatabaseCheck databaseCheck = new DatabaseCheck();
-//      databaseCheck.test();
+      
     }
     System.out.println("runrunrun끝");
   }
