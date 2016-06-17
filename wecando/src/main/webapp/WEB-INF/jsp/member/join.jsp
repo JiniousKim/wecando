@@ -249,7 +249,7 @@
 	          sweetAlert("Oops...","다시 시도해 주세요","error");
 	          e.preventDefault();
 	        }
-	        setTimeout('go_url()', 3000);
+	        setTimeout('go_url()', 5000);
 	      }
 	    })
 	    }
@@ -271,7 +271,7 @@
 	                sweetAlert("Oops...","다시 시도해 주세요","error");
 	                e.preventDefault();
 	              }
-	              setTimeout('go_url()', 3000);
+	              setTimeout('go_register()', 5000);
 	            }
 	          })
 	    }
@@ -281,6 +281,9 @@
   function go_url() {
 	    location.replace("{http://localhost:8080/wecando/index.html}");
 	  };
+  function go_register() {
+      location.replace("{http://localhost:8080/wecando/register_school.html}");
+    };
   </script>
 </body>
 </html>

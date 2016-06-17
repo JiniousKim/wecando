@@ -372,3 +372,6 @@ add (EMAIL_TIME DATE default SYSDATE);
 
 alter table member
 modify (EMAIL_TIME DATE not null);
+
+alter table board
+add (BOARD_DATE DATE default SYSDATE);
