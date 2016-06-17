@@ -119,7 +119,6 @@ public class MemberController extends TimerTask {
 		
 		try {
 			if( !(memberService.auth(paramMap).equals("0"))) {
-				System.out.println("hihi");
 			}
 		} catch (Exception e) {
 			return "redirect:../../loginpage/error.html";
@@ -133,8 +132,8 @@ public class MemberController extends TimerTask {
   }
   
   @RequestMapping(value="monitor_email", method=RequestMethod.POST)
-	public AjaxResult monitor_email(String email) throws Exception {
-  		if (memberService.monitor_email(email) != 0) {
+	public AjaxResult monitor_email(String m_email) throws Exception {
+  		if (memberService.monitor_email(m_email) != 0) {
   			return new AjaxResult("failure", null);
   		}
   		return new AjaxResult("success", null);
