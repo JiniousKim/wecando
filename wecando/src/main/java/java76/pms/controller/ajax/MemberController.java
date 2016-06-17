@@ -132,6 +132,14 @@ public class MemberController extends TimerTask {
   		return "/member/join";
   }
   
+  @RequestMapping(value="monitor_email", method=RequestMethod.POST)
+	public AjaxResult monitor_email(String email) throws Exception {
+  		if (memberService.monitor_email(email) != 0) {
+  			return new AjaxResult("failure", null);
+  		}
+  		return new AjaxResult("success", null);
+	}
+  
   @Scheduled(cron="0 0 12 * * ?")
   public void init(){
     System.out.println("run => " + memberService);

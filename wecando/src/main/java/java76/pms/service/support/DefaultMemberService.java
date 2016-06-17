@@ -66,6 +66,10 @@ public class DefaultMemberService implements MemberService {
   public String auth(Map<String, String> paramMap) {
     return memberDao.auth(paramMap);
   }
+  
+  public int monitor_email(String m_email) {
+  		return memberDao.monitor_email(m_email);
+  }
 }
 
 

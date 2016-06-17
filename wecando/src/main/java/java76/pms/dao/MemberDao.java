@@ -16,8 +16,10 @@ public interface MemberDao {
   
   String auth(Map<String,String> paramMap);     //이메일 사용 여부 확인 시 사용.
   
+  int monitor_email(String email);
+  
   int update(Member member);
-
+  
   Member selectOne(int m_no);
   
   Member selectOneByEmailPassword(Map<String,Object> paramMap);
