@@ -150,7 +150,8 @@
 									<div class="form-group2 has-feedback">
 										<label class="sr-only" for="m_e">Email address</label> <input
 											type="text" class="form-control" id="m_e" name='m_e'
-											onchange="check(this.id);" placeholder="Enter email" style="width: 300px;">
+											onchange="check(this.id);" placeholder="Enter email"
+											style="width: 300px;">
 										<button type="submit" class="btn1" id="btn-auth">인증하기</button>
 										<div class="control-label" id="m_eMsg" style="display: none;">이메일
 											형식이 아닙니다.</div>
@@ -177,28 +178,47 @@
 	  form_data.append("m_email", $('#m_e').val())
 	  
 	  $.ajax({
-	    url: contextRoot + '/member/ajax/add.do', 
-	    type : 'post',
-	    dataType : 'json',
-	    async : false,
-	    cache : false,
-	    contentType : false,
-	    processData : false,
-	    data : form_data,
-	    success : function(resultObj) {
-	      var ajaxResult = resultObj.ajaxResult;
-	      console.log(ajaxResult);
-	      console.log(ajaxResult.status);
-	      if (ajaxResult.status == 'success') {
-	    	  swal("Good job!", "Email 전송이 완료되었습니다", "success")
-	    	  e.preventDefault();
-	      } else {
-	        sweetAlert("Oops...","다시 시도해 주세요","error");
-	        e.preventDefault();
-	      }
-	    }
+		  url: contextRoot + '/member/ajax/monitor_email.do', 
+	      type : 'post',
+	      dataType : 'json',
+	      async : false,
+	      cache : false,
+	      contentType : false,
+	      processData : false,
+	      data : form_data,
+	      success : function(resultObj) {
+		     	var ajaxResult = resultObj.ajaxResult;
+		     	if (ajaxResult.status == 'success') {
+			    	  $.ajax({
+		    	      url: contextRoot + '/member/ajax/add.do', 
+		    	      type : 'post',
+		    	      dataType : 'json',
+		    	      async : false,
+		    	      cache : false,
+		    	      contentType : false,
+		    	      processData : false,
+		    	      data : form_data,
+		    	      success : function(resultObj) {
+		    	        var ajaxResult = resultObj.ajaxResult;
+		    	        console.log(ajaxResult);
+		    	        console.log(ajaxResult.status);
+		    	        if (ajaxResult.status == 'success') {
+		    	          swal("Good job!", "Email 전송이 완료되었습니다", "success")
+		    	          e.preventDefault();
+		    	        } else {
+		    	          sweetAlert("Oops...","다시 시도해 주세요","error");
+		    	          e.preventDefault();
+		    	        }
+		    	      }
+				    });
+			    	 } else {
+			    		 sweetAlert("Oops...","중복된 이메일 입니다.",'error');
+			    	 }
+			   });
+	     	}
+	     }
+	    })
 	  })
-	});
   </script>
 </body>
 </html>

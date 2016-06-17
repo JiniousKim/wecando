@@ -41,6 +41,12 @@
     from member
     where member_email=#{m_email} and email_code=#{email_code} 
   </select>
+  
+  <select id="monitor_email" parameterType="String" resultType="int">
+    select count(*)
+    from member
+    where member_email=#{m_email}
+  </select>
 
   <delete id="deleteExpirationMember">
     delete from member
