@@ -68,9 +68,9 @@ public class MemberController extends TimerTask {
 		}
 		member.setEmail_code(buf.toString());
 		
-		if (memberService.register(member) <= 0) {
+		if (mail.doPost(member) < 0) {
 			return new AjaxResult("failure", null);
-		} else if (mail.doPost(member) < 0) {
+		} else if (memberService.register(member) <= 0) {
 			return new AjaxResult("failure", null);
 		} else {
 			return new AjaxResult("success", null);
