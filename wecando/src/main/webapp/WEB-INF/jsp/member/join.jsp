@@ -195,8 +195,8 @@
 										<label class="col-sm-2 col-sm-2 control-label"> 닉네임</label>
 										<div class="col-sm-10">
 											<input type="text" class="form-control col-sm-3" id="m_nick">
-											<button value='0' type="button" id='check_nick'
-											class="btn btn-default col-sm-2" onclick='check_email();'>중복확인</button>
+											<button value='0' type="button" id='checknick'
+											class="btn btn-default col-sm-2" onclick='check_nick();'>중복확인</button>
 										</div>
 									</div>
 									<div id="telForm" class="form-group">
@@ -253,7 +253,7 @@
 			} else if ($('#m_nick').val() == "") {
 				sweetAlert("Oops...", "닉네임을 입력해 주세요!", "error");
 				return false;
-			} else if ($('#check_nick').val() == 0) {
+			} else if ($('#checknick').val() == 0) {
 				sweetAlert("Oops...", "중복확인을 완료해 주세요!", "error");
 			} 	else if ($('#m_tel').val() == "") {
 				sweetAlert("Oops...", "전화번호를 입력해 주세요!", "error");
@@ -314,13 +314,12 @@
 			location	.replace("{http://localhost:8080/wecando/register_school.html}");
 		};
 		
-		function check_email() {
+		function check_nick() {
 			var nick = $('#m_nick').val();
 			$.ajax({
         url : contextRoot + '/member/ajax/check_email.do',
         type : 'post',
         dataType : 'json',
-        async : false,
         cache : false,
         contentType : false,
         processData : false,
@@ -328,9 +327,9 @@
         success : function(resultObj) {
           var ajaxResult = resultObj.ajaxResult;
           if (ajaxResult.status == 'success') {
-        	    var check = $('#check_nick');
+        	    var check = $('#checknick');
         	    check.append('value', 1);
-        	    console.log($('#check_nick').val());
+        	    console.log($('#checknick').val());
             swal("Good job!",  "중복확인이 완료되었습니다.","success")
             e.preventDefault();
           } else {

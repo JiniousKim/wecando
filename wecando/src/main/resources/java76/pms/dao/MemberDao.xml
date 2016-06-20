@@ -51,7 +51,7 @@
   <select id="check_nick" parameterType="String" resultType="int">
     select count(*)
     from member
-    where member_nick=#{m_email}
+    where member_nick=#{m_nick}
   </select>
 
   <delete id="deleteExpirationMember">
