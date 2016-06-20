@@ -162,7 +162,7 @@
 										type='hidden' id='email_ava' value="1"> <input
 										type='hidden' id="email_code"
 										value=<%= request.getParameter("email_code") %>>
-									<div class="form-group has-feedback">
+									<div id='passwordForm' class="form-group has-feedback">
 										<label class="col-sm-2 col-sm-2 control-label"> 비밀번호</label>
 										<div class="col-sm-10">
 											<input type="password" id='password'
@@ -173,7 +173,7 @@
 												최대8~20자입니다.</div>
 										</div>
 									</div>
-									<div class="form-group">
+									<div id='password2Form' class="form-group">
 										<label class="col-sm-2 col-sm-2 control-label"> 비밀번호
 											확인</label>
 										<div class="col-sm-10">
@@ -184,20 +184,20 @@
 												style="display: none;">필수 정보입니다.</div>
 										</div>
 									</div>
-									<div class="form-group">
+									<div id='nameForm' class="form-group">
 										<label class="col-sm-2 col-sm-2 control-label"> 이름</label>
 										<div class="col-sm-10">
 											<input type="text" class="form-control" id="m_name">
 										</div>
 									</div>
-									<div class="form-group">
+									<div id='nickForm' class="form-group">
 										<label class="col-sm-2 col-sm-2 control-label"> 닉네임</label>
 										<div class="col-sm-10">
 											<input type="text" class="form-control col-sm-3" id="m_nick">
 											<button type="button" class="btn btn-default col-sm-2">중복확인</button>
 										</div>
 									</div>
-									<div class="form-group">
+									<div id="telForm" class="form-group">
 										<label class="col-sm-2 col-sm-2 control-label"> 전화번호</label>
 										<div class="col-sm-10">
 											<input type="text" class="form-control" id="m_tel">
@@ -322,6 +322,26 @@
 					     }
 	        }
 	  });
+  $('#registerModal').on('hide.bs.modal', function (e) {
+      $(':text:not([id=lmEmail])').val('');
+      $(':password').val('');
+      $(':file').val('');
+
+      $('#passwordForm').removeClass("has-success");
+      $('#password2Form').removeClass("has-success");
+      $('#m_nameForm').removeClass("has-success");
+      $('#m_tel').removeClass("has-success");
+
+      $('#passwordForm').removeClass("has-error");
+      $('#password2Form').removeClass("has-error");
+      $('#m_nameForm').removeClass("has-error");
+      $('#m_telForm').removeClass("has-error");
+
+      $('#passwordMsg').html("");
+      $('#password2Msg').html("");
+      $('#m_nameMsg').html("");
+      $('#m_telMsg').html("");
+  })
   
   function go_url() {
 	    location.replace("{http://localhost:8080/wecando/index.html}");
