@@ -253,20 +253,27 @@
 	          $('#modo').modal('show')
 	          $('#password2').focus();
 	          return false;
-	        } else if ($('#mName').val() == "" ||
+	        } else if ($('#m_name').val() == "" ||
 	            $('#mNameForm').attr('class') == "form-group has-feedback" ||
 	            $('#mNameForm').attr('class') == "form-group has-feedback has-error") {
 	          $('#modoinfo').html('이름을 입력해주세요.');
 	          $('#modo').modal('show')
-	          $('#mName').focus();
+	          $('#m_name').focus();
 	          return false;
-	        } else if ($('#tel').val() == "" ||
+	        } else if ($('#m_tel').val() == "" ||
 	            $('#telForm').attr('class') == "form-group has-feedback" ||
 	            $('#telForm').attr('class') == "form-group has-feedback has-error") {
 	          $('#modoinfo').html('전화번호를 입력해주세요.');
 	          $('#modo').modal('show')
-	          $('#tel').focus();
+	          $('#m_tel').focus();
 	          return false;
+	        } else if ($('#m_nick').val() == "" ||
+	                $('#telForm').attr('class') == "form-group has-feedback" ||
+	                $('#telForm').attr('class') == "form-group has-feedback has-error") {
+	              $('#modoinfo').html('닉네임을 입력해주세요.');
+	              $('#modo').modal('show')
+	              $('#m_nick').focus();
+	              return false;
 	        } else {
 					    if(form_data.m_grade == 1) {
 					    $.ajax({
