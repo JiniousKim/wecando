@@ -317,7 +317,7 @@
 		function check_nick() {
 			var nick = $('#m_nick').val();
 			$.ajax({
-        url : contextRoot + '/member/ajax/check_email.do',
+        url : contextRoot + '/member/ajax/check_nick.do',
         type : 'post',
         dataType : 'json',
         cache : false,
