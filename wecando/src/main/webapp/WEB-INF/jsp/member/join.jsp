@@ -308,10 +308,10 @@
     });
     
     function go_url() {
-      location.replace("{http://localhost:8080/wecando/index.html}");
+      location.replace("http://localhost:8080/wecando/index.html");
     };
     function go_register() {
-      location  .replace("{http://localhost:8080/wecando/register_school.html}");
+      location.replace("http://localhost:8080/wecando/register_school.html");
     };
     
     function check_nick() {
@@ -321,24 +321,25 @@
           sweetAlert("Oops...", "닉네임을 입력해 주세요!", "error");
           return false;
         } else {
-		      $.ajax({
-		        url : contextRoot + '/member/ajax/check_nick.do',
-		        type : 'post',
-		        dataType : 'json',
-		        cache : false,
-		        contentType : false,
-		        processData : false,
-		        data : nick,
-		        success : function(resultObj) {
-		          var ajaxResult = resultObj.ajaxResult;
-		          if (ajaxResult.status == 'success') {
-		              $('#checknick').val(1);
-		            swal("Good job!",  "이용 가능한 닉네임입니다.","success")
-		          } else {
-		            sweetAlert("Oops...","중복된 닉네임입니다!","error");
-		          }
-		        }
-		      })
+          $.ajax({
+            url : contextRoot + '/member/ajax/check_nick.do',
+            type : 'post',
+            dataType : 'json',
+            cache : false,
+            contentType : false,
+            processData : false,
+            data : nick,
+            success : function(resultObj) {
+              var ajaxResult = resultObj.ajaxResult;
+              if (ajaxResult.status == 'success') {
+                $('#checknick').val(1);
+                swal("Good job!",  "이용 가능한 닉네임입니다.","success")
+              } else {
+                $('#checknick').val(0);
+                sweetAlert("Oops...","중복된 닉네임입니다!","error");
+              }
+            }
+          })
         }
     }
     
