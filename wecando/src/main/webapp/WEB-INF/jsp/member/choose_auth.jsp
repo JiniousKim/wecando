@@ -184,27 +184,46 @@
 	<script src="../../js/common-scripts.js"></script>
 
 	<script>
-		function submit_person() {
-			var pf = $('#select_person');
-			
-      var pi = document.createElement("input");
-      pi.setAttribute("type", "hidden");
-      pi.setAttribute("name", "m_grade");
-      pi.setAttribute("value", 1);
-      pf.append(pi);
-      
-			document.getElementById('select_person').submit();
-		}
-		function submit_school() {
-			var pf = $('#select_school');
-		      
-      var pi = document.createElement("input");
-      pi.setAttribute("type", "hidden");
-      pi.setAttribute("name", "m_grade");
-      pi.setAttribute("value", 2);
-      pf.append(pi);
-			document.getElementById('select_school').submit();
-		}
+	/* $(document).ready(function(e) {
+		var form_data = new FormData();
+		form_data.append("m_email", $('#m_email').val());
+		form_data.append("email_code", $('#email_code').val());
+	  $.ajax({
+		  url : contextRoot + '/member/ajax/check_ava.do',
+       type : 'post',
+       dataType : 'json',
+       cache : false,
+       contentType : false,
+       processData : false,
+       data : form_data,
+       success : function(resultObj) {
+     	   if(ajaxResult.status == 'failure') {
+     		   href.replace("http://localhost:8080/wecando/error.html");
+     	   }
+       }
+	  })
+	}) */
+	function submit_person() {
+		var pf = $('#select_person');
+		
+     var pi = document.createElement("input");
+     pi.setAttribute("type", "hidden");
+     pi.setAttribute("name", "m_grade");
+     pi.setAttribute("value", 1);
+     pf.append(pi);
+     
+		document.getElementById('select_person').submit();
+	}
+	function submit_school() {
+		var pf = $('#select_school');
+	      
+     var pi = document.createElement("input");
+     pi.setAttribute("type", "hidden");
+     pi.setAttribute("name", "m_grade");
+     pi.setAttribute("value", 2);
+     pf.append(pi);
+		document.getElementById('select_school').submit();
+	}
 	</script>
 </body>
 </html>

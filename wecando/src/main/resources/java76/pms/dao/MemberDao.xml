@@ -53,7 +53,7 @@
     from member
     where member_nick=#{m_nick}
   </select>
-
+  
   <delete id="deleteExpirationMember">
     delete from member
       where to_char(sysdate,'YYYYMMDDHH24MISS')-to_char(email_time,'YYYYMMDDHH24MISS') > 1000000

@@ -317,6 +317,7 @@
       var nick = new FormData();
       nick.append("m_nick", $('#m_nick').val());
       if ($('#m_nick').val() == "") {
+    	      $('#checknick').val(0);
           sweetAlert("Oops...", "닉네임을 입력해 주세요!", "error");
           return false;
         } else {
