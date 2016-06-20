@@ -242,37 +242,25 @@
 	    if ($('#password').val() == "" ||
             $('#passwordForm').attr('class') == "form-group has-feedback" ||
             $('#passwordForm').attr('class') == "form-group has-feedback has-error") {
-	          $('#modoinfo').html('패스워드를 입력해주세요.');
-	          $('#modo').modal('show')
-	          $('#password').focus();
+	    	      	sweetAlert("Oops...","비밀번호를 입력해 주세요!","error");
 	          return false;
 	        } else if ($('#password2').val() == "" ||
 	            $('#password2Form').attr('class') == "form-group has-feedback" ||
 	            $('#password2Form').attr('class') == "form-group has-feedback has-error") {
-	          $('#modoinfo').html('패스워드를 재입력해주세요.');
-	          $('#modo').modal('show')
-	          $('#password2').focus();
+	         	sweetAlert("Oops...","비밀번호를 확인해 주세요!","error");
 	          return false;
 	        } else if ($('#m_name').val() == "" ||
 	            $('#mNameForm').attr('class') == "form-group has-feedback" ||
 	            $('#mNameForm').attr('class') == "form-group has-feedback has-error") {
-	          $('#modoinfo').html('이름을 입력해주세요.');
-	          $('#modo').modal('show')
-	          $('#m_name').focus();
+	        	sweetAlert("Oops...","이름을 입력해 주세요!","error");
 	          return false;
-	        } else if ($('#m_tel').val() == "" ||
-	            $('#telForm').attr('class') == "form-group has-feedback" ||
-	            $('#telForm').attr('class') == "form-group has-feedback has-error") {
-	          $('#modoinfo').html('전화번호를 입력해주세요.');
-	          $('#modo').modal('show')
-	          $('#m_tel').focus();
+	        } else if ($('#m_tel').val() == "") {
+	        	sweetAlert("Oops...","전화번호를 입력해 주세요!","error");
 	          return false;
 	        } else if ($('#m_nick').val() == "" ||
-	                $('#telForm').attr('class') == "form-group has-feedback" ||
-	                $('#telForm').attr('class') == "form-group has-feedback has-error") {
-	              $('#modoinfo').html('닉네임을 입력해주세요.');
-	              $('#modo').modal('show')
-	              $('#m_nick').focus();
+	                $('#nickForm').attr('class') == "form-group has-feedback" ||
+	                $('#nickForm').attr('class') == "form-group has-feedback has-error") {
+	        	sweetAlert("Oops...","닉네임을 입력해 주세요!","error");
 	              return false;
 	        } else {
 					    if(form_data.m_grade == 1) {
@@ -322,26 +310,6 @@
 					     }
 	        }
 	  });
-  $('#registerModal').on('hide.bs.modal', function (e) {
-      $(':text:not([id=lmEmail])').val('');
-      $(':password').val('');
-      $(':file').val('');
-
-      $('#passwordForm').removeClass("has-success");
-      $('#password2Form').removeClass("has-success");
-      $('#m_nameForm').removeClass("has-success");
-      $('#m_tel').removeClass("has-success");
-
-      $('#passwordForm').removeClass("has-error");
-      $('#password2Form').removeClass("has-error");
-      $('#m_nameForm').removeClass("has-error");
-      $('#m_telForm').removeClass("has-error");
-
-      $('#passwordMsg').html("");
-      $('#password2Msg').html("");
-      $('#m_nameMsg').html("");
-      $('#m_telMsg').html("");
-  })
   
   function go_url() {
 	    location.replace("{http://localhost:8080/wecando/index.html}");
