@@ -184,7 +184,7 @@
 	<script src="../../js/common-scripts.js"></script>
 
 	<script>
-	/* $(document).ready(function(e) {
+	 $(document).ready(function(e) {
 		var form_data = new FormData();
 		form_data.append("m_email", $('#m_email').val());
 		form_data.append("email_code", $('#email_code').val());
@@ -202,7 +202,7 @@
      	   }
        }
 	  })
-	}) */
+	}) 
 	function submit_person() {
 		var pf = $('#select_person');
 		

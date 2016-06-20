@@ -118,7 +118,8 @@ public class MemberController extends TimerTask {
 		paramMap.put("email_code", email_code);
 
 		try {
-			if(memberService.auth(paramMap).equals("0")) {
+			if(!(memberService.auth(paramMap).equals("0"))) {
+				throw new Exception();
 			}
 		} catch (Exception e) {
 			return "redirect:../../error.html";
@@ -147,17 +148,17 @@ public class MemberController extends TimerTask {
 		return new AjaxResult("success", null);
 	}
 
-//	@RequestMapping(value="check_ava", method=RequestMethod.POST)
-//	public AjaxResult check_ava(String m_email, String email_code) throws Exception {
-//		HashMap<String, String> paramMap = new HashMap<>();
-//		paramMap.put("m_email", m_email);
-//		paramMap.put("email_code", email_code);
-//		
-//		if (memberService.check_ava(paramMap).equals("1")) {
-//			return new AjaxResult("failure", null);
-//		}
-//		return new AjaxResult("success", null);
-//	}
+	@RequestMapping(value="check_ava", method=RequestMethod.POST)
+	public AjaxResult check_ava(String m_email, String email_code) throws Exception {
+		HashMap<String, String> paramMap = new HashMap<>();
+		paramMap.put("m_email", m_email);
+		paramMap.put("email_code", email_code);
+		
+		if (memberService.check_ava(paramMap).equals("1")) {
+			return new AjaxResult("failure", null);
+		}
+		return new AjaxResult("success", null);
+	}
 
 	@Scheduled(cron="0 0 12 * * ?")
 	public void init(){
