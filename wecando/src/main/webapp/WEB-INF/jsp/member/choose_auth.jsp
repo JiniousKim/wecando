@@ -147,7 +147,7 @@
 							<div class="col-md-4 col-md-offset-1 box0">
 								<div class="box1">
 									<span 	class="li_user"></span> 
-									<a href="#" onclick='submit_person()'></a>
+									<a href="" onclick='submit_person()'></a>
 									<h3>개인 회원</h3>
 								</div>
 								<p>학교 시설을 예약하고 사용하실 수 있습니다.</p>
@@ -155,14 +155,14 @@
 						</form>
 						<form action='http://localhost:8080/wecando/member/ajax/join.do'
 							method="post" id='select_school'>
-							<input type='hidden' name='m_email'
+							<input type='hidden' name='m_email' id='m_email'
 								value=<%=request.getParameter("m_email")%>> <input
-								type='hidden' name='email_code'
+								type='hidden' name='email_code' id='email_code'
 								value=<%=request.getParameter("email_code")%>>
 							<div class="col-md-4 box0">
 								<div class="box1">
 									 <span class="li_shop"></span>
-									 <a href="#" onclick='submit_school()'></a>
+									 <a href="" onclick='submit_school()'></a>
 									<h3>학교 관리자</h3>
 								</div>
 								<p>학교 시설을 등록하고 대관할 수 있습니다.</p>
