@@ -152,16 +152,17 @@
 									<div class="form-group">
 										<label class="col-lg-2 col-sm-2 control-label"> 이메일</label>
 										<div class="col-lg-10">
-											<p class="form-control-static" style="color: #777;"><%= request.getParameter("m_email") %></p>
+											<p class="form-control-static" style="color: #777;">
+											<%=request.getParameter("m_email")%></p>
 										</div>
 									</div>
 									<input type='hidden' id="m_email"
-										value=<%= request.getParameter("m_email") %>> <input
+										value=<%=request.getParameter("m_email")%>> <input
 										type='hidden' id='m_grade'
-										value=<%= request.getParameter("m_grade") %>> <input
+										value=<%=request.getParameter("m_grade")%>> <input
 										type='hidden' id='email_ava' value="1"> <input
 										type='hidden' id="email_code"
-										value=<%= request.getParameter("email_code") %>>
+										value=<%=request.getParameter("email_code")%>>
 									<div id='passwordForm' class="form-group has-feedback">
 										<label class="col-sm-2 col-sm-2 control-label"> 비밀번호</label>
 										<div class="col-sm-10">
@@ -194,7 +195,8 @@
 										<label class="col-sm-2 col-sm-2 control-label"> 닉네임</label>
 										<div class="col-sm-10">
 											<input type="text" class="form-control col-sm-3" id="m_nick">
-											<button type="button" class="btn btn-default col-sm-2">중복확인</button>
+											<button value='0' type="button" id='check_nick'
+											class="btn btn-default col-sm-2" onclick='check_email();'>중복확인</button>
 										</div>
 									</div>
 									<div id="telForm" class="form-group">
@@ -227,96 +229,118 @@
 	<script src="../../lib/sweetalert/sweetalert.min.js"></script>
 
 	<script>
-  <!-- 회원 가입 동작 -->
-  $(document).on("click", '#create', function(e) {
-	    var form_data = new FormData();
-	    form_data.append("m_email", $('#m_email').val());
-	    form_data.append("m_grade", $('#m_grade').val());
-	    form_data.append("m_name", $('#m_name').val());
-	    form_data.append("m_tel", $('#m_tel').val());
-	    form_data.append("m_nick", $('#m_nick').val());
-	    form_data.append("email_ava", $('#email_ava').val());
-	    form_data.append("m_password", $('#password').val());
-	    form_data.append("email_code", $('#email_code').val());
-	    
-	    if ($('#password').val() == "" ||
-            $('#passwordForm').attr('class') == "form-group has-feedback" ||
-            $('#passwordForm').attr('class') == "form-group has-feedback has-error") {
-	    	      	sweetAlert("Oops...","비밀번호를 입력해 주세요!","error");
-	          return false;
-	        } else if ($('#password2').val() == "" ||
-	            $('#password2Form').attr('class') == "form-group has-feedback" ||
-	            $('#password2Form').attr('class') == "form-group has-feedback has-error") {
-	         	sweetAlert("Oops...","비밀번호를 확인해 주세요!","error");
-	          return false;
-	        } else if ($('#m_name').val() == "" ||
-	            $('#mNameForm').attr('class') == "form-group has-feedback" ||
-	            $('#mNameForm').attr('class') == "form-group has-feedback has-error") {
-	        	sweetAlert("Oops...","이름을 입력해 주세요!","error");
-	          return false;
-	        } else if ($('#m_tel').val() == "") {
-	        	sweetAlert("Oops...","전화번호를 입력해 주세요!","error");
-	          return false;
-	        } else if ($('#m_nick').val() == "" ||
-	                $('#nickForm').attr('class') == "form-group has-feedback" ||
-	                $('#nickForm').attr('class') == "form-group has-feedback has-error") {
-	        	sweetAlert("Oops...","닉네임을 입력해 주세요!","error");
-	              return false;
-	        } else {
-					    if(form_data.m_grade == 1) {
-					    $.ajax({
-					      url: contextRoot + '/member/ajax/create.do', 
-					      type : 'post',
-					      dataType : 'json',
-					      async : false,
-					      cache : false,
-					      contentType : false,
-					      processData : false,
-					      data : form_data,
-					      success : function(resultObj) {
-					        var ajaxResult = resultObj.ajaxResult;
-					        if (ajaxResult.status == 'success') {
-					          swal("Good job!", "회원 가입이 완료되었습니다.", "success")
-					          e.preventDefault();
-					        } else {
-					          sweetAlert("Oops...","다시 시도해 주세요","error");
-					          e.preventDefault();
-					        }
-					        setTimeout('go_url()', 5000);
-					      }
-					    })
-					    }
-					    else {
-					        $.ajax({
-					            url: contextRoot + '/member/ajax/create.do', 
-					            type : 'post',
-					            dataType : 'json',
-					            async : false,
-					            cache : false,
-					            contentType : false,
-					            processData : false,
-					            data : form_data,
-					            success : function(resultObj) {
-					              var ajaxResult = resultObj.ajaxResult;
-					              if (ajaxResult.status == 'success') {
-					                swal("Good job!", "회원 가입이 완료되었습니다.", "success");
-					              } else {
-					                sweetAlert("Oops...","다시 시도해 주세요","error");
-					                e.preventDefault();
-					              }
-					              setTimeout('go_register()', 5000);
-					            }
-					          })
-					     }
-	        }
-	  });
-  
-  function go_url() {
-	    location.replace("{http://localhost:8080/wecando/index.html}");
-	  };
-  function go_register() {
-      location.replace("{http://localhost:8080/wecando/register_school.html}");
-    };
-  </script>
+	<!-- 회원 가입 동작 -->
+		$(document).on("click",'#create',function(e) {
+			var form_data = new FormData();
+			form_data.append("m_email", $('#m_email').val());
+			form_data.append("m_grade", $('#m_grade').val());
+			form_data.append("m_name", $('#m_name').val());
+			form_data.append("m_tel", $('#m_tel').val());
+			form_data.append("m_nick", $('#m_nick').val());
+			form_data.append("email_ava", $('#email_ava').val());
+			form_data.append("m_password", $('#password').val());
+			form_data.append("email_code", $('#email_code').val());
+
+			if ($('#password').val() == "") {
+				sweetAlert("Oops...", "비밀번호를 입력해 주세요!", "error");
+				return false;
+			} else if ($('#password2').val() == "") {
+				sweetAlert("Oops...", "비밀번호를 확인해 주세요!", "error");
+				return false;
+			} else if ($('#m_name').val() == "") {
+				sweetAlert("Oops...", "이름을 입력해 주세요!", "error");
+				return false;
+			} else if ($('#m_nick').val() == "") {
+				sweetAlert("Oops...", "닉네임을 입력해 주세요!", "error");
+				return false;
+			} else if ($('#check_nick').val() == 0) {
+				sweetAlert("Oops...", "중복확인을 완료해 주세요!", "error");
+			} 	else if ($('#m_tel').val() == "") {
+				sweetAlert("Oops...", "전화번호를 입력해 주세요!", "error");
+				return false;
+			} else {
+				if (form_data.m_grade == 1) {
+					$.ajax({
+						url : contextRoot + '/member/ajax/create.do',
+						type : 'post',
+						dataType : 'json',
+						async : false,
+						cache : false,
+						contentType : false,
+						processData : false,
+						data : form_data,
+						success : function(resultObj) {
+							var ajaxResult = resultObj.ajaxResult;
+							if (ajaxResult.status == 'success') {
+								swal(
+										"Good job!",	"회원 가입이 완료되었습니다.","success")
+								e.preventDefault();
+							} else {
+								sweetAlert("Oops...","다시 시도해 주세요","error");
+								e.preventDefault();
+							}
+							setTimeout('go_url()', 5000);
+						}
+					})
+				} else {
+					$.ajax({
+						url : contextRoot	+ '/member/ajax/create.do',
+						type : 'post',
+						dataType : 'json',
+						async : false,
+						cache : false,
+						contentType : false,
+						processData : false,
+						data : form_data,
+						success : function(resultObj) {
+							var ajaxResult = resultObj.ajaxResult;
+							if (ajaxResult.status == 'success') {
+								swal("Good job!","회원 가입이 완료되었습니다.","success");
+							} else {
+								sweetAlert("Oops...","다시 시도해 주세요","error");
+								e.preventDefault();
+							}
+							setTimeout('go_register()',5000);
+						}
+					})
+				}
+			}
+		});
+		
+		function go_url() {
+			location.replace("{http://localhost:8080/wecando/index.html}");
+		};
+		function go_register() {
+			location	.replace("{http://localhost:8080/wecando/register_school.html}");
+		};
+		
+		function check_email() {
+			var nick = $('#m_nick').val();
+			$.ajax({
+        url : contextRoot + '/member/ajax/check_email.do',
+        type : 'post',
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        data : nick,
+        success : function(resultObj) {
+          var ajaxResult = resultObj.ajaxResult;
+          if (ajaxResult.status == 'success') {
+        	    var check = $('#check_nick');
+        	    check.append('value', 1);
+        	    console.log($('#check_nick').val());
+            swal("Good job!",  "중복확인이 완료되었습니다.","success")
+            e.preventDefault();
+          } else {
+            sweetAlert("Oops...","중복된 닉네임입니다.","error");
+            e.preventDefault();
+          }
+        }
+      })
+		}
+		
+	</script>
 </body>
 </html>

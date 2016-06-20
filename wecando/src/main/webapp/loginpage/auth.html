@@ -173,15 +173,12 @@
 	<script src="../js/common-scripts.js"></script>
 	<script src="../lib/sweetalert/sweetalert.min.js"></script>
 	<script>
-		$(document).on(
-				"click",
-				'#btn-auth',
-				function(e) {
+		$(document).on("click",'#btn-auth',function(e) {
 					var form_data = new FormData();
 					form_data.append("m_email", $('#m_e').val())
 
 					$.ajax({
-						url : contextRoot + '/member/ajax/monitor_email.do',
+						url : contextRoot + '/member/ajax/check_email.do',
 						type : 'post',
 						dataType : 'json',
 						async : false,
@@ -206,13 +203,10 @@
 										console.log(ajaxResult);
 										console.log(ajaxResult.status);
 										if (ajaxResult.status == 'success') {
-											swal("Good job!",
-													"Email 전송이 완료되었습니다",
-													"success")
+											swal("Good job!","Email 전송이 완료되었습니다","success")
 											e.preventDefault();
 										} else {
-											sweetAlert("Oops...", "다시 시도해 주세요",
-													"error");
+											sweetAlert("Oops...", "다시 시도해 주세요",	"error");
 											e.preventDefault();
 										}
 									}

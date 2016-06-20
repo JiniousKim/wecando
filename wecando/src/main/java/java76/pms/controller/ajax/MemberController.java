@@ -131,9 +131,17 @@ public class MemberController extends TimerTask {
   		return "/member/join";
   }
   
-  @RequestMapping(value="monitor_email", method=RequestMethod.POST)
-	public AjaxResult monitor_email(String m_email) throws Exception {
+  @RequestMapping(value="check_email", method=RequestMethod.POST)
+	public AjaxResult check_email(String m_email) throws Exception {
   		if (memberService.monitor_email(m_email) != 0) {
+  			return new AjaxResult("failure", null);
+  		}
+  		return new AjaxResult("success", null);
+	}
+  
+  @RequestMapping(value="check_nick", method=RequestMethod.POST)
+	public AjaxResult check_nick(String m_nick) throws Exception {
+  		if (memberService.check_nick(m_nick) != 0) {
   			return new AjaxResult("failure", null);
   		}
   		return new AjaxResult("success", null);

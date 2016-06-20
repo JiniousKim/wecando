@@ -18,6 +18,8 @@ public interface MemberDao {
   
   int monitor_email(String m_email);
   
+  int check_nick(String m_nick);
+  
   int update(Member member);
   
   Member selectOne(int m_no);

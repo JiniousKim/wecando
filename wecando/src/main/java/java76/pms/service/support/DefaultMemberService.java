@@ -70,6 +70,10 @@ public class DefaultMemberService implements MemberService {
   public int monitor_email(String m_email) {
   		return memberDao.monitor_email(m_email);
   }
+  
+  public int check_nick(String m_nick) {
+		return memberDao.check_nick(m_nick);
+}
 }
 
 

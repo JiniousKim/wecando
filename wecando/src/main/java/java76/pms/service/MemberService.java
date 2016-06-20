@@ -14,6 +14,7 @@ public interface MemberService {
   int change(Member member);
   int create(Member member);
   int monitor_email(String m_email);
+  int check_nick(String m_nick);
   String auth(Map<String,String>paramMap);
   Member retrieve(int m_no);
   Member retrieve(String m_email, String m_password);
