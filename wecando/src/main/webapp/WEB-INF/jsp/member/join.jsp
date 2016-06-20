@@ -240,7 +240,7 @@
       form_data.append("email_ava", $('#email_ava').val());
       form_data.append("m_password", $('#password').val());
       form_data.append("email_code", $('#email_code').val());
-
+      
       if ($('#password').val() == "") {
         sweetAlert("Oops...", "비밀번호를 입력해 주세요!", "error");
         return false;
@@ -259,7 +259,7 @@
         sweetAlert("Oops...", "전화번호를 입력해 주세요!", "error");
         return false;
       } else {
-        if (form_data.m_grade == 1) {
+        if ($('#m_grade').val() == 1) {
           $.ajax({
             url : contextRoot + '/member/ajax/create.do',
             type : 'post',
@@ -272,8 +272,7 @@
             success : function(resultObj) {
               var ajaxResult = resultObj.ajaxResult;
               if (ajaxResult.status == 'success') {
-                swal(
-                    "Good job!",  "회원 가입이 완료되었습니다.","success")
+                swal("Good job!",  "회원 가입이 완료되었습니다.","success")
                 e.preventDefault();
               } else {
                 sweetAlert("Oops...","다시 시도해 주세요","error");
@@ -342,7 +341,6 @@
           })
         }
     }
-    
   </script>
 </body>
 </html>
