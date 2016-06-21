@@ -52,12 +52,10 @@
   scheduler="gsScheduler" />
   
   <!-- 인터셉터를 등록 -->
-  <!--  
   <mvc:interceptors>
     <mvc:interceptor>
-        <mvc:mapping path="/**"/>
+        <mvc:mapping path="/info/**"/>
         <bean class="java76.pms.interceptor.AuthInterceptor"/>
     </mvc:interceptor>
   </mvc:interceptors>
-  -->
 </beans>
