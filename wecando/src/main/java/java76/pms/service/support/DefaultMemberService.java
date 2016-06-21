@@ -73,7 +73,11 @@ public class DefaultMemberService implements MemberService {
   
   public int check_nick(String m_nick) {
 		return memberDao.check_nick(m_nick);
-}
+  }
+  
+  public String check_ava(Map<String, String> paramMap) {
+		return memberDao.auth(paramMap);
+  }
 }
 
 

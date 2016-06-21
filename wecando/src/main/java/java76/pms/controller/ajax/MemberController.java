@@ -47,7 +47,7 @@ public class MemberController extends TimerTask {
 
 		return resultMap;
 	}
-	
+
 	@RequestMapping(value="add", method=RequestMethod.GET)
 	public String form() {
 		return "member/MemberForm";
@@ -67,7 +67,7 @@ public class MemberController extends TimerTask {
 			}
 		}
 		member.setEmail_code(buf.toString());
-		
+
 		if (mail.doPost(member) < 0) {
 			return new AjaxResult("failure", null);
 		} else if (memberService.register(member) <= 0) {
@@ -110,57 +110,70 @@ public class MemberController extends TimerTask {
 		}
 		return new AjaxResult("success", null);
 	}
-	
+
 	@RequestMapping(value="choose_auth", method=RequestMethod.POST)
 	public String auth(String m_email, String email_code) throws Exception {
 		HashMap<String, String> paramMap = new HashMap<>();
 		paramMap.put("m_email", m_email);
 		paramMap.put("email_code", email_code);
-		
+
 		try {
-			if( !(memberService.auth(paramMap).equals("0"))) {
+			if(!(memberService.auth(paramMap).equals("0"))) {
+				throw new Exception();
 			}
 		} catch (Exception e) {
-			return "redirect:../../loginpage/error.html";
+			return "redirect:../../error.html";
 		}
 		return "/member/choose_auth";
 	}
-	
-  @RequestMapping(value="join", method=RequestMethod.POST)
-  public String join() {
-  		return "/member/join";
-  }
-  
-  @RequestMapping(value="check_email", method=RequestMethod.POST)
-	public AjaxResult check_email(String m_email) throws Exception {
-  		if (memberService.monitor_email(m_email) != 0) {
-  			return new AjaxResult("failure", null);
-  		}
-  		return new AjaxResult("success", null);
-	}
-  
-  @RequestMapping(value="check_nick", method=RequestMethod.POST)
-	public AjaxResult check_nick(String m_nick) throws Exception {
-  		if (memberService.check_nick(m_nick) != 0) {
-  			return new AjaxResult("failure", null);
-  		}
-  		return new AjaxResult("success", null);
-	}
-  
-  @Scheduled(cron="0 0 12 * * ?")
-  public void init(){
-    System.out.println("run => " + memberService);
-    if (memberService != null) {
-      memberService.removeExpirationMember();
-    }
-  }
-  
-  public void run() {
-    System.out.println("시작1");
-    int num = 4;
-    System.out.println(num);
-    System.out.println("runrunrun1");
-    System.out.println("run1 => " + memberService);
 
-  }
+	@RequestMapping(value="join", method=RequestMethod.POST)
+	public String join() {
+		return "/member/join";
+	}
+
+	@RequestMapping(value="check_email", method=RequestMethod.POST)
+	public AjaxResult check_email(String m_email) throws Exception {
+		if (memberService.monitor_email(m_email) != 0) {
+			return new AjaxResult("failure", null);
+		}
+		return new AjaxResult("success", null);
+	}
+
+	@RequestMapping(value="check_nick", method=RequestMethod.POST)
+	public AjaxResult check_nick(String m_nick) throws Exception {
+		if (memberService.check_nick(m_nick) != 0) {
+			return new AjaxResult("failure", null);
+		}
+		return new AjaxResult("success", null);
+	}
+
+	@RequestMapping(value="check_ava", method=RequestMethod.POST)
+	public AjaxResult check_ava(String m_email, String email_code) throws Exception {
+		HashMap<String, String> paramMap = new HashMap<>();
+		paramMap.put("m_email", m_email);
+		paramMap.put("email_code", email_code);
+		
+		if (memberService.check_ava(paramMap).equals("1")) {
+			return new AjaxResult("failure", null);
+		}
+		return new AjaxResult("success", null);
+	}
+
+	@Scheduled(cron="0 0 12 * * ?")
+	public void init(){
+		System.out.println("run => " + memberService);
+		if (memberService != null) {
+			memberService.removeExpirationMember();
+		}
+	}
+
+	public void run() {
+		System.out.println("시작1");
+		int num = 4;
+		System.out.println(num);
+		System.out.println("runrunrun1");
+		System.out.println("run1 => " + memberService);
+
+	}
 }

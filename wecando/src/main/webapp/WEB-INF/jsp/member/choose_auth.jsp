@@ -40,18 +40,15 @@
 						<h2 class="form-login-heading">sign in now</h2>
 					</div>
 					<div class="login-wrap">
-						<input type="text" class="form-control" placeholder="User ID"
-							autofocus> <br> <input type="password"
-							class="form-control" placeholder="Password"> <label
-							class="checkbox"> <span class="pull-right"> <a
-								data-toggle="modal" href="../index.html#myModal2"> Forgot
-									Password?</a>
-						</span>
-						</label>
-						<button class="btn btn-theme btn-block" href="../index.html"
-							type="submit">
-							<i class="fa fa-lock"></i> SIGN IN
-						</button>
+						<input type="text" class="f-c" placeholder="User ID" autofocus> <br>
+            <input type="password" class="f-c" placeholder="Password"> <label
+              class="checkbox"> <span class="pull-right"> <a data-toggle="modal"
+                href="index.html#myModal2"> Forgot Password?</a>
+            </span>
+            </label>
+            <button class="btn b-t btn-block" href="index.html" type="submit">
+              <i class="fa fa-lock"></i> SIGN IN
+            </button>
 						<hr>
 						<div class="login-social-link centered">
 							<p>or you can sign in via your social network</p>
@@ -140,14 +137,14 @@
 					<div class="row mtbox">
 						<form action='http://localhost:8080/wecando/member/ajax/join.do'
 							method="post" id='select_person'>
-							<input type='hidden' name='m_email'
+							<input type='hidden' name='m_email' id='m_email'
 								value=<%=request.getParameter("m_email")%>> <input
-								type='hidden' name='email_code'
+								type='hidden' name='email_code' id='email_code'
 								value=<%=request.getParameter("email_code")%>>
 							<div class="col-md-4 col-md-offset-1 box0">
 								<div class="box1">
 									<span 	class="li_user"></span> 
-									<a href="#" onclick='submit_person()'></a>
+									<a href="" onclick='submit_person()'></a>
 									<h3>개인 회원</h3>
 								</div>
 								<p>학교 시설을 예약하고 사용하실 수 있습니다.</p>
@@ -155,14 +152,14 @@
 						</form>
 						<form action='http://localhost:8080/wecando/member/ajax/join.do'
 							method="post" id='select_school'>
-							<input type='hidden' name='m_email'
+							<input type='hidden' name='m_email' id='m_email'
 								value=<%=request.getParameter("m_email")%>> <input
-								type='hidden' name='email_code'
+								type='hidden' name='email_code' id='email_code'
 								value=<%=request.getParameter("email_code")%>>
 							<div class="col-md-4 box0">
 								<div class="box1">
 									 <span class="li_shop"></span>
-									 <a href="#" onclick='submit_school()'></a>
+									 <a href="" onclick='submit_school()'></a>
 									<h3>학교 관리자</h3>
 								</div>
 								<p>학교 시설을 등록하고 대관할 수 있습니다.</p>
@@ -184,27 +181,46 @@
 	<script src="../../js/common-scripts.js"></script>
 
 	<script>
-		function submit_person() {
-			var pf = $('#select_person');
-			
-      var pi = document.createElement("input");
-      pi.setAttribute("type", "hidden");
-      pi.setAttribute("name", "m_grade");
-      pi.setAttribute("value", 1);
-      pf.append(pi);
-      
-			document.getElementById('select_person').submit();
-		}
-		function submit_school() {
-			var pf = $('#select_school');
-		      
-      var pi = document.createElement("input");
-      pi.setAttribute("type", "hidden");
-      pi.setAttribute("name", "m_grade");
-      pi.setAttribute("value", 2);
-      pf.append(pi);
-			document.getElementById('select_school').submit();
-		}
+	 $(document).ready(function(e) {
+		var form_data = new FormData();
+		form_data.append("m_email", $('#m_email').val());
+		form_data.append("email_code", $('#email_code').val());
+	  $.ajax({
+		  url : contextRoot + '/member/ajax/check_ava.do',
+       type : 'post',
+       dataType : 'json',
+       cache : false,
+       contentType : false,
+       processData : false,
+       data : form_data,
+       success : function(resultObj) {
+     	   if(ajaxResult.status == 'failure') {
+     		   href.replace("http://localhost:8080/wecando/error.html");
+     	   }
+       }
+	  })
+	}) 
+	function submit_person() {
+		var pf = $('#select_person');
+		
+     var pi = document.createElement("input");
+     pi.setAttribute("type", "hidden");
+     pi.setAttribute("name", "m_grade");
+     pi.setAttribute("value", 1);
+     pf.append(pi);
+     
+		document.getElementById('select_person').submit();
+	}
+	function submit_school() {
+		var pf = $('#select_school');
+	      
+     var pi = document.createElement("input");
+     pi.setAttribute("type", "hidden");
+     pi.setAttribute("name", "m_grade");
+     pi.setAttribute("value", 2);
+     pf.append(pi);
+		document.getElementById('select_school').submit();
+	}
 	</script>
 </body>
 </html>
