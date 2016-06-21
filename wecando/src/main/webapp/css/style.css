@@ -2461,3 +2461,11 @@ div.col-md-4 a {
 #modo .modal-body {
   font-size: 16px;
 }
+
+.btn-group.drop {
+	display: block;
+}
+
+.btn-group.drop > button {
+  margin-right: 5px;  
+}

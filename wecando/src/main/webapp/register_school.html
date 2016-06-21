@@ -15,8 +15,7 @@
 <!--external css-->
 <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="css/zabuto_calendar.css">
-<link rel="stylesheet" type="text/css"
-	href="js/gritter/css/jquery.gritter.css" />
+<link rel="stylesheet" type="text/css" href="js/gritter/css/jquery.gritter.css" />
 <link rel="stylesheet" type="text/css" href="lineicons/style.css">
 
 <!-- Custom styles for this template -->
@@ -30,23 +29,20 @@
 	<div id="login-page">
 		<div class="container">
 			<!-- Modal -->
-			<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog"
-				id="myModal1" class="modal fade">
+			<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" id="myModal1"
+				class="modal fade">
 				<form class="form-login" action="auth.html">
 					<div class="modal-header">
 						<h2 class="form-login-heading">sign in now</h2>
 					</div>
 					<div class="login-wrap">
-						<input type="text" class="form-control" placeholder="User ID"
-							autofocus> <br> <input type="password"
-							class="form-control" placeholder="Password"> <label
-							class="checkbox"> <span class="pull-right"> <a
-								data-toggle="modal" href="index.html#myModal2"> Forgot
-									Password?</a>
+						<input type="text" class="form-control" placeholder="User ID" autofocus> <br>
+						<input type="password" class="form-control" placeholder="Password"> <label
+							class="checkbox"> <span class="pull-right"> <a data-toggle="modal"
+								href="index.html#myModal2"> Forgot Password?</a>
 						</span>
 						</label>
-						<button class="btn btn-theme btn-block" href="index.html"
-							type="submit">
+						<button class="btn btn-theme btn-block" href="index.html" type="submit">
 							<i class="fa fa-lock"></i> SIGN IN
 						</button>
 						<hr>
@@ -57,30 +53,27 @@
 							</button>
 						</div>
 						<div class="registration">
-							Don't have an account yet?<br /> <a class="" href="#">
-								Create an account </a>
+							Don't have an account yet?<br /> <a class="" href="#"> Create an account </a>
 						</div>
 					</div>
 				</form>
 			</div>
 
-			<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog"
-				tabindex="-1" id="myModal2" class="modal fade">
+			<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+				id="myModal2" class="modal fade">
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal"
-								aria-hidden="true">&times;</button>
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 							<h4 class="modal-title">Forgot Password ?</h4>
 						</div>
 						<div class="modal-body">
 							<p>Enter your e-mail address below to reset your password.</p>
-							<input type="text" name="email" placeholder="Email"
-								autocomplete="off" class="form-control placeholder-no-fix">
+							<input type="text" name="email" placeholder="Email" autocomplete="off"
+								class="form-control placeholder-no-fix">
 						</div>
 						<div class="modal-footer">
-							<button data-dismiss="modal" class="btn btn-default"
-								type="button">Cancel</button>
+							<button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
 							<button class="btn btn-theme" type="button">Submit</button>
 						</div>
 					</div>
@@ -90,6 +83,48 @@
 
 		</div>
 	</div>
+
+	<!-- School Search -->
+	<div class="search_school">
+		<!-- School Search -->
+		<div class="modal fade" id="search_school" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">학교 검색</h4>
+					</div>
+					<div class="modal-body">
+						<div class="col-lg-10">
+							<div class="btn-group drop">
+								<button type="button" class="btn btn-default dropdown-toggle school"
+									data-toggle="dropdown">학교 <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" id='school_drop' role="menu">
+									<li><a href="#">선택 </a></li>
+									<li class="divider"></li>
+									<li><a href="#" data-value="elem_list">초등학교 </a></li>
+									<li><a href="#" data-value="midd_list">중학교 </a></li>
+									<li><a href="#" data-value="high_list">고등학교 </a></li>
+								</ul>
+							</div>
+							<input type="text" class="form-control col-sm-3" id="school_name">
+							<button type="button" class="btn btn-default">검색</button>
+						</div>
+						<div class="col-lg-10">
+							<p class="form-control-static" style="color: #777; margin-top: 10px">검색 결과</p>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary">확인</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /school_search -->
 
 	<section id="container" class="sidebar-closed">
 		<header class="header black-bg">
@@ -102,16 +137,15 @@
 			</a>
 			<div class="top-menu">
 				<ul class="nav pull-right top-menu">
-					<li><a class="logout" data-toggle="modal"
-						href="index.html#myModal1">Logout</a></li>
+					<li><a class="logout" data-toggle="modal" href="index.html#myModal1">Logout</a></li>
 				</ul>
 			</div>
 		</header>
 		<aside>
 			<div id="sidebar" class="nav-collapse ">
 				<ul class="sidebar-menu" id="nav-accordion">
-					<li class="sub-menu"><a href="javascript:;"> <i
-							class="fa fa-calendar"></i> <span>예약 정보</span>
+					<li class="sub-menu"><a href="javascript:;"> <i class="fa fa-calendar"></i>
+							<span>예약 정보</span>
 					</a>
 						<ul class="sub">
 							<li><a href="general.html">General</a></li>
@@ -119,8 +153,8 @@
 							<li><a href="panels.html">Panels</a></li>
 						</ul></li>
 
-					<li class="sub-menu"><a href="../javascript:;"> <i
-							class="fa fa-user"></i> <span>마이 페이지</span>
+					<li class="sub-menu"><a href="../javascript:;"> <i class="fa fa-user"></i> <span>마이
+								페이지</span>
 					</a>
 						<ul class="sub">
 							<li><a href="../calendar.html">Calendar</a></li>
@@ -144,41 +178,36 @@
 								</h1>
 								<form class="form-horizontal style-form" method="get">
 									<div class="form-group">
-										<label class="col-lg-2 col-sm-2 control-label"
-											style="font-weight: bold;"> 관리 담당 학교</label>
+										<label class="col-lg-2 col-sm-2 control-label" style="font-weight: bold;">
+											관리 담당 학교</label>
 										<div class="col-lg-10">
-											<button type="button" class="btn btn-default"
-												style="margin: 0px;">학교 검색하기</button>
+											<button type="button" class="btn btn-default" style="margin: 0px;"
+												data-toggle="modal" data-target="#search_school">학교 검색하기</button>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-lg-2 col-sm-2 control-label"> 학교 이름</label>
 										<div class="col-lg-10">
-											<p class="form-control-static " style="color: #777;">학교
-												이름 받아오기</p>
+											<p class="form-control-static " style="color: #777;">학교 이름 받아오기</p>
 										</div>
 										<label class="col-lg-2 col-sm-2 control-label"> 학교 위치</label>
 										<div class="col-lg-10">
-											<p class="form-control-static" style="color: #777;">학교 위치
-												받아오기</p>
+											<p class="form-control-static" style="color: #777;">학교 위치 받아오기</p>
 										</div>
 										<label class="col-lg-2 col-sm-2 control-label"> 전화번호</label>
 										<div class="col-lg-10">
-											<p class="form-control-static" style="color: #777;">학교
-												전화번호 받아오기</p>
+											<p class="form-control-static" style="color: #777;">학교 전화번호 받아오기</p>
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="form-group1">
-											<label class="col-sm-2 col-sm-2 control-label"
-												style="font-weight: bold;"> 시설물 등록</label>
+											<label class="col-sm-2 col-sm-2 control-label" style="font-weight: bold;">
+												시설물 등록</label>
 										</div>
-										<label class="col-sm-2 col-sm-2 control-label"> 이용가능
-											종목</label>
+										<label class="col-sm-2 col-sm-2 control-label"> 이용가능 종목</label>
 										<div class="col-sm-10">
 											<div class="btn-group">
-												<button type="button"
-													class="btn btn-default dropdown-toggle"
+												<button type="button" class="btn btn-default dropdown-toggle"
 													data-toggle="dropdown">
 													종목 <span class="caret"></span>
 												</button>
@@ -192,12 +221,11 @@
 										<label class="col-sm-2 col-sm-2 control-label"> 코트 수</label>
 										<div class="col-sm-10">
 											<form>
-												Quantity: <input type="number" name="points" min="0"
-													max="100" step="10" value="30">
+												Quantity: <input type="number" name="points" min="0" max="100" step="10"
+													value="30">
 											</form>
 										</div>
-										<label class="col-sm-2 col-sm-2 control-label"> 최대 수용
-											인원</label>
+										<label class="col-sm-2 col-sm-2 control-label"> 최대 수용 인원</label>
 										<div class="col-sm-10">
 											<input type="text" class="form-control col-sm-3">
 										</div>
@@ -208,8 +236,6 @@
 									</div>
 									<button type="button" class="btn btn-theme04">취소</button>
 									<button type="button" class="btn btn-theme">가입하기</button>
-
-
 								</form>
 							</div>
 						</div>
@@ -224,8 +250,7 @@
 	<script src="js/jquery.js"></script>
 	<script src="js/jquery-1.8.3.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script class="include" type="text/javascript"
-		src="js/jquery.dcjqaccordion.2.7.js"></script>
+	<script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
 	<script src="js/jquery.scrollTo.min.js"></script>
 	<script src="js/jquery.nicescroll.js" type="text/javascript"></script>
 	<script src="js/jquery.sparkline.js"></script>
@@ -242,6 +267,17 @@
 					alert("다시 시도해 주세요.");
 				}
 			}, 'json');
+		});
+		
+		$(function(){
+		    $(".dropdown-menu").on('click', 'li a', function(){
+		      $(".dropdown-toggle.school:first-child").text($(this).text());
+		      $(".dropdown-toggle.school:first-child").val($(this).text());
+		      $(".dropdown-toggle.school:first-child").append('<span class="caret"></span>');
+		      
+		      console.log($(this).text());
+		   });
+
 		});
 	</script>
 </body>
