@@ -2461,3 +2461,46 @@ display: block;
     background-color: #68dff0;
     border-color: #48bcb4;
 }
+
+.sc {
+    color:#999999;
+}
+
+.input-ikon {
+    font-size:27px; 
+    position:absolute;  
+    border-radius:5px; 
+    height:34px; 
+    width:30px;
+    text-align:center;
+}
+
+.input-ikon2 {
+    position:relative; 
+    top:34px;                        
+    font-size:27px; 
+    border-radius:5px; 
+    height:34px; 
+    width:30px;                       
+    text-align:center
+}
+
+.i-t {
+    padding-left:40px; 
+}
+
+.b-s {
+    position:absolute; 
+    width:140px
+}
+
+.b-s1 {
+    position:relative;
+    left:150px;
+    width:140px;
+}
+.bh {
+    color: #fff;
+    background-color: #9ec7ce;
+    border-color: #9ec7ce;
+}
