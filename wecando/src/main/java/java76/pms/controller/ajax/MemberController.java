@@ -154,9 +154,12 @@ public class MemberController extends TimerTask {
 		paramMap.put("m_email", m_email);
 		paramMap.put("email_code", email_code);
 		
+		System.out.println("들어옴");
 		if (memberService.check_ava(paramMap).equals("1")) {
+			System.out.println("error");
 			return new AjaxResult("failure", null);
 		}
+		System.out.println("success");
 		return new AjaxResult("success", null);
 	}
 
