@@ -135,11 +135,11 @@
               autofocus> <br> <input type="password"
               class="form-control" placeholder="Password"> <label
               class="checkbox"> <span class="pull-right"> <a
-                data-toggle="modal" href="../index.html#myModal2"> Forgot
+                data-toggle="modal" href="../wecando.html#myModal2"> Forgot
                   Password?</a>
             </span>
             </label>
-            <button class="btn btn-theme btn-block" href="../index.html"
+            <button class="btn btn-theme btn-block" href="../wecando.html"
               type="submit">
               <i class="fa fa-lock"></i> SIGN IN
             </button>
@@ -159,7 +159,7 @@
       </div>
 
       <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog"
-        tabindex="-1" id="myModal2" class="modal fade">
+        tabwecando="-1" id="myModal2" class="modal fade">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -191,13 +191,13 @@
         <div class="fa fa-bars tooltips" data-placement="right"
           data-original-title="Toggle Navigation"></div>
       </div>
-      <a href="index.html" class="logo"> <img id="wecando_white"
+      <a href="wecando.html" class="logo"> <img id="wecando_white"
         src="../../img/wecando_white.png">
       </a>
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
           <li><a class="logout" data-toggle="modal"
-            href="../../index.html#myModal1">Logout</a></li>
+            href="../../wecando.html#myModal1">Logout</a></li>
         </ul>
       </div>
     </header>
@@ -368,7 +368,7 @@
 	  });
   
   function go_url() {
-	    location.replace("{http://localhost:8080/wecando/index.html}");
+	    location.replace("{http://localhost:8080/wecando/wecando.html}");
 	  };
   function go_register() {
       location.replace("{http://localhost:8080/wecando/register_school.html}");

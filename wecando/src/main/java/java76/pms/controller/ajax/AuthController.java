@@ -57,7 +57,7 @@ public class AuthController {
   @RequestMapping("logout")
   public String logout(HttpSession session) {
     session.invalidate();
-    return "redirect:login.do";
+    return "redirect:../../wecando.html";
   }
 }
 
