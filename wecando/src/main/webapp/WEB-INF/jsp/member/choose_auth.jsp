@@ -171,68 +171,28 @@
   <script src="../../js/jquery.nicescroll.js" type="text/javascript"></script>
   <script src="../../js/jquery.sparkline.js"></script>
   <script src="../../js/common-scripts.js"></script>
-
+  
   <script>
-   $(document).ready(function(e) {
-    var form_data = new FormData();
-    form_data.append("m_email", $('#m_email').val());
-    form_data.append("email_code", $('#email_code').val());
-    $.ajax({
-      url : contextRoot + '/member/ajax/check_ava.do',
-       type : 'post',
-       dataType : 'json',
-       cache : false,
-       contentType : false,
-       processData : false,
-       data : form_data,
-       success : function(resultObj) {
-         var ajaxResult = resultObj.ajaxResult;
-         if(ajaxResult.status == 'failure') {
-           href.replace("http://localhost:8080/wecando/error.html");
-         }
-       }
-    })
-  })
-  var m_email = $('#m_email').val();
-  var email_code = $('#email_code').val();
-  var form = document.createElement("form");
-    form.setAttribute("method","post");
-    form.setAttribute("action","join.do");
-  var input_email = document.createElement("input");
-  input_email.setAttribute("type", "hidden");
-  input_email.setAttribute("name", "m_email");
-  input_email.setAttribute("value", m_email);
-  
-  var input_code = document.createElement("input");
-  input_code.setAttribute("type", "hidden");
-  input_code.setAttribute("name", "email_code");
-  input_code.setAttribute("value", email_code);
-  
-  form.appendChild(input_email);
-  form.appendChild(input_code);
-  
-  function submit_person() {
-     var pi = document.createElement("input");
-     pi.setAttribute("type", "hidden");
-     pi.setAttribute("name", "m_grade");
-     pi.setAttribute("value", 1);
-     form.appendChild(pi);
-     
-     document.body.appendChild(form);
-     
-     form.submit();
-  }
-  function submit_school() {
-     var pi = document.createElement("input");
-     pi.setAttribute("type", "hidden");
-     pi.setAttribute("name", "m_grade");
-     pi.setAttribute("value", 2);
-     form.appendChild(pi);
-     
-     document.body.appendChild(form);
-     
-     form.submit();
-  }
+  $(document).ready(function(e) {
+	    var form_data = new FormData();
+	    form_data.append("m_email", $('#m_email').val());
+	    form_data.append("email_code", $('#email_code').val());
+	    $.ajax({
+	      url : contextRoot + '/member/ajax/check_ava.do',
+	       type : 'post',
+	       dataType : 'json',
+	       cache : false,
+	       contentType : false,
+	       processData : false,
+	       data : form_data,
+	       success : function(resultObj) {
+	         var ajaxResult = resultObj.ajaxResult;
+	         if(ajaxResult.status == 'failure') {
+	           href.replace("http://localhost:8080/wecando/error.html");
+	         }
+	       }
+	    })
+	  })
   </script>
 </body>
 </html>
