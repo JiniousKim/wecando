@@ -216,7 +216,9 @@
      pi.setAttribute("type", "hidden");
      pi.setAttribute("name", "m_grade");
      pi.setAttribute("value", 1);
-     form.append(pi);
+     form.appendChild(pi);
+     
+     document.appendChild(form);
      
      form.submit();
 	}
@@ -225,7 +227,9 @@
      pi.setAttribute("type", "hidden");
      pi.setAttribute("name", "m_grade");
      pi.setAttribute("value", 2);
-     form.append(pi);
+     form.appendChild(pi);
+     
+     document.appendChild(form);
      
      form.submit();
 	}
