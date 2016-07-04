@@ -288,10 +288,6 @@
             action_nav: function () {
                 return myNavFunction(this.id);
             },
-            ajax: {
-                url: "show_data.php?action=1",
-                modal: true
-            },
             legend: [
                 {type: "text", label: "Special event", badge: "00"},
                 {type: "block", label: "Regular event", }
@@ -314,6 +310,8 @@
 		var form_data = new FormData();
 	  form_data.append("m_email", $('#m_email').val());
 	  form_data.append("m_password", $('#m_password').val());
+	  console.log($('#m_email').val());
+	  console.log($('#m_password').val());
 		$.ajax({
 	        url : contextRoot + '/auth/ajax/login.do',
 	         type : 'post',
