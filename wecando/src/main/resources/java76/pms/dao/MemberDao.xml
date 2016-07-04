@@ -59,5 +59,11 @@
       where to_char(sysdate,'YYYYMMDDHH24MISS')-to_char(email_time,'YYYYMMDDHH24MISS') > 1000000
       and email_ava='0'
   </delete>
+  
+  <select id="selectOneByEmailPassword" parameterType="map" resultMap="member">
+  select *
+  from member
+  where member_email=#{m_email} and member_password=#{m_password}
+  </select>
 
 </mapper>
