@@ -188,7 +188,7 @@
 	       success : function(resultObj) {
 	         var ajaxResult = resultObj.ajaxResult;
 	         if(ajaxResult.status == 'failure') {
-	           href.replace("http://localhost:8080/wecando/error.html");
+	           location.replace("http://localhost:8080/wecando/error.html");
 	         }
 	       }
 	    })
