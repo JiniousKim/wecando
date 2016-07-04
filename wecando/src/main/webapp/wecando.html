@@ -40,12 +40,12 @@
 						<div class="input-ikon">
 							<i class='fa fa-user sc'></i>
 						</div>
-						<input type="text" class="f-c i-t" placeholder="User ID" autofocus>
+						<input type="text" id="m_email" class="f-c i-t" placeholder="User ID" autofocus>
 						<br>
 						<div class='input-ikon2'>
 							<i class='fa fa-lock sc'></i>
 						</div>
-						<input type="password" class="f-c i-t" placeholder="Password">
+						<input type="password" id="m_password" class="f-c i-t" placeholder="Password">
 						<div style='margin-top: 30px;'>
 							<div class='b-s'>
 								<button class="btn btn-block bh" type="button" onclick="login();">LOGIN</button>
@@ -311,7 +311,24 @@
   }
 	
 	function login() {
-		
+		var form_data = new FormData();
+	  form_data.append("m_email", $('#m_email').val());
+	  form_data.append("m_password", $('#m_password').val());
+		$.ajax({
+	        url : contextRoot + '/auth/ajax/login.do',
+	         type : 'post',
+	         dataType : 'json',
+	         cache : false,
+	         contentType : false,
+	         processData : false,
+	         data : form_data,
+	         success : function(resultObj) {
+	           var ajaxResult = resultObj.ajaxResult;
+	           if(ajaxResult.status == 'success') {
+	             href.replace("http://localhost:8080/wecando/wecando.html");
+	           }
+	         }
+	      })
 	}
 	</script>
 </body>

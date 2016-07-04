@@ -304,7 +304,7 @@
     });
     
     function go_url() {
-      location.replace("http://localhost:8080/wecando/index.html");
+      location.replace("http://localhost:8080/wecando/wecando.html");
     };
     function go_register() {
       location.replace("http://localhost:8080/wecando/register_school.html");

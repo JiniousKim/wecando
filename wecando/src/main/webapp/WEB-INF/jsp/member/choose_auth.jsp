@@ -47,7 +47,7 @@
                 href="wecando.html#myModal2"> Forgot Password?</a>
             </span>
             </label>
-            <button class="btn b-t btn-block" href="wecando.html"
+            <button class="btn b-t btn-block" href="../../wecando.html"
               type="submit">
               <i class="fa fa-lock"></i> SIGN IN
             </button>
@@ -67,7 +67,7 @@
       </div>
 
       <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog"
-        tabwecando="-1" id="myModal2" class="modal fade">
+        tabindex="-1" id="myModal2" class="modal fade">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
