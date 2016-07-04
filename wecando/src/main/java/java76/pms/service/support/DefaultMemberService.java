@@ -48,8 +48,8 @@ public class DefaultMemberService implements MemberService {
 
   public Member retrieve(String m_email, String m_password) {
     HashMap<String,Object> paramMap = new HashMap<>();
-    paramMap.put("email", m_email);
-    paramMap.put("password", m_password);
+    paramMap.put("m_email", m_email);
+    paramMap.put("m_password", m_password);
 
     return memberDao.selectOneByEmailPassword(paramMap);
   }
