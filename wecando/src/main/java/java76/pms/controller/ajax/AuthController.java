@@ -69,7 +69,9 @@ public class AuthController {
   }
   @RequestMapping(value="logout", method=RequestMethod.GET )
   public String logout_get(HttpSession session) {
+  	System.out.println(session.getAttribute("loginUser"));
     session.invalidate();
+    System.out.println(session.getAttribute("loginUser"));
     return "redirect:../../wecando.html";
   }
 }
