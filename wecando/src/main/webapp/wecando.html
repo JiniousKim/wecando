@@ -315,7 +315,7 @@
 	         processData : false,
 	         data : form_data,
 	         success : function(resultObj) {
-	           var ajaxResult = resultObj.resultMap;
+	           var ajaxResult = resultObj;
 	           if(ajaxResult.status == 'success') {
 	             location.replace("http://localhost:8080/wecando/wecando.html");
 	           }

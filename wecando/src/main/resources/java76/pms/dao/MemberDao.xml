@@ -61,7 +61,13 @@
   </delete>
   
   <select id="selectOneByEmailPassword" parameterType="map" resultType="member">
-  select member_num, member_name, member_nick, member_ava, email_ava, member_grade
+  select member_num as m_no, 
+         member_name as m_name, 
+         member_nick as m_nick, 
+         member_ava as m_ava, 
+         member_grade as m_grade,
+         member_email as m_email,
+         member_tel as m_tel
   from member
   where member_email=#{m_email} and member_pwd=#{m_password}
   </select>
