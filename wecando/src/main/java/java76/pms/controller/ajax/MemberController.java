@@ -161,8 +161,17 @@ public class MemberController extends TimerTask {
 		return new AjaxResult("success", null);
 	}
 	
+//	@RequestMapping(value="searchSchool", method=RequestMethod.GET)
+//	public String register() throws Exception {
+//		return "redirect:../../error.html";
+//	}
 	@RequestMapping(value="searchSchool", method=RequestMethod.GET)
 	public String register() throws Exception {
+		return "/info/searchSchool";
+	}
+	
+	@RequestMapping(value="searchSchool", method=RequestMethod.POST)
+	public String register_school() throws Exception {
 		return "/info/searchSchool";
 	}
 
