@@ -154,13 +154,16 @@ public class MemberController extends TimerTask {
 		paramMap.put("m_email", m_email);
 		paramMap.put("email_code", email_code);
 		
-		System.out.println("들어옴");
 		if (memberService.check_ava(paramMap).equals("1")) {
 			System.out.println("error");
 			return new AjaxResult("failure", null);
 		}
-		System.out.println("success");
 		return new AjaxResult("success", null);
+	}
+	
+	@RequestMapping(value="searchSchool", method=RequestMethod.GET)
+	public String register() throws Exception {
+		return "/info/searchSchool";
 	}
 
 	@Scheduled(cron="0 0 12 * * ?")
@@ -172,11 +175,6 @@ public class MemberController extends TimerTask {
 	}
 
 	public void run() {
-		System.out.println("시작1");
-		int num = 4;
-		System.out.println(num);
-		System.out.println("runrunrun1");
 		System.out.println("run1 => " + memberService);
-
 	}
 }
