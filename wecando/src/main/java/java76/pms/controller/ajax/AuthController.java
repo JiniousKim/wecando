@@ -36,10 +36,10 @@ public class AuthController {
 
     Cookie emailCookie = null;
     if (saveEmail != null) { // 이메일 저장을 체크했으면,
-      emailCookie = new Cookie("email", m_email);
+      emailCookie = new Cookie("m_email", m_email);
       emailCookie.setMaxAge(60 * 60 * 24 * 15);
     } else {
-      emailCookie = new Cookie("email", "");
+      emailCookie = new Cookie("m_email", "");
       emailCookie.setMaxAge(0); // 웹브라우저에게 email 쿠키 삭제를 명령한다.
     }
     response.addCookie(emailCookie);
@@ -55,8 +55,13 @@ public class AuthController {
     return new AjaxResult("success", null);
   }
   
-  @RequestMapping("logout")
+  @RequestMapping(value="logout", method=RequestMethod.POST )
   public String logout(HttpSession session) {
+    session.invalidate();
+    return "redirect:../../wecando.html";
+  }
+  @RequestMapping(value="logout", method=RequestMethod.GET )
+  public String logout_get(HttpSession session) {
     session.invalidate();
     return "redirect:../../wecando.html";
   }
