@@ -1,5 +1,7 @@
 package java76.pms.controller.ajax;
 
+import java.util.HashMap;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -10,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java76.pms.domain.AjaxResult;
 import java76.pms.domain.Member;
 import java76.pms.service.MemberService;
 
@@ -27,7 +28,7 @@ public class AuthController {
   }
       
   @RequestMapping(value="login", method=RequestMethod.POST)
-  public AjaxResult login(
+  public Object login(
       String m_email,
       String m_password,
       String saveEmail,
@@ -45,14 +46,20 @@ public class AuthController {
     response.addCookie(emailCookie);
 
     Member member = memberService.retrieve(m_email, m_password);
+    HashMap<String, Object> resultMap = new HashMap<>();
 
     if (member == null) { // 로그인 실패!
       session.invalidate(); // 세션을 무효화시킴. => 새로 세션 객체 생성!
-      return new AjaxResult("failure", null);
+      resultMap.put("status", "failure");
+      resultMap.put("loginUser", null);
+      return resultMap;
     }
-
+    	
+    	
     session.setAttribute("loginUser", member);
-    return new AjaxResult("success", null);
+    resultMap.put("loginUser", member);
+    resultMap.put("status", "success");
+    return resultMap;
   }
   
   @RequestMapping(value="logout", method=RequestMethod.POST )
