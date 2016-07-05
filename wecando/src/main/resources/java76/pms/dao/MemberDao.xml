@@ -60,8 +60,8 @@
       and email_ava='0'
   </delete>
   
-  <select id="selectOneByEmailPassword" parameterType="map" resultType="memberMap">
-  select *
+  <select id="selectOneByEmailPassword" parameterType="map" resultType="member">
+  select member_num, member_name, member_nick, member_ava, email_ava, member_grade
   from member
   where member_email=#{m_email} and member_pwd=#{m_password}
   </select>
