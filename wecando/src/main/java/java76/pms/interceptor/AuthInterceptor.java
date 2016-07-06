@@ -23,9 +23,9 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
     Member loginUser = (Member)request.getSession()
                                         .getAttribute("loginUser");
     
-    if (!request.getServletPath().startsWith("/auth") 
+    if (!request.getServletPath().startsWith("/auth")
         && loginUser == null) {
-      response.sendRedirect(request.getContextPath() + "/login.do");
+      response.sendRedirect(request.getContextPath() + "/login.html");
       return false; // 다음으로 가는 것을 멈춰라!
     }
     
