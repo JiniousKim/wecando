@@ -53,5 +53,24 @@ public class InfoController {
 		resultMap.put("loginUser", member);
 		return resultMap;
 	}
+	@RequestMapping(value="member", method=RequestMethod.GET)
+	public Object infoMember1(String m_password,
+      HttpServletResponse response, 
+      HttpSession session) throws Exception {
+		
+		Member member = (Member)session.getAttribute("loginUser");
+		
+		System.out.println(member);
+		
+		HashMap<String, Object> resultMap = new HashMap<>();
+		
+		if (!(member.getM_password().equals(m_password))) {
+			resultMap.put("status", "failure");
+			return resultMap;
+		}
+		resultMap.put("status", "success");
+		resultMap.put("loginUser", member);
+		return resultMap;
+	}
 
 }
