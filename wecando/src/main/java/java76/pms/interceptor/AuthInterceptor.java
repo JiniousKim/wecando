@@ -22,10 +22,10 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
     
     Member loginUser = (Member)request.getSession()
                                         .getAttribute("loginUser");
-    
+    System.out.println(loginUser);
     if (!request.getServletPath().startsWith("/auth")
         && loginUser == null) {
-      response.sendRedirect(request.getContextPath() + "../login.html");
+      response.sendRedirect(request.getContextPath() + "/login.html");
       return false; // 다음으로 가는 것을 멈춰라!
     }
     

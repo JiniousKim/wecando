@@ -38,8 +38,10 @@ public class InfoController {
 	public Object infoMember(String m_password,
       HttpServletResponse response, 
       HttpSession session) {
-		System.out.println(session.getAttribute("loginUser"));
+		
 		Member member = (Member)session.getAttribute("loginUser");
+		
+		System.out.println(member);
 		
 		HashMap<String, Object> resultMap = new HashMap<>();
 		
