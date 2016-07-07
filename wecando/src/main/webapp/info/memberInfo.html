@@ -84,47 +84,6 @@
 		</div>
 	</div>
 
-	<!-- School Search -->
-	<div class="search_school">
-		<!-- School Search -->
-		<div class="modal fade" id="search_school" tabindex="-1" role="dialog"
-			aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title" id="myModalLabel">학교 검색</h4>
-					</div>
-					<div class="modal-body">
-						<div class="col-lg-10">
-							<div class="btn-group drop">
-								<button type="button" class="btn btn-default dropdown-toggle school"
-									data-toggle="dropdown">학교 <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu" id='school_drop' role="menu">
-									<li><a href="#">선택 </a></li>
-									<li class="divider"></li>
-									<li><a href="#" data-value="elem_list">초등학교 </a></li>
-									<li><a href="#" data-value="midd_list">중학교 </a></li>
-									<li><a href="#" data-value="high_list">고등학교 </a></li>
-								</ul>
-							</div>
-							<input type="text" class="form-control col-sm-3" id="school_name">
-							<button type="button" class="btn btn-default">검색</button>
-						</div>
-						<div class="col-lg-10">
-							<p class="form-control-static" style="color: #777; margin-top: 10px">검색 결과</p>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary">확인</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- /school_search -->
 
 	<section id="container" class="sidebar-closed">
 		<header class="header black-bg">
@@ -157,7 +116,7 @@
 								페이지</span>
 					</a>
 						<ul class="sub">
-							<li><a href="../calendar.html">Calendar</a></li>
+							<li><a href="memberInfo.html">Calendar</a></li>
 							<li><a href="../gallery.html">Gallery</a></li>
 							<li><a href="../todo_list.html">Todo List</a></li>
 						</ul></li>
@@ -168,82 +127,7 @@
 			<section class="wrapper">
 				<div id="auth">
 					<img id="joinus" src="../img/joinus.png">
-					<!-- INLINE FORM ELELEMNTS -->
-
-					<div class="row mt">
-						<div class="col-lg-12">
-							<div class="form-panel-email">
-								<h1 class="email">
-									<i class="fa fa-angle-right"></i> 학교 등록
-								</h1>
-								<form class="form-horizontal style-form" method="get">
-									<div class="form-group">
-										<label class="col-lg-2 col-sm-2 control-label" style="font-weight: bold;">
-											관리 담당 학교</label>
-										<div class="col-lg-10">
-											<button type="button" class="btn btn-default" style="margin: 0px;"
-												data-toggle="modal" data-target="#search_school">학교 검색하기</button>
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="col-lg-2 col-sm-2 control-label"> 학교 이름</label>
-										<div class="col-lg-10">
-											<p class="form-control-static " style="color: #777;">학교 이름 받아오기</p>
-										</div>
-										<label class="col-lg-2 col-sm-2 control-label"> 학교 위치</label>
-										<div class="col-lg-10">
-											<p class="form-control-static" style="color: #777;">학교 위치 받아오기</p>
-										</div>
-										<label class="col-lg-2 col-sm-2 control-label"> 전화번호</label>
-										<div class="col-lg-10">
-											<p class="form-control-static" style="color: #777;">학교 전화번호 받아오기</p>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="form-group1">
-											<label class="col-sm-2 col-sm-2 control-label" style="font-weight: bold;">
-												시설물 등록</label>
-										</div>
-										<label class="col-sm-2 col-sm-2 control-label"> 이용가능 종목</label>
-										<div class="col-sm-10">
-											<div class="btn-group">
-												<button type="button" class="btn btn-default dropdown-toggle"
-													data-toggle="dropdown">
-													종목 <span class="caret"></span>
-												</button>
-												<ul class="dropdown-menu" role="menu">
-													<li><a href="#">수영</a></li>
-													<li><a href="#">농구</a></li>
-													<li><a href="#">축구</a></li>
-												</ul>
-											</div>
-										</div>
-										<label class="col-sm-2 col-sm-2 control-label"> 코트 수</label>
-										<div class="col-sm-10">
-											<form>
-												Quantity: <input type="number" name="points" min="0" max="100" step="10"
-													value="30">
-											</form>
-										</div>
-										<label class="col-sm-2 col-sm-2 control-label"> 최대 수용 인원</label>
-										<div class="col-sm-10">
-											<input type="text" class="form-control col-sm-3">
-										</div>
-										<label class="col-sm-2 col-sm-2 control-label"> 이용 금액</label>
-										<div class="col-sm-10">
-											<input type="text" class="form-control">
-										</div>
-									</div>
-									<button type="button" class="btn btn-theme04">취소</button>
-									<button type="button" class="btn btn-theme">가입하기</button>
-								</form>
-							</div>
-						</div>
-						<!-- col-lg-12-->
-					</div>
-					<!-- /row -->
 				</div>
-				<!-- /row mt -->
 			</section>
 		</section>
 	</section>
@@ -257,29 +141,23 @@
 	<script src="../js/jquery.sparkline.js"></script>
 	<script src="../js/common-scripts.js"></script>
 	<script>
-		$('#btn-auth').click(function(event) {
-			$.post(contextRoot + '/member/ajax/add.do', {
-				member_email : $('#m_e').val(),
-			}, function(resultObj) {
-				var ajaxResult = resultObj.ajaxResult;
-				if (ajaxResult.status == "success") {
-					alert("Email이 전송되었습니다.");
-				} else {
-					alert("다시 시도해 주세요.");
-				}
-			}, 'json');
-		});
-		
-		$(function(){
-		    $(".dropdown-menu").on('click', 'li a', function(){
-		      $(".dropdown-toggle.school:first-child").text($(this).text());
-		      $(".dropdown-toggle.school:first-child").val($(this).text());
-		      $(".dropdown-toggle.school:first-child").append('<span class="caret"></span>');
-		      
-		      console.log($(this).text());
-		   });
-
-		});
+	$(document).ready(function() {
+		var password = $('#m_password').val();
+		var form_data = new FormData();
+		form_data.append("m_password", password);
+		$.ajax({
+			url : contextRoot + '',
+			type : 'post',
+			dataType : 'json',
+			cache : false,
+			processData : false,
+			contentType : false,
+			data : form_data,
+			success : function(resultObj) {
+				var ajaxResult = result Obj.ajaxResult;
+			}
+		})
+	})
 	</script>
 </body>
 </html>

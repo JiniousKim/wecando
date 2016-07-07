@@ -1,6 +1,8 @@
 package java76.pms.controller.ajax;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,7 +32,11 @@ public class InfoController {
 	}
 	
 	@RequestMapping(value="member", method=RequestMethod.POST)
-	public String infoMember() {
+	public String infoMember(String m_password,
+      HttpServletResponse response, 
+      HttpSession session) {
+		System.out.println(session.getAttribute("loginUser"));
+		
 		return "/info/memberInfo.html";
 	}
 
