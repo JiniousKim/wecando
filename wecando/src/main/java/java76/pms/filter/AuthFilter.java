@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import java76.pms.domain.Member;
 
-@WebFilter("*.do")
+//@WebFilter("*.do")
 public class AuthFilter implements Filter {
   
   @Override

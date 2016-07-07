@@ -37,7 +37,7 @@ public class InfoController {
 	@RequestMapping(value="member", method=RequestMethod.POST)
 	public Object infoMember(String m_password,
       HttpServletResponse response, 
-      HttpSession session) {
+      HttpSession session) throws Exception {
 		
 		Member member = (Member)session.getAttribute("loginUser");
 		
