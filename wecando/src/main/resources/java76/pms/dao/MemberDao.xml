@@ -67,7 +67,11 @@
          member_ava as m_ava, 
          member_grade as m_grade,
          member_email as m_email,
-         member_tel as m_tel
+         member_tel as m_tel,
+         member_pwd as m_password,
+         email_code,
+         email_ava,
+         email_time
   from member
   where member_email=#{m_email} and member_pwd=#{m_password}
   </select>
