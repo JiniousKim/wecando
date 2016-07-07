@@ -101,7 +101,24 @@
   }
   
   function login() {
-    
+	  var form_data = new FormData();
+	    form_data.append("m_email", $('#m_email').val());
+	    form_data.append("m_password", $('#m_password').val());
+	    $.ajax({
+        url : contextRoot + '/auth/ajax/login.do',
+         type : 'post',
+         dataType : 'json',
+         cache : false,
+         contentType : false,
+         processData : false,
+         data : form_data,
+         success : function(resultObj) {
+           var ajaxResult = resultObj;
+           if(ajaxResult.status == 'success') {
+             location.replace("http://localhost:8080/wecando/wecando.html");
+           }
+         }
+      })
   }
   </script>
 </body>

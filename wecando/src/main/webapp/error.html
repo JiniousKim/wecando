@@ -7,7 +7,7 @@
 <meta name="author" content="Dashboard">
 <meta name="keyword"
 	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-<meta http-equiv="Refresh" content="4;url=wecando.html">
+<!--<meta http-equiv="Refresh" content="4;url=wecando.html">-->
 <title>Wecando</title>
 
 <!-- Bootstrap core CSS -->
@@ -24,67 +24,6 @@
 
 </head>
 <body>
-	<div id="login-page">
-		<div class="container">
-			<!-- Modal -->
-			<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog"
-				id="myModal1" class="modal fade">
-				<form class="form-login" action="auth.html">
-					<div class="modal-header">
-						<h2 class="form-login-heading">sign in now</h2>
-					</div>
-					<div class="login-wrap">
-						<input type="text" class="f-c" placeholder="User ID" autofocus> <br>
-            <input type="password" class="f-c" placeholder="Password"> <label
-              class="checkbox"> <span class="pull-right"> <a data-toggle="modal"
-                href="wecando.html#myModal2"> Forgot Password?</a>
-            </span>
-            </label>
-            <button class="btn b-t btn-block" href="wecando.html" type="submit">
-              <i class="fa fa-lock"></i> SIGN IN
-            </button>
-						<hr>
-						<div class="login-social-link centered">
-							<p>or you can sign in via your social network</p>
-							<button class="btn btn-facebook" type="submit">
-								<i class="fa fa-facebook"></i> Facebook
-							</button>
-						</div>
-						<div class="registration">
-							Don't have an account yet?<br /> <a class="" href="#">
-								Create an account </a>
-						</div>
-					</div>
-				</form>
-			</div>
-
-			<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog"
-				tabwecando="-1" id="myModal2" class="modal fade">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal"
-								aria-hidden="true">&times;</button>
-							<h4 class="modal-title">Forgot Password ?</h4>
-						</div>
-						<div class="modal-body">
-							<p>Enter your e-mail address below to reset your password.</p>
-							<input type="text" name="email" placeholder="Email"
-								autocomplete="off" class="form-control placeholder-no-fix">
-						</div>
-						<div class="modal-footer">
-							<button data-dismiss="modal" class="btn btn-default"
-								type="button">Cancel</button>
-							<button class="btn btn-theme" type="button">Submit</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- modal -->
-
-		</div>
-	</div>
-
 	<section id="container" class="sidebar-closed">
 		<header class="header black-bg">
 			<div class="sidebar-toggle-box">
@@ -94,12 +33,6 @@
 			<a href="wecando.html" class="logo"> <img id="wecando_white"
 				src="img/wecando_white.png">
 			</a>
-			<div class="top-menu">
-				<ul class="nav pull-right top-menu">
-					<li><a class="logout" data-toggle="modal"
-						href="wecando.html#myModal1">Login</a></li>
-				</ul>
-			</div>
 		</header>
 		<aside>
 			<div id="sidebar" class="nav-collapse ">
@@ -125,6 +58,10 @@
 		</aside>
 		<section id="main-content">
 			<section class="wrapper">
+			<img class="error" src="img/error.png">
+            <div class="alertMsg">
+                <h1>요청을 처리할 수 없습니다. 4초 뒤 main페이지로 이동합니다.</h1>
+            </div>
 			</section>
 		</section>
 	</section>
@@ -136,7 +73,5 @@
 	<script src="js/jquery.nicescroll.js" type="text/javascript"></script>
 	<script src="js/common-scripts.js"></script>
 	<script src="lib/sweetalert/sweetalert.min.js"></script>
-	<script>
-  </script>
 </body>
 </html>

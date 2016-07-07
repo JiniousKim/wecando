@@ -28,5 +28,10 @@ public class InfoController {
 	public String register_school() throws Exception {
 		return "/info/searchSchool";
 	}
+	
+	@RequestMapping(value="member", method=RequestMethod.POST)
+	public String infoMember() {
+		return "/info/memberInfo.html";
+	}
 
 }
