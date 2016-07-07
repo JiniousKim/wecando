@@ -148,7 +148,7 @@
 		var form_data = new FormData();
 		form_data.append("m_password", password);
 		$.ajax({
-			url : contextRoot + '',
+			url : contextRoot + '/info/auth/member.do',
 			type : 'post',
 			dataType : 'json',
 			cache : false,
@@ -156,7 +156,8 @@
 			contentType : false,
 			data : form_data,
 			success : function(resultObj) {
-				var ajaxResult = result Obj.ajaxResult;
+				var ajaxResult = resultObj;
+				console.log(ajaxResult);
 			}
 		})
 	})

@@ -35,7 +35,7 @@ public class AuthFilter implements Filter {
     if (!request.getServletPath().startsWith("/auth") &&
     		  !request.getServletPath().startsWith("/member")
         && loginUser == null) {
-      response.sendRedirect(request.getContextPath() + "/login.html");
+      response.sendRedirect(request.getContextPath() + "../login.html");
       return;
     }
     
