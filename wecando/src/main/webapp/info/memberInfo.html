@@ -127,6 +127,8 @@
 			<section class="wrapper">
 				<div id="auth">
 					<img id="joinus" src="../img/joinus.png">
+					<input id="m_password" type="password">
+					<button id="outBtn">button</button>
 				</div>
 			</section>
 		</section>
@@ -141,7 +143,7 @@
 	<script src="../js/jquery.sparkline.js"></script>
 	<script src="../js/common-scripts.js"></script>
 	<script>
-	$(document).ready(function() {
+	$(document).on("click", "#outBtn", function() {
 		var password = $('#m_password').val();
 		var form_data = new FormData();
 		form_data.append("m_password", password);

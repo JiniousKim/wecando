@@ -72,5 +72,12 @@ public class AuthController {
     session.removeAttribute("loginUser");
     return "redirect:../../login.html";
   }
+  
+  @RequestMapping(value="loginInfo", method=RequestMethod.POST)
+  public Object loginInfo(HttpSession session) {
+  		HashMap<String,Object> resultMap = new HashMap<>();
+  		
+  		return resultMap;
+  }
 }
 
