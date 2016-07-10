@@ -75,12 +75,15 @@ public class AuthController {
   }
   
   @RequestMapping(value="check_session", method=RequestMethod.POST)
-  public AjaxResult check_session(HttpSession session) {
+  public AjaxResult check_session(HttpSession session) throws Exception {
   		Member member = (Member)session.getAttribute("loginUser");
-  		if (!(member.getM_email().equals(null))) {
-  			return new AjaxResult("success", member);
+  		try {
+  			if (!(member.equals(null))) {
+  			}
+  		} catch (Exception e) {
+  			return new AjaxResult("failure", null);
   		}
-  		return new AjaxResult("failure", null);
+  		return new AjaxResult("success", member);
   }
   
   @RequestMapping(value="loginInfo", method=RequestMethod.POST)
