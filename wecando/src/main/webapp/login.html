@@ -30,7 +30,7 @@
 				<div class="fa fa-bars tooltips" data-placement="right"
 					data-original-title="Toggle Navigation"></div>
 			</div>
-			<a href="index.html" class="logo"> <img id="wecando_white"
+			<a href="wecando.html" class="logo"> <img id="wecando_white"
 				src="img/wecando_white.png">
 			</a>
 		</header>
@@ -59,7 +59,7 @@
 		<section id="main-content">
 			<section class="wrapper">
 			
-			 <form class="form-login" action="auth.html">
+			 <form class="form-login">
 					<div class="modal-header" style="background-color:#2b4e55;">
 						<h2 style="background-color:#2b4e55;" class="form-login-heading">sign in now</h2>
 					</div>
@@ -68,21 +68,18 @@
                             <i class='fa fa-user sc'></i>
                         </div>
                         
-						<input type="text" class="f-c i-t" placeholder="User ID" autofocus> <br>
+						<input id='m_email' type="text" class="f-c i-t" placeholder="User ID" autofocus> <br>
             <div class='input-ikon2'>
             <i class='fa fa-lock sc'></i>
             </div>
-            <input type="password" class="f-c i-t" placeholder="Password">
+            <input id='password' type="password" class="f-c i-t" placeholder="Password">
             <div style='margin-top:30px;'>
             <div class='b-s'>
-            <button class="btn btn-block bh" type="submit">
-               LOGIN
-            </button>
-            </div>
-            <div class="b-s1">
-            <button class="btn bh btn-block" href="loginpage/auth.html">
-            SIGN UP</button>    
-            </div>
+                <button class="btn btn-block bh" type="button" onclick="login();">LOGIN</button>
+              </div>
+              <div class="b-s1">
+                <button type='button' class="btn bh btn-block" onclick="join();">SIGN UP</button>
+              </div>
 						<hr>
 					</div>
             </div>
@@ -99,6 +96,30 @@
 	<script src="js/common-scripts.js"></script>
 	<script src="lib/sweetalert/sweetalert.min.js"></script>
 	<script>
+  function join() {
+    location.replace("http://localhost:8080/wecando/loginpage/auth.html");
+  }
+  
+  function login() {
+	  var form_data = new FormData();
+	    form_data.append("m_email", $('#m_email').val());
+	    form_data.append("m_password", $('#m_password').val());
+	    $.ajax({
+        url : contextRoot + '/auth/ajax/login.do',
+         type : 'post',
+         dataType : 'json',
+         cache : false,
+         contentType : false,
+         processData : false,
+         data : form_data,
+         success : function(resultObj) {
+           var ajaxResult = resultObj;
+           if(ajaxResult.status == 'success') {
+             location.replace("http://localhost:8080/wecando/wecando.html");
+           }
+         }
+      })
+  }
   </script>
 </body>
 </html>

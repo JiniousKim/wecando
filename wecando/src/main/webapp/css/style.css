@@ -2537,3 +2537,19 @@ display: block;
     background-color: #9ec7ce;
     border-color: #9ec7ce;
 }
+
+.error {
+    width: inherit;
+    height: auto;
+}
+
+.alertMsg {
+    position: absolute;
+    left: 40px;
+    top : 100px;
+}
+
+.alertMsg > h1 {
+    color: black;
+    align-content: center;
+}

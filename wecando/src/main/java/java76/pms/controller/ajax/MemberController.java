@@ -76,8 +76,13 @@ public class MemberController extends TimerTask {
 			return new AjaxResult("success", null);
 		}
 	}
+	@RequestMapping(value="detail", method=RequestMethod.GET)
+	public Object detail_get(int m_no) throws Exception {
+		Member member = memberService.retrieve(m_no);
+		return new AjaxResult("success", member);
+	}
 
-	@RequestMapping("detail")
+	@RequestMapping(value="detail", method=RequestMethod.POST)
 	public Object detail(int m_no) throws Exception {
 		Member member = memberService.retrieve(m_no);
 		return new AjaxResult("success", member);
@@ -155,6 +160,7 @@ public class MemberController extends TimerTask {
 		paramMap.put("email_code", email_code);
 		
 		if (memberService.check_ava(paramMap).equals("1")) {
+			System.out.println("error");
 			return new AjaxResult("failure", null);
 		}
 		return new AjaxResult("success", null);
@@ -172,13 +178,6 @@ public class MemberController extends TimerTask {
 			memberService.removeExpirationMember();
 		}
 	}
-
-	public void run() {
-		System.out.println("시작1");
-		int num = 4;
-		System.out.println(num);
-		System.out.println("runrunrun1");
-		System.out.println("run1 => " + memberService);
-
-	}
+	
+	public void run() {}
 }
