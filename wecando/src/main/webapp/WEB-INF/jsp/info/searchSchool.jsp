@@ -128,15 +128,6 @@
             <h2 class="form-login-heading">sign in now</h2>
           </div>
           <div class="login-wrap">
-<<<<<<< HEAD:wecando/src/main/webapp/WEB-INF/jsp/member/searchSchool.jsp
-            <input type="text" class="f-c" placeholder="User ID" autofocus> <br>
-            <input type="password" class="f-c" placeholder="Password"> <label
-              class="checkbox"> <span class="pull-right"> <a data-toggle="modal"
-                href="index.html#myModal2"> Forgot Password?</a>
-            </span>
-            </label>
-            <button class="btn b-t btn-block" href="index.html" type="submit">
-=======
             <input type="text" class="form-control" placeholder="User ID"
               autofocus> <br> <input type="password"
               class="form-control" placeholder="Password"> <label
@@ -147,7 +138,6 @@
             </label>
             <button class="btn btn-theme btn-block" href="../wecando.html"
               type="submit">
->>>>>>> 0896cceb3697e4b33114c0a3ed3d0b331d9df311:wecando/src/main/webapp/WEB-INF/jsp/info/searchSchool.jsp
               <i class="fa fa-lock"></i> SIGN IN
             </button>
             <hr>
@@ -164,13 +154,8 @@
         </form>
       </div>
 
-<<<<<<< HEAD:wecando/src/main/webapp/WEB-INF/jsp/member/searchSchool.jsp
       <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
         id="myModal2" class="modal fade">
-=======
-      <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog"
-        tabwecando="-1" id="myModal2" class="modal fade">
->>>>>>> 0896cceb3697e4b33114c0a3ed3d0b331d9df311:wecando/src/main/webapp/WEB-INF/jsp/info/searchSchool.jsp
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -242,21 +227,13 @@
         <div class="fa fa-bars tooltips" data-placement="right"
           data-original-title="Toggle Navigation"></div>
       </div>
-<<<<<<< HEAD:wecando/src/main/webapp/WEB-INF/jsp/member/searchSchool.jsp
-      <a href="../../index.html" class="logo"> <img id="wecando_white"
-=======
       <a href="wecando.html" class="logo"> <img id="wecando_white"
->>>>>>> 0896cceb3697e4b33114c0a3ed3d0b331d9df311:wecando/src/main/webapp/WEB-INF/jsp/info/searchSchool.jsp
         src="../../img/wecando_white.png">
       </a>
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
-<<<<<<< HEAD:wecando/src/main/webapp/WEB-INF/jsp/member/searchSchool.jsp
-          <li><a class="logout" data-toggle="modal" href="index.html#myModal1">Logout</a></li>
-=======
           <li><a class="logout" data-toggle="modal"
             href="../../wecando.html#myModal1">Logout</a></li>
->>>>>>> 0896cceb3697e4b33114c0a3ed3d0b331d9df311:wecando/src/main/webapp/WEB-INF/jsp/info/searchSchool.jsp
         </ul>
       </div>
     </header>
@@ -376,7 +353,6 @@
   <script src="../../js/jquery.sparkline.js"></script>
   <script src="../../js/common-scripts.js"></script>
   <script>
-<<<<<<< HEAD:wecando/src/main/webapp/WEB-INF/jsp/member/searchSchool.jsp
     $('#btn-auth').click(function(event) {
       $.post(contextRoot + '/member/ajax/add.do', {
         member_email : $('#m_e').val(),
@@ -404,8 +380,8 @@
     	console.log(html);
     });
     
-=======
-  <!-- 회원 가입 동작 -->
+  // 회원 가입 동작
+  
   $(document).on("click", '#create', function(e) {
 	    var form_data = new FormData();
 	    form_data.append("m_email", $('#m_email').val());
@@ -471,7 +447,6 @@
   function go_register() {
       location.replace("{http://localhost:8080/wecando/register_school.html}");
     };
->>>>>>> 0896cceb3697e4b33114c0a3ed3d0b331d9df311:wecando/src/main/webapp/WEB-INF/jsp/info/searchSchool.jsp
   </script>
 </body>
 </html>
