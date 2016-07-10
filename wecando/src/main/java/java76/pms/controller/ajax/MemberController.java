@@ -127,9 +127,9 @@ public class MemberController extends TimerTask {
 		return "/member/choose_auth";
 	}
 
-	@RequestMapping(value="join", method=RequestMethod.POST)
-	public String join() {
-		return "/member/join";
+	@RequestMapping(value="search", method=RequestMethod.GET)
+	public String search() {
+		return "/member/searchSchool";
 	}
 
 	@RequestMapping(value="check_email", method=RequestMethod.POST)
@@ -160,6 +160,11 @@ public class MemberController extends TimerTask {
 		return new AjaxResult("success", null);
 	}
 
+	 @RequestMapping(value="join", method=RequestMethod.POST)
+	  public String join() {
+	    return "/member/join";
+	  }
+	
 	@Scheduled(cron="0 0 12 * * ?")
 	public void init(){
 		System.out.println("run => " + memberService);

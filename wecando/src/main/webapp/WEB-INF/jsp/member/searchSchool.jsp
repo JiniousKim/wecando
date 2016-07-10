@@ -30,7 +30,7 @@
     // 4. 파싱
     Element root = doc.getDocumentElement();
 
-    if ("jobSearch".equals(root.getNodeName())) {
+    if ("school_name".equals(root.getNodeName())) {
       NodeList nodelist = root.getChildNodes();
 
       for (int i = 0; i < nodelist.getLength(); i++) {
@@ -103,44 +103,38 @@
 <title>Wecando</title>
 
 <!-- Bootstrap core CSS -->
-<link href="../../css/bootstrap.css" rel="stylesheet">
+<link rel="stylesheet" href="../../css/bootstrap.css">
 <!--external css-->
-<link href="../../font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../font-awesome/css/font-awesome.css"/>
 <link rel="stylesheet" type="text/css" href="../../css/zabuto_calendar.css">
-<link rel="stylesheet" type="text/css"
-  href="../../js/gritter/css/jquery.gritter.css" />
+<link rel="stylesheet" type="text/css" href="../../js/gritter/css/jquery.gritter.css" />
 <link rel="stylesheet" type="text/css" href="../../lineicons/style.css">
 
 <!-- Custom styles for this template -->
 <link href="../../css/style.css" rel="stylesheet">
 <link href="../../css/style-responsive.css" rel="stylesheet">
-<script src="../../js/dj_check.js" type="text/javascript"></script>
 
-<link rel="stylesheet" type="text/css"
-  href="../../lib/sweetalert/sweetalert.css">
+<script src="../../js/chart-master/Chart.js"></script>
 </head>
 <body>
 
   <div id="login-page">
     <div class="container">
       <!-- Modal -->
-      <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog"
-        id="myModal1" class="modal fade">
+      <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" id="myModal1"
+        class="modal fade">
         <form class="form-login" action="auth.html">
           <div class="modal-header">
             <h2 class="form-login-heading">sign in now</h2>
           </div>
           <div class="login-wrap">
-            <input type="text" class="form-control" placeholder="User ID"
-              autofocus> <br> <input type="password"
-              class="form-control" placeholder="Password"> <label
-              class="checkbox"> <span class="pull-right"> <a
-                data-toggle="modal" href="../index.html#myModal2"> Forgot
-                  Password?</a>
+            <input type="text" class="f-c" placeholder="User ID" autofocus> <br>
+            <input type="password" class="f-c" placeholder="Password"> <label
+              class="checkbox"> <span class="pull-right"> <a data-toggle="modal"
+                href="index.html#myModal2"> Forgot Password?</a>
             </span>
             </label>
-            <button class="btn btn-theme btn-block" href="../index.html"
-              type="submit">
+            <button class="btn b-t btn-block" href="index.html" type="submit">
               <i class="fa fa-lock"></i> SIGN IN
             </button>
             <hr>
@@ -151,30 +145,27 @@
               </button>
             </div>
             <div class="registration">
-              Don't have an account yet?<br /> <a class="" href="#">
-                Create an account </a>
+              Don't have an account yet?<br /> <a class="" href="#"> Create an account </a>
             </div>
           </div>
         </form>
       </div>
 
-      <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog"
-        tabindex="-1" id="myModal2" class="modal fade">
+      <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+        id="myModal2" class="modal fade">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal"
-                aria-hidden="true">&times;</button>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
               <h4 class="modal-title">Forgot Password ?</h4>
             </div>
             <div class="modal-body">
               <p>Enter your e-mail address below to reset your password.</p>
-              <input type="text" name="email" placeholder="Email"
-                autocomplete="off" class="form-control placeholder-no-fix">
+              <input type="text" name="email" placeholder="Email" autocomplete="off"
+                class="form-control placeholder-no-fix">
             </div>
             <div class="modal-footer">
-              <button data-dismiss="modal" class="btn btn-default"
-                type="button">Cancel</button>
+              <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
               <button class="btn btn-theme" type="button">Submit</button>
             </div>
           </div>
@@ -185,19 +176,60 @@
     </div>
   </div>
 
+  <!-- School Search -->
+  <div class="search_school">
+    <!-- School Search -->
+    <div class="modal fade" id="search_school" tabindex="-1" role="dialog"
+      aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">학교 검색</h4>
+          </div>
+          <div class="modal-body">
+            <div class="col-lg-10">
+              <div class="btn-group drop">
+                <button type="button" class="btn btn-default dropdown-toggle school"
+                  data-toggle="dropdown">학교 <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" id='school_drop' role="menu">
+                  <li><a href="#">선택 </a></li>
+                  <li class="divider"></li>
+                  <li><a href="#" data-value="elem_list">초등학교 </a></li>
+                  <li><a href="#" data-value="midd_list">중학교 </a></li>
+                  <li><a href="#" data-value="high_list">고등학교 </a></li>
+                </ul>
+              </div>
+              <input type="text" class="form-control col-sm-3" id="school_name">
+              <button id="searchBtn" type="button" class="btn btn-default">검색</button>
+            </div>
+            <div class="col-lg-10">
+              <p class="form-control-static" style="color: #777; margin-top: 10px">검색 결과</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">확인</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /school_search -->
+
   <section id="container" class="sidebar-closed">
     <header class="header black-bg">
       <div class="sidebar-toggle-box">
         <div class="fa fa-bars tooltips" data-placement="right"
           data-original-title="Toggle Navigation"></div>
       </div>
-      <a href="index.html" class="logo"> <img id="wecando_white"
+      <a href="../../index.html" class="logo"> <img id="wecando_white"
         src="../../img/wecando_white.png">
       </a>
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
-          <li><a class="logout" data-toggle="modal"
-            href="../../index.html#myModal1">Logout</a></li>
+          <li><a class="logout" data-toggle="modal" href="index.html#myModal1">Logout</a></li>
         </ul>
       </div>
     </header>
@@ -208,13 +240,13 @@
               class="fa fa-calendar"></i> <span>예약 정보</span>
           </a>
             <ul class="sub">
-              <li><a href="../general.html">General</a></li>
-              <li><a href="../buttons.html">Buttons</a></li>
-              <li><a href="../panels.html">Panels</a></li>
+              <li><a href="general.html">General</a></li>
+              <li><a href="buttons.html">Buttons</a></li>
+              <li><a href="panels.html">Panels</a></li>
             </ul></li>
 
-          <li class="sub-menu"><a href="../../javascript:;"> <i
-              class="fa fa-user"></i> <span>마이 페이지</span>
+          <li class="sub-menu"><a href="../javascript:;"> <i class="fa fa-user"></i> <span>마이
+                페이지</span>
           </a>
             <ul class="sub">
               <li><a href="../calendar.html">Calendar</a></li>
@@ -234,56 +266,68 @@
             <div class="col-lg-12">
               <div class="form-panel-email">
                 <h1 class="email">
-                  <i class="fa fa-angle-right"></i> 회원가입
+                  <i class="fa fa-angle-right"></i> 학교 등록
                 </h1>
-                <form class="form-horizontal style-form" method="post">
+                <form class="form-horizontal style-form" method="get">
                   <div class="form-group">
-                    <label class="col-lg-2 col-sm-2 control-label"> 이메일</label>
+                    <label class="col-lg-2 col-sm-2 control-label" style="font-weight: bold;">
+                      관리 담당 학교</label>
                     <div class="col-lg-10">
-                      <p class="form-control-static" style="color: #777;"><%= request.getParameter("m_email") %></p>
-                    </div>
-                  </div>
-                  <input type='hidden' id="m_email" value=<%= request.getParameter("m_email") %>>
-                  <input type='hidden' id='m_grade' value=<%= request.getParameter("m_grade") %>>
-                  <input type='hidden' id='email_ava' value="1">
-                  <input type='hidden' id="email_code" value=<%= request.getParameter("email_code") %>>
-                  <div class="form-group">
-                    <label class="col-sm-2 col-sm-2 control-label"> 비밀번호</label>
-                    <div class="col-sm-10">
-                      <input type="password" id='password' onchange="check(this.id);" 
-                                                class="form-control" placeholder="">
+                      <button type="button" class="btn btn-default" style="margin: 0px;"
+                        data-toggle="modal" data-target="#search_school">학교 검색하기</button>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-2 col-sm-2 control-label"> 비밀번호 확인</label>
-                    <div class="col-sm-10">
-                      <input type="password" id="password2" onchange="check(this.id);" 
-                                                class="form-control" placeholder="">
+                    <label class="col-lg-2 col-sm-2 control-label"> 학교 이름</label>
+                    <div class="col-lg-10">
+                      <p class="form-control-static " style="color: #777;">학교 이름 받아오기</p>
+                    </div>
+                    <label class="col-lg-2 col-sm-2 control-label"> 학교 위치</label>
+                    <div class="col-lg-10">
+                      <p class="form-control-static" style="color: #777;">학교 위치 받아오기</p>
+                    </div>
+                    <label class="col-lg-2 col-sm-2 control-label"> 전화번호</label>
+                    <div class="col-lg-10">
+                      <p class="form-control-static" style="color: #777;">학교 전화번호 받아오기</p>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-2 col-sm-2 control-label"> 이름</label>
+                    <div class="form-group1">
+                      <label class="col-sm-2 col-sm-2 control-label" style="font-weight: bold;">
+                        시설물 등록</label>
+                    </div>
+                    <label class="col-sm-2 col-sm-2 control-label"> 이용가능 종목</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="m_name">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle"
+                          data-toggle="dropdown">
+                          종목 <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">수영</a></li>
+                          <li><a href="#">농구</a></li>
+                          <li><a href="#">축구</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <label class="col-sm-2 col-sm-2 control-label"> 코트 수</label>
+                    <div class="col-sm-10">
+                      <form>
+                        Quantity: <input type="number" name="points" min="0" max="100" step="10"
+                          value="30">
+                      </form>
+                    </div>
+                    <label class="col-sm-2 col-sm-2 control-label"> 최대 수용 인원</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control col-sm-3">
+                    </div>
+                    <label class="col-sm-2 col-sm-2 control-label"> 이용 금액</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control">
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label class="col-sm-2 col-sm-2 control-label"> 닉네임</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control col-sm-3" id="m_nick">
-                      <button type="button" class="btn btn-default col-sm-2">중복확인</button>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-2 col-sm-2 control-label"> 전화번호</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="m_tel">
-                    </div>
-                  </div>
-
-                  <input type="button" class="btn btn-theme04" value="취소"
-                    onclick="javascript:history.back()">
-                  <button type="button" class="btn btn-theme" id="create">가입하기</button>
+                  <button type="button" class="btn btn-theme04">취소</button>
+                  <button type="button" class="btn btn-theme">가입하기</button>
                 </form>
               </div>
             </div>
@@ -304,75 +348,35 @@
   <script src="../../js/jquery.nicescroll.js" type="text/javascript"></script>
   <script src="../../js/jquery.sparkline.js"></script>
   <script src="../../js/common-scripts.js"></script>
-  <script src="../../lib/sweetalert/sweetalert.min.js"></script>
-  
   <script>
-  <!-- 회원 가입 동작 -->
-  $(document).on("click", '#create', function(e) {
-	    var form_data = new FormData();
-	    form_data.append("m_email", $('#m_email').val());
-	    form_data.append("m_grade", $('#m_grade').val());
-	    form_data.append("m_name", $('#m_name').val());
-	    form_data.append("m_tel", $('#m_tel').val());
-	    form_data.append("m_nick", $('#m_nick').val());
-	    form_data.append("email_ava", $('#email_ava').val());
-	    form_data.append("m_password", $('#password').val());
-	    form_data.append("email_code", $('#email_code').val());
-	    
-	    if(form_data.m_grade == 1) {
-	    $.ajax({
-	      url: contextRoot + '/member/ajax/create.do', 
-	      type : 'post',
-	      dataType : 'json',
-	      async : false,
-	      cache : false,
-	      contentType : false,
-	      processData : false,
-	      data : form_data,
-	      success : function(resultObj) {
-	        var ajaxResult = resultObj.ajaxResult;
-	        if (ajaxResult.status == 'success') {
-	          swal("Good job!", "회원 가입이 완료되었습니다.", "success")
-	          e.preventDefault();
-	        } else {
-	          sweetAlert("Oops...","다시 시도해 주세요","error");
-	          e.preventDefault();
-	        }
-	        setTimeout('go_url()', 5000);
-	      }
-	    })
-	    }
-	    else {
-	        $.ajax({
-	            url: contextRoot + '/member/ajax/create.do', 
-	            type : 'post',
-	            dataType : 'json',
-	            async : false,
-	            cache : false,
-	            contentType : false,
-	            processData : false,
-	            data : form_data,
-	            success : function(resultObj) {
-	              var ajaxResult = resultObj.ajaxResult;
-	              if (ajaxResult.status == 'success') {
-	                swal("Good job!", "회원 가입이 완료되었습니다.", "success");
-	              } else {
-	                sweetAlert("Oops...","다시 시도해 주세요","error");
-	                e.preventDefault();
-	              }
-	              setTimeout('go_register()', 5000);
-	            }
-	          })
-	    }
-	    
-	  });
-  
-  function go_url() {
-	    location.replace("{http://localhost:8080/wecando/index.html}");
-	  };
-  function go_register() {
-      location.replace("{http://localhost:8080/wecando/register_school.html}");
-    };
+    $('#btn-auth').click(function(event) {
+      $.post(contextRoot + '/member/ajax/add.do', {
+        member_email : $('#m_e').val(),
+      }, function(resultObj) {
+        var ajaxResult = resultObj.ajaxResult;
+        if (ajaxResult.status == "success") {
+          alert("Email이 전송되었습니다.");
+        } else {
+          alert("다시 시도해 주세요.");
+        }
+      }, 'json');
+    });
+    
+    $(function(){
+        $(".dropdown-menu").on('click', 'li a', function(){
+          $(".dropdown-toggle.school:first-child").text($(this).text());
+          $(".dropdown-toggle.school:first-child").val($(this).text());
+          $(".dropdown-toggle.school:first-child").append('<span class="caret"></span>');
+          
+          console.log($(this).text());
+       });
+    });
+    
+    $('#searchBtn').click(function(event) {
+    	console.log(html);
+    });
+    
   </script>
 </body>
 </html>
+
