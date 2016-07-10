@@ -143,6 +143,25 @@
 	<script src="../js/jquery.sparkline.js"></script>
 	<script src="../js/common-scripts.js"></script>
 	<script>
+	$(document).ready(function() {
+		$.ajax({
+			url : contextRoot + '/auth/ajax/check_session.do',
+			type : 'post',
+			dataType : 'json',
+			cache : false,
+			processData : false,
+			contentType : false,
+			async : false,
+			success : function(resultObj) {
+				console.log(resultObj);
+				var status = resultObj.status;
+				if (status == 'false') {
+					location.replace("http://localhost:8080/wecando/login.html");
+				}
+			}
+		})
+	})
+	
 	$(document).on("click", "#outBtn", function() {
 		var password = $('#m_password').val();
 		var form_data = new FormData();

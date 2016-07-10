@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java76.pms.domain.AjaxResult;
 import java76.pms.domain.Member;
 import java76.pms.service.MemberService;
 
@@ -71,6 +72,15 @@ public class AuthController {
   public String logout_get(HttpSession session) {
     session.removeAttribute("loginUser");
     return "redirect:../../login.html";
+  }
+  
+  @RequestMapping(value="check_session", method=RequestMethod.POST)
+  public AjaxResult check_session(HttpSession session) {
+  		Member member = (Member)session.getAttribute("loginUser");
+  		if (!(member.getM_email().equals(null))) {
+  			return new AjaxResult("success", member);
+  		}
+  		return new AjaxResult("failure", null);
   }
   
   @RequestMapping(value="loginInfo", method=RequestMethod.POST)
