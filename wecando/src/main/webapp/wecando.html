@@ -22,7 +22,8 @@
 <!-- Custom styles for this template -->
 <link href="css/style.css" rel="stylesheet">
 <link href="css/style-responsive.css" rel="stylesheet">
-
+<link rel="stylesheet" type="text/css"
+  href="lib/sweetalert/sweetalert.css">
 <script src="js/chart-master/Chart.js"></script>
 </head>
 <body>
@@ -253,7 +254,7 @@
 
 	<script src="js/sparkline-chart.js"></script>
 	<script src="js/zabuto_calendar.js"></script>
-
+  <script src="lib/sweetalert/sweetalert.min.js"></script>
 	<script type="text/javascript"
 		src="//apis.daum.net/maps/maps3.js?apikey=90d863ade026cac74762f5c9d8c37284"></script>
 	<script>
@@ -312,8 +313,8 @@
              + "</ul>")
           } else {
         	   loginAva.append("<ul class='nav pull-right top-menu'>"
-        			   + "<li><a class='logout' data-toggle='modal'"
-        			   + "href='wecando.html#myModadl1'>Logout</a></li>"
+        			   + "<li><a class='logout'"
+        			   + "href='' onclick='logout();'>Logout</a></li>"
         			   + "</ul>")
           }
         }
@@ -321,6 +322,13 @@
     
 	</script>
 	<script>
+	function logout() {
+		var form = document.createElement("form");
+		form.setAttribute("method","post");
+	  form.setAttribute("action","/auth/ajax/logout.do");
+	  form.submit();
+	}
+	
 	function join() {
     location.replace("http://localhost:8080/wecando/loginpage/auth.html");
   }

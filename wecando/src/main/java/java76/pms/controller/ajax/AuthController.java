@@ -70,8 +70,7 @@ public class AuthController {
   
   @RequestMapping(value="logout", method=RequestMethod.GET )
   public String logout_get(HttpSession session) {
-    session.removeAttribute("loginUser");
-    return "redirect:../../login.html";
+    return "redirect:../../error.html";
   }
   
   @RequestMapping(value="check_session", method=RequestMethod.POST)
