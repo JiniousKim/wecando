@@ -49,18 +49,13 @@ public class AuthController {
     Member member = memberService.retrieve(m_email, m_password);
     HashMap<String, Object> resultMap = new HashMap<>();
     
-    System.out.println(member);
-    
     try {
     	  if (!(member.equals(null))) {}
     } catch (Exception e) {
 	    	session.invalidate(); // 세션을 무효화시킴. => 새로 세션 객체 생성!
 	    	resultMap.put("status", "failure");
-	    	resultMap.put("loginUser", null);
     	  return resultMap;
     }
-    
-    System.out.println("1" + member);
     	
     session.setAttribute("loginUser", member);
     resultMap.put("loginUser", member);

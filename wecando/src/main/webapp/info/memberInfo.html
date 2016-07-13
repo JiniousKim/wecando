@@ -112,8 +112,8 @@
               <li><a href="panels.html">Panels</a></li>
             </ul></li>
 
-          <li class="sub-menu"><a href="../javascript:;"> <i class="fa fa-user"></i> <span>마이
-                페이지</span>
+          <li class="sub-menu"><a href="../javascript:;"> 
+          <i class="fa fa-user"></i> <span>마이 페이지</span>
           </a>
             <ul class="sub">
               <li><a href="memberInfo.html">Calendar</a></li>
@@ -175,6 +175,61 @@
       data : form_data,
       success : function(resultObj) {
         var status = resultObj.status;
+        if (status == 'failure') {
+        	  sweetAlert("Oops...", "정보가 맞지 않습니다.", "error")
+        } else {
+         	 "<div class='row mt'>"
+           + "<div class='col-lg-12'>"
+           + "<div class='form-panel-email'>"
+           + "<h1 class='email'>"
+           + "<i class='fa fa-angle-right'></i> 회원가입"
+           + "</h1><div class='form-group'>"
+           + "<label class='col-lg-2 col-sm-2 control-label'> 이메일</label>"
+           + "<div class='col-lg-10'>"
+           + "<p class='form-control-static' style='color: #777;'>"
+           + "<%=request.getParameter('m_email')%></p></div></div>"
+           + "<input type='hidden' id='m_email'"
+           + "value=<%=request.getParameter('m_email')%>>" 
+           + "<input type='hidden' id='m_grade'"
+           + "value=<%=request.getParameter('m_grade')%>>" 
+           + "<input type='hidden' id='email_ava' value='1'>" 
+           + "<input type='hidden' id='email_code' value=<%=request.getParameter('email_code')%>>"
+           + "<div id='passwordForm' class='form-group has-feedback'>"
+           + "<label class='col-sm-2 col-sm-2 control-label'> 비밀번호</label>"
+           + "<div class='col-sm-10'>"
+           + "<input type='password' id='password' onchange='check(this.id);' class='form-control'"
+           + "placeholder=''>"
+           + "<div class='control-label' id='passwordMsg'"
+           + "style='display: none;'>숫자, 영문 대/소문자, 특수문자 각 한자이상 필수 최대8~20자입니다.</div>"
+           + "</div></div>"
+           + "<div id='password2Form' class='form-group'>"
+           + "<label class='col-sm-2 col-sm-2 control-label'> 비밀번호 확인</label>"
+           + "<div class='col-sm-10'>"
+           + "<input type='password' id='password2' onchange='check(this.id);' class='form-control'"
+           + "placeholder=''>"
+           + "<div class='control-label' id='password2Msg' style='display: none;'>필수 정보입니다.</div>"
+           + "</div></div>"
+           + "<div id='nameForm' class='form-group'>"
+           + "<label class='col-sm-2 col-sm-2 control-label'> 이름</label>"
+           + "<div class='col-sm-10'>"
+           + "<input type='text' class='form-control' id='m_name'></div></div>"
+           + "<div id='nickForm' class='form-group'>"
+           + "<label class='col-sm-2 col-sm-2 control-label'> 닉네임</label>"
+           + "<div class='col-sm-10'>"
+           + "<input type='text' class='form-control col-sm-3' id='m_nick'>"
+           + "<button value='0' type='button' id='checknick'"
+           + "class='btn btn-default col-sm-2' onclick='check_nick();'>중복확인</button>"
+           + "</div></div>"
+           + "<div id='telForm' class='form-group'>"
+           + "<label class='col-sm-2 col-sm-2 control-label'> 전화번호</label>"
+           + "<div class='col-sm-10'>"
+           + "<input type='text' class='form-control' id='m_tel'>"
+           + "</div></div>"
+           + "<input type='button' class='btn btn-theme04' value='취소'"
+           + "onclick='javascript:history.back()'>"
+           + "<button type='button' class='btn btn-theme' id='create'>가입하기</button>"
+           + "</div></div></div>"
+        }
       }
     })
   })
