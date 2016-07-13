@@ -38,12 +38,6 @@
       <a href="wecando.html" class="logo"> <img id="wecando_white"
         src="../../img/wecando_white.png">
       </a>
-      <div class="top-menu">
-        <ul class="nav pull-right top-menu">
-          <li><a class="logout" data-toggle="modal"
-            href="../../wecando.html#myModal1">Logout</a></li>
-        </ul>
-      </div>
     </header>
     <aside>
       <div id="sidebar" class="nav-collapse ">

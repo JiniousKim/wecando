@@ -38,15 +38,9 @@
         <div class="fa fa-bars tooltips" data-placement="right"
           data-original-title="Toggle Navigation"></div>
       </div>
-      <a href="index.html" class="logo"> <img id="wecando_white"
+      <a href="../../wecando.html" class="logo"> <img id="wecando_white"
         src="../../img/wecando_white.png">
       </a>
-      <div class="top-menu">
-        <ul class="nav pull-right top-menu">
-          <li><a class="logout" data-toggle="modal"
-            href="../../index.html#myModal1">Logout</a></li>
-        </ul>
-      </div>
     </header>
     <aside>
       <div id="sidebar" class="nav-collapse ">
@@ -64,7 +58,7 @@
               class="fa fa-user"></i> <span>마이 페이지</span>
           </a>
             <ul class="sub">
-              <li><a href="../calendar.html">Calendar</a></li>
+              <li><a href="../../info/memberInfo.html">내 정보</a></li>
               <li><a href="../gallery.html">Gallery</a></li>
               <li><a href="../todo_list.html">Todo List</a></li>
             </ul></li>
