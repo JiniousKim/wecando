@@ -323,10 +323,20 @@
 	</script>
 	<script>
 	function logout() {
-		var form = document.createElement("form");
-		form.setAttribute("method","post");
-	  form.setAttribute("action","/auth/ajax/logout.do");
-	  form.submit();
+		$.ajax({
+			url : contextRoot + '/auth/ajax/logout.do',
+			type : 'post',
+			dataType : 'json',
+			cache : false,
+			success : function(resultObj) {
+				var ajaxresult = resultObj.ajaxResult;
+				if (ajaxresult.status == 'success') {
+					location.replace("http://localhost:8080/wecando/login.html");
+				} else {
+					sweetAlert("Oops...", "Logout에 실패하였습니다.",  "error");
+				}
+			}
+		})
 	}
 	
 	function join() {
