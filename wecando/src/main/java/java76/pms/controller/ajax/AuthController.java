@@ -87,7 +87,7 @@ public class AuthController {
   		} catch (Exception e) {
   			return new AjaxResult("failure", null);
   		}
-  		return new AjaxResult("success", member);
+  		return new AjaxResult("success", null);
   }
   
   @RequestMapping(value="loginInfo", method=RequestMethod.POST)

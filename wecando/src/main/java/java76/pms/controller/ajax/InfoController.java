@@ -43,11 +43,11 @@ public class InfoController {
 		Member member = new Member();
 		HashMap<String, Object> resultMap = new HashMap<>();
 
+		if (!(loginUser.getM_password().equals(m_password))) {
+			resultMap.put("status", "failure");
+			return resultMap;
+		}
 		try {
-			if (!(loginUser.getM_password().equals(m_password))) {
-				resultMap.put("status", "failure");
-				return resultMap;
-			}
 			int no = loginUser.getM_no();
 			member = memberService.retrieve(no);
 		} catch (Exception e) {
@@ -61,23 +61,8 @@ public class InfoController {
 	}
 	
 	@RequestMapping(value="member", method=RequestMethod.GET)
-	public Object infoMember1(String m_password,
-			HttpServletResponse response, 
-			HttpSession session) throws Exception {
-
-		Member member = (Member)session.getAttribute("loginUser");
-
-		System.out.println(member);
-
-		HashMap<String, Object> resultMap = new HashMap<>();
-
-		if (!(member.getM_password().equals(m_password))) {
-			resultMap.put("status", "failure");
-			return resultMap;
-		}
-		resultMap.put("status", "success");
-		resultMap.put("loginUser", member);
-		return resultMap;
+	public String infoMember1() throws Exception {
+		return "redirect:../../error.html";
 	}
 
 }
