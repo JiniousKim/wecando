@@ -168,6 +168,22 @@
       }
     })
   })
+  function logout() {
+    $.ajax({
+      url : contextRoot + '/auth/ajax/logout.do',
+      type : 'post',
+      dataType : 'json',
+      cache : false,
+      success : function(resultObj) {
+        var ajaxresult = resultObj.ajaxResult;
+        if (ajaxresult.status == 'success') {
+          location.replace("http://localhost:8080/wecando/login.html");
+        } else {
+          sweetAlert("Oops...", "Logout에 실패하였습니다.",  "error");
+        }
+      }
+    })
+  }
   
   $(document).on("click", "#outBtn", function() {
     var password = $('#m_password').val();
@@ -184,6 +200,7 @@
       success : function(resultObj) {
         var status = resultObj.status;
         var member = resultObj.loginUser;
+        console.log(member);
         var show = $('#auth');
         if (status == 'failure') {
         	  sweetAlert("Oops...", "정보가 맞지 않습니다.", "error")
@@ -194,12 +211,12 @@
            + "<div class='form-panel-email'>"
            + "<h1 class='email'>"
            + "<i class='fa fa-angle-right'></i> 회원가입"
-           + "</h1><div class='form-group'>"
+           + "</h1><div class='form-group3 join'>"
            + "<label class='col-lg-2 col-sm-2 control-label'> 이메일</label>"
            + "<div class='col-lg-10'>"
            + "<p class='form-control-static' style='color: #777;'>"
            + "<%=request.getParameter('m_email')%></p></div></div>"
-           + "<div id='passwordForm' class='form-group has-feedback'>"
+           + "<div id='passwordForm' class='form-group3 has-feedback'>"
            + "<label class='col-sm-2 col-sm-2 control-label'> 비밀번호</label>"
            + "<div class='col-sm-10'>"
            + "<input type='password' id='password' onchange='check(this.id);' class='form-control'"
@@ -207,25 +224,25 @@
            + "<div class='control-label' id='passwordMsg'"
            + "style='display: none;'>숫자, 영문 대/소문자, 특수문자 각 한자이상 필수 최대8~20자입니다.</div>"
            + "</div></div>"
-           + "<div id='password2Form' class='form-group'>"
+           + "<div id='password2Form' class='form-group3'>"
            + "<label class='col-sm-2 col-sm-2 control-label'> 비밀번호 확인</label>"
            + "<div class='col-sm-10'>"
            + "<input type='password' id='password2' onchange='check(this.id);' class='form-control'"
            + "placeholder=''>"
            + "<div class='control-label' id='password2Msg' style='display: none;'>필수 정보입니다.</div>"
            + "</div></div>"
-           + "<div id='nameForm' class='form-group'>"
+           + "<div id='nameForm' class='form-group3'>"
            + "<label class='col-sm-2 col-sm-2 control-label'> 이름</label>"
            + "<div class='col-sm-10'>"
            + "<input type='text' class='form-control' id='m_name'></div></div>"
-           + "<div id='nickForm' class='form-group'>"
+           + "<div id='nickForm' class='form-group3'>"
            + "<label class='col-sm-2 col-sm-2 control-label'> 닉네임</label>"
            + "<div class='col-sm-10'>"
            + "<input type='text' class='form-control col-sm-3' id='m_nick'>"
            + "<button value='0' type='button' id='checknick'"
            + "class='btn btn-default col-sm-2' onclick='check_nick();'>중복확인</button>"
            + "</div></div>"
-           + "<div id='telForm' class='form-group'>"
+           + "<div id='telForm' class='form-group3'>"
            + "<label class='col-sm-2 col-sm-2 control-label'> 전화번호</label>"
            + "<div class='col-sm-10'>"
            + "<input type='text' class='form-control' id='m_tel'>"
