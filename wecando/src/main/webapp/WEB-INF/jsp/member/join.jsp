@@ -77,7 +77,7 @@
 								<h1 class="email">
 									<i class="fa fa-angle-right"></i> 회원가입
 								</h1>
-								<div class="form-group">
+								<div class="form-group join">
 									<label class="col-lg-2 col-sm-2 control-label"> 이메일</label>
 									<div class="col-lg-10">
 										<p class="form-control-static" style="color: #777;">
