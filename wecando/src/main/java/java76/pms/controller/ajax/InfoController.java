@@ -48,8 +48,9 @@ public class InfoController {
 			return resultMap;
 		}
 		try {
-			int no = loginUser.getM_no();
-			member = memberService.retrieve(no);
+			int m_no = loginUser.getM_no();
+			member = memberService.retrieve(m_no);
+			System.out.println(member);
 		} catch (Exception e) {
 			resultMap.put("status", "failure");
 			return resultMap;
