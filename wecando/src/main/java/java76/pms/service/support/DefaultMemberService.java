@@ -42,8 +42,8 @@ public class DefaultMemberService implements MemberService {
     return memberDao.update(member);
   }
 
-  public Member retrieve(int no) {
-    return memberDao.selectOne(no);
+  public Member retrieve(int m_no) {
+    return memberDao.selectOne(m_no);
   }
 
   public Member retrieve(String m_email, String m_password) {

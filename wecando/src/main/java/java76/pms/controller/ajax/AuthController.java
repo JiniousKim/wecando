@@ -81,13 +81,17 @@ public class AuthController {
   
   @RequestMapping(value="check_session", method=RequestMethod.POST)
   public AjaxResult check_session(HttpSession session) throws Exception {
-  		Member member = (Member)session.getAttribute("loginUser");
+  		Member loginUser = (Member)session.getAttribute("loginUser");
+  		int mno = loginUser.getM_no();
+  		Member member = new Member();
   		try {
-  			if (!(member.equals(null))) {
+  			if (!(loginUser.equals(null))) {
+  				member = memberService.retrieve(mno);
   			}
   		} catch (Exception e) {
   			return new AjaxResult("failure", null);
   		}
+  		System.out.println(member);
   		return new AjaxResult("success", member);
   }
   

@@ -76,6 +76,7 @@ public class MemberController extends TimerTask {
 			return new AjaxResult("success", null);
 		}
 	}
+	
 	@RequestMapping(value="detail", method=RequestMethod.GET)
 	public Object detail_get(int m_no) throws Exception {
 		Member member = memberService.retrieve(m_no);
@@ -90,9 +91,11 @@ public class MemberController extends TimerTask {
 
 	@RequestMapping(value="update", method=RequestMethod.POST)
 	public AjaxResult update(Member member) throws Exception {
-		if (memberService.change(member) <= 0) {
+		try {
+			if (memberService.change(member) > 0) {} 
+		} catch (Exception e) {
 			return new AjaxResult("failure", null);
-		} 
+		}
 		return new AjaxResult("success", null);
 	}
 

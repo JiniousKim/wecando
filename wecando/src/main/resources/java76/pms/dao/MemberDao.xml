@@ -36,6 +36,16 @@
     member_email=#{m_email} and email_code=#{email_code}
   </update>
   
+  <update id="update" parameterType="member">
+  update member set
+    member_name=#{m_name, jdbcType=VARCHAR},
+    member_tel=#{m_tel, jdbcType=VARCHAR},
+    member_pwd=#{m_password, jdbcType=VARCHAR},
+    member_nick=#{m_nick, jdbcType=VARCHAR}
+  where
+    member_email=#{m_email}
+  </update>
+  
   <select id="auth" parameterType="map" resultType="String">
     select email_ava
     from member
@@ -59,6 +69,15 @@
       where to_char(sysdate,'YYYYMMDDHH24MISS')-to_char(email_time,'YYYYMMDDHH24MISS') > 1000000
       and email_ava='0'
   </delete>
+  
+  <select id="selectOne" parameterType="int" resultType="member">
+    select member_name as m_name,
+           member_nick as m_nick,
+           member_email as m_email,
+           member_tel as m_tel,
+    from member
+    where member_num=#{m_no}
+  </select>
   
   <select id="selectOneByEmailPassword" parameterType="map" resultType="member">
   select member_num as m_no, 
