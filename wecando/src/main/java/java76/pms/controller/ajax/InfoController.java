@@ -59,6 +59,7 @@ public class InfoController {
 		resultMap.put("loginUser", member);
 		return resultMap;
 	}
+	
 	@RequestMapping(value="member", method=RequestMethod.GET)
 	public Object infoMember1(String m_password,
 			HttpServletResponse response, 
