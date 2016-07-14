@@ -22,7 +22,6 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
     
     Member loginUser = (Member)request.getSession()
                                         .getAttribute("loginUser");
-    System.out.println(loginUser);
     if (!request.getServletPath().startsWith("/auth")
         && loginUser == null) {
       response.sendRedirect(request.getContextPath() + "/login.html");
