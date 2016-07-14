@@ -94,10 +94,7 @@
       <a href="../index.html" class="logo"> <img id="wecando_white"
         src="../img/wecando_white.png">
       </a>
-      <div class="top-menu">
-        <ul class="nav pull-right top-menu">
-          <li><a class="logout" data-toggle="modal" href="index.html#myModal1">Logout</a></li>
-        </ul>
+      <div class="top-menu" id='login_ava'>
       </div>
     </header>
     <aside>
@@ -126,9 +123,11 @@
     <section id="main-content">
       <section class="wrapper">
         <div id="auth">
+          <div id='check'>
           <img id="joinus" src="../img/joinus.png">
           <input id="m_password" type="password">
           <button id="outBtn">button</button>
+          </div>
         </div>
       </section>
     </section>
@@ -144,7 +143,7 @@
   <script src="../js/common-scripts.js"></script>
   <script>
   $(document).ready(function() {
-    $.ajax({
+	  $.ajax({
       url : contextRoot + '/auth/ajax/check_session.do',
       type : 'post',
       dataType : 'json',
@@ -153,9 +152,18 @@
       contentType : false,
       async : false,
       success : function(resultObj) {
+          var loginAva = $('#login_ava');
         var ajaxresult = resultObj.ajaxResult;
         if (ajaxresult.status == 'failure') {
-          location.replace("http://localhost:8080/wecando/login.html");
+          loginAva.append("<ul class='nav pull-right top-menu'>"
+           + "<li><a class='logout' data-toggle='modal'"
+           + "href='wecando.html#myModal1'>Login</a></li>"
+           + "</ul>")
+        } else {
+           loginAva.append("<ul class='nav pull-right top-menu'>"
+               + "<li><a class='logout'"
+               + "href='' onclick='logout();'>Logout</a></li>"
+               + "</ul>")
         }
       }
     })
@@ -175,10 +183,13 @@
       data : form_data,
       success : function(resultObj) {
         var status = resultObj.status;
+        var member = resultObj.loginUser;
+        var show = $('#auth');
         if (status == 'failure') {
         	  sweetAlert("Oops...", "정보가 맞지 않습니다.", "error")
         } else {
-         	 "<div class='row mt'>"
+        	   $('#check').css('display', 'none');
+         	 show.append("<div class='row mt'>"
            + "<div class='col-lg-12'>"
            + "<div class='form-panel-email'>"
            + "<h1 class='email'>"
@@ -188,12 +199,6 @@
            + "<div class='col-lg-10'>"
            + "<p class='form-control-static' style='color: #777;'>"
            + "<%=request.getParameter('m_email')%></p></div></div>"
-           + "<input type='hidden' id='m_email'"
-           + "value=<%=request.getParameter('m_email')%>>" 
-           + "<input type='hidden' id='m_grade'"
-           + "value=<%=request.getParameter('m_grade')%>>" 
-           + "<input type='hidden' id='email_ava' value='1'>" 
-           + "<input type='hidden' id='email_code' value=<%=request.getParameter('email_code')%>>"
            + "<div id='passwordForm' class='form-group has-feedback'>"
            + "<label class='col-sm-2 col-sm-2 control-label'> 비밀번호</label>"
            + "<div class='col-sm-10'>"
@@ -228,7 +233,7 @@
            + "<input type='button' class='btn btn-theme04' value='취소'"
            + "onclick='javascript:history.back()'>"
            + "<button type='button' class='btn btn-theme' id='create'>가입하기</button>"
-           + "</div></div></div>"
+           + "</div></div></div>");
         }
       }
     })

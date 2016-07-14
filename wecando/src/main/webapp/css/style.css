@@ -2553,3 +2553,8 @@ display: block;
     color: black;
     align-content: center;
 }
+
+.join_form {
+	margin-bottom: 15px;
+  padding-bottom: 41px;
+}

@@ -77,7 +77,7 @@
 								<h1 class="email">
 									<i class="fa fa-angle-right"></i> 회원가입
 								</h1>
-								<div class="form-group">
+								<div class="form-group join_form">
 									<label class="col-lg-2 col-sm-2 control-label"> 이메일</label>
 									<div class="col-lg-10">
 										<p class="form-control-static" style="color: #777;">
@@ -91,7 +91,7 @@
 									type='hidden' id='email_ava' value="1"> <input
 									type='hidden' id="email_code"
 									value=<%=request.getParameter("email_code")%>>
-								<div id='passwordForm' class="form-group has-feedback">
+								<div id='passwordForm' class="form-group join_form has-feedback">
 									<label class="col-sm-2 col-sm-2 control-label"> 비밀번호</label>
 									<div class="col-sm-10">
 										<input type="password" id='password'
@@ -102,7 +102,7 @@
 											최대8~20자입니다.</div>
 									</div>
 								</div>
-								<div id='password2Form' class="form-group">
+								<div id='password2Form' class="form-group join_form">
 									<label class="col-sm-2 col-sm-2 control-label"> 비밀번호 확인</label>
 									<div class="col-sm-10">
 										<input type="password" id="password2"
@@ -112,13 +112,13 @@
 											style="display: none;">필수 정보입니다.</div>
 									</div>
 								</div>
-								<div id='nameForm' class="form-group">
+								<div id='nameForm' class="form-group join_form">
 									<label class="col-sm-2 col-sm-2 control-label"> 이름</label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control" id="m_name">
 									</div>
 								</div>
-								<div id='nickForm' class="form-group">
+								<div id='nickForm' class="form-group join_form">
 									<label class="col-sm-2 col-sm-2 control-label"> 닉네임</label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control col-sm-3" id="m_nick">
@@ -126,7 +126,7 @@
 											class="btn btn-default col-sm-2" onclick='check_nick();'>중복확인</button>
 									</div>
 								</div>
-								<div id="telForm" class="form-group">
+								<div id="telForm" class="form-group join_form">
 									<label class="col-sm-2 col-sm-2 control-label"> 전화번호</label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control" id="m_tel">
