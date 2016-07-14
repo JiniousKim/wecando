@@ -2555,6 +2555,8 @@ display: block;
 }
 
 .join_form {
+	border-bottom: 1px solid #eff2f7;
+  margin-right: 30px;
 	margin-bottom: 15px;
   padding-bottom: 41px;
 }
