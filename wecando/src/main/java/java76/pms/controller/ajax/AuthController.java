@@ -64,14 +64,14 @@ public class AuthController {
   }
   
   @RequestMapping(value="logout", method=RequestMethod.POST )
-  public String logout(HttpSession session) {
+  public AjaxResult logout(HttpSession session) {
   	  try {
   	  		session.removeAttribute("loginUser");
   	  }
   	  catch (Exception e) {
-  	  	  return "redirect:../../error.html";
+  	  	  return new AjaxResult("failure", null);
   	  }
-    return "redirect:../../login.html";
+    return new AjaxResult("success", null);
   }
   
   @RequestMapping(value="logout", method=RequestMethod.GET )
