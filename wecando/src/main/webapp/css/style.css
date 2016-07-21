@@ -2589,3 +2589,23 @@ div.col-md-4 a {
 	border: 1px solid black;
 	color: black;
 }
+
+#registerSchool {
+    width: 500px;
+    height : 200px;
+	margin-left: 35px;
+}
+
+#map1 {
+    width : 100%;
+    height: 200px;
+}
+.modal-foot {
+    padding: 15px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+    margin-top: 300px;
+}
+.inputbox {
+    margin-left : 10px;
+}
