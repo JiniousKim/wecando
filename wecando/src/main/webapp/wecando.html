@@ -24,8 +24,10 @@
 <link href="css/style.css" rel="stylesheet">
 <link href="css/style-responsive.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css"
-  href="lib/sweetalert/sweetalert.css">
+	href="lib/sweetalert/sweetalert.css">
 <script src="js/chart-master/Chart.js"></script>
+
+<link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
 </head>
 <body>
 	<div id="login-page">
@@ -42,18 +44,21 @@
 						<div class="input-ikon">
 							<i class='fa fa-user sc'></i>
 						</div>
-						<input type="text" id="m_email" class="f-c i-t" placeholder="User ID" autofocus>
-						<br>
+						<input type="text" id="m_email" class="f-c i-t"
+							placeholder="User ID" autofocus> <br>
 						<div class='input-ikon2'>
 							<i class='fa fa-lock sc'></i>
 						</div>
-						<input type="password" id="m_password" class="f-c i-t" placeholder="Password">
+						<input type="password" id="m_password" class="f-c i-t"
+							placeholder="Password">
 						<div style='margin-top: 30px;'>
 							<div class='b-s'>
-								<button class="btn btn-block bh" type="button" onclick="login();">LOGIN</button>
+								<button class="btn btn-block bh" type="button"
+									onclick="login();">LOGIN</button>
 							</div>
 							<div class="b-s1">
-								<button type='button' class="btn bh btn-block" onclick="join();">SIGN UP</button>
+								<button type='button' class="btn bh btn-block" onclick="join();">SIGN
+									UP</button>
 							</div>
 							<hr>
 						</div>
@@ -140,8 +145,9 @@
 							<li class="external"><a href="#">See All Tasks</a></li>
 						</ul></li>
 					<li id="header_inbox_bar" class="dropdown"><a
-						data-toggle="dropdown" class="dropdown-toggle" href="wecando.html#">
-							<i class="fa fa-envelope-o"></i> <span class="badge bg-theme">5</span>
+						data-toggle="dropdown" class="dropdown-toggle"
+						href="wecando.html#"> <i class="fa fa-envelope-o"></i> <span
+							class="badge bg-theme">5</span>
 					</a>
 						<ul class="dropdown-menu extended inbox">
 							<div class="notify-arrow notify-arrow-green"></div>
@@ -177,8 +183,7 @@
 				</ul>
 			</div>
 			<!-- login 버튼 스크립트로 내려서 login and logout 구현 -->
-			<div class="top-menu" id='login_ava'>
-			</div>
+			<div class="top-menu" id='login_ava'></div>
 		</header>
 		<aside>
 			<div id="sidebar" class="nav-collapse">
@@ -255,7 +260,10 @@
 
 	<script src="js/sparkline-chart.js"></script>
 	<script src="js/zabuto_calendar.js"></script>
-  <script src="lib/sweetalert/sweetalert.min.js"></script>
+	<script src="lib/sweetalert/sweetalert.min.js"></script>
+	<script src='lib/jquery.min.js'></script>
+	<script src='lib/moment.min.js'></script>
+	<script src='fullcalendar/fullcalendar.js'></script>
 	<script type="text/javascript"
 		src="//apis.daum.net/maps/maps3.js?apikey=90d863ade026cac74762f5c9d8c37284"></script>
 	<script>
@@ -270,6 +278,7 @@
 	</script>
 
 	<script type="application/javascript">
+		
     $(document).ready(function () {
         $("#date-popover").popover({html: true, trigger: "manual"});
         $("#date-popover").hide();
@@ -321,54 +330,63 @@
         }
       })
     
+	
 	</script>
 	<script>
-	function logout() {
-		$.ajax({
-			url : contextRoot + '/auth/ajax/logout.do',
-			type : 'post',
-			dataType : 'json',
-			cache : false,
-			success : function(resultObj) {
-				var ajaxresult = resultObj.AjaxResult;
-				if (ajaxresult.status == 'success') {
-					location.replace("http://localhost:8080/wecando/login.html");
-				} else {
-					sweetAlert("Oops...", "Logout에 실패하였습니다.",  "error");
-				}
-			}
-		})
-	}
-	
-	function join() {
-    location.replace("http://localhost:8080/wecando/loginpage/auth.html");
-  }
-	
-	function login() {
-		var form_data = new FormData();
-	  form_data.append("m_email", $('#m_email').val());
-	  form_data.append("m_password", $('#m_password').val());
-		$.ajax({
-       url : contextRoot + '/auth/ajax/login.do',
-        type : 'post',
-        dataType : 'json',
-        cache : false,
-        contentType : false,
-        processData : false,
-        data : form_data,
-        success : function(resultObj) {
-          var ajaxResult = resultObj;
-          if(ajaxResult.status == 'success') {
-            location.replace("http://localhost:8080/wecando/wecando.html");
-          } else {
-              sweetAlert("Oops...", "아이디 또는 비밀번호가 일치하지 않습니다.", "error");
-          }
-        },
-        error : function(resultObj) {
-        	sweetAlert("Oops...", "아이디 또는 비밀번호가 일치하지 않습니다.", "error");
-        }
-     })
-	}
+		function logout() {
+			$
+					.ajax({
+						url : contextRoot + '/auth/ajax/logout.do',
+						type : 'post',
+						dataType : 'json',
+						cache : false,
+						success : function(resultObj) {
+							var ajaxresult = resultObj.AjaxResult;
+							if (ajaxresult.status == 'success') {
+								location
+										.replace("http://localhost:8080/wecando/login.html");
+							} else {
+								sweetAlert("Oops...", "Logout에 실패하였습니다.",
+										"error");
+							}
+						}
+					})
+		}
+
+		function join() {
+			location
+					.replace("http://localhost:8080/wecando/loginpage/auth.html");
+		}
+
+		function login() {
+			var form_data = new FormData();
+			form_data.append("m_email", $('#m_email').val());
+			form_data.append("m_password", $('#m_password').val());
+			$
+					.ajax({
+						url : contextRoot + '/auth/ajax/login.do',
+						type : 'post',
+						dataType : 'json',
+						cache : false,
+						contentType : false,
+						processData : false,
+						data : form_data,
+						success : function(resultObj) {
+							var ajaxResult = resultObj;
+							if (ajaxResult.status == 'success') {
+								location
+										.replace("http://localhost:8080/wecando/wecando.html");
+							} else {
+								sweetAlert("Oops...",
+										"아이디 또는 비밀번호가 일치하지 않습니다.", "error");
+							}
+						},
+						error : function(resultObj) {
+							sweetAlert("Oops...", "아이디 또는 비밀번호가 일치하지 않습니다.",
+									"error");
+						}
+					})
+		}
 	</script>
 </body>
 </html>
