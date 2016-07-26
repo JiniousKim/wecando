@@ -25,15 +25,15 @@ public class InfoController {
 	//	public String register() throws Exception {
 	//		return "redirect:../../error.html";
 	//	}
-	@RequestMapping(value="searchSchool", method=RequestMethod.GET)
-	public String register() throws Exception {
-		return "/info/searchSchool";
-	}
-
-	@RequestMapping(value="searchSchool", method=RequestMethod.POST)
-	public String register_school() throws Exception {
-		return "/info/searchSchool";
-	}
+//	@RequestMapping(value="searchSchool", method=RequestMethod.GET)
+//	public String register() throws Exception {
+//		return "/info/searchSchool";
+//	}
+//
+//	@RequestMapping(value="searchSchool", method=RequestMethod.POST)
+//	public String register_school() throws Exception {
+//		return "/info/searchSchool";
+//	}
 
 	@RequestMapping(value="member", method=RequestMethod.POST)
 	public Object infoMember(String m_password,
@@ -70,6 +70,7 @@ public class InfoController {
 	@RequestMapping(value="searchSchool", method=RequestMethod.POST)
 	public Object searchSchool(String sch_name) throws Exception {
 		SearchSchool search = new SearchSchool();
+		System.out.println(1);
 		return search.searchForSchool(sch_name);
 	}
 

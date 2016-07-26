@@ -17,6 +17,7 @@ public class SearchSchool {
 		
     public Object searchForSchool(String sch_name) {
     		HashMap<String, Object> resultMap = new HashMap<>();
+    		System.out.println(2);
     		try {
     			// 엑셀파일
     			File file = new File("/Users/ohora/wecando/wecando/sql/school.xlsx");
@@ -39,12 +40,14 @@ public class SearchSchool {
     					school.setSch_location(row.getCell(1).toString());
     					school.setSch_tel(row.getCell(2).toString());
     					resultMap.put(row.getCell(0).toString(), school);
+    					System.out.println(resultMap.get(row.getCell(0)));
     				}
     			}
     		} catch (Exception e) {
     			resultMap.put("null", null);
     			return resultMap;
     		}
+    		System.out.println(3);
     		return resultMap;
     }
 }
