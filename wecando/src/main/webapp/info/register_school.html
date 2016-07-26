@@ -234,6 +234,7 @@
     function search() {
       var form_data = new FormData();
       form_data.append("sch_name",$('#sch').val());
+      $("#map1").empty();
     	  $.ajax({
     		  url : contextRoot + '/info/ajax/searchSchool.do',
     		  type : 'post',
@@ -243,7 +244,7 @@
         processData : false,
         data : form_data,
     		  success : function (resultObj) {
-    			  var show = $('#map1');
+		      var show = $('#map1');
     			  for (var school of resultObj.schools) {
     				  show.append("<h1>" + school.sch_name + "");
     			  } 

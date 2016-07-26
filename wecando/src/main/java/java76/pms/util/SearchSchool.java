@@ -14,8 +14,6 @@ import java76.pms.domain.AjaxResult;
 import java76.pms.domain.School;
  
 public class SearchSchool {
-	  School school = new School();
-	
 		public SearchSchool() {}
 		
 		public Object searchForSchool(String sch_name) {
