@@ -77,8 +77,8 @@
           </div>
           <div class="modal-body">
               <form onsubmit="searchPlaces(); return false;">
-                    <input type="text" class="form-control col-sm-3 inputbox" id="keyword">
-                  <button id="searchBtn" type="submit" class="btn btn-default" onclick="layout();">검색</button>
+                    <input type="text" class="form-control col-sm-3 inputbox" id="sch_name">
+                  <button id="searchBtn" type="submit" class="btn btn-default" onclick="search();">검색</button>
                 </form>  
             <div class="col-lg-10">
               <p class="form-control-static" style="color: #777; margin-top: 10px">검색 결과</p>
@@ -448,6 +448,19 @@
     	  $('#map1').css('display', '');
       map1.relayout();
     }
+    
+    function search() {
+    	  $.ajax({
+    		  url : contextRoot + '/info/ajax/searchSchool.do',
+    		  type : 'post',
+    		  dataType : 'json',
+    		  cache : false,
+    		  success : function (resultObj) {
+    			  console.log(resultObj);
+    		  }
+    	  })
+    }
+    
     function logout() {
       $.ajax({
         url : contextRoot + '/auth/ajax/logout.do',
