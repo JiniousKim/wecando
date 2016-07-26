@@ -2,6 +2,7 @@ package java76.pms.util;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -17,10 +18,9 @@ public class SearchSchool {
 	
 		public SearchSchool() {}
 		
-    @SuppressWarnings("null")
 		public Object searchForSchool(String sch_name) {
     		HashMap<String, Object> resultMap = new HashMap<>();
-    		List<School> schools = null;
+    		List<School> schools = new ArrayList<School>();
     		try {
     			// 엑셀파일
     		//File file = new File("/Users/ohora/wecando/wecando/sql/school.xlsx");
@@ -41,7 +41,6 @@ public class SearchSchool {
     					school.setSch_location(row.getCell(1).toString());
     					school.setSch_tel(row.getCell(2).toString());
     					schools.add(school);
-    					resultMap.put("schools", schools);
     				}
     			}
     		} catch (Exception e) {
@@ -49,6 +48,7 @@ public class SearchSchool {
     		}
     		
     		resultMap.put("status", "success");
+    		resultMap.put("schools", schools);
     		return resultMap;
     }
 }
