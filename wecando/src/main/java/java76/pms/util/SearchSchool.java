@@ -47,6 +47,8 @@ public class SearchSchool {
     		} catch (Exception e) {
     			return new AjaxResult("failure", null);
     		}
+    		
+    		resultMap.put("status", "success");
     		return resultMap;
     }
 }

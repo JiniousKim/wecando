@@ -245,8 +245,8 @@
     		  success : function (resultObj) {
     			  var show = $('#map1');
     			  for (var school of resultObj.schools) {
-    				  show.append(school.sch_name);
-    			  }
+    				  show.append("<h1>" + school.sch_name + "");
+    			  } 
     		  }
     	  })
     }
