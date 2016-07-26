@@ -243,7 +243,10 @@
         processData : false,
         data : form_data,
     		  success : function (resultObj) {
-    			  console.log(resultObj);
+    			  var show = $('#map1');
+    			  for (var school of resultObj.schools) {
+    				  show.append(school.sch_name);
+    			  }
     		  }
     	  })
     }
