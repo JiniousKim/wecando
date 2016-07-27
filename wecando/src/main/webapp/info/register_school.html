@@ -248,7 +248,7 @@
 		      var show = $('#map1');
     			  for (var school of resultObj.schools) {
     				  show.append("<a type='button' onclick='choose();' id='" + school.sch_name + "'>" + 
-    						  school.sch_name + "</a>");
+    						  school.sch_name + "</a><br>");
     			  } 
     		  }
     	  })
@@ -260,9 +260,11 @@
             if ( ( id != '') && (id != null))  
             console.log(id);
     });
-    /* 	var form_data = new FormData();
+    	
+    var form_data = new FormData();
+    form_data.append(id);
     	$.ajax({
-    		 url : contextRoot + '/info/ajax/setSchool.do',
+    		 url : contextRoot + '/info/ajax/searchSchool.do',
        type : 'post',
        dataType : 'json',
        cache : false,
@@ -283,7 +285,7 @@
     	             +  "<p class='form-control-static' style='color: #777;'> " + school.sch_tel + "</p>"
     	             +  "</div>")
        }
-    	 }) */
+    	 })
     }
     
     function logout() {

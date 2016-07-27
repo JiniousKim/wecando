@@ -21,20 +21,6 @@ public class InfoController {
 	@Autowired MemberService memberService;
 	@Autowired ServletContext servletContext;
 
-	//	@RequestMapping(value="searchSchool", method=RequestMethod.GET)
-	//	public String register() throws Exception {
-	//		return "redirect:../../error.html";
-	//	}
-//	@RequestMapping(value="searchSchool", method=RequestMethod.GET)
-//	public String register() throws Exception {
-//		return "/info/searchSchool";
-//	}
-//
-//	@RequestMapping(value="searchSchool", method=RequestMethod.POST)
-//	public String register_school() throws Exception {
-//		return "/info/searchSchool";
-//	}
-
 	@RequestMapping(value="member", method=RequestMethod.POST)
 	public Object infoMember(String m_password,
 			HttpServletResponse response, 
@@ -77,6 +63,11 @@ public class InfoController {
 	public Object getSchool(String sch_name) throws Exception {
 		SearchSchool search = new SearchSchool();
 		return search.searchForSchool(sch_name);
+	}
+	
+	@RequestMapping(value="searchSchool", method=RequestMethod.GET)
+	public String register() throws Exception {
+		return "redirect:../../error.html";
 	}
 
 }
