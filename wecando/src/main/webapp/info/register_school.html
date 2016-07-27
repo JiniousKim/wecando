@@ -2,12 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="Dashboard">
-<meta name="keyword"
-  content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-
 <title>Wecando</title>
 
 <!-- Bootstrap core CSS -->
@@ -139,9 +133,10 @@
                     <label class="col-lg-2 col-sm-2 control-label" style="font-weight: bold;">
                       관리 담당 학교</label>
                     <div class="col-lg-10">
-                      <button type="button" class="btn btn-default" style="margin: 0px;"
-                        data-toggle="modal" data-target="#search_school">학교 검색하기</button>
-                    </div>
+											<button type="button" class="btn btn-default"
+												style="margin: 0px;" data-toggle="modal"
+												data-target="#search_school">학교 검색하기</button>
+										</div>
                   </div>
                   <div class="form-group" id='result'>
                   </div>
@@ -231,6 +226,12 @@
   })
   </script>
   <script>
+  $('#search_school').on('hide.bs.modal', function (e) {
+	  $('#map1').first().remove();
+	  $('#sch').html('');
+	  $('#sch').val('');
+  })
+  
     function search() {
       var form_data = new FormData();
       form_data.append("sch_name",$('#sch').val());
@@ -256,36 +257,36 @@
     
     function choose() {
     	$('#map1').click(function(e){
-            var id = e.target.getAttribute('id');
-            if ( ( id != '') && (id != null))  
-            console.log(id);
-    });
-    	
-    var form_data = new FormData();
-    form_data.append(id);
-    	$.ajax({
-    		 url : contextRoot + '/info/ajax/searchSchool.do',
-       type : 'post',
-       dataType : 'json',
-       cache : false,
-       data : form_data,
-       success : function(resultObj) {
-    	     var school = resultObj.schools;
-    	     var show = $('#result');
-    	     show.append("<label class='col-lg-2 col-sm-2 control-label'> 학교 이름</label>"
-    	             +  "<div class='col-lg-10'>"
-    	             +  "<p class='form-control-static' style='color: #777;'>"+ school.sch_name +" </p>"
-    	             +  "</div>"
-    	             +  "<label class='col-lg-2 col-sm-2 control-label'> 학교 위치</label>"
-    	             +  "<div class='col-lg-10'>"
-    	             +  "<p class='form-control-static' style='color: #777;'> " + school.sch_location + " </p>"
-    	             +  "</div>"
-    	             +  "<label class='col-lg-2 col-sm-2 control-label'> 전화번호</label>"
-    	             +  "<div class='col-lg-10'>"
-    	             +  "<p class='form-control-static' style='color: #777;'> " + school.sch_tel + "</p>"
-    	             +  "</div>")
+      var id = e.target.getAttribute('id');
+      if ( ( id != '') && (id != null)) {
+		    	$.ajax({
+		    		 url : contextRoot + '/info/ajax/searchSchool.do',
+		       type : 'post',
+		       dataType : 'json',
+		       cache : false,
+		       data : {
+		    	     sch_name : id
+		       },
+		       success : function(resultObj) {
+		    	     var school = resultObj.schools[0];
+		    	     var show = $('#result');
+		    	     show.append("<label class='col-lg-2 col-sm-2 control-label'> 학교 이름</label>"
+		    	             +  "<div class='col-lg-10'>"
+		    	             +  "<p class='form-control-static' style='color: #777;'>"+ school.sch_name +" </p>"
+		    	             +  "</div>"
+		    	             +  "<label class='col-lg-2 col-sm-2 control-label'> 학교 위치</label>"
+		    	             +  "<div class='col-lg-10'>"
+		    	             +  "<p class='form-control-static' style='color: #777;'> " + school.sch_location + " </p>"
+		    	             +  "</div>"
+		    	             +  "<label class='col-lg-2 col-sm-2 control-label'> 전화번호</label>"
+		    	             +  "<div class='col-lg-10'>"
+		    	             +  "<p class='form-control-static' style='color: #777;'> " + school.sch_tel + "</p>"
+		    	             +  "</div>")
+		    	     
+		       }
+		    	 })
        }
-    	 })
+    	});
     }
     
     function logout() {

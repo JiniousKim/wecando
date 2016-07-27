@@ -14,6 +14,12 @@
     <result column="member_ava" property="m_ava" />
     <result column="member_nickname" property="m_nick" />
   </resultMap>
+  <resultMap type='event' id='eventMap'>
+    <id column="event_code" property='event_code' />
+    <result column="event_name" property='event_name' />
+    <result column="event_price" property='event_price' />
+    <result column="event_max" property='event_max' />
+  </resultMap>
   
   <select id="selectList" resultType="member" parameterType="map">
   </select> 
@@ -94,5 +100,11 @@
   from member
   where member_email=#{m_email} and member_pwd=#{m_password}
   </select>
+  
+  <insert id="insert_event" parameterType='event'>
+    insert into event(event_code, event_name, event_price, event_max)
+      values(#{event_code, jdbcType=VARCHAR},#{event_name,jdbcType=VARCHAR},
+      #{event_price}, #{event_max})
+  </insert>
 
 </mapper>

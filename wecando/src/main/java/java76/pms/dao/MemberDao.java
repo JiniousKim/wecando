@@ -3,6 +3,7 @@ package java76.pms.dao;
 import java.util.List;
 import java.util.Map;
 
+import java76.pms.domain.Event;
 import java76.pms.domain.Member;
 
 public interface MemberDao {
@@ -27,6 +28,8 @@ public interface MemberDao {
   Member selectOneByEmailPassword(Map<String,Object> paramMap);
   
   void deleteExpirationMember();
+  
+  int insert_event(Event event);
 }
 
 

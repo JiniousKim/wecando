@@ -334,23 +334,20 @@
 	</script>
 	<script>
 		function logout() {
-			$
-					.ajax({
-						url : contextRoot + '/auth/ajax/logout.do',
-						type : 'post',
-						dataType : 'json',
-						cache : false,
-						success : function(resultObj) {
-							var ajaxresult = resultObj.AjaxResult;
-							if (ajaxresult.status == 'success') {
-								location
-										.replace("http://localhost:8080/wecando/login.html");
-							} else {
-								sweetAlert("Oops...", "Logout에 실패하였습니다.",
-										"error");
-							}
-						}
-					})
+			$.ajax({
+				url : contextRoot + '/auth/ajax/logout.do',
+				type : 'post',
+				dataType : 'json',
+				cache : false,
+				success : function(resultObj) {
+					var ajaxresult = resultObj.AjaxResult;
+					if (ajaxresult.status == 'success') {
+						location	.replace("http://localhost:8080/wecando/login.html");
+					} else {
+						sweetAlert("Oops...", "Logout에 실패하였습니다.",	"error");
+					}
+				}
+			})
 		}
 
 		function join() {
@@ -362,30 +359,29 @@
 			var form_data = new FormData();
 			form_data.append("m_email", $('#m_email').val());
 			form_data.append("m_password", $('#m_password').val());
-			$
-					.ajax({
-						url : contextRoot + '/auth/ajax/login.do',
-						type : 'post',
-						dataType : 'json',
-						cache : false,
-						contentType : false,
-						processData : false,
-						data : form_data,
-						success : function(resultObj) {
-							var ajaxResult = resultObj;
-							if (ajaxResult.status == 'success') {
-								location
-										.replace("http://localhost:8080/wecando/wecando.html");
-							} else {
-								sweetAlert("Oops...",
-										"아이디 또는 비밀번호가 일치하지 않습니다.", "error");
-							}
-						},
-						error : function(resultObj) {
-							sweetAlert("Oops...", "아이디 또는 비밀번호가 일치하지 않습니다.",
-									"error");
-						}
-					})
+			$.ajax({
+				url : contextRoot + '/auth/ajax/login.do',
+				type : 'post',
+				dataType : 'json',
+				cache : false,
+				contentType : false,
+				processData : false,
+				data : form_data,
+				success : function(resultObj) {
+					var ajaxResult = resultObj;
+					if (ajaxResult.status == 'success') {
+						location
+								.replace("http://localhost:8080/wecando/wecando.html");
+					} else {
+						sweetAlert("Oops...",
+								"아이디 또는 비밀번호가 일치하지 않습니다.", "error");
+					}
+				},
+				error : function(resultObj) {
+					sweetAlert("Oops...", "아이디 또는 비밀번호가 일치하지 않습니다.",
+							"error");
+				}
+			})
 		}
 	</script>
 </body>

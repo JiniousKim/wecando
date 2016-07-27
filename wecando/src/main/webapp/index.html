@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<a role='button' onclick='ham();' id='1'>1</a>
+<a role='button' onclick='ham();' id='2'>2</a>
+<script src="js/jquery.js"></script>
+  <script src="js/jquery-1.8.3.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script class="include" type="text/javascript"
+    src="js/jquery.dcjqaccordion.2.7.js"></script>
+  <script src="js/jquery.scrollTo.min.js"></script>
+  <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+  <script src="js/jquery.sparkline.js"></script>
+
+  <script src="js/common-scripts.js"></script>
+
+  <script type="text/javascript" src="js/gritter/js/jquery.gritter.js"></script>
+  <script type="text/javascript" src="js/gritter-conf.js"></script>
+
+<script>
+function ham() {
+	console.log($(this).attr('id').val());
+}
+</script>
+</body>
+</html>
