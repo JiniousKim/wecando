@@ -72,5 +72,11 @@ public class InfoController {
 		SearchSchool search = new SearchSchool();
 		return search.searchForSchool(sch_name);
 	}
+	
+	@RequestMapping(value="searchSchool", method=RequestMethod.GET)
+	public Object getSchool(String sch_name) throws Exception {
+		SearchSchool search = new SearchSchool();
+		return search.searchForSchool(sch_name);
+	}
 
 }
