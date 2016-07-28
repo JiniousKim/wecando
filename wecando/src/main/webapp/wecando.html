@@ -333,6 +333,13 @@
 	
 	</script>
 	<script>
+	  $('#myModal1').on('hide.bs.modal', function (e) {
+      $('#m_email').html('');
+      $('#m_password').html('');
+      $('#m_email').val('');
+      $('#m_password').val('');
+	  })
+	 
 		function logout() {
 			$.ajax({
 				url : contextRoot + '/auth/ajax/logout.do',

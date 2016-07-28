@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="java76.pms.dao.EventDao">
+  <resultMap type="event" id="eventMap">
+    <id column="event_code" property="event_code"/>
+    <result column="event_name" property="event_name"/>
+    <result column="event_price" property="event_price" />
+    <result column="event_max" property="event_max" />
+  </resultMap>
+  
+  <select id="getEventList" resultMap='event'>
+    select * 
+    from event
+  </select>
+  
+  <select id='getEvent' parameterType="String">
+    select *
+    from event
+    where event_code = #{event_code}
+  </select>
+    
+</mapper>

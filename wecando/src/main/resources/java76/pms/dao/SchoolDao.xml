@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="java76.pms.dao.SchoolDao">
+  <resultMap type="school" id="schoolMap">
+    <id column="sch_num" property="sch_no"/>
+    <result column="sch_name" property="sch_name"/>
+    <result column="sch_location" property="sch_location" />
+    <result column="sch_tel" property="sch_tel" />
+    <result column="member_num" property="m_no" />
+  </resultMap>
+  
+  <insert id='sch_insert' parameterType='map'>
+    insert into school(sch_num, sch_name,sch_location,sch_tel,member_num)
+    values(school.incre.nextval,#{sch_name, jdbcType=VARCHAR}, #{sch_location, jdbcType=VARCHAR},
+      #{sch_tel, jdbcType=VARCHAR}, #{m_no})
+  </insert>
+  
+</mapper>

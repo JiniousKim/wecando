@@ -92,7 +92,7 @@
         <div class="fa fa-bars tooltips" data-placement="right"
           data-original-title="Toggle Navigation"></div>
       </div>
-      <a href="wecando.html" class="logo"> <img id="wecando_white"
+      <a href="../wecando.html" class="logo"> <img id="wecando_white"
         src="../img/wecando_white.png">
       </a>
     </header>
@@ -152,10 +152,7 @@
                           data-toggle="dropdown">
                           종목 <span class="caret"></span>
                         </button>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">수영</a></li>
-                          <li><a href="#">농구</a></li>
-                          <li><a href="#">축구</a></li>
+                        <ul class="dropdown-menu" id='event_list' role="menu">
                         </ul>
                       </div>
                     </div>
@@ -223,15 +220,40 @@
         }
       }
     })
+    $.ajax({
+    	   url : contextRoot + '/event/ajax/getList.do',
+       type : 'post',
+       dataType : 'json',
+       cache : false,
+       processData : false,
+       contentType : false,
+       async : false,
+       success : function(resultObj) {
+         var list = $('#event_list');
+         var ajaxresult = resultObj.ajaxResult;
+         if (ajaxresult.status == 'success') {
+             for(var evnet of resultObj.event_list) {
+           	    list.append("<li>" + event.event_name + "</li>")
+             }
+         }
+       }
+   })
   })
   </script>
   <script>
-  $('#search_school').on('hide.bs.modal', function (e) {
-	  $('#map1').first().remove();
-	  $('#sch').html('');
-	  $('#sch').val('');
-  })
-  
+	  $('#search_school').on('hide.bs.modal', function (e) {
+		  $('#map1').first().remove();
+		  $('#sch').html('');
+		  $('#sch').val('');
+	  })
+    
+	  $('#myModal1').on('hide.bs.modal', function (e) {
+      $('#m_email').html('');
+      $('#m_password').html('');
+      $('#m_email').val('');
+      $('#m_password').val('');
+    })
+	  
     function search() {
       var form_data = new FormData();
       form_data.append("sch_name",$('#sch').val());
