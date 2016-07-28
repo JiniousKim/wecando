@@ -231,11 +231,8 @@
        async : false,
        success : function(resultObj) {
          var list = $('#event_list');
-         var ajaxresult = resultObj.ajaxResult;
-         if (ajaxresult.status == 'success') {
-             for(var evnet of resultObj.event_list) {
-           	    list.append("<li>" + event.event_name + "</li>")
-             }
+         for(var evnet of resultObj.event_list) {
+       	    list.append("<li>" + event + "</li>")
          }
        }
    })
