@@ -3,7 +3,6 @@ package java76.pms.service;
 import java.util.List;
 import java.util.Map;
 
-import java76.pms.domain.Event;
 import java76.pms.domain.Member;
 
 public interface MemberService {
@@ -21,7 +20,6 @@ public interface MemberService {
   Member retrieve(int m_no);
   Member retrieve(String m_email, String m_password);
   void removeExpirationMember();
-	int insert_event(Event event);
 }
 
 

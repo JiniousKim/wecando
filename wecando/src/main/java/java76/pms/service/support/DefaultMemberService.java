@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java76.pms.dao.MemberDao;
-import java76.pms.domain.Event;
 import java76.pms.domain.Member;
 import java76.pms.service.MemberService;
 
@@ -78,10 +77,6 @@ public class DefaultMemberService implements MemberService {
   
   public String check_ava(Map<String, String> paramMap) {
 		return memberDao.auth(paramMap);
-  }
-  
-  public int insert_event(Event event) {
-  		return memberDao.insert_event(event);
   }
 }
 
