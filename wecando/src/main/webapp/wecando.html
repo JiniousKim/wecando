@@ -358,8 +358,7 @@
 		}
 
 		function join() {
-			location
-					.replace("http://localhost:8080/wecando/loginpage/auth.html");
+			location	.replace("http://localhost:8080/wecando/loginpage/auth.html");
 		}
 
 		function login() {
@@ -377,16 +376,13 @@
 				success : function(resultObj) {
 					var ajaxResult = resultObj;
 					if (ajaxResult.status == 'success') {
-						location
-								.replace("http://localhost:8080/wecando/wecando.html");
+						location.replace("http://localhost:8080/wecando/wecando.html");
 					} else {
-						sweetAlert("Oops...",
-								"아이디 또는 비밀번호가 일치하지 않습니다.", "error");
+						sweetAlert("Oops...","아이디 또는 비밀번호가 일치하지 않습니다.", "error");
 					}
 				},
 				error : function(resultObj) {
-					sweetAlert("Oops...", "아이디 또는 비밀번호가 일치하지 않습니다.",
-							"error");
+					sweetAlert("Oops...", "아이디 또는 비밀번호가 일치하지 않습니다.","error");
 				}
 			})
 		}

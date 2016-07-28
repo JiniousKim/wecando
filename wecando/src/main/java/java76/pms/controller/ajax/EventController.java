@@ -24,7 +24,7 @@ public class EventController {
 	public Object getEventList() throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<>();
 		try {
-			List<Event> eventList = eventService.getEventList();
+			List<String> eventList = eventService.getEventList();
 			resultMap.put("eventList", eventList);
 		} catch (Exception e) {
 			return new AjaxResult("failure", null);

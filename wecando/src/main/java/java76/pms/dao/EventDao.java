@@ -5,7 +5,7 @@ import java.util.List;
 import java76.pms.domain.Event;
 
 public interface EventDao {
-  List<Event> getEventList();
+  List<String> getEventList();
   Event getEvent(String event_code);
 }
 
