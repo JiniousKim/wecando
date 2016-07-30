@@ -315,8 +315,8 @@
         async : false,
         success : function(resultObj) {
         	  var loginAva = $('#login_ava');
-          var ajaxresult = resultObj.status;
-          if (ajaxresult == 'failure') {
+          var ajaxresult = resultObj;
+          if (ajaxresult.status == 'failure') {
         	  loginAva.append("<ul class='nav pull-right top-menu'>"
              + "<li><a class='logout' data-toggle='modal'"
              + "href='wecando.html#myModal1'>Login</a></li>"

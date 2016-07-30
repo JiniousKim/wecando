@@ -225,7 +225,7 @@
       success : function(resultObj) {
     	    m_no = resultObj.m_no;
         var loginAva = $('#login_ava');
-        var ajaxresult = resultObj.ajaxResult;
+        var ajaxresult = resultObj;
         if (ajaxresult.status == 'failure') {
           loginAva.append("<ul class='nav pull-right top-menu'>"
            + "<li><a class='logout' data-toggle='modal'"

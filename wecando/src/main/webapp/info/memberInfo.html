@@ -185,7 +185,7 @@
       async : false,
       success : function(resultObj) {
         var loginAva = $('#login_ava');
-        var ajaxresult = resultObj.ajaxResult;
+        var ajaxresult = resultObj;
         if (ajaxresult.status == 'failure') {
         	  	location.replace("http://localhost:8080/wecando/login.html");
         } else {
