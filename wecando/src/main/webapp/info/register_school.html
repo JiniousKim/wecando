@@ -267,7 +267,7 @@
       form_data.append("sch_name",$('#sch').val());
       $("#map1").empty();
          $.ajax({
-            url : contextRoot + '/info/ajax/searchSchool.do',
+            url : contextRoot + '/school/ajax/searchSchool.do',
             type : 'post',
             dataType : 'json',
             cache : false,
@@ -303,7 +303,7 @@
              if (isConfirm) {     
             if ( ( id != '') && (id != null)) {
                    $.ajax({
-                       url : contextRoot + '/info/ajax/searchSchool.do',
+                       url : contextRoot + '/school/ajax/searchSchool.do',
                    type : 'post',
                    dataType : 'json',
                    cache : false,
