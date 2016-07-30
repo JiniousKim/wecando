@@ -49,4 +49,32 @@ public class SearchSchool {
     		resultMap.put("schools", schools);
     		return resultMap;
     }
+		
+		public School getSchool(String sch_name) {
+			School school = new School();
+			try {
+  			// 엑셀파일
+	  		//File file = new File("/Users/ohora/wecando/wecando/sql/school.xlsx");
+	  			File file = new File("C:/Users/IEUser/Documents/wecando/wecando/sql/School.xlsx");
+	  			
+	  			// 엑셀 파일 오픈
+	  			@SuppressWarnings("resource")
+	  			XSSFWorkbook wb = new XSSFWorkbook(new FileInputStream(file));
+	  			Cell cell = null;
+	  			for (Row row : wb.getSheetAt(0)) { 
+	  				if(row.getCell(1) == null){
+	  					break;
+	  				}
+	  				cell = row.getCell(0);
+	  				if (cell.toString().matches(".*" + sch_name + ".*")) {
+	  					school.setSch_name(row.getCell(0).toString());
+	  					school.setSch_location(row.getCell(1).toString());
+	  					school.setSch_tel(row.getCell(2).toString());
+	  				}
+	  			}
+	  		} catch (Exception e) {
+	  			return null;
+	  		}
+			return school;
+		}
 }

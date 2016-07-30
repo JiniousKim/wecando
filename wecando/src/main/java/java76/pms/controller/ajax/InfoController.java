@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java76.pms.domain.Member;
 import java76.pms.service.MemberService;
-import java76.pms.util.SearchSchool;
 
 @Controller("ajax.InfoController")
 @RequestMapping("/info/ajax/*")
@@ -52,16 +51,4 @@ public class InfoController {
 	public String infoMember1() throws Exception {
 		return "redirect:../../error.html";
 	}
-	
-	@RequestMapping(value="searchSchool", method=RequestMethod.POST)
-	public Object searchSchool(String sch_name) throws Exception {
-		SearchSchool search = new SearchSchool();
-		return search.searchForSchool(sch_name);
-	}
-	
-	@RequestMapping(value="searchSchool", method=RequestMethod.GET)
-	public String register() throws Exception {
-		return "redirect:../../error.html";
-	}
-
 }
