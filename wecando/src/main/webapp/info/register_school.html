@@ -137,10 +137,10 @@
                     <label class="col-lg-2 col-sm-2 control-label" style="font-weight: bold;">
                       관리 담당 학교</label>
                     <div class="col-lg-10">
-                      <button type="button" class="btn btn-default"
-                        style="margin: 0px;" data-toggle="modal"
-                        data-target="#search_school">학교 검색하기</button>
-                    </div>
+                                 <button type="button" class="btn btn-default"
+                                    style="margin: 0px;" data-toggle="modal"
+                                    data-target="#search_school">학교 검색하기</button>
+                              </div>
                   </div>
                   <div class="form-group" id='result'>
                   </div>
@@ -149,36 +149,36 @@
                       <label class="col-sm-2 col-sm-2 control-label" style="font-weight: bold;">
                         시설물 등록</label>
                     </div>
-                    <div id="pm" style="display:inline-block;">
-                      <label class="col-sm-2 col-sm-2 control-label"> 이용가능 종목</label>
-                      <div class="col-sm-10">
-                        <div class="btn-group">
-                          <button type="button" class="btn btn-default dropdown-toggle"
-                            data-toggle="dropdown">
-                            종목 <span class="caret"></span>
-                          </button>
-                          <ul class="dropdown-menu over" id='event_list' role="menu">
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div id="pm" style="display:inline-block;">
-                      <label class="col-sm-2 col-sm-2 control-label"> 코트 수</label>
-                      <div class="col-sm-10">
-                          <input type="number" name="points" min="0" max="10" step="1" value="1">
-                      </div>
-                    </div>
-                    <div id="pm" style="display:inline-block;">
-                      <label class="col-sm-2 col-sm-2 control-label"> 최대 수용 인원</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control col-sm-3">
-                      </div>
+                    <div id="pm">
+                       <label class="col-sm-2 col-sm-2 control-label"> 이용가능 종목</label>
+                       <div class="col-sm-10">
+                         <div class="btn-group">
+                           <button type="button" class="btn btn-default dropdown-toggle"
+                             data-toggle="dropdown">
+                             종목 <span class="caret"></span>
+                           </button>
+                           <ul class="dropdown-menu over" id='event_list' role="menu">
+                           </ul>
+                         </div>
+                       </div>
                     </div>
                     <div id="pm">
-                      <label class="col-sm-2 col-sm-2 control-label"> 이용 금액</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control">
-                      </div>
+                       <label class="col-sm-2 col-sm-2 control-label"> 코트 수</label>
+                       <div class="col-sm-10" style="margin-top: 5px;">
+                           <input type="number" name="points" min="0" max="10" step="1" value="1" style="color:black;">
+                       </div>
+                    </div>
+                    <div id="pm">
+                       <label class="col-sm-3 control-label"> 최대 수용 인원</label>
+                       <div class="col-sm-10">
+                         <input type="text" class="form-control col-sm-3" style="margin-left: -57px;">
+                       </div>
+                    </div>
+                    <div id="pm">
+                       <label class="col-sm-3 col-sm-3 control-label"> 이용 금액</label>
+                       <div class="col-sm-10">
+                         <input type="text" class="form-control" style="margin-left: -57px;">
+                       </div>
                     </div>
                   </div>
                   <button type="button" class="btn btn-theme04">취소</button>
@@ -203,11 +203,10 @@
   <script src="../js/jquery.nicescroll.js" type="text/javascript"></script>
   <script src="../js/jquery.sparkline.js"></script>
   <script src="../js/common-scripts.js"></script>
-  <script src="../lib/sweetalert/sweetalert.min.js"></script>
   <script>
   var m_no;
   $(document).ready(function () {
-    $.ajax({
+     $.ajax({
       url : contextRoot + '/auth/ajax/check_session.do',
       type : 'post',
       dataType : 'json',
@@ -232,7 +231,7 @@
       }
     })
     $.ajax({
-         url : contextRoot + '/event/ajax/eventList.do',
+          url : contextRoot + '/event/ajax/eventList.do',
        type : 'post',
        dataType : 'json',
        cache : false,
@@ -242,97 +241,98 @@
        success : function(resultObj) {
          var list = $('#event_list');
          for(var event of resultObj.eventList) {
-            list.append("<li>" + event + "</li>")
+              list.append("<li>" + event + "</li>")
          }
        }
     })
   })
   </script>
   <script>
-    $('#search_school').on('hide.bs.modal', function (e) {
-      $('#map1').first().remove();
-      $('#sch').html('');
-      $('#sch').val('');
-    })
+     $('#search_school').on('hide.bs.modal', function (e) {
+        $('#map1').first().remove();
+        $('#sch').html('');
+        $('#sch').val('');
+     })
     
-    $('#myModal1').on('hide.bs.modal', function (e) {
+     $('#myModal1').on('hide.bs.modal', function (e) {
       $('#m_email').html('');
       $('#m_password').html('');
       $('#m_email').val('');
       $('#m_password').val('');
     })
-    
+     
     function search() {
       var form_data = new FormData();
       form_data.append("sch_name",$('#sch').val());
       $("#map1").empty();
-        $.ajax({
-          url : contextRoot + '/school/ajax/searchSchool.do',
-          type : 'post',
-          dataType : 'json',
-          cache : false,
+         $.ajax({
+            url : contextRoot + '/info/ajax/searchSchool.do',
+            type : 'post',
+            dataType : 'json',
+            cache : false,
         contentType : false,
         processData : false,
         data : form_data,
-          success : function (resultObj) {
-            var sub = $('#sub');
-          var show = $('#map1');
-            for (var school of resultObj.schools) {
-              show.append("<a type='button' onclick='choose();' id='" + school.sch_name + "'>" + 
-                  school.sch_name + "</a><br>");
-            } 
-          }
-        })
+            success : function (resultObj) {
+               var sub = $('#sub');
+            var show = $('#map1');
+               for (var school of resultObj.schools) {
+                  show.append("<a type='button' onclick='choose();' id='" + school.sch_name + "'>" + 
+                        school.sch_name + "</a><br>");
+               } 
+            }
+         })
     }
     
     function choose() {
-      $('#map1').click(function(e){
+       $('#map1').click(function(e){
       var id = e.target.getAttribute('id');
       swal({   
-          title: "Are you sure?",   
-          text: "학교를 등록하시겠습니까 ?",   
-          type: "warning",   
-          showCancelButton: true,   
-          confirmButtonColor: "#DD6B55",   
-          confirmButtonText: "예!",   
-          cancelButtonText: "아니오!",   
-          closeOnConfirm: false,   
-          closeOnCancel: false 
-        }, 
-        function(isConfirm) {   
-          if (isConfirm) {     
-          if ( ( id != '') && (id != null)) {
-              $.ajax({
-                url : contextRoot + '/school/ajax/addSchool.do',
-	              type : 'post',
-	              dataType : 'json',
-	              cache : false,
-	              data : {
-	                sch_name : id
-	              },
-	              success : function(resultObj) {
-                  var school = resultObj.schools[0];
-                  var show = $('#result');
-                  show.append("<label class='col-lg-2 col-sm-2 control-label'> 학교 이름</label>"
-                           +  "<div class='col-lg-10'>"
-                           +  "<p class='form-control-static' style='color: #777;'>"+ school.sch_name +" </p>"
-                           +  "</div>"
-                           +  "<label class='col-lg-2 col-sm-2 control-label'> 학교 위치</label>"
-                           +  "<div class='col-lg-10'>"
-                           +  "<p class='form-control-static' style='color: #777;'> " + school.sch_location + " </p>"
-                           +  "</div>"
-                           +  "<label class='col-lg-2 col-sm-2 control-label'> 전화번호</label>"
-                           +  "<div class='col-lg-10'>"
-                           +  "<p class='form-control-static' style='color: #777;'> " + school.sch_tel + "</p>"
-                           +  "</div>")
-                 }
-               })
-           } swal("Successed!", "학교가 등록되었습니다.", "success");   
-          } else {     
-            swal("Cancelled", "등록을 취소하였습니다.", "error");   
+            title: "Are you sure?",   
+             text: "You will not be able to recover this imaginary file!",   
+             type: "warning",   
+             showCancelButton: true,   
+             confirmButtonColor: "#DD6B55",   
+             confirmButtonText: "Yes, delete it!",   
+             cancelButtonText: "No, cancel plx!",   
+             closeOnConfirm: false,   
+             closeOnCancel: false 
+          }, 
+          function(isConfirm) {   
+             if (isConfirm) {     
+            if ( ( id != '') && (id != null)) {
+                   $.ajax({
+                       url : contextRoot + '/info/ajax/searchSchool.do',
+                   type : 'post',
+                   dataType : 'json',
+                   cache : false,
+                   data : {
+                        sch_name : id
+                   },
+                   success : function(resultObj) {
+                        var school = resultObj.schools[0];
+                        var show = $('#result');
+                        show.append("<label class='col-lg-2 col-sm-2 control-label'> 학교 이름</label>"
+                                +  "<div class='col-lg-10'>"
+                                +  "<p class='form-control-static' style='color: #777;'>"+ school.sch_name +" </p>"
+                                +  "</div>"
+                                +  "<label class='col-lg-2 col-sm-2 control-label'> 학교 위치</label>"
+                                +  "<div class='col-lg-10'>"
+                                +  "<p class='form-control-static' style='color: #777;'> " + school.sch_location + " </p>"
+                                +  "</div>"
+                                +  "<label class='col-lg-2 col-sm-2 control-label'> 전화번호</label>"
+                                +  "<div class='col-lg-10'>"
+                                +  "<p class='form-control-static' style='color: #777;'> " + school.sch_tel + "</p>"
+                                +  "</div>")
+                   }
+                    })
+             }
+                swal("Successed!", "학교가 등록되었습니다.", "success");   
+            } else {     
+               swal("Cancelled", "등록을 취소하였습니다.", "error");   
         } 
-        });
-      });
+         });
+       });
     }
     
     function logout() {
@@ -371,7 +371,8 @@
          success : function(resultObj) {
            var ajaxResult = resultObj;
            if (ajaxResult.status == 'success') {
-             location.replace("http://localhost:8080/wecando/wecando.html");
+             location
+                 .replace("http://localhost:8080/wecando/wecando.html");
            } else {
              sweetAlert("Oops...","아이디 또는 비밀번호가 일치하지 않습니다.", "error");
            }
