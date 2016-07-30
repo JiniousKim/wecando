@@ -2609,3 +2609,8 @@ div.col-md-4 a {
 .inputbox {
     margin-left : 10px;
 }
+
+.over {
+	height : 150px;
+	overflow : auto;
+}
