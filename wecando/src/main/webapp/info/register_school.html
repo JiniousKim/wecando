@@ -177,7 +177,7 @@
 											<label class="col-sm-3 control-label"> 최대 수용 인원</label>
 											<div class="col-sm-10">
 												<input type="text" class="form-control col-sm-3"
-													style="margin-left: -57px;">
+													style="margin-left: -57px; text-align : center;">
 											</div>
 										</div>
 										<div id="pm">
@@ -223,6 +223,7 @@
       contentType : false,
       async : false,
       success : function(resultObj) {
+    	    m_no = resultObj.m_no;
         var loginAva = $('#login_ava');
         var ajaxresult = resultObj.ajaxResult;
         if (ajaxresult.status == 'failure') {
@@ -278,9 +279,9 @@
             type : 'post',
             dataType : 'json',
             cache : false,
-        contentType : false,
-        processData : false,
-        data : form_data,
+		        contentType : false,
+		        processData : false,
+		        data : form_data,
             success : function (resultObj) {
                var sub = $('#sub');
             var show = $('#map1');
@@ -300,9 +301,9 @@
 	             text: "등록할 학교가 " + id + " 맞으십니까 ?",   
 	             type: "warning",   
 	             showCancelButton: true,   
-	             confirmButtonColor: "#DD6B55",   
-	             confirmButtonText: "Yes, delete it!",   
-	             cancelButtonText: "No, cancel plx!",   
+	             confirmButtonColor: "#7AC943",   
+	             confirmButtonText: "등록할래요!",   
+	             cancelButtonText: "앗! 아니오",   
 	             closeOnConfirm: false,   
 	             closeOnCancel: false 
 	          }, 
@@ -315,7 +316,8 @@
 	                   dataType : 'json',
 	                   cache : false,
 	                   data : {
-	                        sch_name : id
+	                        sch_name : id,
+	                        m_no : m_no
 	                   },
 	                   success : function(resultObj) {
                         var school = resultObj.schools[0];
