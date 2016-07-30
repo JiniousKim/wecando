@@ -33,6 +33,7 @@ public class SchoolController {
 		}
 		return new AjaxResult("status", "success");
 	}
+	
 	@RequestMapping(value="setSchool", method=RequestMethod.GET)
 	public String get_setSchool() {
 		return "redirect:../../error.html";
