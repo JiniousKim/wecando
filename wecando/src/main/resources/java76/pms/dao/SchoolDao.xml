@@ -14,7 +14,7 @@
   
   <insert id='sch_insert' parameterType='map'>
     insert into school(sch_num, sch_name,sch_location,sch_tel,member_num)
-    values(school.incre.nextval,#{sch_name, jdbcType=VARCHAR}, #{sch_location, jdbcType=VARCHAR},
+    values(school_incre.nextval,#{sch_name, jdbcType=VARCHAR}, #{sch_location, jdbcType=VARCHAR},
       #{sch_tel, jdbcType=VARCHAR}, #{m_no})
   </insert>
   

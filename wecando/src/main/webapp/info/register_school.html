@@ -299,7 +299,7 @@
 	             type: "warning",   
 	             showCancelButton: true,   
 	             confirmButtonColor: "#7AC943",   
-	             confirmButtonText: "등록할래요!",   
+	             confirmButtonText: "네, 등록할래요!",   
 	             cancelButtonText: "앗! 아니오",   
 	             closeOnConfirm: false,   
 	             closeOnCancel: false 
@@ -321,6 +321,7 @@
                         if (status == 'failure') {
                         	  swal('Error','등록할 수 없습니다.', "error");                        	 
                         }
+                        swal("Successed!", "학교가 등록되었습니다.", "success"); 
 	                	      var school = resultObj.school;
                         var show = $('#result');
                         show.append("<label class='col-lg-2 col-sm-2 control-label'> 학교 이름</label>"
@@ -337,7 +338,7 @@
                                 +  "</div>")
                    }
                     })
-             } swal("Successed!", "학교가 등록되었습니다.", "success");   
+             }   
             } else {     
                swal("Cancelled", "등록을 취소하였습니다.", "error");   
             } 
