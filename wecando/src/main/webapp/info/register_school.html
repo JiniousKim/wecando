@@ -227,10 +227,7 @@
         var loginAva = $('#login_ava');
         var ajaxresult = resultObj;
         if (ajaxresult.status == 'failure') {
-          loginAva.append("<ul class='nav pull-right top-menu'>"
-           + "<li><a class='logout' data-toggle='modal'"
-           + "href='wecando.html#myModal1'>Login</a></li>"
-           + "</ul>")
+        	  	location.replace("http://localhost:8080/wecando/login.html");
         } else {
            loginAva.append("<ul class='nav pull-right top-menu'>"
                + "<li><a class='logout'"
@@ -240,7 +237,7 @@
       }
     })
     $.ajax({
-          url : contextRoot + '/event/ajax/eventList.do',
+       url : contextRoot + '/event/ajax/eventList.do',
        type : 'post',
        dataType : 'json',
        cache : false,
@@ -311,7 +308,7 @@
              if (isConfirm) {     
              if ( ( id != '') && (id != null)) {
                    $.ajax({
-                     url : contextRoot + '/school/ajax/searchSchool.do',
+                     url : contextRoot + '/school/ajax/addSchool.do',
                      type : 'post',
 	                   dataType : 'json',
 	                   cache : false,
@@ -320,7 +317,11 @@
 	                        m_no : m_no
 	                   },
 	                   success : function(resultObj) {
-                        var school = resultObj.schools[0];
+	                	      var status = resultObj.status;
+                        if (status == 'failure') {
+                        	  swal('Error','등록할 수 없습니다.', "error");                        	 
+                        }
+	                	      var school = resultObj.school;
                         var show = $('#result');
                         show.append("<label class='col-lg-2 col-sm-2 control-label'> 학교 이름</label>"
                                 +  "<div class='col-lg-10'>"
