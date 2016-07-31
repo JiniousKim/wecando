@@ -313,6 +313,7 @@
         async : false,
         success : function(resultObj) {
         	  var loginAva = $('#login_ava');
+        	  var sM = $('#school_Manager');
           var ajaxresult = resultObj;
           if (ajaxresult.status == 'failure') {
         	  loginAva.append("<ul class='nav pull-right top-menu'>"
@@ -324,11 +325,14 @@
         			   + "<li><a class='logout'"
         			   + "href='' onclick='logout();'>Logout</a></li>"
         			   + "</ul>")
+          } 
+          if (ajaxresult.grade == '2') {
+        	    sM.append(
+        	     "<li><a href='info/register_school.html>'>학교 정보</a></li>"		
+        	    )
           }
         }
       })
-      <li><a href="info/register_school.html">학교 정보</a></li>
-    
 	
 	</script>
 	<script>

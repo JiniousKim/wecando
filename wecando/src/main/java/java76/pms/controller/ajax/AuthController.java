@@ -94,6 +94,7 @@ public class AuthController {
   		
   		resultMap.put("status", "success");
   		resultMap.put("m_no", member.getM_no());
+  		resultMap.put("grade", member.getM_grade());
   		return resultMap;
   }
   
