@@ -26,7 +26,6 @@ public class InfoController {
 			HttpSession session) throws Exception {
 
 		Member loginUser = (Member)session.getAttribute("loginUser");
-		Member member = new Member();
 		HashMap<String, Object> resultMap = new HashMap<>();
 
 		if (!(loginUser.getM_password().equals(m_password))) {
@@ -34,16 +33,14 @@ public class InfoController {
 			return resultMap;
 		}
 		try {
-			int m_no = loginUser.getM_no();
-			member = memberService.retrieve(m_no);
-			System.out.println(member);
+			loginUser = memberService.retrieve(
+					loginUser.getM_email(), loginUser.getM_password());
 		} catch (Exception e) {
 			resultMap.put("status", "failure");
 			return resultMap;
 		}
-		System.out.println(member);
 		resultMap.put("status", "success");
-		resultMap.put("loginUser", member);
+		resultMap.put("loginUser", loginUser);
 		return resultMap;
 	}
 	

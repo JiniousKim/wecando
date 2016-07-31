@@ -90,6 +90,8 @@ public class AuthController {
   			return resultMap;
   		}
   		
+  		member = memberService.retrieve(member.getM_email(), member.getM_password());
+  		
   		resultMap.put("status", "success");
   		resultMap.put("m_no", member.getM_no());
   		return resultMap;

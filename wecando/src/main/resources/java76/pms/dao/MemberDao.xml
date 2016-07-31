@@ -70,7 +70,8 @@
   </delete>
   
   <select id="selectOne" parameterType="int" resultType="member">
-    select member_name as m_name,
+    select member_num as m_no,
+           member_name as m_name,
            member_nick as m_nick,
            member_email as m_email,
            member_tel as m_tel
