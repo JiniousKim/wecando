@@ -233,6 +233,13 @@
                + "<li><a class='logout'"
                + "href='' onclick='logout();'>Logout</a></li>"
                + "</ul>")
+        } 
+        if (ajaxresult.grade == 2) {
+            sM.append(
+             "<li><a href='info/register_school.html'>학교 정보</a></li>"   
+            )
+        } else {
+        	  location.replace("http://localhost:8080/wecando/wecando.html");
         }
       }
     })
@@ -337,8 +344,8 @@
                                 +  "<p class='form-control-static' style='color: #777;'> " + school.sch_tel + "</p>"
                                 +  "</div>")
                    }
-                    })
-             }   
+                })
+              }   
             } else {     
                swal("Cancelled", "등록을 취소하였습니다.", "error");   
             } 

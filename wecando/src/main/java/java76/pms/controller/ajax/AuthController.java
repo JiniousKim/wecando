@@ -89,9 +89,7 @@ public class AuthController {
   			resultMap.put("status", "failure");
   			return resultMap;
   		}
-  		
   		member = memberService.retrieve(member.getM_email(), member.getM_password());
-  		
   		resultMap.put("status", "success");
   		resultMap.put("m_no", member.getM_no());
   		resultMap.put("grade", member.getM_grade());

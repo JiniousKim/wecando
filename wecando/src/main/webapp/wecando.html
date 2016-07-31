@@ -200,8 +200,8 @@
 					<li class="sub-menu"><a href="javascript:;"> <i
 							class="fa fa-user"></i> <span>마이 페이지</span>
 					</a>
-						<ul class="sub">
-							<li id='school_manager'><a href="info/memberInfo.html">내 정보</a></li>
+						<ul class="sub" id='sub_menu'>
+							<li><a href="info/memberInfo.html">내 정보</a></li>
 							<li><a href="todo_list.html">Todo List</a></li>
 						</ul></li>
 				</ul>
@@ -313,7 +313,7 @@
         async : false,
         success : function(resultObj) {
         	  var loginAva = $('#login_ava');
-        	  var sM = $('#school_Manager');
+        	  var sM = $('#sub_menu');
           var ajaxresult = resultObj;
           if (ajaxresult.status == 'failure') {
         	  loginAva.append("<ul class='nav pull-right top-menu'>"
@@ -326,9 +326,9 @@
         			   + "href='' onclick='logout();'>Logout</a></li>"
         			   + "</ul>")
           } 
-          if (ajaxresult.grade == '2') {
+          if (ajaxresult.grade == 2) {
         	    sM.append(
-        	     "<li><a href='info/register_school.html>'>학교 정보</a></li>"		
+        	     "<li><a href='info/register_school.html'>학교 정보</a></li>"		
         	    )
           }
         }
