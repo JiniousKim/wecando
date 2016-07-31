@@ -73,7 +73,7 @@
 								<h1 class="email">
 									<i class="fa fa-angle-right"></i> 이메일 인증
 								</h1>
-								<form class="form-inline" role="form">
+								<div class="form-inline" role="form">
 									<p>이메일을 입력하고 인증하기를 눌러 해당 이메일로 전송된 링크를 클릭하면 회원가입을 진행하실 수
 										있습니다.</p>
 									<div class="form-group2 has-feedback">
@@ -85,7 +85,7 @@
 										<div class="control-label" id="m_eMsg" style="display: none;">이메일
 											형식이 아닙니다.</div>
 									</div>
-								</form>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -133,16 +133,13 @@
 										console.log(ajaxResult.status);
 										if (ajaxResult.status == 'success') {
 											swal("Good job!","Email 전송이 완료되었습니다","success")
-											e.preventDefault();
 										} else {
 											sweetAlert("Oops...", "다시 시도해 주세요",	"error");
-											e.preventDefault();
 										}
 									}
 								});
 							} else {
 								sweetAlert("Oops...", "중복된 이메일 입니다.", 'error');
-								e.preventDefault();
 							}
 						}
 					});
