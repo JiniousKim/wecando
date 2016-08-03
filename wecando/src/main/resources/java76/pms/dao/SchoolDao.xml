@@ -18,4 +18,12 @@
       #{sch_tel, jdbcType=VARCHAR}, #{m_no})
   </insert>
   
+  <select id="sch_manager" parameterType='int' resultMap='schoolMap'>
+    select sch_name,
+           sch_location,
+           sch_tel
+    from school
+    where member_num = #{m_no}
+  </select>
+  
 </mapper>

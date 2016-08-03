@@ -89,6 +89,34 @@
 		</div>
 	</div>
 	<!-- /school_search -->
+	
+	<!-- School Search -->
+  <div class="change_school">
+    <!-- School Search -->
+    <div class="modal fade" id="change_school" tabindex="-1" role="dialog"
+      aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"
+              aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">학교 검색</h4>
+          </div>
+          <div class="modal-body">
+            <input type="text" class="form-control col-sm-3 inputbox" id="sch">
+            <button type="button" class="btn btn-default" onclick="search();">검색</button>
+            <div class="col-lg-10">
+              <p class="form-control-static"
+                style="color: #777; margin-top: 10px">검색 결과</p>
+              <div id="map1"></div>
+            </div>
+          </div>
+          <div class="modal-foot"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /school_search -->
 
 	<section id="container" class="sidebar-closed">
 		<header class="header black-bg">
@@ -139,13 +167,29 @@
 											<label class="col-lg-3 col-sm-3 control-label"
 												style="font-weight: bold;"> 관리 담당 학교</label>
 											<div class="col-lg-10">
-												<button type="button" class="btn btn-default"
+												<button type="button" class="btn btn-default" id='sch_register'
 													style="margin: 0 0 0 -57px;" data-toggle="modal"
-													data-target="#search_school">학교 검색하기</button>
+													data-target="#search_school">학교 등록하기</button>
+												<button type="button" class="btn btn-default" id='sch_update'
+                          style="margin: 0 0 0 -57px;" data-toggle="modal"
+                          data-target="#change_school">학교 변경하기</button>
 											</div>
 										</div>
 									</div>
-									<div class="form-group" id='result'></div>
+									<div class="form-group">
+									  <label class='col-lg-2 col-sm-2 control-label'> 학교 이름</label>
+                    <div class='col-lg-10'>
+                    <p class='form-control-static' style='color: #777;' id='school_name'> &nbsp</p>
+                    </div>
+                    <label class='col-lg-2 col-sm-2 control-label'> 학교 위치</label>
+                    <div class='col-lg-10'>
+                    <p class='form-control-static' style='color: #777;' id='school_location'> &nbsp</p>
+                    </div>
+                    <label class='col-lg-2 col-sm-2 control-label'> 전화 번호</label>
+                    <div class='col-lg-10'>"
+                    <p class='form-control-static' style='color: #777;' id='school_tel'> &nbsp</p>
+                    </div>
+									</div>
 									<div class="form-group">
 										<div class="form-group1">
 											<label class="col-sm-2 col-sm-2 control-label"
@@ -213,6 +257,7 @@
 	<script src="../lib/sweetalert/sweetalert.min.js"></script>
 	<script>
   var m_no;
+  $('#sch_update').css('display','none');
   $(document).ready(function () {
      $.ajax({
       url : contextRoot + '/auth/ajax/check_session.do',
@@ -227,20 +272,20 @@
         var loginAva = $('#login_ava');
         var ajaxresult = resultObj;
         if (ajaxresult.status == 'failure') {
-        	  	location.replace("http://localhost:8080/wecando/login.html");
+        	  //	location.replace("http://localhost:8080/wecando/login.html");
         } else {
            loginAva.append("<ul class='nav pull-right top-menu'>"
                + "<li><a class='logout'"
                + "href='' onclick='logout();'>Logout</a></li>"
                + "</ul>")
         } 
-        if (ajaxresult.grade == 2) {
+        /* if (ajaxresult.grade == 2) {
             sM.append(
              "<li><a href='info/register_school.html'>학교 정보</a></li>"   
             )
         } else {
         	  location.replace("http://localhost:8080/wecando/wecando.html");
-        }
+        } */
       }
     })
     $.ajax({
@@ -257,6 +302,30 @@
               list.append("<li>" + event + "</li>")
          }
        }
+    })
+    
+    $.ajax({
+    	  url : contextRoot + '/school/ajax/schManager.do',
+    	  type : 'post',
+    	  dataType : 'json',
+    	  cache : false,
+    	  processData : false,
+    	  contentType : false,
+    	  success : function(resultObj) {
+    		  var school = resultObj.school;
+    		  if(resultObj.status == 'failure') {
+    			  $('#register').css('display','');
+    		  } else {
+    			  $('#register').css('display','none');
+    			  $('#update').css('display','');
+    			  document.getElementById('school_name').value = school.sch_name;
+          $('#school_name').append($('#school_name').val());
+          document.getElementById('school_location').value = school.sch_name;
+          $('#school_location').append($('#school_location').val());
+          document.getElementById('school_tel').value = school.sch_name;
+          $('#school_tel').append($('#school_tel').val());
+    		  }
+    	  }
     })
   })
   </script>
@@ -328,21 +397,14 @@
                         if (status == 'failure') {
                         	  swal('Error','등록할 수 없습니다.', "error");                        	 
                         }
-                        swal("Successed!", "학교가 등록되었습니다.", "success"); 
+                        swal("Success!", "학교가 등록되었습니다.", "success"); 
 	                	      var school = resultObj.school;
-                        var show = $('#result');
-                        show.append("<label class='col-lg-2 col-sm-2 control-label'> 학교 이름</label>"
-                                +  "<div class='col-lg-10'>"
-                                +  "<p class='form-control-static' style='color: #777;'>"+ school.sch_name +" </p>"
-                                +  "</div>"
-                                +  "<label class='col-lg-2 col-sm-2 control-label'> 학교 위치</label>"
-                                +  "<div class='col-lg-10'>"
-                                +  "<p class='form-control-static' style='color: #777;'> " + school.sch_location + " </p>"
-                                +  "</div>"
-                                +  "<label class='col-lg-2 col-sm-2 control-label'> 전화번호</label>"
-                                +  "<div class='col-lg-10'>"
-                                +  "<p class='form-control-static' style='color: #777;'> " + school.sch_tel + "</p>"
-                                +  "</div>")
+	                	      document.getElementById('school_name').value = school.sch_name;
+	                	      $('#school_name').append($('#school_name').val());
+	                	      document.getElementById('school_location').value = school.sch_name;
+	                	      $('#school_location').append($('#school_location').val());
+	                      document.getElementById('school_tel').value = school.sch_name;
+	                      $('#school_tel').append($('#school_tel').val());
                    }
                 })
               }   
@@ -369,7 +431,7 @@
         }
       })
     }
-
+    
     function join() {
       location.replace("http://localhost:8080/wecando/loginpage/auth.html");
     }
@@ -389,8 +451,7 @@
          success : function(resultObj) {
            var ajaxResult = resultObj;
            if (ajaxResult.status == 'success') {
-             location
-                 .replace("http://localhost:8080/wecando/wecando.html");
+             location.replace("http://localhost:8080/wecando/wecando.html");
            } else {
              sweetAlert("Oops...","아이디 또는 비밀번호가 일치하지 않습니다.", "error");
            }
