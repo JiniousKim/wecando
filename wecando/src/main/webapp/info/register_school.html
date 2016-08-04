@@ -104,7 +104,7 @@
           </div>
           <div class="modal-body">
             <input type="text" class="form-control col-sm-3 inputbox" id="sch">
-            <button type="button" class="btn btn-default" onclick="search();">검색</button>
+            <button type="button" class="btn btn-default" onclick="change();">검색</button>
             <div class="col-lg-10">
               <p class="form-control-static"
                 style="color: #777; margin-top: 10px">검색 결과</p>
@@ -272,20 +272,20 @@
         var loginAva = $('#login_ava');
         var ajaxresult = resultObj;
         if (ajaxresult.status == 'failure') {
-        	  //	location.replace("http://localhost:8080/wecando/login.html");
+        	  	location.replace("http://localhost:8080/wecando/login.html");
         } else {
            loginAva.append("<ul class='nav pull-right top-menu'>"
                + "<li><a class='logout'"
                + "href='' onclick='logout();'>Logout</a></li>"
                + "</ul>")
         } 
-        /* if (ajaxresult.grade == 2) {
+        if (ajaxresult.grade == 2) {
             sM.append(
              "<li><a href='info/register_school.html'>학교 정보</a></li>"   
             )
         } else {
         	  location.replace("http://localhost:8080/wecando/wecando.html");
-        } */
+        }
       }
     })
     $.ajax({
@@ -362,6 +362,52 @@
             }
          })
     }
+     
+    function change() {
+        $('#map1').click(function(e){
+         var id = e.target.getAttribute('id');
+         swal({   
+               title: "잠깐 !",   
+                text: "등록할 학교가 " + id + " 맞으십니까 ?",   
+                type: "warning",   
+                showCancelButton: true,   
+                confirmButtonColor: "#7AC943",   
+                confirmButtonText: "네, 등록할래요!",   
+                cancelButtonText: "앗! 아니오",   
+                closeOnConfirm: false,   
+                closeOnCancel: false 
+             }, 
+             function(isConfirm) {   
+              if (isConfirm) {     
+              if ( ( id != '') && (id != null)) {
+                    $.ajax({
+                      url : contextRoot + '/school/ajax/changeSchool.do',
+                      type : 'post',
+                      dataType : 'json',
+                      cache : false,
+                      data : {
+                           sch_name : id,
+                           m_no : m_no
+                      },
+                      success : function(resultObj) {
+                           var status = resultObj.status;
+                         if (status == 'failure') {
+                             swal('Error','등록할 수 없습니다.', "error");                          
+                         }
+                         swal("Success!", "학교가 등록되었습니다.", "success"); 
+                           var school = resultObj.school;
+                           document.getElementById('school_name').value = school.sch_name;
+                           document.getElementById('school_location').value = school.sch_location;
+                         document.getElementById('school_tel').value = school.sch_tel;
+                    }
+                 })
+               }   
+             } else {     
+                swal("Cancelled", "등록을 취소하였습니다.", "error");   
+             } 
+          });
+        });
+     }
     
     function choose() {
        $('#map1').click(function(e){

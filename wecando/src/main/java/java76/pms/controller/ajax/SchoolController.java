@@ -24,14 +24,15 @@ public class SchoolController {
 		HashMap<String, Object> schoolMap = new HashMap<>();
 		HashMap<String, Object> resultMap	= new HashMap<>();
 		School school = null;
+		school = new SearchSchool().getSchool(sch_name);
+		schoolMap.put("sch_name", school.getSch_name());
+		schoolMap.put("sch_location", school.getSch_location());
+		schoolMap.put("sch_tel", school.getSch_tel());
+		schoolMap.put("m_no", m_no);
 		try{
-			school = new SearchSchool().getSchool(sch_name);
-			schoolMap.put("sch_name", school.getSch_name());
-			schoolMap.put("sch_location", school.getSch_location());
-			schoolMap.put("sch_tel", school.getSch_tel());
-			schoolMap.put("m_no", m_no);
 			if (schoolService.sch_register(schoolMap) > 0) {}
 		} catch (Exception e) {
+			e.printStackTrace();
 			resultMap.put("status", "failure");
 			return resultMap;
 		}
@@ -52,6 +53,32 @@ public class SchoolController {
 	
 	@RequestMapping(value="searchSchool", method=RequestMethod.GET)
 	public String register() throws Exception {
+		return "redirect:../../error.html";
+	}
+	
+	@RequestMapping(value="changeSchool", method=RequestMethod.POST)
+	public Object changeSchool(String sch_name, int m_no) {
+		HashMap<String, Object> schoolMap = new HashMap<>();
+		HashMap<String, Object> resultMap	= new HashMap<>();
+		School school = null;
+		try{
+			school = new SearchSchool().getSchool(sch_name);
+			schoolMap.put("sch_name", school.getSch_name());
+			schoolMap.put("sch_location", school.getSch_location());
+			schoolMap.put("sch_tel", school.getSch_tel());
+			schoolMap.put("m_no", m_no);
+			if (schoolService.sch_register(schoolMap) > 0) {}
+		} catch (Exception e) {
+			resultMap.put("status", "failure");
+			return resultMap;
+		}
+		resultMap.put("status", "success");
+		resultMap.put("school", school);
+		return resultMap;
+	}
+	
+	@RequestMapping(value="changeSchool", method=RequestMethod.GET)
+	public String get_changeSchool() {
 		return "redirect:../../error.html";
 	}
 }
