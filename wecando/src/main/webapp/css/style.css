@@ -2619,6 +2619,7 @@ div.col-md-4 a {
    margin-top: 4px;
    color: #777; 
    border:none;
+   width : 100%;
 }
 
 #pm {
