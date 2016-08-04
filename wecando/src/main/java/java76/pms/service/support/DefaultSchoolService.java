@@ -34,9 +34,12 @@ public class DefaultSchoolService implements SchoolService {
     return schoolDao.sch_update(school);
   }
 
-
   public int sch_create(School school) {
     return schoolDao.sch_create(school);
+  }
+  
+  public School sch_Manager(int m_no) {
+  		return schoolDao.sch_Manager(m_no);
   }
 }
 

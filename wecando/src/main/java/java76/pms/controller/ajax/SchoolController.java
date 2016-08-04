@@ -81,4 +81,23 @@ public class SchoolController {
 	public String get_changeSchool() {
 		return "redirect:../../error.html";
 	}
+	
+	@RequestMapping(value="schManager", method=RequestMethod.POST)
+	public Object schManager(int m_no) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<>();
+		try {
+			School school = schoolService.sch_Manager(m_no);
+			resultMap.put("school", school);
+		} catch (Exception e) {
+			resultMap.put("status", "failure");
+			return resultMap;
+		}
+		resultMap.put("status", "success");
+		return resultMap;
+	}
+	
+	@RequestMapping(value="schManager", method=RequestMethod.GET) 
+	public String get_schMangager() throws Exception {
+		return "redirect:../../error.html";
+	}
 }
