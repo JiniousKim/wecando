@@ -2615,7 +2615,7 @@ div.col-md-4 a {
 	overflow : auto;
 }
 
-#result input {
+#result input, p {
    margin-top: 4px;
    color: #777; 
    border:none;
