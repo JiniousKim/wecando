@@ -144,10 +144,8 @@
 					<li class="sub-menu"><a href="../javascript:;"> <i
 							class="fa fa-user"></i> <span>마이 페이지</span>
 					</a>
-						<ul class="sub">
+						<ul class="sub" id="sub_menu">
 							<li><a href="memberInfo.html">내 정보</a></li>
-							<li><a href="../gallery.html">Gallery</a></li>
-							<li><a href="../todo_list.html">Todo List</a></li>
 						</ul></li>
 				</ul>
 			</div>
@@ -311,6 +309,9 @@
     	  cache : false,
     	  processData : false,
     	  contentType : false,
+    	  data : {
+    		  m_no : m_no
+    	  },
     	  success : function(resultObj) {
     		  var school = resultObj.school;
     		  if(resultObj.status == 'failure') {
