@@ -80,7 +80,7 @@
             <div class="col-lg-10">
               <p class="form-control-static"
                 style="color: #777; margin-top: 10px">검색 결과</p>
-              <div id="map1"></div>
+              <div id="ss"></div>
             </div>
           </div>
           <div class="modal-foot"></div>
@@ -108,7 +108,7 @@
             <div class="col-lg-10">
               <p class="form-control-static"
                 style="color: #777; margin-top: 10px">검색 결과</p>
-              <div id="map1"></div>
+              <div id="cs"></div>
             </div>
           </div>
           <div class="modal-foot"></div>
@@ -327,7 +327,13 @@
   </script>
   <script>
      $('#search_school').on('hide.bs.modal', function (e) {
-        $('#map1').first().remove();
+        $('#ss').first().remove();
+        $('#sch').html('');
+        $('#sch').val('');
+     })
+     
+     $('#change_school').on('hide.bs.modal', function (e) {
+        $('#ss').first().remove();
         $('#sch').html('');
         $('#sch').val('');
      })
@@ -342,7 +348,7 @@
     function search() {
       var form_data = new FormData();
       form_data.append("sch_name",$('#sch').val());
-      $("#map1").empty();
+      $("#ss").empty();
          $.ajax({
             url : contextRoot + '/school/ajax/searchSchool.do',
             type : 'post',
@@ -353,7 +359,7 @@
             data : form_data,
             success : function (resultObj) {
                var sub = $('#sub');
-            var show = $('#map1');
+            var show = $('#ss');
                for (var school of resultObj.schools) {
                   show.append("<a type='button' onclick='choose();' id='" + school.sch_name + "'>" + 
                         school.sch_name + "</a><br>");
@@ -365,7 +371,7 @@
    function ch_search() {
        var form_data = new FormData();
        form_data.append("sch_name",$('#sch').val());
-       $("#map1").empty();
+       $("#cs").empty();
           $.ajax({
              url : contextRoot + '/school/ajax/searchSchool.do',
              type : 'post',
@@ -376,7 +382,7 @@
              data : form_data,
              success : function (resultObj) {
                 var sub = $('#sub');
-             var show = $('#map1');
+             var show = $('#cs');
                 for (var school of resultObj.schools) {
                    show.append("<a type='button' onclick='change();' id='" + school.sch_name + "'>" + 
                          school.sch_name + "</a><br>");
@@ -386,7 +392,7 @@
      }
    
     function change() {
-        $('#map1').click(function(e){
+        $('#cs').click(function(e){
          var id = e.target.getAttribute('id');
          swal({   
                title: "잠깐 !",   
@@ -432,7 +438,7 @@
      }
     
     function choose() {
-       $('#map1').click(function(e){
+       $('#ss').click(function(e){
         var id = e.target.getAttribute('id');
         swal({   
               title: "잠깐 !",   
