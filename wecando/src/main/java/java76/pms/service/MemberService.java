@@ -20,6 +20,7 @@ public interface MemberService {
   Member retrieve(int m_no);
   Member retrieve(String m_email, String m_password);
   void removeExpirationMember();
+  int manage(int sch_no);
 }
 
 

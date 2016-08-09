@@ -27,4 +27,10 @@
     where member_num = #{m_no}
   </select>
   
+  <select id="get_sch" parameterType="String">
+    select sch_no
+    from school
+    where sch_name = #{sch_name}
+  </select>
+  
 </mapper>

@@ -12,6 +12,7 @@ public interface SchoolService {
   int sch_register(Map<String,Object> schoolMap);
   int sch_change(School school);
   int sch_create(School school);
+  int get_sch(String sch_name);
   School sch_Manager(int m_no);
 }
 

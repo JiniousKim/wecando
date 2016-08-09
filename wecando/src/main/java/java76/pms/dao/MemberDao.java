@@ -28,6 +28,8 @@ public interface MemberDao {
   
   void deleteExpirationMember();
   
+  int manage(int sch_no);  // 관리하는 학교 넘버 등록 (default 0)
+  
 }
 
 

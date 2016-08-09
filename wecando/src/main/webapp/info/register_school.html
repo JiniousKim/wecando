@@ -104,7 +104,7 @@
           </div>
           <div class="modal-body">
             <input type="text" class="form-control col-sm-3 inputbox" id="sch">
-            <button type="button" class="btn btn-default" onclick="change();">검색</button>
+            <button type="button" class="btn btn-default" onclick="ch_search();">검색</button>
             <div class="col-lg-10">
               <p class="form-control-static"
                 style="color: #777; margin-top: 10px">검색 결과</p>
@@ -212,7 +212,7 @@
                       <label class="col-sm-2 col-sm-2 control-label"> 코트 수</label>
                       <div class="col-sm-10" style="margin-top: 5px;">
                         <input type="number" name="points" min="0" max="10" step="1"
-                          value="1" style="color: black;">
+                          value="1" style="color: black; text-align: center;">
                       </div>
                     </div>
                     <div id="pm">
@@ -279,8 +279,6 @@
              + "<li><a class='logout'"
              + "href='' onclick='logout();'>Logout</a></li>"
              + "</ul>")
-        
-        
         }
       }
     })
@@ -364,16 +362,39 @@
          })
     }
      
+   function ch_search() {
+       var form_data = new FormData();
+       form_data.append("sch_name",$('#sch').val());
+       $("#map1").empty();
+          $.ajax({
+             url : contextRoot + '/school/ajax/searchSchool.do',
+             type : 'post',
+             dataType : 'json',
+             cache : false,
+             contentType : false,
+             processData : false,
+             data : form_data,
+             success : function (resultObj) {
+                var sub = $('#sub');
+             var show = $('#map1');
+                for (var school of resultObj.schools) {
+                   show.append("<a type='button' onclick='change();' id='" + school.sch_name + "'>" + 
+                         school.sch_name + "</a><br>");
+                } 
+             }
+          })
+     }
+   
     function change() {
         $('#map1').click(function(e){
          var id = e.target.getAttribute('id');
          swal({   
                title: "잠깐 !",   
-                text: "등록할 학교가 " + id + " 맞으십니까 ?",   
+                text: "변경할 학교가 " + id + " 맞으십니까 ?",   
                 type: "warning",   
                 showCancelButton: true,   
                 confirmButtonColor: "#7AC943",   
-                confirmButtonText: "네, 등록할래요!",   
+                confirmButtonText: "네, 변경할래요!",   
                 cancelButtonText: "앗! 아니오",   
                 closeOnConfirm: false,   
                 closeOnCancel: false 
@@ -393,9 +414,9 @@
                       success : function(resultObj) {
                            var status = resultObj.status;
                          if (status == 'failure') {
-                             swal('Error','등록할 수 없습니다.', "error");                          
+                             swal('Error','변경할 수 없습니다.', "error");                          
                          }
-                         swal("Success!", "학교가 등록되었습니다.", "success"); 
+                         swal("Success!", "학교가 변경되었습니다.", "success"); 
                            var school = resultObj.school;
                            document.getElementById('school_name').value = school.sch_name;
                            document.getElementById('school_location').value = school.sch_location;
@@ -404,7 +425,7 @@
                  })
                }   
              } else {     
-                swal("Cancelled", "등록을 취소하였습니다.", "error");   
+                swal("Cancelled", "변경을 취소하였습니다.", "error");   
              } 
           });
         });
@@ -471,36 +492,6 @@
           }
         }
       })
-    }
-    
-    function join() {
-      location.replace("http://localhost:8080/wecando/loginpage/auth.html");
-    }
-
-    function login() {
-      var form_data = new FormData();
-      form_data.append("m_email", $('#m_email').val());
-      form_data.append("m_password", $('#m_password').val());
-      $.ajax({
-         url : contextRoot + '/auth/ajax/login.do',
-         type : 'post',
-         dataType : 'json',
-         cache : false,
-         contentType : false,
-         processData : false,
-         data : form_data,
-         success : function(resultObj) {
-           var ajaxResult = resultObj;
-           if (ajaxResult.status == 'success') {
-             location.replace("http://localhost:8080/wecando/wecando.html");
-           } else {
-             sweetAlert("Oops...","아이디 또는 비밀번호가 일치하지 않습니다.", "error");
-           }
-         },
-         error : function(resultObj) {
-           sweetAlert("Oops...", "아이디 또는 비밀번호가 일치하지 않습니다.","error");
-         }
-       })
     }
   </script>
 </body>

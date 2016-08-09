@@ -38,6 +38,10 @@ public class DefaultSchoolService implements SchoolService {
     return schoolDao.sch_create(school);
   }
   
+  public int get_sch(String sch_name) {
+  		return schoolDao.get_sch(sch_name);
+  }
+  
   public School sch_Manager(int m_no) {
   		return schoolDao.sch_Manager(m_no);
   }

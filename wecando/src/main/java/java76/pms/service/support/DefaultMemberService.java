@@ -78,6 +78,10 @@ public class DefaultMemberService implements MemberService {
   public String check_ava(Map<String, String> paramMap) {
 		return memberDao.auth(paramMap);
   }
+  
+  public int manage(int sch_no) {
+  		return memberDao.manage(sch_no);
+  }
 }
 
 

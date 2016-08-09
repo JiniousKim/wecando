@@ -94,4 +94,9 @@
   from member
   where member_email=#{m_email} and member_pwd=#{m_password}
   </select>
+  
+  <insert id="manage" parameterType="int">
+    insert into member(mng_no)
+    values (#{sch_no})
+  </insert>
 </mapper>

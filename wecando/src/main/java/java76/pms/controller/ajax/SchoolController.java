@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java76.pms.domain.School;
+import java76.pms.service.MemberService;
 import java76.pms.service.SchoolService;
 import java76.pms.util.SearchSchool;
 
@@ -17,6 +18,7 @@ import java76.pms.util.SearchSchool;
 @RequestMapping("/school/ajax/*")
 public class SchoolController { 
 	@Autowired SchoolService schoolService;
+	@Autowired MemberService memberService;
 	@Autowired ServletContext servletContext;
 	
 	@RequestMapping(value="addSchool", method=RequestMethod.POST)
@@ -67,8 +69,12 @@ public class SchoolController {
 			schoolMap.put("sch_location", school.getSch_location());
 			schoolMap.put("sch_tel", school.getSch_tel());
 			schoolMap.put("m_no", m_no);
-			if (schoolService.sch_register(schoolMap) > 0) {}
-		} catch (Exception e) {
+			if (schoolService.get_sch(sch_name) > 0) {
+				schoolService.sch_change(school);
+			} else {
+				schoolService.sch_register(schoolMap);
+			}
+		}	catch (Exception e) {
 			resultMap.put("status", "failure");
 			return resultMap;
 		}

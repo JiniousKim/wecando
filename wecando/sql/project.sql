@@ -376,6 +376,8 @@ modify (EMAIL_TIME DATE not null);
 alter table board
 add (BOARD_DATE DATE default SYSDATE);
 
+alter table member
+add (mng_no number default 0); --학교 관리 번호 칼럼 추가
 
 --INSERT INTO EVENT(EVENT_CODE,EVENT_NAME,EVENT_PRICE,EVENT_MAX)
 --VALUES ('BASKETBALL','농구',10000,20);
