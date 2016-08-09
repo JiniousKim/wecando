@@ -27,7 +27,7 @@
     where member_num = #{m_no}
   </select>
   
-  <select id="get_sch" parameterType="String">
+  <select id="get_sch" parameterType="String" resultType="int">
     select sch_num
     from school
     where sch_name = #{sch_name}
