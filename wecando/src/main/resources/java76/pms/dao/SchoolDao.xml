@@ -28,7 +28,7 @@
   </select>
   
   <select id="get_sch" parameterType="String">
-    select sch_no
+    select sch_num
     from school
     where sch_name = #{sch_name}
   </select>
