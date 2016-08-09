@@ -2596,10 +2596,12 @@ div.col-md-4 a {
 	margin-left: 35px;
 }
 
-#map1 {
+#ss, #cs {
     width : 100%;
     height: 200px;
+    overflow : auto;
 }
+
 .modal-foot {
     padding: 15px;
     text-align: right;

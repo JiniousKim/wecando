@@ -75,7 +75,7 @@
             <h4 class="modal-title" id="myModalLabel">학교 검색</h4>
           </div>
           <div class="modal-body">
-            <input type="text" class="form-control col-sm-3 inputbox" id="sch">
+            <input type="text" class="form-control col-sm-3 inputbox" id="s_sch">
             <button type="button" class="btn btn-default" onclick="search();">검색</button>
             <div class="col-lg-10">
               <p class="form-control-static"
@@ -103,7 +103,7 @@
             <h4 class="modal-title" id="myModalLabel">학교 검색</h4>
           </div>
           <div class="modal-body">
-            <input type="text" class="form-control col-sm-3 inputbox" id="sch">
+            <input type="text" class="form-control col-sm-3 inputbox" id="c_sch">
             <button type="button" class="btn btn-default" onclick="ch_search();">검색</button>
             <div class="col-lg-10">
               <p class="form-control-static"
@@ -328,14 +328,14 @@
   <script>
      $('#search_school').on('hide.bs.modal', function (e) {
         $('#ss').first().remove();
-        $('#sch').html('');
-        $('#sch').val('');
+        $('#s_sch').html('');
+        $('#s_sch').val('');
      })
      
      $('#change_school').on('hide.bs.modal', function (e) {
         $('#ss').first().remove();
-        $('#sch').html('');
-        $('#sch').val('');
+        $('#c_sch').html('');
+        $('#c_sch').val('');
      })
     
      $('#myModal1').on('hide.bs.modal', function (e) {
@@ -347,7 +347,7 @@
      
     function search() {
       var form_data = new FormData();
-      form_data.append("sch_name",$('#sch').val());
+      form_data.append("sch_name",$('#s_sch').val());
       $("#ss").empty();
          $.ajax({
             url : contextRoot + '/school/ajax/searchSchool.do',
@@ -370,7 +370,7 @@
      
    function ch_search() {
        var form_data = new FormData();
-       form_data.append("sch_name",$('#sch').val());
+       form_data.append("sch_name",$('#c_sch').val());
        $("#cs").empty();
           $.ajax({
              url : contextRoot + '/school/ajax/searchSchool.do',
