@@ -95,12 +95,6 @@
   where member_email=#{m_email} and member_pwd=#{m_password}
   </select>
   
-  <insert id="manage" parameterType="map">
-    insert into member(mng_no)
-    values (#{mng_no})
-    where member_num = #{m_no}
-  </insert>
-  
   <update id="update_manage" parameterType="map">
     update member set
       mng_no = #{mng_no}

@@ -28,9 +28,7 @@ public interface MemberDao {
   
   void deleteExpirationMember();
   
-  int manage(Map<String, Integer> paramMap);  // 관리하는 학교 넘버 등록 (default 0)
-  
-  int update_manage (Map<String, Integer> paramMap);
+  int update_manage (Map<String, Integer> paramMap); // 관리하는 학교 넘버 등록 (default 0)
   
 }
 
