@@ -32,6 +32,7 @@ public class SchoolController {
 		schoolMap.put("m_no", m_no);
 		try{
 			int mng_no = schoolService.get_sch(sch_name);
+			System.out.println(mng_no);
 			if (mng_no > 0) {
 				schoolService.sch_change(schoolMap);
 				memberService.update_manage(mng_no, m_no);
