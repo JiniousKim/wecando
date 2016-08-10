@@ -30,9 +30,9 @@ public class SchoolController {
 		schoolMap.put("sch_location", school.getSch_location());
 		schoolMap.put("sch_tel", school.getSch_tel());
 		schoolMap.put("m_no", m_no);
+		int mng_no = 0;
 		try{
-			int mng_no = schoolService.get_sch(sch_name);
-			System.out.println(mng_no);
+			mng_no = schoolService.get_sch(sch_name);
 			if (mng_no > 0) {
 				schoolService.sch_change(schoolMap);
 				memberService.update_manage(mng_no, m_no);
@@ -40,14 +40,14 @@ public class SchoolController {
 		} catch (Exception e) {
 			try {
 				schoolService.sch_register(schoolMap);
-				int mng_no = schoolService.get_sch(sch_name);
+				mng_no = schoolService.get_sch(sch_name);
 				System.out.println(mng_no);
-				memberService.manage(mng_no);
+				memberService.manage(mng_no, m_no);
 			} catch (Exception te) {
 				resultMap.put("status", "failure");
 				return resultMap;
 			}
-			resultMap.put("status", "scuccess");
+			resultMap.put("status", "success");
 			return resultMap;
 		}
 		
@@ -76,13 +76,14 @@ public class SchoolController {
 		HashMap<String, Object> schoolMap = new HashMap<>();
 		HashMap<String, Object> resultMap	= new HashMap<>();
 		School school = null;
+		int mng_no = 0;
 		try{
 			school = new SearchSchool().getSchool(sch_name);
 			schoolMap.put("sch_name", school.getSch_name());
 			schoolMap.put("sch_location", school.getSch_location());
 			schoolMap.put("sch_tel", school.getSch_tel());
 			schoolMap.put("m_no", m_no);
-			int mng_no = schoolService.get_sch(sch_name);
+			mng_no = schoolService.get_sch(sch_name);
 			if (mng_no > 0) {
 				schoolService.sch_change(schoolMap);
 				memberService.update_manage(mng_no, m_no);
@@ -90,7 +91,8 @@ public class SchoolController {
 		} catch (Exception e) {
 			try {
 				schoolService.sch_register(schoolMap);
-				memberService.manage(schoolService.get_sch(sch_name));
+				mng_no = schoolService.get_sch(sch_name);
+				memberService.manage(mng_no, m_no);
 			} catch (Exception te) {
 				resultMap.put("status", "failure");
 				return resultMap;
