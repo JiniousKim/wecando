@@ -40,7 +40,9 @@ public class SchoolController {
 		} catch (Exception e) {
 			try {
 				schoolService.sch_register(schoolMap);
-				memberService.manage(schoolService.get_sch(sch_name));
+				int mng_no = schoolService.get_sch(sch_name);
+				System.out.println(mng_no);
+				memberService.manage(mng_no);
 			} catch (Exception te) {
 				resultMap.put("status", "failure");
 				return resultMap;
