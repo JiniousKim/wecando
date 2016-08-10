@@ -82,6 +82,13 @@ public class DefaultMemberService implements MemberService {
   public int manage(int sch_no) {
   		return memberDao.manage(sch_no);
   }
+  
+  public int update_manage(int mng_no, int m_no) {
+  		HashMap<String, Integer> paramMap = new HashMap<>();
+  		paramMap.put("mng_no", mng_no);
+  		paramMap.put("m_no", m_no);
+  		return memberDao.update_manage(paramMap);
+  }
 }
 
 

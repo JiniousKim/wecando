@@ -19,9 +19,8 @@ public class SearchSchool {
 		public Object searchForSchool(String sch_name) {
     		HashMap<String, Object> resultMap = new HashMap<>();
     		List<School> schools = new ArrayList<School>();
+    		int count = 0;
     		try {
-    			// 엑셀파일
-    		//File file = new File("/Users/ohora/wecando/wecando/sql/school.xlsx");
     			File file = new File("C:/Users/IEUser/Documents/wecando/wecando/sql/School.xlsx");
     			
     			// 엑셀 파일 오픈
@@ -40,11 +39,14 @@ public class SearchSchool {
     					school.setSch_tel(row.getCell(2).toString());
     					schools.add(school);
     				}
+    				count++;
     			}
     		} catch (Exception e) {
     			return new AjaxResult("failure", null);
     		}
-    		
+    		if (count <= 0 ) {
+    			resultMap.put("count", "not");
+    		}
     		resultMap.put("status", "success");
     		resultMap.put("schools", schools);
     		return resultMap;

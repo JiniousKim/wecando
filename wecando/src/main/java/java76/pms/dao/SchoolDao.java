@@ -12,9 +12,7 @@ public interface SchoolDao {
   
   int sch_delete(Map<String,Object> paramMap);
   
-  int sch_create(School school);   //이메일 인증하고 아이디 생성 시 사용할 쿼리
-  
-  int sch_update(School school);
+  int sch_update(Map<String,Object> schoolMap);
   
   School sch_Manager(int m_no);
   

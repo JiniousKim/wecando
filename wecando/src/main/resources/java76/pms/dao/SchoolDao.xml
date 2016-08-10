@@ -12,7 +12,16 @@
     <result column="member_num" property="m_no" />
   </resultMap>
   
-  <insert id='sch_insert' parameterType='map'>
+  <resultMap type="member" id="memberMap">
+    <id column="member_num" property="m_no" />
+    <result column="member_name" property="m_name" />
+    <result column="member_tel" property="m_tel" />
+    <result column="mng_no" property="mng_no" />
+  </resultMap>
+  
+  
+  
+  <insert id='sch_insert' parameterType='school'>
     insert into school(sch_num, sch_name,sch_location,sch_tel,member_num)
     values(school_incre.nextval,#{sch_name, jdbcType=VARCHAR}, #{sch_location, jdbcType=VARCHAR},
       #{sch_tel, jdbcType=VARCHAR}, #{m_no})
@@ -24,7 +33,10 @@
            sch_tel,
            member_num as m_no
     from school
-    where member_num = #{m_no}
+    where sch_num = (select mng_no
+                     from member
+                     where member_num = #{m_no}
+                    )
   </select>
   
   <select id="get_sch" parameterType="String" resultType="int">
@@ -33,4 +45,13 @@
     where sch_name = #{sch_name}
   </select>
   
+  <update id="sch_update" parameterType="school">
+    update school set
+      sch_name=#{sch_name, jdbcType=VARCHAR},
+      sch_loacation=#{sch_location, jdbcType=VARCHAR},
+      sch_tel=#{sch_tel, jdbcType=VARCHAR},
+      member_num=#{m_no}
+    where 
+      sch_num = #{sch_num}
+  </update>
 </mapper>

@@ -21,6 +21,7 @@ public interface MemberService {
   Member retrieve(String m_email, String m_password);
   void removeExpirationMember();
   int manage(int sch_no);
+  int update_manage(int mng_no, int m_no);
 }
 
 

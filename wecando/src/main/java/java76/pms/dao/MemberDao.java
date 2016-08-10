@@ -30,6 +30,8 @@ public interface MemberDao {
   
   int manage(int sch_no);  // 관리하는 학교 넘버 등록 (default 0)
   
+  int update_manage (Map<String, Integer> paramMap);
+  
 }
 
 

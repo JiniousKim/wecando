@@ -99,4 +99,17 @@
     insert into member(mng_no)
     values (#{sch_no})
   </insert>
+  
+  <update id="update_manage" parameterType="map">
+    update member set
+      mng_no = #{mng_no}
+    where
+      member_num = #{m_no}
+  </update>
+  
+  <select id="manage_num" parameterType="int">
+    select mng_no
+    from member
+    where member_num = #{m_no}
+  </select>
 </mapper>

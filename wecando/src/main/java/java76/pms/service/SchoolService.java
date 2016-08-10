@@ -10,8 +10,7 @@ public interface SchoolService {
       int pageNo, int pageSize, 
       String keyword, String align);
   int sch_register(Map<String,Object> schoolMap);
-  int sch_change(School school);
-  int sch_create(School school);
+  int sch_change(Map<String,Object> schoolMap);
   int get_sch(String sch_name);
   School sch_Manager(int m_no);
 }

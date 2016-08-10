@@ -16,7 +16,16 @@ public class Member  implements Serializable {
 	protected String			m_nick;
 	protected	String			email_code;
 	protected	String			email_ava;
-	protected Date        email_time;
+	protected Date      email_time;
+	protected int				mng_no;
+
+	public int getMng_no() {
+		return mng_no;
+	}
+
+	public void setMng_no(int mng_no) {
+		this.mng_no = mng_no;
+	}
 
 	public Member() {}
 
@@ -108,11 +117,10 @@ public class Member  implements Serializable {
     this.email_time = email_time;
   }
 
-  @Override
-  public String toString() {
-    return "Member [m_no=" + m_no + ", m_grade=" + m_grade + ", m_email=" + m_email + ", m_name=" + m_name + ", m_tel="
-        + m_tel + ", m_password=" + m_password + ", m_ava=" + m_ava + ", m_nick=" + m_nick + ", email_code="
-        + email_code + ", email_ava=" + email_ava + ", email_time=" + email_time + "]";
-  }
-
+	@Override
+	public String toString() {
+		return "Member [m_no=" + m_no + ", m_grade=" + m_grade + ", m_email=" + m_email + ", m_name=" + m_name + ", m_tel="
+		    + m_tel + ", m_password=" + m_password + ", m_ava=" + m_ava + ", m_nick=" + m_nick + ", email_ava=" + email_ava
+		    + ", mng_no=" + mng_no + "]";
+	}
 }

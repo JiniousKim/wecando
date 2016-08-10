@@ -30,14 +30,10 @@ public class DefaultSchoolService implements SchoolService {
     return schoolDao.sch_insert(schoolMap);
   }
 
-  public int sch_change(School school) {
-    return schoolDao.sch_update(school);
+  public int sch_change(Map<String,Object> schoolMap) {
+    return schoolDao.sch_update(schoolMap);
   }
 
-  public int sch_create(School school) {
-    return schoolDao.sch_create(school);
-  }
-  
   public int get_sch(String sch_name) {
   		return schoolDao.get_sch(sch_name);
   }
