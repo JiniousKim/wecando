@@ -110,6 +110,7 @@ public class SchoolController {
 		HashMap<String, Object> resultMap = new HashMap<>();
 		try {
 			School school = schoolService.sch_Manager(m_no);
+			System.out.println(school);
 		  if (school != null) {
 		  		resultMap.put("status", "success");
 		  		resultMap.put("school", school);
