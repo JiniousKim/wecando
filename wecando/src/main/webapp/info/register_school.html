@@ -333,7 +333,7 @@
      })
      
      $('#change_school').on('hide.bs.modal', function (e) {
-        $('#ss').first().remove();
+        $('#cs').first().remove();
         $('#c_sch').html('');
         $('#c_sch').val('');
      })
@@ -391,7 +391,7 @@
                  swal('error','error',error);
                } else {
                  for (var school of resultObj.schools) {
-                   show.append("<a type='button' onclick='choose();' id='" + school.sch_name + "'>" + 
+                   show.append("<a type='button' onclick='change();' id='" + school.sch_name + "'>" + 
                              school.sch_name + "</a><br>");
                  } 
                } 

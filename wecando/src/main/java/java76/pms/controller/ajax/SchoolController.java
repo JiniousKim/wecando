@@ -98,6 +98,7 @@ public class SchoolController {
 				return resultMap;
 			}
 			resultMap.put("status", "scuccess");
+			resultMap.put("school", school);
 			return resultMap;
 		}
 		resultMap.put("status", "success");
