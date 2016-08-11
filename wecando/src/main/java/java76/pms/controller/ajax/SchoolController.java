@@ -97,7 +97,7 @@ public class SchoolController {
 				resultMap.put("status", "failure");
 				return resultMap;
 			}
-			resultMap.put("status", "scuccess");
+			resultMap.put("status", "success");
 			resultMap.put("school", school);
 			return resultMap;
 		}
