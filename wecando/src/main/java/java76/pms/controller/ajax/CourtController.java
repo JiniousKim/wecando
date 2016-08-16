@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java76.pms.domain.AjaxResult;
 import java76.pms.service.CourtService;
 
-@Controller("ajax.SchEventController")
-@RequestMapping("/schevent/ajax/*")
+@Controller("ajax.CourtController")
+@RequestMapping("/court/ajax/*")
 public class CourtController { 
 	@Autowired CourtService courtService;
 	
