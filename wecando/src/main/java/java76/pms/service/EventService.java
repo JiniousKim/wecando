@@ -5,7 +5,7 @@ import java.util.List;
 import java76.pms.domain.Event;
 
 public interface EventService {
-  List<String> getEventList();
+  List<Event> getEventList();
   Event getEvent(String event_code);
 }
 

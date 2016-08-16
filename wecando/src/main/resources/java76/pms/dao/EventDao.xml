@@ -11,8 +11,9 @@
     <result column="event_max" property="event_max" />
   </resultMap>
   
-  <select id="getEventList" resultType='String'>
-    select event_name
+  <select id="getEventList" resultType='Event'>
+    select event_name,
+           event_code
     from event
     order by event_name asc
   </select>

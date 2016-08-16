@@ -24,20 +24,19 @@ public class EventController {
 	public Object getEventList() throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<>();
 		try {
-			List<String> eventList = eventService.getEventList();
+			List<Event> eventList = eventService.getEventList();
 			resultMap.put("eventList", eventList);
 		} catch (Exception e) {
 			return new AjaxResult("failure", null);
 		}
-		
 		resultMap.put("status", "success");
 		return resultMap;
 	}
+	
 	@RequestMapping(value="eventList", method=RequestMethod.GET)
 	public String get_EventList() {
 		return "redirect:../../error.html";
 	}
-	
 	
 	@RequestMapping(value="getEvent", method=RequestMethod.POST)
 	public Object getEvent(String event_code) {
@@ -48,10 +47,10 @@ public class EventController {
 		} catch (Exception e) {
 			return new AjaxResult("failure", null);
 		}
-		
 		resultMap.put("status", "success");
 		return resultMap;
 	}
+	
 	@RequestMapping(value="getEvent", method=RequestMethod.GET)
 	public String get_getEvent() {
 		return "redirect:../../error.html";

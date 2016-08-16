@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="java76.pms.dao.SchEventDao">
+  <resultMap type="Court" id="courtMap">
+    <id column="court_code" property="court_code"/>
+    <result column="court_cnt" property="court_cnt"/>
+    <result column="event_code" property="event_code" />
+    <result column="sch_num" property="sch_no" />
+  </resultMap>
+  
+  <insert id="insert_court" parameterType="map">
+    insert into court(court_code, court_cnt, event_code, sch_num)
+    values(#{court_code, jdbcType=VARCHAR}, #{court_cnt}, 
+           #{event_code, jdbcType=VARCHAR}, #{sch_no})
+  </insert>
+  
+  <delete id="delete_court" parameterType="map">
+    delete from court
+    where 
+  </delete>
+  
+</mapper>

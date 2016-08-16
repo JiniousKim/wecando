@@ -2633,3 +2633,7 @@ div.col-md-4 a {
 #pm label , #pm div {
     display: inline-block;
 }
+
+#event_list {
+	color: black;
+}

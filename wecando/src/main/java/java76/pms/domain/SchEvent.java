@@ -131,25 +131,16 @@ public class SchEvent  implements Serializable {
 		return event;
 	}
 
-
 	public void setEvent(Event event) {
 		this.event = event;
 	}
-
 
 	public Court getCourt() {
 		return court;
 	}
 
-
 	public void setCourt(Court court) {
 		this.court = court;
 	}
-
-
-	
-	
 	public SchEvent() {}
-
-
 }

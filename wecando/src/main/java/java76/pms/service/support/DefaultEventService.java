@@ -13,7 +13,7 @@ import java76.pms.service.EventService;
 public class DefaultEventService implements EventService {
   @Autowired EventDao eventDao;
 
-  public List<String> getEventList() {
+  public List<Event> getEventList() {
     return eventDao.getEventList();
   }
   
