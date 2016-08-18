@@ -74,7 +74,7 @@ function check(id) {
         return true;
     }
     
-    if ((id == "court_price") || id == "court_max") {
+    if (id == ("court_price" || "court_max")) {
     	  var isNum = /^[0-9]/;
     	  if (!isNum.test(oid)) {
     		  oDiv.removeClass("has-success");
