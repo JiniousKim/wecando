@@ -112,7 +112,7 @@
 											style="display: none;">필수 정보입니다.</div>
 									</div>
 								</div>
-								<div id='nameForm' class="form-group3">
+								<div id='m_nameForm' class="form-group3">
 									<label class="col-sm-2 col-sm-2 control-label"> 이름</label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control" id="m_name">
@@ -167,7 +167,8 @@
       form_data.append("m_password", $('#password').val());
       form_data.append("email_code", $('#email_code').val());
       
-      if ($('#password').val() == "") {
+      if ($('#password').val() == ""
+    		  || $('#password'.attr('class') == 'form-group3 has-feedback has-error')) {
         sweetAlert("Oops...", "비밀번호를 입력해 주세요!", "error");
         return false;
       } else if ($('#password2').val() == "") {

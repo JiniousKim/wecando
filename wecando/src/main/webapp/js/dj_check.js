@@ -58,7 +58,7 @@ function check(id) {
         return true;
     }
     
-    if (id == "mName") {
+    if (id == "m_name") {
         var isName = /^[가-힝a-zA-Z]{2,}$/;
         if (!isName.test(oid)) {
             oDiv.removeClass("has-success");
@@ -74,8 +74,12 @@ function check(id) {
         return true;
     }
     
+    if (id == 'm_tel') {
+    	  var isTel = /^$/;
+    }
+    
     if (id == ("court_price" || "court_max")) {
-    	  var isNum = /^[0-9]/;
+    	  var isNum = /^[0-9]$/;
     	  if (!isNum.test(oid)) {
     		  oDiv.removeClass("has-success");
     		  oDiv.addClass("has-error");

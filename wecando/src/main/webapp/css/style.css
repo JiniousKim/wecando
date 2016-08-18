@@ -2624,13 +2624,13 @@ div.col-md-4 a {
    width : 100%;
 }
 
-#pm {
+.pm {
     display: -webkit-box;
     margin-bottom: 10px;
     margin-top: 25px;
 }
 
-#pm label , #pm div {
+.pm label , .pm div {
     display: inline-block;
 }
 
