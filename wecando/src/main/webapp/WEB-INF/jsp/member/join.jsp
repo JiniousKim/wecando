@@ -70,7 +70,36 @@
 				<div id="auth">
 					<img id="joinus" src="../../img/joinus.png">
 					<!-- INLINE FORM ELELEMNTS -->
-
+					
+					
+					<div class="nick">
+						<div class="modal fade" id="nick" tabindex="-1"
+							role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal"
+											aria-hidden="true">&times;</button>
+										<h4 class="modal-title" id="myModalLabel">학교 검색</h4>
+									</div>
+									<div class="modal-body">
+										<input type="text" class="form-control col-sm-3 inputbox"
+											id="c_sch">
+										<button type="button" class="btn btn-default"
+											onclick="ch_search();">검색</button>
+										<div class="col-lg-10">
+											<p class="form-control-static"
+												style="color: #777; margin-top: 10px">검색 결과</p>
+											<div id="cs"></div>
+										</div>
+									</div>
+									<div class="modal-foot"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 닉네임 중복확인 modal -->
+					
 					<div class="row mt">
 						<div class="col-lg-12">
 							<div class="form-panel-email">
@@ -102,7 +131,7 @@
 											최대8~20자입니다.</div>
 									</div>
 								</div>
-								<div id='password2Form' class="form-group3">
+								<div id='password2Form' class="form-group3 has-feedback">
 									<label class="col-sm-2 col-sm-2 control-label"> 비밀번호 확인</label>
 									<div class="col-sm-10">
 										<input type="password" id="password2"
@@ -112,21 +141,21 @@
 											style="display: none;">필수 정보입니다.</div>
 									</div>
 								</div>
-								<div id='m_nameForm' class="form-group3">
+								<div id='m_nameForm' class="form-group3 has-feedback">
 									<label class="col-sm-2 col-sm-2 control-label"> 이름</label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control" id="m_name">
 									</div>
 								</div>
-								<div id='nickForm' class="form-group3">
+								<div id='nickForm' class="form-group3 has-feedback">
 									<label class="col-sm-2 col-sm-2 control-label"> 닉네임</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control col-sm-3" id="m_nick">
-										<button value='0' type="button" id='checknick'
-											class="btn btn-default col-sm-2" onclick='check_nick();'>중복확인</button>
+										<input type="text" class="form-control col-sm-3" style='border:none;'id="m_nick" readonly>
+									  <button type="button" class="btn btn-default col-sm-2" 
+                          style="margin: 0 0 0 -57px;" data-toggle="modal" data-target="#nick">중복확인</button>
 									</div>
 								</div>
-								<div id="telForm" class="form-group3">
+								<div id="m_telForm" class="form-group3 has-feedback">
 									<label class="col-sm-2 col-sm-2 control-label"> 전화번호</label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control" id="m_tel">
@@ -168,22 +197,25 @@
       form_data.append("email_code", $('#email_code').val());
       
       if ($('#password').val() == ""
-    		  || $('#password'.attr('class') == 'form-group3 has-feedback has-error')) {
-        sweetAlert("Oops...", "비밀번호를 입력해 주세요!", "error");
-        return false;
-      } else if ($('#password2').val() == "") {
+    		  || $('#passwordForm').attr('class') == 'form-group3 has-feedback has-error') {
         sweetAlert("Oops...", "비밀번호를 확인해 주세요!", "error");
         return false;
-      } else if ($('#m_name').val() == "") {
-        sweetAlert("Oops...", "이름을 입력해 주세요!", "error");
+      } else if ($('#password2').val() == "" ||
+    		  $('#password2Form').attr('class') == 'form-group3 has-feedback has-error') {
+        sweetAlert("Oops...", "비밀번호를 확인해 주세요!", "error");
+        return false;
+      } else if ($('#m_name').val() == "" ||
+    		   $('#m_nameForm').attr('class') == 'form-group3 has-feedback has-error') {
+        sweetAlert("Oops...", "이름을 확인해 주세요!", "error");
         return false;
       } else if ($('#m_nick').val() == "") {
-        sweetAlert("Oops...", "닉네임을 입력해 주세요!", "error");
+        sweetAlert("Oops...", "닉네임을 확인해 주세요!", "error");
         return false;
       } else if ($('#checknick').val() == 0) {
         sweetAlert("Oops...", "중복확인을 완료해 주세요!", "error");
-      }   else if ($('#m_tel').val() == "") {
-        sweetAlert("Oops...", "전화번호를 입력해 주세요!", "error");
+      } else if ($('#m_tel').val() == "" ||
+    		  $('#m_telForm').attr('class') == 'form-group3 has-feedback has-error') {
+        sweetAlert("Oops...", "전화번호를 확인해 주세요!", "error");
         return false;
       } else {
         if ($('#m_grade').val() == 1) {

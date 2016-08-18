@@ -103,8 +103,9 @@
 		$(document).on("click",'#btn-auth',function(e) {
 					var form_data = new FormData();
 					form_data.append("m_email", $('#m_e').val())
-          if ($('#m_email').val() == '' ||
-        		    $('#m_email').attr('class') == 'form-group2 has-feedback has-error') {
+          if ($('#m_e').val() == '' ||
+        		    $('#m_eForm').attr('class') == 'form-group2 has-feedback has-error') {
+        	    sweetAlert('Oops...', 'email 형식에 맞지 않습니다.', 'error');
         	    return false;
           } else {
 						$.ajax({
