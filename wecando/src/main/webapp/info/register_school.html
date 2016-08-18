@@ -175,12 +175,13 @@
                     </div>
                   </div>
                   <div class="form-group" id='result'>
+                    <input type='hidden' class='form-control-static' id='sch_no' value='' readonly="readonly" >
                     <label class='col-lg-2 col-sm-2 control-label'> 학교 이름</label>
                     <div class='col-lg-10'>
                     <input class='form-control-static' id='school_name' value='' readonly="readonly" > 
                     </div>
                     <label class='col-lg-2 col-sm-2 control-label'> 학교 위치</label>
-                    <div class='col-lg-10'>
+                    <div class='col-lg-10'> 
                     <input class='form-control-static' id='school_location' value='' readonly="readonly" >
                     </div>
                     <label class='col-lg-2 col-sm-2 control-label'> 전화 번호</label>
@@ -211,25 +212,26 @@
                     <div id="pm">
                       <label class="col-sm-2 col-sm-2 control-label"> 코트 수</label>
                       <div class="col-sm-10" style="margin-top: 5px;">
-                        <input type="number" name="points" min="0" max="10" step="1"
+                        <input id='court_cnt' type="number" name="points" min="0" max="10" step="1"
                           value="1" style="color: black; text-align: center;">
                       </div>
                     </div>
                     <div id="pm">
                       <label class="col-sm-3 control-label"> 최대 수용 인원</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control col-sm-3"
-                          style="margin-left: -57px; border:none; text-align : center;" readonly>
+                        <input id='court_max' type="text" class="form-control col-sm-3"
+                          style="margin-left: -57px;">
                       </div>
                     </div>
                     <div id="pm">
                       <label class="col-sm-3 control-label"> 이용 금액</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control"
-                          style="margin-left: -57px; border:none;" readonly>
+                        <input id='court_price' type="text" class="form-control"
+                          style="margin-left: -57px;">
                       </div>
                     </div>
                   </div>
+                  <button type='button' class='btn btn-theme'>추가하기</button>
                   <button type="button" class="btn btn-theme04">취소</button>
                   <button type="button" class="btn btn-theme">등록하기</button>
                 </form>
@@ -319,6 +321,7 @@
           document.getElementById('school_name').value = school.sch_name;
          document.getElementById('school_location').value = school.sch_location;
          document.getElementById('school_tel').value = school.sch_tel;
+         document.getElementById('sch_no').value = school.sch_no;
         }
       }
    })
@@ -433,6 +436,7 @@
                            document.getElementById('school_name').value = school.sch_name;
                            document.getElementById('school_location').value = school.sch_location;
                            document.getElementById('school_tel').value = school.sch_tel;
+                           document.getElementById('sch_no').value = school.sch_no;
                          } else {
                            swal('Error','변경할 수 없습니다.', "error");                          
                          }
@@ -480,6 +484,7 @@
                            document.getElementById('school_name').value = school.sch_name;
                            document.getElementById('school_location').value = school.sch_location;
                           document.getElementById('school_tel').value = school.sch_tel;
+                          document.getElementById('sch_no').value = school.sch_no;
                         } else {
                           swal('Error','등록할 수 없습니다.', "error");                          
                         }
@@ -494,7 +499,25 @@
     }
     
     function setEvent() {
-    	 
+    	  $('#event_list').click(function(e) {
+    		  var id = e.target.getAttribute('id');
+    		  var form_data = new FormData();
+    		  form_data.append('event_code', $('#event_code').val());
+    		  form_data.append('sch_no',$('#sch_no').val());
+    		  form_data.append('court_cnt', $('#court_cnt').val());
+    		  form_data.append('court_price', $('#court_price').val());
+    		  form_data.append('court_max', $('#court_max').val());
+    		  $.ajax({
+    			  url : contextRoot + '/event/ajax/addCourt',
+    			  type : 'post',
+    			  dataType : 'json',
+    			  cache : false,
+    			  data : form_data,
+    			  success : function(resultObj) {
+    				  
+    			  }
+    		  })
+    	  })
     }
     
     function logout() {

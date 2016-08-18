@@ -31,6 +31,7 @@
     select sch_name,
            sch_location,
            sch_tel,
+           sch_num as sch_no,
            member_num as m_no
     from school
     where sch_num = (select mng_no

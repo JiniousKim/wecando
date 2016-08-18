@@ -12,9 +12,10 @@
   </resultMap>
   
   <insert id="insert_court" parameterType="map">
-    insert into court(court_code, court_cnt, event_code, sch_num)
+    insert into court(court_code, court_cnt, event_code, sch_num, court_price, court_max)
     values(#{court_code, jdbcType=VARCHAR}, #{court_cnt}, 
-           #{event_code, jdbcType=VARCHAR}, #{sch_no})
+           #{event_code, jdbcType=VARCHAR}, #{sch_no},
+           #{court_price}, #{court_max})
   </insert>
   
   <!-- <delete id="delete_court" parameterType="map">

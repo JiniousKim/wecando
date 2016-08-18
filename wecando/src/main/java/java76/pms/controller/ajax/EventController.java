@@ -37,22 +37,4 @@ public class EventController {
 	public String get_EventList() {
 		return "redirect:../../error.html";
 	}
-	
-	@RequestMapping(value="getEvent", method=RequestMethod.POST)
-	public Object getEvent(String event_code) {
-		HashMap<String, Object> resultMap = new HashMap<>();
-		try{
-			Event event = eventService.getEvent(event_code);
-			resultMap.put("event", event);
-		} catch (Exception e) {
-			return new AjaxResult("failure", null);
-		}
-		resultMap.put("status", "success");
-		return resultMap;
-	}
-	
-	@RequestMapping(value="getEvent", method=RequestMethod.GET)
-	public String get_getEvent() {
-		return "redirect:../../error.html";
-	}
 }

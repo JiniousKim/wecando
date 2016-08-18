@@ -17,15 +17,18 @@ public class CourtController {
 	
 	@RequestMapping(value="addCourt", method=RequestMethod.POST)
 	public Object addCourt(int sch_no, String event_code,
-			                   int court_cnt) {
+			                   int court_cnt, int court_max,
+			                   int court_price) {
 		
 		HashMap<String, Object> paramMap = new HashMap<>();
 		String court_code = sch_no + event_code; 
 		
 		paramMap.put("sch_no", sch_no);
 		paramMap.put("event_code", event_code);
-		paramMap.put("event_cnt", court_cnt);
+		paramMap.put("court_cnt", court_cnt);
 		paramMap.put("court_code", court_code);
+		paramMap.put("court_max", court_max);
+		paramMap.put("court_price", court_price);
 		
 		if (!(courtService.insert_court(paramMap) > 0)) {
 			return new AjaxResult("failure", null);

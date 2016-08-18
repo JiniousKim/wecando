@@ -73,4 +73,20 @@ function check(id) {
         oMsg.html("");
         return true;
     }
+    
+    if ((id == "court_price") || id == "court_max") {
+    	  var isNum = /^[0-9]/;
+    	  if (!isNum.test(oid)) {
+    		  oDiv.removeClass("has-success");
+    		  oDiv.addClass("has-error");
+    		  oMsg.css("display", "block");
+    		  oMsg.html("숫자만 입력 가능합니다.");
+    		  return false;
+    	  }
+    	  oDiv.removeClass("has-error");
+    	  oDiv.addClass("has-success");
+	  oMsg.css("display", "block");
+	  oMsg.html("");
+	  return true;
+    }
 };
