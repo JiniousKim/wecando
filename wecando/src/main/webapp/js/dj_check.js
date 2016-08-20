@@ -74,7 +74,7 @@ function check(id) {
         return true;
     }
     
-    if (id == 'm_nick') {
+    if (id == 'm_n') {
     	  var isNick = /^[가-힝a-zA-Z]{2,}$/;
     	  if (!isNick.test(oid)) {
     		  oDiv.removeClass("has-success");

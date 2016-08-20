@@ -82,10 +82,10 @@
                   <div class="modal-body">
                     <div class="form-group3 has-feedback">
                     <input type="text" class="form-control col-sm-3 inputbox"
-                      onchange='check(this.id);'id="m_nick">
+                      onchange='check(this.id);'id="m_n">
                     <button type="button" class="btn btn-default"
                       onclick="nick_search();">중복 검사</button>
-                  <div class="control-label" id="m_nickMsgf"
+                  <div class="control-label" id="m_nMsg"
                       style='display:none;'>기호는 들어갈 수 없습니다.</div>
                   </div>
                   </div>
@@ -290,7 +290,7 @@
             	    		function(isConfirm){   
             	    			if (isConfirm) {     
             	    				swal("등록성공!", "닉네임이 등록되었습니다.", "success");   
-			                document.getElementById('m_nick').value = $('#m_nick').val();
+			                document.getElementById('m_nick').value = $('#m_n').val();
             	    			} else {     
             	    				swal("등록취소", "다시 닉네임을 설정해주세요.", "error");   
             	        }
