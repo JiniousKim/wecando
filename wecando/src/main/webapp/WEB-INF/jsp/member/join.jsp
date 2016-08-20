@@ -150,7 +150,7 @@
 								<div id='nickForm' class="form-group3 has-feedback">
 									<label class="col-sm-2 col-sm-2 control-label"> 닉네임</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control col-sm-3" style='border:none;'id="m_nick" readonly>
+										<input type="text" class="form-control col-sm-3" id="m_nick" readonly>
 									  <button type="button" class="btn btn-default col-sm-2" 
                           style="margin: 0 0 0 -57px;" data-toggle="modal" data-target="#nick">중복확인</button>
 									</div>
@@ -232,10 +232,8 @@
               var ajaxResult = resultObj.ajaxResult;
               if (ajaxResult.status == 'success') {
                 swal("Good job!",  "회원 가입이 완료되었습니다.","success")
-                e.preventDefault();
               } else {
                 sweetAlert("Oops...","다시 시도해 주세요","error");
-                e.preventDefault();
               }
               setTimeout('go_url()', 5000);
             }
@@ -256,7 +254,6 @@
                 swal("Good job!","회원 가입이 완료되었습니다.","success");
               } else {
                 sweetAlert("Oops...","다시 시도해 주세요","error");
-                e.preventDefault();
               }
               setTimeout('go_register()',5000);
             }

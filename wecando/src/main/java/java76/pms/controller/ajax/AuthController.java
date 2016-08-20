@@ -95,12 +95,5 @@ public class AuthController {
   		resultMap.put("grade", member.getM_grade());
   		return resultMap;
   }
-  
-  @RequestMapping(value="loginInfo", method=RequestMethod.POST)
-  public Object loginInfo(HttpSession session) {
-  		HashMap<String,Object> resultMap = new HashMap<>();
-  		
-  		return resultMap;
-  }
 }
 

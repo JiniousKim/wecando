@@ -73,6 +73,23 @@ function check(id) {
         oMsg.html("");
         return true;
     }
+    
+    if (id == 'm_nick') {
+    	  var isNick = /^[가-힝a-zA-Z]{2,}$/;
+    	  if (!isNick.test(oid)) {
+    		  oDiv.removeClass("has-success");
+	      oDiv.addClass("has-error");
+	      oMsg.css("display", "block");
+	      oMsg.html("닉네임을 입력해주세요");
+	      return false;
+    	  }
+    	  oDiv.removeClass("has-error");
+      oDiv.addClass("has-success");
+      oMsg.css("display", "block");
+      oMsg.html("");
+      return true;
+    }
+    
     if (id == 'm_tel') {
     		var isTel = /[0][1](0|1|6|7|8|9)[-](\d{4}|\d{3})[-]\d{4}$/;
         if (!isTel.test(oid)) {

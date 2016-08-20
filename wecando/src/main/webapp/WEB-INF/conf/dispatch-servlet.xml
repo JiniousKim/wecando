@@ -54,7 +54,9 @@
   <!-- 인터셉터를 등록 -->
   <mvc:interceptors>
     <mvc:interceptor>
-        <mvc:mapping path="/info/**"/>
+        <mvc:mapping path="/school/**"/>
+        <mvc:mapping path="/event/**"/>
+        <mvc:mapping path="/court/**"/>
         <bean class="java76.pms.interceptor.AuthInterceptor"/>
     </mvc:interceptor>
   </mvc:interceptors>
