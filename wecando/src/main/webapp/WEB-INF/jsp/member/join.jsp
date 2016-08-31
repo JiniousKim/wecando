@@ -149,7 +149,7 @@
 									<div class="col-sm-10">
 										<input type="text" class="form-control col-sm-3" id="m_nick" readonly>
 									  <button type="button" class="btn btn-default col-sm-2" 
-                          style="margin: 0 0 0 -57px;" data-toggle="modal" data-target="#nick">중복확인</button>
+                          style="margin: 0 0 0 10px;" data-toggle="modal" data-target="#nick">중복확인</button>
 									</div>
 								</div>
 								<div id="m_telForm" class="form-group3 has-feedback">
@@ -209,7 +209,8 @@
            $('#m_nameForm').attr('class') == 'form-group3 has-feedback has-error') {
         sweetAlert("Oops...", "이름을 확인해 주세요!", "error");
         return false;
-      } else if ($('#m_nick').val() == "") {
+      } else if ($('#m_nick').val() == "" || 
+    		     $('m_nickForm').attr('class') == 'form-group3 has-feedback has-error') {
         sweetAlert("Oops...", "닉네임을 확인해 주세요!", "error");
         return false;
       } else if ($('#m_tel').val() == "" ||
@@ -271,9 +272,8 @@
     
     function nick_search() {
       var form_data = new FormData();
-      form_data.append("m_nick", $('#m_nick').val());
-      if ($('#m_nick').val() == "") {
-          $('#checknick').val(0);
+      form_data.append("m_n", $('#m_n').val());
+      if ($('#m_n').val() == "") {
           sweetAlert("Oops...", "닉네임을 입력해 주세요!", "error");
           return false;
         } else {
