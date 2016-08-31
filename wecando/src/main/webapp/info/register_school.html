@@ -209,7 +209,7 @@
                       <label class="col-sm-2 col-sm-2 control-label"> 코트 수</label>
                       <div class="col-sm-10" style="margin-top: 5px;">
                         <input id='court_cnt' type="number" name="points" min="0" max="10" step="1"
-                          value="1" style="color: black; text-align: center;">
+                          value="1" style="color: black; text-align: center; border-color : 1px solid #ccc;">
                       </div>
                     </div>
                     <div id='court_maxForm' class="pm has-feedback">
@@ -217,19 +217,29 @@
                       <div class="col-sm-10">
                         <input id='court_max' type="text" onchange='check(this.id);' class="form-control col-sm-3"
                           style="margin-left: -57px;">
+                        <div class="control-label" id="court_maxMsg"
+                      style="display: none;">숫자만 입력가능합니다.</div>
                       </div>
                     </div>
                     <div id='court_priceForm' class='pm has-feedback'>
                       <label class="col-sm-3 control-label"> 이용 금액</label>
                       <div class="col-sm-10">
-                        <input id='court_price' type="text" class="form-control"
+                        <input id='court_price' type="text" class="form-control col-sm-3" onchange='check(this.id)'
                           style="margin-left: -57px;">
+                        <div class="control-label" id="court_priceMsg"
+                      style="display: none;">숫자만 입력가능합니다.</div>
                       </div>
                     </div>
-                  </div>
+                    <div style='position:absolute; top:58%; left:26%;'>
                   <button type='button' class='btn btn-theme'>추가하기</button>
-                  <button type="button" class="btn btn-theme04">취소</button>
-                  <button type="button" class="btn btn-theme">등록하기</button>
+                  </div>
+                  <div style='position:absolute; top:68%; left:26.8%;'>
+                  <button type='button' class='btn btn-theme05'>삭제하기</button>
+                  </div>
+                  <div id='addList' class='addlist'>
+                  
+                  </div>
+                  </div>
                 </form>
               </div>
             </div>
