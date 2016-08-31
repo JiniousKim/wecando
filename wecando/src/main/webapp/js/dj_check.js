@@ -80,7 +80,7 @@ function check(id) {
     		  oDiv.removeClass("has-success");
 	      oDiv.addClass("has-error");
 	      oMsg.css("display", "block");
-	      oMsg.html("닉네임을 입력해주세요");
+	      oMsg.html("닉네임을 확인해주세요");
 	      return false;
     	  }
     	  oDiv.removeClass("has-error");

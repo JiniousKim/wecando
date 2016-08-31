@@ -80,9 +80,9 @@
                     <h4 class="modal-title" id="myModalLabel">닉네임 중복확인</h4>
                   </div>
                   <div class="modal-body">
-                    <div class="form-group3 has-feedback">
-                    <input type="text" class="form-control col-sm-3 inputbox"
-                      onchange='check(this.id);'id="m_n">
+                    <div id='m_nForm' class="form-group3 has-feedback">
+                    <input type="text" id="m_n" class="form-control col-sm-3 inputbox"
+                      onchange='check(this.id);'>
                     <button type="button" class="btn btn-default"
                       onclick="nick_search();">중복 검사</button>
                   <div class="control-label" id="m_nMsg"
