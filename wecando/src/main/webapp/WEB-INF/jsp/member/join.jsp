@@ -84,7 +84,7 @@
                   <div class="modal-body">
                     <div class="form-group3 has-feedback">
                     <input type="text" class="form-control col-sm-3 inputbox"
-                      onchange='check(this.id);'id="m_n">
+                      onchange='check(this.id);' id="m_n">
                     <button type="button" class="btn btn-default"
                       onclick="nick_search();">중복 검사</button>
                   <div class="control-label" id="m_nMsg"
@@ -181,7 +181,11 @@
 	<script src="../../lib/sweetalert/sweetalert.min.js"></script>
 
 	<script>
-	<!-- 회원 가입 동작 -->
+   $('#nick').on('hide.bs.modal', function (e) {
+       $('#m_n').html('');
+       $('#m_n').val('');
+   });
+    
     $(document).on("click",'#create',function(e) {
       var form_data = new FormData();
       form_data.append("m_email", $('#m_email').val());
@@ -256,6 +260,7 @@
         }
       }
     });
+    
     
     function go_url() {
       location.replace("http://localhost:8080/wecando/wecando.html");

@@ -174,135 +174,140 @@
   <script src="lib/sweetalert/sweetalert.min.js"></script>
 
   <script>
-  <!-- 회원 가입 동작 -->
-    $(document).on("click",'#create',function(e) {
-      var form_data = new FormData();
-      form_data.append("m_email", $('#m_email').val());
-      form_data.append("m_grade", $('#m_grade').val());
-      form_data.append("m_name", $('#m_name').val());
-      form_data.append("m_tel", $('#m_tel').val());
-      form_data.append("m_nick", $('#m_nick').val());
-      form_data.append("email_ava", $('#email_ava').val());
-      form_data.append("m_password", $('#password').val());
-      form_data.append("email_code", $('#email_code').val());
-      
-      if ($('#password').val() == ""
-          || $('#passwordForm').attr('class') == 'form-group3 has-feedback has-error') {
-        sweetAlert("Oops...", "비밀번호를 확인해 주세요!", "error");
-        return false;
-      } else if ($('#password2').val() == "" ||
-          $('#password2Form').attr('class') == 'form-group3 has-feedback has-error') {
-        sweetAlert("Oops...", "비밀번호를 확인해 주세요!", "error");
-        return false;
-      } else if ($('#m_name').val() == "" ||
-           $('#m_nameForm').attr('class') == 'form-group3 has-feedback has-error') {
-        sweetAlert("Oops...", "이름을 확인해 주세요!", "error");
-        return false;
-      } else if ($('#m_nick').val() == "") {
-        sweetAlert("Oops...", "닉네임을 확인해 주세요!", "error");
-        return false;
-      } else if ($('#m_tel').val() == "" ||
-          $('#m_telForm').attr('class') == 'form-group3 has-feedback has-error') {
-        sweetAlert("Oops...", "전화번호를 확인해 주세요!", "error");
-        return false;
-      } else {
-        if ($('#m_grade').val() == 1) {
-          $.ajax({
-            url : contextRoot + '/member/ajax/create.do',
-            type : 'post',
-            dataType : 'json',
-            async : false,
-            cache : false,
-            contentType : false,
-            processData : false,
-            data : form_data,
-            success : function(resultObj) {
-              var ajaxResult = resultObj.ajaxResult;
-              if (ajaxResult.status == 'success') {
-                swal("Good job!",  "회원 가입이 완료되었습니다.","success")
-              } else {
-                sweetAlert("Oops...","다시 시도해 주세요","error");
-              }
-              setTimeout('go_url()', 5000);
-            }
-          })
-        } else {
-          $.ajax({
-            url : contextRoot + '/member/ajax/create.do',
-            type : 'post',
-            dataType : 'json',
-            async : false,
-            cache : false,
-            contentType : false,
-            processData : false,
-            data : form_data,
-            success : function(resultObj) {
-              var ajaxResult = resultObj.ajaxResult;
-              if (ajaxResult.status == 'success') {
-                swal("Good job!","회원 가입이 완료되었습니다.","success");
-              } else {
-                sweetAlert("Oops...","다시 시도해 주세요","error");
-              }
-              setTimeout('go_register()',5000);
-            }
-          })
-        }
-      }
-    });
-    
-    function go_url() {
-      location.replace("http://localhost:8080/wecando/wecando.html");
-    };
-    function go_register() {
-      location.replace("http://localhost:8080/wecando/register_school.html");
-    };
-    
-    function nick_search() {
-      var form_data = new FormData();
-      form_data.append("m_nick", $('#m_nick').val());
-      if ($('#m_nick').val() == "") {
-          $('#checknick').val(0);
-          sweetAlert("Oops...", "닉네임을 입력해 주세요!", "error");
-          return false;
-        } else {
-          $.ajax({
-            url : contextRoot + '/member/ajax/check_nick.do',
-            type : 'post',
-            dataType : 'json',
-            cache : false,
-            contentType : false,
-            processData : false,
-            data : form_data,
-            success : function(resultObj) {
-              var ajaxResult = resultObj.ajaxResult;
-              if (ajaxResult.status == 'success') {
-            	    swal({
-            	     	title: "잠깐!",   
-            	    		text: "해당 닉네임으로 설정하시겠습니까?",   
-            	    		type: "warning",   
-            	    		showCancelButton: true,   
-            	    		confirmButtonColor: "#7AC943",   
-            	    		confirmButtonText: "네, 등록할래요!",   
-            	    		cancelButtonText: "앗, 아니오!",   
-            	    		closeOnConfirm: false,   
-            	    		closeOnCancel: false 
-            	    		}, 
-            	    		function(isConfirm){   
-            	    			if (isConfirm) {     
-            	    				swal("등록성공!", "닉네임이 등록되었습니다.", "success");   
-			                document.getElementById('m_nick').value = $('#m_n').val();
-            	    			} else {     
-            	    				swal("등록취소", "다시 닉네임을 설정해주세요.", "error");   
-            	        }
-            	    })
-              } else {
-            	    document.getElementById('m_nick').value = '';
-                sweetAlert("Oops...","중복된 닉네임입니다!","error");
-              }
-            }
-          })
-        }
-    }
+  $('#nick').on('hide.bs.modal', function (e) {
+      $('#m_n').html('');
+      $('#m_n').val('');
+  });
+   
+   $(document).on("click",'#create',function(e) {
+     var form_data = new FormData();
+     form_data.append("m_email", $('#m_email').val());
+     form_data.append("m_grade", $('#m_grade').val());
+     form_data.append("m_name", $('#m_name').val());
+     form_data.append("m_tel", $('#m_tel').val());
+     form_data.append("m_nick", $('#m_nick').val());
+     form_data.append("email_ava", $('#email_ava').val());
+     form_data.append("m_password", $('#password').val());
+     form_data.append("email_code", $('#email_code').val());
+     
+     if ($('#password').val() == ""
+         || $('#passwordForm').attr('class') == 'form-group3 has-feedback has-error') {
+       sweetAlert("Oops...", "비밀번호를 확인해 주세요!", "error");
+       return false;
+     } else if ($('#password2').val() == "" ||
+         $('#password2Form').attr('class') == 'form-group3 has-feedback has-error') {
+       sweetAlert("Oops...", "비밀번호를 확인해 주세요!", "error");
+       return false;
+     } else if ($('#m_name').val() == "" ||
+          $('#m_nameForm').attr('class') == 'form-group3 has-feedback has-error') {
+       sweetAlert("Oops...", "이름을 확인해 주세요!", "error");
+       return false;
+     } else if ($('#m_nick').val() == "") {
+       sweetAlert("Oops...", "닉네임을 확인해 주세요!", "error");
+       return false;
+     } else if ($('#m_tel').val() == "" ||
+         $('#m_telForm').attr('class') == 'form-group3 has-feedback has-error') {
+       sweetAlert("Oops...", "전화번호를 확인해 주세요!", "error");
+       return false;
+     } else {
+       if ($('#m_grade').val() == 1) {
+         $.ajax({
+           url : contextRoot + '/member/ajax/create.do',
+           type : 'post',
+           dataType : 'json',
+           async : false,
+           cache : false,
+           contentType : false,
+           processData : false,
+           data : form_data,
+           success : function(resultObj) {
+             var ajaxResult = resultObj.ajaxResult;
+             if (ajaxResult.status == 'success') {
+               swal("Good job!",  "회원 가입이 완료되었습니다.","success")
+             } else {
+               sweetAlert("Oops...","다시 시도해 주세요","error");
+             }
+             setTimeout('go_url()', 5000);
+           }
+         })
+       } else {
+         $.ajax({
+           url : contextRoot + '/member/ajax/create.do',
+           type : 'post',
+           dataType : 'json',
+           async : false,
+           cache : false,
+           contentType : false,
+           processData : false,
+           data : form_data,
+           success : function(resultObj) {
+             var ajaxResult = resultObj.ajaxResult;
+             if (ajaxResult.status == 'success') {
+               swal("Good job!","회원 가입이 완료되었습니다.","success");
+             } else {
+               sweetAlert("Oops...","다시 시도해 주세요","error");
+             }
+             setTimeout('go_register()',5000);
+           }
+         })
+       }
+     }
+   });
+   
+   
+   function go_url() {
+     location.replace("http://localhost:8080/wecando/wecando.html");
+   };
+   function go_register() {
+     location.replace("http://localhost:8080/wecando/register_school.html");
+   };
+   
+   function nick_search() {
+     var form_data = new FormData();
+     form_data.append("m_nick", $('#m_nick').val());
+     if ($('#m_nick').val() == "") {
+         $('#checknick').val(0);
+         sweetAlert("Oops...", "닉네임을 입력해 주세요!", "error");
+         return false;
+       } else {
+         $.ajax({
+           url : contextRoot + '/member/ajax/check_nick.do',
+           type : 'post',
+           dataType : 'json',
+           cache : false,
+           contentType : false,
+           processData : false,
+           data : form_data,
+           success : function(resultObj) {
+             var ajaxResult = resultObj.ajaxResult;
+             if (ajaxResult.status == 'success') {
+                 swal({
+                   title: "잠깐!",   
+                     text: "해당 닉네임으로 설정하시겠습니까?",   
+                     type: "warning",   
+                     showCancelButton: true,   
+                     confirmButtonColor: "#7AC943",   
+                     confirmButtonText: "네, 등록할래요!",   
+                     cancelButtonText: "앗, 아니오!",   
+                     closeOnConfirm: false,   
+                     closeOnCancel: false 
+                     }, 
+                     function(isConfirm){   
+                       if (isConfirm) {     
+                         swal("등록성공!", "닉네임이 등록되었습니다.", "success");   
+                     document.getElementById('m_nick').value = $('#m_n').val();
+                       } else {     
+                         swal("등록취소", "다시 닉네임을 설정해주세요.", "error");   
+                     }
+                 })
+             } else {
+                 document.getElementById('m_nick').value = '';
+               sweetAlert("Oops...","중복된 닉네임입니다!","error");
+             }
+           }
+         })
+       }
+   }
   </script>
 </body>
 </html>
