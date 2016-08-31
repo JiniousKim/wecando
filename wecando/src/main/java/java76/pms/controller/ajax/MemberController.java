@@ -180,8 +180,8 @@ public class MemberController extends TimerTask {
 	}
 
 	@RequestMapping(value="check_nick", method=RequestMethod.POST)
-	public AjaxResult check_nick(String m_nick) throws Exception {
-		if (memberService.check_nick(m_nick) != 0) {
+	public AjaxResult check_nick(String m_n) throws Exception {
+		if (memberService.check_nick(m_n) != 0) {
 			return new AjaxResult("failure", null);
 		}
 		return new AjaxResult("success", null);
