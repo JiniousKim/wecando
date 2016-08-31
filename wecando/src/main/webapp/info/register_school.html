@@ -204,7 +204,7 @@
                             data-toggle="dropdown">
                             종목 <span class="caret"></span>
                           </button>
-                          <ul class="dropdown-menu over" id='event_list' role="menu">
+                          <ul class="dropdown-menu over" id='event_list' role="button">
                           </ul>
                         </div>
                       </div>
@@ -374,6 +374,13 @@
             }
          })
     }
+     
+   function choice_Event() {
+	   $('#event_list').click(function(e){
+		   var id = e.target.getAttribute('id');
+		   
+	   })
+   }
      
    function ch_search() {
        var form_data = new FormData();
