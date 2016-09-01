@@ -2636,9 +2636,6 @@ div.col-md-4 a {
 
 #event_list {
 	color: black;
-	overflow : auto;
-	width:200px; 
-	height:100px;
 }
 
 #eventlist > select {
