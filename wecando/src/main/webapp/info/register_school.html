@@ -199,7 +199,7 @@
                         종목</label>
                       <div class="col-sm-10">
                         <div class="btn-group" id='eventlist'>
-                          <select id='event_list' name='event_code' class='dropdown-toggle' data-toggle='dropdown' name='event_code'>
+                          <select id='event_list' name='ec' class='dropdown-toggle' data-toggle='dropdown' name='event_code'>
                           <option class='dropdown-menu' selected>종목</option>
                           </select>
                         </div>
@@ -356,7 +356,7 @@
     
     $(document).on("click",'#insertEvent', function(e) {
     	  var form_data = new FormData();
-    	  var eventcode = event_code.val();
+    	  var eventcode = ec.val();
     	  console.log(event_code.val());
     	  if ($('#court_max').val() == '') {
     		  
