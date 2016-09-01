@@ -203,7 +203,7 @@
 					                  종목
 					                  <span class="caret"></span>
 					                </button>
-					                <ul id='eventlist' class="dropdown-menu"></ul>
+					                <ul id='event_list' class="dropdown-menu"></ul>
 					              </div>
                         
                         <!-- <div class="btn-group" id='eventlist'>
@@ -310,7 +310,7 @@
        success : function(resultObj) {
          var list = $('#event_list');
          for(var event of resultObj.eventList) {
-              list.append("<li><a href='#' role='button' id='" + event.event_code + "'>" + event.event_name + "</a></li>")
+              list.append("<li id='" + event.event_code + "'>" + event.event_name + "</li>")
          }
        }
     })
@@ -386,7 +386,7 @@
     
     $('eventlist').click(function(e) {
     	  event_code = e.target.getAttribute('id');
-    	  document.getElementById('eventbtn').value = $('#event_code').val();
+    	  document.getElementById('eventbtn').value = e.target.getAttribute('id').val();
     })
     
     function search() {
