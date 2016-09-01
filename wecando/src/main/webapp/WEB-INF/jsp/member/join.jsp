@@ -141,7 +141,8 @@
 								<div id='m_nameForm' class="form-group3 has-feedback">
 									<label class="col-sm-2 col-sm-2 control-label"> 이름</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="m_name">
+										<input type="text" class="form-control" id="m_name"
+										 onchange="check(this.id);">
 									</div>
 								</div>
 								<div id='nickForm' class="form-group3 has-feedback">

@@ -194,15 +194,23 @@
                       <label class="col-sm-2 col-sm-2 control-label"
                         style="font-weight: bold;"> 시설물 등록</label>
                     </div>
-                    <div class="pm">
+                    <div class="pm" id='eventresult'>
                       <label class="col-sm-2 col-sm-2 control-label"> 이용가능
                         종목</label>
                       <div class="col-sm-10">
-                        <div class="btn-group" id='eventlist'>
-                          <select id='event_list'>
+                        <div class="btn-group">
+					                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id='eventbtn'>
+					                  종목
+					                  <span class="caret"></span>
+					                </button>
+					                <ul id='eventlist' class="dropdown-menu"></ul>
+					              </div>
+                        
+                        <!-- <div class="btn-group" id='eventlist'>
+                          <select id='event_list' name='event_code'>
                           <option selected>종목</option>
                           </select>
-                        </div>
+                        </div> -->
                       </div>
                     </div>
                     <div class="pm">
@@ -213,7 +221,7 @@
                       </div>
                     </div>
                     <div id='court_maxForm' class="pm has-feedback">
-                      <label class="col-sm-3 control-label"> 최대 수용 인원</label>
+                      <label class="col-sm-3 control-label"> 최대 수용 인원(명)</label>
                       <div class="col-sm-10">
                         <input id='court_max' type="text" onchange='check(this.id);' class="form-control col-sm-3"
                           style="margin-left: -57px;">
@@ -222,7 +230,7 @@
                       </div>
                     </div>
                     <div id='court_priceForm' class='pm has-feedback'>
-                      <label class="col-sm-3 control-label"> 이용 금액</label>
+                      <label class="col-sm-3 control-label"> 이용 금액(원)</label>
                       <div class="col-sm-10">
                         <input id='court_price' type="text" class="form-control col-sm-3" onchange='check(this.id)'
                           style="margin-left: -57px;">
@@ -231,7 +239,7 @@
                       </div>
                     </div>
                     <div style='position:absolute; top:58%; left:26%;'>
-                  <button type='button' class='btn btn-theme'>추가하기</button>
+                  <button type='button' class='btn btn-theme' id='insertEvent'>추가하기</button>
                   </div>
                   <div style='position:absolute; top:68%; left:26.8%;'>
                   <button type='button' class='btn btn-theme05'>삭제하기</button>
@@ -263,8 +271,9 @@
   <script src="../lib/sweetalert/sweetalert.min.js"></script>
   <script>
   var m_no;
+  var event_code;
   $(document).ready(function () {
-     /* $.ajax({
+    $.ajax({
       url : contextRoot + '/auth/ajax/check_session.do',
       type : 'post',
       dataType : 'json',
@@ -289,7 +298,7 @@
              + "</ul>")
         }
       }
-    }) */
+    })
     $.ajax({
        url : contextRoot + '/event/ajax/eventList.do',
        type : 'post',
@@ -301,7 +310,7 @@
        success : function(resultObj) {
          var list = $('#event_list');
          for(var event of resultObj.eventList) {
-              list.append("<option id='" + event.event_code + "'>" + event.event_name + "</option>")
+              list.append("<li><a href='#' role='button' id='" + event.event_code + "'>" + event.event_name + "</a></li>")
          }
        }
     })
@@ -353,7 +362,33 @@
       $('#m_email').val('');
       $('#m_password').val('');
     })
-     
+    
+    $(document).on("click",'#insertEvent', function(e) {
+    	  var form_data = new FormData();
+    	  form_data.append("sch_no", $('#sch_no').val());
+    	  form_data.append("event_code", event_code);
+    	  form_data.append("court_cnt", $('#court_cnt').val());
+    	  form_data.append("court_max", $('#court_max').val());
+    	  form_data.append("court_price", $('#court_price').val());
+    	  $.ajax({
+    		  url : contextRoot + '/court/ajax/addCourt.do',
+    		  type: 'post',
+    		  dataType : 'json',
+    		  cache : false,
+    		  data : form_data,
+    		  success : function (resultObj) {
+    			  $('eventresult').html();
+    			  swal('Success!','정상적으로 추가되었습니다.','success');
+    			  
+    		  }
+    	  })
+    })
+    
+    $('eventlist').click(function(e) {
+    	  event_code = e.target.getAttribute('id');
+    	  document.getElementById('eventbtn').value = $('#event_code').val();
+    })
+    
     function search() {
       var form_data = new FormData();
       form_data.append("sch_name",$('#s_sch').val());
@@ -380,13 +415,6 @@
             }
          })
     }
-     
-   function choice_Event() {
-	   $('#event_list').click(function(e){
-		   var id = e.target.getAttribute('id');
-		   
-	   })
-   }
      
    function ch_search() {
        var form_data = new FormData();
