@@ -356,8 +356,8 @@
     
     $(document).on("click",'#insertEvent', function(e) {
     	  var form_data = new FormData();
-    	  var eventcode = ec.val();
-    	  console.log(event_code.val());
+    	  var eventcode = $("select[name=ec]").val();
+    	  console.log(eventcode.val());
     	  if ($('#court_max').val() == '') {
     		  
     	  } else {
