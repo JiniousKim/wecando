@@ -358,35 +358,35 @@
     	  var form_data = new FormData();
     	  var eventcode = $("select[name=ec]").val();
     	  if ($('#court_max').val() == '') {
-    		  
+    		  swal("Oops...", "인원 수를 잘못 입력하셨습니다.","error");
     	  } else if ($('#court_price').val() == '') {
-    		  
+    		  swal("Oops...", "이용 금액을 잘못 입력하셨습니다.","error");
     	  } else if (eventcode == '') {
-    		  
+    		  swal("Oops...", "이용종목을 잘못 입력하셨습니다.","error");
     	  } else {
-    		  
-    	  form_data.append("sch_no", $('#sch_no').val());
-    	  form_data.append("event_code", eventcode);
-    	  form_data.append("court_cnt", $('#court_cnt').val());
-    	  form_data.append("court_max", $('#court_max').val());
-    	  form_data.append("court_price", $('#court_price').val());
-    	  $.ajax({
-    		  url : contextRoot + '/court/ajax/addCourt.do',
-    		  type: 'post',
-    		  dataType : 'json',
-    		  cache : false,
-    		  data : form_data,
-    		  success : function (resultObj) {
-    			  var ajaxResult = resultObj.ajaxresult;
-    			  if (ajaxResult == 'success') {
-	    			  $('eventresult').html();
-	    			  swal('Success!','정상적으로 추가되었습니다.','success');
-    			  } else {
-    				  swal('Oops...','정상적으로 추가되지 않았습니다.','error');
-    			  }
-    			  
-    		  }
-    	  })
+	    	  form_data.append("sch_no", $('#sch_no').val());
+	    	  form_data.append("event_code", eventcode);
+	    	  form_data.append("court_cnt", $('#court_cnt').val());
+	    	  form_data.append("court_max", $('#court_max').val());
+	    	  form_data.append("court_price", $('#court_price').val());
+	    	  $.ajax({
+	    		  url : contextRoot + '/court/ajax/addCourt.do',
+	    		  type: 'post',
+	    		  dataType : 'json',
+	    		  cache : false,
+	    		  processData : false,
+	    		  contentType : false,
+	    		  data : form_data,
+	    		  success : function (resultObj) {
+	    			  var ajaxResult = resultObj.ajaxresult;
+	    			  if (ajaxResult == 'success') {
+		    			  $('eventresult').html();
+		    			  swal('Success!','정상적으로 추가되었습니다.','success');
+	    			  } else {
+	    				  swal('Oops...','정상적으로 추가되지 않았습니다.','error');
+	    			  }
+	    		  }
+	    	  })
     	  }
     })
     
