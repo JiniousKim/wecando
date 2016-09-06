@@ -24,14 +24,21 @@ public class CourtController {
 		String court_code = sch_no + event_code; 
 		
 		paramMap.put("sch_no", sch_no);
-		paramMap.put("event_code", event_code);
 		paramMap.put("court_cnt", court_cnt);
 		paramMap.put("court_code", court_code);
 		paramMap.put("court_max", court_max);
 		paramMap.put("court_price", court_price);
 		
-		if (!(courtService.insert_court(paramMap) > 0)) {
-			return new AjaxResult("failure", null);
+		for (int i=1; i < court_cnt; i++) {
+			if (i < 10) {
+				court_code = court_code + "0" + i;
+			} else {
+				court_code = court_code + i;
+			}
+			paramMap.put("event_code", event_code);
+			if (!(courtService.insert_court(paramMap) > 0)) {
+				return new AjaxResult("failure", null);
+			}
 		}
 		return new AjaxResult("success", null);
 	}
@@ -39,5 +46,13 @@ public class CourtController {
 	@RequestMapping(value="addCourt", method=RequestMethod.GET)
 	public String get_addCourt() {
 		return "redirect:../../error.html";
+	}
+	
+	@RequestMapping(value="courtList", method=RequestMethod.POST)
+	public Object courtList(int sch_no) {
+		
+		
+		
+		return new AjaxResult("success", null);
 	}
 }

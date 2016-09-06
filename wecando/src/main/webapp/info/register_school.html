@@ -357,13 +357,16 @@
     $(document).on("click",'#insertEvent', function(e) {
     	  var form_data = new FormData();
     	  var eventcode = $("select[name=ec]").val();
-    	  console.log(eventcode.val());
     	  if ($('#court_max').val() == '') {
+    		  
+    	  } else if ($('#court_price').val() == '') {
+    		  
+    	  } else if (eventcode == '') {
     		  
     	  } else {
     		  
     	  form_data.append("sch_no", $('#sch_no').val());
-    	  form_data.append("event_code", event_code);
+    	  form_data.append("event_code", eventcode);
     	  form_data.append("court_cnt", $('#court_cnt').val());
     	  form_data.append("court_max", $('#court_max').val());
     	  form_data.append("court_price", $('#court_price').val());
@@ -374,8 +377,13 @@
     		  cache : false,
     		  data : form_data,
     		  success : function (resultObj) {
-    			  $('eventresult').html();
-    			  swal('Success!','정상적으로 추가되었습니다.','success');
+    			  var ajaxResult = resultObj.ajaxresult;
+    			  if (ajaxResult == 'success') {
+	    			  $('eventresult').html();
+	    			  swal('Success!','정상적으로 추가되었습니다.','success');
+    			  } else {
+    				  swal('Oops...','정상적으로 추가되지 않았습니다.','error');
+    			  }
     			  
     		  }
     	  })
