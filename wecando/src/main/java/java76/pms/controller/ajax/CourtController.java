@@ -25,7 +25,7 @@ public class CourtController {
 		
 		paramMap.put("sch_no", sch_no);
 		paramMap.put("court_cnt", court_cnt);
-		paramMap.put("court_code", court_code);
+		paramMap.put("event_code", event_code);
 		paramMap.put("court_max", court_max);
 		paramMap.put("court_price", court_price);
 		
@@ -35,7 +35,7 @@ public class CourtController {
 			} else {
 				court_code = court_code + i;
 			}
-			paramMap.put("event_code", event_code);
+			paramMap.put("court_code", court_code);
 			if (!(courtService.insert_court(paramMap) > 0)) {
 				return new AjaxResult("failure", null);
 			}
