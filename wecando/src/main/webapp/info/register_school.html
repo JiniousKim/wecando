@@ -316,7 +316,6 @@
       contentType : false,
       data : form_data,
       success : function(resultObj) {
-        console.log(resultObj);
         var school = resultObj.school;
         if(resultObj.status == 'failure') {
           $('#sch_register').css('display','');
@@ -325,12 +324,31 @@
           $('#sch_register').css('display','none');
           $('#sch_update').css('display','');
           document.getElementById('school_name').value = school.sch_name;
-         document.getElementById('school_location').value = school.sch_location;
-         document.getElementById('school_tel').value = school.sch_tel;
-         document.getElementById('sch_no').value = school.sch_no;
+	        document.getElementById('school_location').value = school.sch_location;
+	        document.getElementById('school_tel').value = school.sch_tel;
+	        document.getElementById('sch_no').value = school.sch_no;
         }
       }
-   })
+    })
+  })
+  
+  $.ajax({
+    url : contextRoot + '/court/ajax/courtList',
+    type : 'post',
+    dataType : 'json',
+    async : false,
+    cache : false,
+    contentType : false,
+    processData : false,
+    data : {
+    	  sch_no : $('#sch_no').val();
+    },
+    success : function(resultObj) {
+    	  var showList = $('#addList');
+    	  for (var court of resultObj.courtList) {
+    		  showList.append(court.event_name);
+    	  }
+    }
   })
     
   </script>
@@ -378,7 +396,7 @@
 	    		  contentType : false,
 	    		  data : form_data,
 	    		  success : function (resultObj) {
-	    			  var ajaxResult = resultObj.ajaxresult;
+	    			  var ajaxResult = resultObj.AjaxResult;
 	    			  if (ajaxResult == 'success') {
 		    			  $('eventresult').html();
 		    			  swal('Success!','정상적으로 추가되었습니다.','success');

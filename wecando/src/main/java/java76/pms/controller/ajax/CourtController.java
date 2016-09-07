@@ -1,6 +1,8 @@
 package java76.pms.controller.ajax;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java76.pms.domain.AjaxResult;
+import java76.pms.domain.Court;
 import java76.pms.service.CourtService;
 
 @Controller("ajax.CourtController")
@@ -21,6 +24,7 @@ public class CourtController {
 			                   int court_price) {
 		
 		HashMap<String, Object> paramMap = new HashMap<>();
+		event_code = event_code.replace(" ", "");
 		String court_code = sch_no + event_code; 
 		
 		paramMap.put("sch_no", sch_no);
@@ -52,9 +56,11 @@ public class CourtController {
 	
 	@RequestMapping(value="courtList", method=RequestMethod.POST)
 	public Object courtList(int sch_no) {
+		List<Court> courts = courtService.courtList(sch_no);
+		HashMap<String, Object> resultMap = new HashMap<>();
 		
-		
-		
-		return new AjaxResult("success", null);
+		resultMap.put("status", "success");
+		resultMap.put("courtList", courts);
+		return resultMap;
 	}
 }
