@@ -6,7 +6,7 @@ import java.util.List;
 import java76.pms.domain.Court;
 
 public interface CourtDao {
-  int insert_court(HashMap<String, Object> paramMap);
+  int insertCourt(HashMap<String, Object> paramMap);
   List<Court> courtList(int sch_no);
 }
 

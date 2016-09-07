@@ -25,7 +25,7 @@
   </resultMap>
   
     
-  <insert id="insert_court" parameterType="map">
+  <insert id="insertCourt" parameterType="map">
     insert into court(court_code, court_cnt, event_code, sch_num, court_price, court_max)
     values(#{court_code, jdbcType=VARCHAR}, #{court_cnt}, 
            #{event_code, jdbcType=VARCHAR}, #{sch_no},

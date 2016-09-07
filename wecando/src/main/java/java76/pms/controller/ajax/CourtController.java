@@ -37,8 +37,7 @@ public class CourtController {
 			}
 			paramMap.put("court_code", court_code);
 			try {
-				if (!(courtService.insert_court(paramMap) > 0)) {}
-				
+				if (courtService.insert_court(paramMap) > 0) {}
 			} catch (Exception e) {
 				return new AjaxResult("failure", null);
 			}

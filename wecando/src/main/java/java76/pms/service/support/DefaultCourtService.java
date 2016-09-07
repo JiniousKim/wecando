@@ -15,7 +15,7 @@ public class DefaultCourtService implements CourtService {
 	@Autowired CourtDao courtDao;
 	
 	public int insert_court(HashMap<String, Object> paramMap) {
-		return courtDao.insert_court(paramMap);
+		return courtDao.insertCourt(paramMap);
 	}
 	
 	public List<Court> courtList(int sch_no) {
