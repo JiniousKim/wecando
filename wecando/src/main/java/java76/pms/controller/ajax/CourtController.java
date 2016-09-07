@@ -29,14 +29,17 @@ public class CourtController {
 		paramMap.put("court_max", court_max);
 		paramMap.put("court_price", court_price);
 		
-		for (int i=1; i < court_cnt; i++) {
+		for (int i = 1; i <= court_cnt; i++) {
 			if (i < 10) {
 				court_code = court_code + "0" + i;
 			} else {
 				court_code = court_code + i;
 			}
 			paramMap.put("court_code", court_code);
-			if (!(courtService.insert_court(paramMap) > 0)) {
+			try {
+				if (!(courtService.insert_court(paramMap) > 0)) {}
+				
+			} catch (Exception e) {
 				return new AjaxResult("failure", null);
 			}
 		}

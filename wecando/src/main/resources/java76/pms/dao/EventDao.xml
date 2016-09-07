@@ -16,15 +16,5 @@
            event_code
     from event
     order by event_name asc
-  </select>
-  
-  <select id='getEvent' parameterType="String" resultMap="eventMap">
-    select event_code,
-           event_name,
-           event_price,
-           event_max
-    from event
-    where event_code = #{event_code}
-  </select>
-    
+  </select>    
 </mapper>

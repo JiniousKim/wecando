@@ -281,7 +281,6 @@
       success : function(resultObj) {
         var status = resultObj.status;
         var member = resultObj.loginUser;
-        console.log(member);
         // var show = $('#auth');
         if (status == 'failure') {
         	  sweetAlert("Oops...", "정보가 맞지 않습니다.", "error")

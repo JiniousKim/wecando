@@ -7,6 +7,8 @@
   <resultMap type="Court" id="courtMap">
     <id column="court_code" property="court_code"/>
     <result column="court_cnt" property="court_cnt"/>
+    <result column="court_max" property="court_max" />
+    <result column="court_price" property="court_price" />
     <result column="event_code" property="event_code" />
     <result column="sch_num" property="sch_no" />
     <collection property="event" column="event_code" ofType="Event"
