@@ -20,7 +20,6 @@ import java76.pms.domain.AjaxResult;
 import java76.pms.domain.Member;
 import java76.pms.service.MemberService;
 import java76.pms.util.MailServlet;
-import java76.pms.util.abc;
 
 @Controller("ajax.MemberController")
 @RequestMapping("/member/ajax/*")
@@ -90,7 +89,7 @@ public class MemberController extends TimerTask {
 		Random rnd = new Random();
 		StringBuffer buf = new StringBuffer();
 		MailServlet mail = new MailServlet();
-
+		
 		for (int i = 0; i < 20; i++) {
 			if (rnd.nextBoolean()) {
 				buf.append((char)((int)(rnd.nextInt(26)) + 97));
@@ -167,10 +166,6 @@ public class MemberController extends TimerTask {
 		}
 		return new AjaxResult("success", null);
 	}
-	@RequestMapping(value="set", method=RequestMethod.GET)
-	public void set() throws Exception {
-		new abc().start();
-	}
 
 	@RequestMapping(value="check_nick", method=RequestMethod.POST)
 	public AjaxResult check_nick(String m_n) throws Exception {
@@ -205,6 +200,31 @@ public class MemberController extends TimerTask {
 			memberService.removeExpirationMember();
 		}
 	}
+	
+	// Event 추가 쿼리 생성
+//	@RequestMapping(value="setset", method=RequestMethod.POST)
+//	public String setset() throws Exception {
+//		try {
+//			// 엑셀파일
+//			//File file = new File("/Users/ohora/wecando/wecando/sql/event.xlsx");
+//			File file = new File("C:/Users/IEUser/Documents/wecando/wecando/sql/event.xlsx");
+//			Event event = new Event();
+//			// 엑셀 파일 오픈
+//			@SuppressWarnings("resource")
+//			XSSFWorkbook wb = new XSSFWorkbook(new FileInputStream(file));
+//			for (Row row : wb.getSheetAt(0)) { 
+//				if(row.getCell(1) == null){
+//					break;
+//				}
+//				event.setEvent_code(row.getCell(0).toString());
+//				event.setEvent_name(row.getCell(1).toString());
+//				memberService.insert_event(event);
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return "";
+//	}
 	
 	public void run() {}
 }
