@@ -3,6 +3,7 @@ package java76.pms.dao;
 import java.util.List;
 import java.util.Map;
 
+import java76.pms.domain.Event;
 import java76.pms.domain.Member;
 
 public interface MemberDao {
@@ -30,6 +31,7 @@ public interface MemberDao {
   
   int update_manage (Map<String, Integer> paramMap); // 관리하는 학교 넘버 등록 (default 0)
   
+  int insert_event(Event event);
 }
 
 

@@ -153,7 +153,7 @@ CREATE TABLE COURT (
 	COURT_CNT  INTEGER     NULL,     -- 코트갯수
 	COURT_PRICE INTEGER     NOT NULL, -- 사용금액
   COURT_MAX   INTEGER     NOT NULL,  -- 최대수용인원
-	EVENT_CODE CHAR(10)    NOT NULL, -- 종목코드
+	EVENT_CODE VARCHAR(50)    NOT NULL, -- 종목코드
 	SCH_NUM    INTEGER     NULL      -- 학교번호
 );
 

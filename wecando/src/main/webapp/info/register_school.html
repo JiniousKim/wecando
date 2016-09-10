@@ -399,6 +399,10 @@
 	    			  if (ajaxResult.status == 'success') {
 		    			  $('eventresult').html();
 		    			  swal('Success!','정상적으로 추가되었습니다.','success');
+		    			  $('#court_price').html('');
+		    			  $('#court_price').val('');
+		    			  $('#court_max').html('');
+		    			  $('#court_max').val('');
 	    			  } else {
 	    				  swal('Oops...','정상적으로 추가되지 않았습니다.','error');
 	    			  }

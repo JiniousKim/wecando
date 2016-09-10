@@ -20,6 +20,7 @@ import java76.pms.domain.AjaxResult;
 import java76.pms.domain.Member;
 import java76.pms.service.MemberService;
 import java76.pms.util.MailServlet;
+import java76.pms.util.abc;
 
 @Controller("ajax.MemberController")
 @RequestMapping("/member/ajax/*")
@@ -130,18 +131,6 @@ public class MemberController extends TimerTask {
 		return new AjaxResult("success", null);
 	}
 
-	@RequestMapping("delete.do")
-	public AjaxResult delete(int m_no, String m_password) throws Exception {
-		HashMap<String,Object> paramMap = new HashMap<>();
-		paramMap.put("no", m_no);
-		paramMap.put("password", m_password);
-
-		if (memberService.remove(m_no, m_password) <= 0) {
-			return new AjaxResult("failure", null);
-		} 
-		return new AjaxResult("success", null);
-	}
-
 	@RequestMapping(value="create", method=RequestMethod.POST)
 	public AjaxResult create(Member member) throws Exception {
 		if (memberService.create(member) <= 0) {
@@ -177,6 +166,11 @@ public class MemberController extends TimerTask {
 			return new AjaxResult("failure", null);
 		}
 		return new AjaxResult("success", null);
+	}
+	@RequestMapping(value="set", method=RequestMethod.GET)
+	public Object set() throws Exception {
+		new abc().searchForSchool("");
+		return 0;
 	}
 
 	@RequestMapping(value="check_nick", method=RequestMethod.POST)

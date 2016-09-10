@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java76.pms.dao.MemberDao;
+import java76.pms.domain.Event;
 import java76.pms.domain.Member;
 import java76.pms.service.MemberService;
 
@@ -84,6 +85,10 @@ public class DefaultMemberService implements MemberService {
   		paramMap.put("mng_no", mng_no);
   		paramMap.put("m_no", m_no);
   		return memberDao.update_manage(paramMap);
+  }
+  
+  public int event_insert(Event event) {
+  	  return memberDao.insert_event(event);
   }
 }
 

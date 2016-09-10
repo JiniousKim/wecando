@@ -14,6 +14,18 @@
     <result column="member_ava" property="m_ava" />
     <result column="member_nickname" property="m_nick" />
   </resultMap>
+  
+  <resultMap type='event' id='eventMap'>
+    <id column="event_code" property='event_code' />
+    <result column="event_name" property='event_name' />
+  </resultMap>
+  
+  <insert id="insert_event" parameterType='event'>
+    insert into event(event_code, event_name)
+      values(#{event_code, jdbcType=VARCHAR},#{event_name,jdbcType=VARCHAR})
+  </insert>
+  
+  
   <select id="selectList" resultType="member" parameterType="map">
   </select> 
   
