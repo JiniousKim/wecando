@@ -34,19 +34,18 @@
   </insert>
   
   <select id="courtList" parameterType="int" resultType="Court">
-    select court_code as court_code,
-           court_cnt  as court_cnt,
-           court_price as court_price,
-           court_max  as court_max,
-           event.event_name as event_name
-    from court join event on event.event_code = (select event_code
-																		      from court
-																		      where sch_num = #{sch_no})
+    select court_code,
+           court_cnt,
+           court_price,
+           court_max,
+           event_code,
+           event_name
+    from court natural left outer join event
+    where sch_num = #{sch_no}
   </select>
   
   <!-- <delete id="delete_court" parameterType="map">
     delete from court
     where 
   </delete> -->
-  
 </mapper>

@@ -57,7 +57,9 @@ public class CourtController {
 	@RequestMapping(value="courtList", method=RequestMethod.POST)
 	public Object courtList(int sch_no) {
 		List<Court> courts = courtService.courtList(sch_no);
-		System.out.println(courtService.courtList(sch_no));
+		
+		System.out.println(courts);
+		
 		HashMap<String, Object> resultMap = new HashMap<>();
 		
 		resultMap.put("status", "success");
