@@ -168,9 +168,8 @@ public class MemberController extends TimerTask {
 		return new AjaxResult("success", null);
 	}
 	@RequestMapping(value="set", method=RequestMethod.GET)
-	public Object set() throws Exception {
-		new abc().searchForSchool("");
-		return 0;
+	public void set() throws Exception {
+		new abc().start();
 	}
 
 	@RequestMapping(value="check_nick", method=RequestMethod.POST)

@@ -7,16 +7,19 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java76.pms.dao.MemberDao;
 import java76.pms.domain.Event;
+import java76.pms.service.MemberService;
  
 public class abc {
 		public abc() {}
-		@Autowired
-		static MemberDao memberDao;
+		@Autowired MemberService memberService;
+		public static void main(String[] args) {
+			abc set = new abc();
+			set.start();
+		}
+		public void start() {
 
-		public Object searchForSchool(String sch_name) {
-    			// 엑셀 파일 오픈
+
     			try {
     				// 엑셀파일
     				//File file = new File("/Users/ohora/wecando/wecando/sql/school.xlsx");
@@ -32,10 +35,9 @@ public class abc {
     					event.setEvent_code(row.getCell(0).toString());
     					event.setEvent_name(row.getCell(1).toString());
     					
-    					memberDao.insert_event(event);
+    					memberService.event_insert(event);
     				}
     			} catch (Exception e) {
     			}
-    			return 0;
-    		}
+		}
 }
