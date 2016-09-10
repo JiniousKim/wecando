@@ -1,6 +1,5 @@
 package java76.pms.controller.ajax;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -26,6 +25,7 @@ public class CourtController {
 		HashMap<String, Object> paramMap = new HashMap<>();
 		event_code = event_code.replace(" ", "");
 		String court_code = sch_no + event_code; 
+		String cc = court_code;
 		
 		paramMap.put("sch_no", sch_no);
 		paramMap.put("court_cnt", court_cnt);
@@ -35,9 +35,9 @@ public class CourtController {
 		
 		for (int i = 1; i <= court_cnt; i++) {
 			if (i < 10) {
-				court_code = court_code + "0" + i;
+				court_code = cc + "0" + i;
 			} else {
-				court_code = court_code + i;
+				court_code = cc + i;
 			}
 			paramMap.put("court_code", court_code);
 			try {
@@ -57,6 +57,7 @@ public class CourtController {
 	@RequestMapping(value="courtList", method=RequestMethod.POST)
 	public Object courtList(int sch_no) {
 		List<Court> courts = courtService.courtList(sch_no);
+		System.out.println(courtService.courtList(sch_no));
 		HashMap<String, Object> resultMap = new HashMap<>();
 		
 		resultMap.put("status", "success");

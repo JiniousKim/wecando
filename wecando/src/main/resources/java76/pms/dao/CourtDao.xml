@@ -22,6 +22,7 @@
   </resultMap>
   <resultMap id="eventMap" type="event">
     <id property="event_code" column="event_code" />
+    <result property="event_name" column="event_name"/>
   </resultMap>
   
     
