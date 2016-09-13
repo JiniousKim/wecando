@@ -32,7 +32,7 @@
   </insert>
   
   <select id="courtList" parameterType="int" resultType="Court">
-    select court_code,
+    select distinct court_code,
            court_cnt,
            court_price,
            court_max,

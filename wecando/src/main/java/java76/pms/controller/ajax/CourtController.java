@@ -1,5 +1,6 @@
 package java76.pms.controller.ajax;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java76.pms.domain.AjaxResult;
 import java76.pms.domain.Court;
-import java76.pms.domain.Event;
 import java76.pms.service.CourtService;
 
 @Controller("ajax.CourtController")
@@ -58,24 +58,21 @@ public class CourtController {
 	@RequestMapping(value="courtList", method=RequestMethod.POST)
 	public Object courtList(int sch_no) {
 		List<Court> courts = courtService.courtList(sch_no);
-		Event event = new Event();
+		List<Court> courtList = new ArrayList<>();
 		Court court = new Court();
 		for (Court co : courts) {
 			court.setCourt_cnt(co.getCourt_cnt());
 			court.setCourt_max(co.getCourt_max());
 			court.setCourt_price(co.getCourt_price());
-			event.setEvent_code(co.getEvent().getEvent_code());
-			event.setEvent_name(co.getEvent().getEvent_name());
-			System.out.println(court);
-			System.out.println(event);
+			court.setEvent_code(co.getEvent_code());
+			court.setEvent_name(co.getEvent_name());
+			courtList.add(court);
 		}
 		
-		System.out.println(courts);
 		
 		HashMap<String, Object> resultMap = new HashMap<>();
-		
+		resultMap.put("courtList", courtList);
 		resultMap.put("status", "success");
-		resultMap.put("courtList", courts);
 		return resultMap;
 	}
 }

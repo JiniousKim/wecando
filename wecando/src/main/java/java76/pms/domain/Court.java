@@ -9,8 +9,9 @@ public class Court  implements Serializable {
 	protected int       court_cnt;
 	protected int       court_price;
 	protected int       court_max;
-	protected Event			event;
-	protected School 		school;
+	protected int       sch_no;
+	protected String    event_code;
+	protected String    event_name;
 	
 	public Court() {}
 
@@ -46,26 +47,35 @@ public class Court  implements Serializable {
 		this.court_max = court_max;
 	}
 
-	public Event getEvent() {
-		return event;
+	public int getSch_no() {
+		return sch_no;
 	}
 
-	public void setEvent(Event event) {
-		this.event = event;
+	public void setSch_no(int sch_no) {
+		this.sch_no = sch_no;
 	}
 
-	public School getSchool() {
-		return school;
+	public String getEvent_code() {
+		return event_code;
 	}
 
-	public void setSchool(School school) {
-		this.school = school;
+	public void setEvent_code(String event_code) {
+		this.event_code = event_code;
+	}
+
+	public String getEvent_name() {
+		return event_name;
+	}
+
+	public void setEvent_name(String event_name) {
+		this.event_name = event_name;
 	}
 
 	@Override
 	public String toString() {
 		return "Court [court_code=" + court_code + ", court_cnt=" + court_cnt + ", court_price=" + court_price
-		    + ", court_max=" + court_max + ", event=" + event + ", school=" + school + "]";
+		    + ", court_max=" + court_max + ", sch_no=" + sch_no + ", event_code=" + event_code + ", event_name="
+		    + event_name + "]";
 	}
 
 }
