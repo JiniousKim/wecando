@@ -1,17 +1,5 @@
 @import "font-awesome";
 
-body {
-    padding: 0;
-    margin: 0;
-}
-
-header {
-  position: relative;
-  background-color: #3f51b5;
-  height: 150px;  
-  box-shadow: 0 2px 5px rgba(0,0,0,0.26);
-}
-
 .add-button {
   position: absolute;
   right: 100px;
@@ -35,7 +23,6 @@ header {
   position: relative;
   z-index: 100;
   content:"+";
-  
 }
 
 
@@ -160,9 +147,10 @@ header {
 }
 
 .add-button:hover .tl {
-  top: -25px;
+  /*top: -25px;
   left: -25px;
-  border-radius: 28px;
+  border-radius: 28px;*/
+  display : none;
 }
 
 .add-button:hover .tr {  
@@ -178,7 +166,8 @@ header {
 }
 
 .add-button:hover .br { 
-  bottom: -25px;
+  /*bottom: -25px;
   right: -25px;
-  border-radius: 28px;
+  border-radius: 28px;*/
+  display : none;
 }

@@ -238,7 +238,12 @@
                   <button type='button' class='btn btn-theme05'>삭제하기</button>
                   </div>
                   <div id='addList' class='addlist'>
-                  
+	                  <div class="add-button">
+	                  <div class="sub-button tl"></div>
+	                  <div class="sub-button tr">변경</div>
+	                  <div class="sub-button bl">삭제</div>
+	                  <div class="sub-button br"></div>
+	                  </div>
                   </div>
                   </div>
                 </form>
@@ -343,12 +348,6 @@
 				    	  for (var court of resultObj.courtList) {
 				    		  showList.append(court.event_name);
 				    	  }
-				    	  <div class="add-button">
-				    	    <div class="sub-button tl"></div>
-				    	    <div class="sub-button tr"></div>
-				    	    <div class="sub-button bl"></div>
-				    	    <div class="sub-button br"></div>
-				    	  </div>
 				    }
 				  })
         }
