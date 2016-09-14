@@ -59,8 +59,8 @@ public class CourtController {
 	public Object courtList(int sch_no) {
 		List<Court> courts = courtService.courtList(sch_no);
 		List<Court> courtList = new ArrayList<>();
-		Court court = new Court();
 		for (Court co : courts) {
+			Court court = new Court();
 			court.setCourt_cnt(co.getCourt_cnt());
 			court.setCourt_max(co.getCourt_max());
 			court.setCourt_price(co.getCourt_price());
