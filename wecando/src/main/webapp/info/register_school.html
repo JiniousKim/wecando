@@ -238,13 +238,15 @@
                   <button type='button' class='btn btn-theme05'>삭제하기</button>
                   </div>
                   <div id='addList' class='addlist'>
-	                  <div class="add-button">
-	                  <div class="sub-button tl"></div>
-	                  <div class="sub-button tr">변경</div>
-	                  <div class="sub-button bl">삭제</div>
-	                  <div class="sub-button br"></div>
-	                  </div>
-                  </div>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th colspan='3'>Court List</th>
+                      </tr>
+                      <tr>
+                      <tbody id="table_body">
+                      </tbody>
+                  </table>
                   </div>
                 </form>
               </div>
@@ -344,9 +346,15 @@
 				    processData : false,
 				    data : form_data,
 				    success : function(resultObj) {
-				    	  var showList = $('#addList');
+				    	  var showList = $('#table_body');
 				    	  for (var court of resultObj.courtList) {
-				    		  showList.append(court.event_name);
+				    		  showList.append("<tr>" +
+									    			      "<td></td>" +
+									    			      "<td>"court.event_name"</td>" +
+									    			      "<td>" +
+									    			      "<i class='fa fa-pencil ibutton alterar'></i>" +
+									    			      "<i class='fa fa-trash ibutton excluir'></i>" +
+									    			      "</td></tr>")
 				    	  }
 				    }
 				  })
