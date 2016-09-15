@@ -190,7 +190,7 @@
                     <input class='form-control-static' id='school_tel' value='' readonly="readonly" >
                     </div>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group" style="hegit:320px;">
                     <div class="form-group1">
                       <label class="col-sm-2 col-sm-2 control-label"
                         style="font-weight: bold;"> 시설물 등록</label>
@@ -231,11 +231,12 @@
                       style="display: none;">숫자만 입력가능합니다.</div>
                       </div>
                     </div>
-                    <div style='position:absolute; top:58%; left:26%;'>
+                    <div style='position:absolute; top:82%; left:10%;'>
                   <button type='button' class='btn btn-theme' id='insertEvent'>추가하기</button>
                   </div>
-                  <div style='position:absolute; top:68%; left:26.8%;'>
-                  <button type='button' class='btn btn-theme05'>삭제하기</button>
+                  <div style='position:absolute; top:82%; left:10.8%;'>
+                  <button type='button' class='btn btn-theme05'>입력취소</button>
+                  </div>
                   </div>
                   <div id='addList' class='addlist'>
                   <table>
@@ -350,7 +351,7 @@
 				    	  for (var court of resultObj.courtList) {
 				    		  showList.append("<tr>" +
 									    			      "<td></td>" +
-									    			      "<td>"court.event_name"</td>" +
+									    			      "<td>" + court.event_name + "</td>" +
 									    			      "<td>" +
 									    			      "<i class='fa fa-pencil ibutton alterar'></i>" +
 									    			      "<i class='fa fa-trash ibutton excluir'></i>" +
