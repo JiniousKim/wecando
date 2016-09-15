@@ -353,8 +353,8 @@
 									    			      "<td>" + court.event_name + "</td>" +
 									    			      "<td></td>" +
 									    			      "<td>" +
-									    			      "<button class='iconbtn'><i class='fa fa-pencil ibutton alterar'></i></button>" +
-									    			      "<button class='iconbtn'><i class='fa fa-trash ibutton excluir'></i></button>" +
+									    			      "<i id='updateCourt' class='fa fa-pencil ibutton alterar'></i>" +
+									    			      "<i id='deleteCourt' class='fa fa-trash ibutton excluir'></i>" +
 									    			      "</td></tr>")
 				    	  }
 				    }
@@ -425,6 +425,15 @@
 	    	  })
     	  }
     })
+    
+    $(document).on("click", '#updateCourt', function(e) {
+    	  alert('변경');
+    })
+    
+    $(document).on("click",'#deleteCourt', function(e) {
+      alert('삭제');
+    })
+    
     
     function search() {
       var form_data = new FormData();

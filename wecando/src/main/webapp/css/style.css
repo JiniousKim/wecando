@@ -2652,7 +2652,7 @@ div.col-md-4 a {
 
 .addlist {
   position: absolute;
-  top: 36%;
+  top: 43%;
   left: 29%;
   width: 300px;
   height: 230px;
@@ -2695,7 +2695,7 @@ th:first-child, td:first-child {padding: 0 15px 0 20px;}
 
 thead tr:last-child th {border-bottom: 3px solid #ddd;}
 
-tbody tr:hover {background-color: #ffeeff;}
+tbody tr:hover{background-color:#ffeeff;}
 tbody tr:last-child td {border: none;}
 tbody td {border-bottom: 1px solid #ddd;}
 
@@ -2719,7 +2719,8 @@ td:last-child {
 }
 
 .iconbtn {
-	background-color: #fff;
+	text-align : center;
+	background-color: #ffeeff;
   border: none;
 }
 
