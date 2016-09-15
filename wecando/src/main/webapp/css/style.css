@@ -2679,6 +2679,9 @@ table {
   border: 2px solid #975997;
   width: 300px;
   margin: 50px auto;
+  position: absolute;
+  left: 0%;
+  top: -40px;
 }
 
 thead tr:first-child {
@@ -2713,4 +2716,13 @@ td:last-child {
 
 .excluir:hover {
   color: #dc2a2a;
+}
+
+.iconbtn {
+	background-color: #fff;
+  border: none;
+}
+
+.iconbtn:hover {
+	background-color: #ffeeff;
 }
