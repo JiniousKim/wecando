@@ -23,6 +23,7 @@
     "bootstrap": "~3.3.6",
     "jquery": "1.11.3",
     "blueimp-file-upload": "jquery-file-upload#^9.11.2",
+    "font-awesome": "~4.5.0",
     "fullcalendar": "2.5.0"
   },
   "install": {
@@ -31,6 +32,7 @@
       "bootstrap": "bower_components/bootstrap/dist/**",
       "jquery": "bower_components/jquery/dist/**",
       "blueimp-file-upload": "bower_components/blueimp-file-upload/**",
+      "font-awesome": "bower_components/font-awesome/**",
       "fullcalendar": "bower_components/fullcalendar/dist/**"
     }
   }
