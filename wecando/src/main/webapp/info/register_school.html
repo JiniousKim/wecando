@@ -419,6 +419,7 @@
 		    			  $('#court_price').val('');
 		    			  $('#court_max').html('');
 		    			  $('#court_max').val('');
+		    			  setInterval('autoRefresh_sample_div()');
 	    			  } else {
 	    				  swal('Oops...','정상적으로 추가되지 않았습니다.','error');
 	    			  }
@@ -458,7 +459,7 @@
 		        	    var ajaxResult = resultObj.ajaxResult;
 		        	    if(ajaxResult.status == 'success') {
 			        	    swal("Deleted!", "정상적으로 삭제되었습니다.", "success");
-			        	    $('#addList').load('refresh.html').fadeIn("slow");
+			        	    setInterval('autoRefresh_sample_div()');
 		        	    } else {
 		        	    	  swal("Oops...", "정상적으로 삭제되지 않았습니다.","error");
 		        	    }
@@ -640,6 +641,12 @@
     			  }
     		  })
     	  })
+    }
+    
+    function autoRefresh_sample_div()
+    {
+	    var currentLocation = window.location;
+	    $("#table_body").fadeOut('slow').load(currentLocation + ' #table_body').fadeIn("slow");
     }
     
     function logout() {
