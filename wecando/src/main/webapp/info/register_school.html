@@ -410,7 +410,7 @@
 	    		  contentType : false,
 	    		  data : form_data,
 	    		  success : function (resultObj) {
-	    			  var ajaxResult = resultObj.AjaxResult;
+	    			  var ajaxResult = resultObj.ajaxResult;
 	    			  if (ajaxResult.status == 'success') {
 		    			  $('eventresult').html();
 		    			  swal('Success!','정상적으로 추가되었습니다.','success');
@@ -454,8 +454,10 @@
 		          processData : false,
 		          data : form_data,
 		          success : function(resultObj) {
-		        	    if(resultObj.status == 'success') {
-			        	    swal("Deleted!", "정상적으로 삭제되었습니다.", "success");   
+		        	    var ajaxResult = resultObj.ajaxResult;
+		        	    if(ajaxResult.status == 'success') {
+			        	    swal("Deleted!", "정상적으로 삭제되었습니다.", "success");
+			        	    $('#addList').load('refresh.html').fadeIn("slow");
 		        	    } else {
 		        	    	  swal("Oops...", "정상적으로 삭제되지 않았습니다.","error");
 		        	    }
