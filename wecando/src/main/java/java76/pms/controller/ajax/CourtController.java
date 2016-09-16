@@ -75,4 +75,12 @@ public class CourtController {
 		resultMap.put("status", "success");
 		return resultMap;
 	}
+	
+	@RequestMapping(value="removeCourt", method=RequestMethod.POST)
+	public Object removeCourt (String event_code, 
+														int sch_no) throws Exception {
+		event_code.replace("fa fa-trash ibutton excluir ", "");
+		System.out.println(event_code);
+		return new AjaxResult("success", null);
+	}
 }
