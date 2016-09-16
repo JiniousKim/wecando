@@ -410,10 +410,11 @@
 	    		  contentType : false,
 	    		  data : form_data,
 	    		  success : function (resultObj) {
+	    			  console.log(resultObj);
 	    			  var ajaxResult = resultObj.ajaxResult;
 	    			  if (ajaxResult.status == 'success') {
-		    			  $('eventresult').html();
 		    			  swal('Success!','정상적으로 추가되었습니다.','success');
+		    			  $('eventresult').html();
 		    			  $('#court_price').html('');
 		    			  $('#court_price').val('');
 		    			  $('#court_max').html('');
