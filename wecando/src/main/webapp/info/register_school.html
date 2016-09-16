@@ -160,7 +160,7 @@
           <div class="row mt">
             <div class="col-lg-12">
               <div class="form-panel-email">
-                <form class="form-horizontal style-form" method="get">
+                <form class="form-horizontal style-form" method="post">
                   <div class="form-group">
                     <div class="pm">
                       <label class="col-lg-3 col-sm-3 control-label"
@@ -354,7 +354,7 @@
 									    			      "<td></td>" +
 									    			      "<td>" +
 									    			      "<i id='updateCourt' class='fa fa-pencil ibutton alterar'></i>" +
-									    			      "<i id='deleteCourt' class='fa fa-trash ibutton excluir'></i>" +
+									    			      "<i id='deleteCourt' value='" + court.event_code + "'class='fa fa-trash ibutton excluir'></i>" +
 									    			      "</td></tr>")
 				    	  }
 				    }
@@ -431,9 +431,38 @@
     })
     
     $(document).on("click",'#deleteCourt', function(e) {
-      alert('삭제');
+    	  var form_data = new FormData();
+    	  form_data.append("sch_no", $('#sch_no').val());
+    	  form_data.append("event_code", $('#deleteCourt').val());
+    	  console.log($('#deleteCourt').val());
+	    	swal({   
+	    		title: "정말 삭제 하겠습니까?",   
+	    		type: "warning",   
+	    		showCancelButton: true,   
+	    		confirmButtonColor: "#DD6B55",   
+	    		confirmButtonText: "네, 삭제할래요!",   
+	    		cancelButtonText: "앗, 아니요!",   
+	    		closeOnConfirm: false,   
+	    		closeOnCancel: false	}, 
+	    		function(isConfirm) {   
+	    		  if (isConfirm) {
+	    			  $.ajax({
+		          url : contextRoot + '/court/ajax/removeCourt',
+		          type : 'post',
+		          dataType : 'json',
+		          contentType : false,
+		          processData : false,
+		          data : form_data,
+		          success : function(resultObj) {
+		        	    swal("Deleted!", "정상적으로 삭제되었습니다.", "success");   
+		          }
+	    		    })
+	    			} else {     
+	    				swal("Cancelled", "요청을 취소하였습니다.", "error");   
+	       	}
+	    		}
+      });
     })
-    
     
     function search() {
       var form_data = new FormData();
