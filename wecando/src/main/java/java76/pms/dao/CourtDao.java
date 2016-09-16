@@ -8,6 +8,7 @@ import java76.pms.domain.Court;
 public interface CourtDao {
   int insertCourt(HashMap<String, Object> paramMap);
   List<Court> courtList(int sch_no);
+  int removeAllCourt(String code);
 }
 
 

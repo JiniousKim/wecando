@@ -446,14 +446,18 @@
 	    		function(isConfirm) {   
 	    		  if (isConfirm) {
 	    			  $.ajax({
-		          url : contextRoot + '/court/ajax/removeCourt',
+		          url : contextRoot + '/court/ajax/removeCourt.do',
 		          type : 'post',
 		          dataType : 'json',
 		          contentType : false,
 		          processData : false,
 		          data : form_data,
 		          success : function(resultObj) {
-		        	    swal("Deleted!", "정상적으로 삭제되었습니다.", "success");   
+		        	    if(resultObj.status == 'success') {
+			        	    swal("Deleted!", "정상적으로 삭제되었습니다.", "success");   
+		        	    } else {
+		        	    	  swal("Oops...", "정상적으로 삭제되지 않았습니다.","error");
+		        	    }
 		          }
 	    		    })
 	    			} else {     

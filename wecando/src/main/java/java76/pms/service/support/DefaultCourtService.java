@@ -21,6 +21,10 @@ public class DefaultCourtService implements CourtService {
 	public List<Court> courtList(int sch_no) {
 		return courtDao.courtList(sch_no);
 	}
+	
+	public int removeAllCourt(String code) {
+		return courtDao.removeAllCourt(code);
+	}
 }
 
 

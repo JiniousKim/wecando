@@ -41,9 +41,9 @@
     where sch_num = #{sch_no}
   </select>
   
-  <!-- <delete id="delete_court" parameterType="map">
+  <delete id="removeAllCourt" parameterType="String">
     delete from court
-    where 
-  </delete> -->
+    where court_code like '%#{code}%'
+  </delete>
   
 </mapper>
