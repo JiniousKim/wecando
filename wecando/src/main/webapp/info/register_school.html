@@ -432,8 +432,9 @@
     
     $(document).on("click",'#deleteCourt', function(e) {
     	  var form_data = new FormData();
-    	  form_data.append("sch_no", $('#sch_no').val());
     	  var event = e.target.getAttribute('class');
+    	  form_data.append("sch_no", $('#sch_no').val());
+    	  form_data.append("event_code", event);
 	    	swal({   
 	    		title: "정말 삭제 하겠습니까?",   
 	    		type: "warning",   
