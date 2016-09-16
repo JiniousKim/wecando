@@ -43,7 +43,7 @@
   
   <delete id="removeAllCourt" parameterType="String">
     delete from court
-    where court_code like '%#{code}%'
+    where court_code like '%' || #{code} '%'
   </delete>
   
 </mapper>

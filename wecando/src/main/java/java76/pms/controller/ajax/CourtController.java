@@ -79,9 +79,9 @@ public class CourtController {
 	@RequestMapping(value="removeCourt", method=RequestMethod.POST)
 	public Object removeCourt (String event_code, 
 														int sch_no) throws Exception {
-		event_code = (event_code.replace("fa fa-trash ibutton excluir ", "")).toUpperCase();
+		event_code = (event_code.replace("fa fa-trash ibutton excluir ", ""))
+				.toUpperCase().replace(" ", "");
 		String code = sch_no + event_code;
-		
 		try {
 			if (courtService.removeAllCourt(code) > 0) {}
 		} catch (Exception e) {
