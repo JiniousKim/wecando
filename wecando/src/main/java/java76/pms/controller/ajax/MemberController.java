@@ -1,5 +1,7 @@
 package java76.pms.controller.ajax;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
@@ -9,6 +11,8 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
@@ -17,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java76.pms.domain.AjaxResult;
+import java76.pms.domain.Event;
 import java76.pms.domain.Member;
 import java76.pms.service.MemberService;
 import java76.pms.util.MailServlet;
@@ -202,29 +207,29 @@ public class MemberController extends TimerTask {
 	}
 	
 	// Event 추가 쿼리 생성
-//	@RequestMapping(value="setset", method=RequestMethod.POST)
-//	public String setset() throws Exception {
-//		try {
-//			// 엑셀파일
-//			//File file = new File("/Users/ohora/wecando/wecando/sql/event.xlsx");
-//			File file = new File("C:/Users/IEUser/Documents/wecando/wecando/sql/event.xlsx");
-//			Event event = new Event();
-//			// 엑셀 파일 오픈
-//			@SuppressWarnings("resource")
-//			XSSFWorkbook wb = new XSSFWorkbook(new FileInputStream(file));
-//			for (Row row : wb.getSheetAt(0)) { 
-//				if(row.getCell(1) == null){
-//					break;
-//				}
-//				event.setEvent_code(row.getCell(0).toString());
-//				event.setEvent_name(row.getCell(1).toString());
-//				memberService.insert_event(event);
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return "";
-//	}
+	@RequestMapping(value="setset", method=RequestMethod.POST)
+	public String setset() throws Exception {
+		try {
+			// 엑셀파일
+			//File file = new File("/Users/ohora/wecando/wecando/sql/event.xlsx");
+			File file = new File("C:/Users/IEUser/Documents/wecando/wecando/sql/event.xlsx");
+			Event event = new Event();
+			// 엑셀 파일 오픈
+			@SuppressWarnings("resource")
+			XSSFWorkbook wb = new XSSFWorkbook(new FileInputStream(file));
+			for (Row row : wb.getSheetAt(0)) { 
+				if(row.getCell(1) == null){
+					break;
+				}
+				event.setEvent_code(row.getCell(0).toString().replace(" ", ""));
+				event.setEvent_name(row.getCell(1).toString());
+				memberService.event_insert(event);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
 	
 	public void run() {}
 }

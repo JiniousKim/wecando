@@ -2656,8 +2656,12 @@ div.col-md-4 a {
   left: 29%;
   width: 300px;
   height: 230px;
-  overflow: auto;
+  overflow: hidden;
   border: none;
+}
+
+.addlist:hover {
+	overflow : auto;
 }
 
 .btn-theme05 {
