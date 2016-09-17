@@ -316,52 +316,54 @@
     })
      var form_data = new FormData();
      form_data.append("m_no", m_no);
-      $.ajax({
-      url : contextRoot + '/school/ajax/schManager.do',
-      type : 'post',
-      dataType : 'json',
-      cache : false,
-      processData : false,
-      contentType : false,
-      data : form_data,
-      success : function(resultObj) {
-        var school = resultObj.school;
-        if(resultObj.status == 'failure') {
-          $('#sch_register').css('display','');
-          $('#sch_update').css('display','none');
-        } else {
-          $('#sch_register').css('display','none');
-          $('#sch_update').css('display','');
-          document.getElementById('school_name').value = school.sch_name;
-	        document.getElementById('school_location').value = school.sch_location;
-	        document.getElementById('school_tel').value = school.sch_tel;
-	        document.getElementById('sch_no').value = school.sch_no;
-	        form_data.append('sch_no', $('#sch_no').val());
-				  $.ajax({
-				    url : contextRoot + '/court/ajax/courtList.do',
-				    type : 'post',
-				    dataType : 'json',
-				    async : false,
-				    cache : false,
-				    contentType : false,
-				    processData : false,
-				    data : form_data,
-				    success : function(resultObj) {
-				    	  var showList = $('#table_body');
-				    	  for (var court of resultObj.courtList) {
-				    		  showList.append("<tr>" +
-									    			      "<td>" + court.event_name + "</td>" +
-									    			      "<td></td>" +
-									    			      "<td>" +
-									    			      "<i id='updateCourt' class='fa fa-pencil ibutton alterar " + court.event_code + "'></i>" +
-									    			      "<i id='deleteCourt' class='fa fa-trash ibutton excluir " + court.event_code + "'></i>" +
-									    			      "</td></tr>")
-				    	  }
-				    }
-				  })
-        }
-      }
-    })
+     function list() {
+	      $.ajax({
+	      url : contextRoot + '/school/ajax/schManager.do',
+	      type : 'post',
+	      dataType : 'json',
+	      cache : false,
+	      processData : false,
+	      contentType : false,
+	      data : form_data,
+	      success : function(resultObj) {
+	        var school = resultObj.school;
+	        if(resultObj.status == 'failure') {
+	          $('#sch_register').css('display','');
+	          $('#sch_update').css('display','none');
+	        } else {
+	          $('#sch_register').css('display','none');
+	          $('#sch_update').css('display','');
+	          document.getElementById('school_name').value = school.sch_name;
+		        document.getElementById('school_location').value = school.sch_location;
+		        document.getElementById('school_tel').value = school.sch_tel;
+		        document.getElementById('sch_no').value = school.sch_no;
+		        form_data.append('sch_no', $('#sch_no').val());
+					  $.ajax({
+					    url : contextRoot + '/court/ajax/courtList.do',
+					    type : 'post',
+					    dataType : 'json',
+					    async : false,
+					    cache : false,
+					    contentType : false,
+					    processData : false,
+					    data : form_data,
+					    success : function(resultObj) {
+					    	  var showList = $('#table_body');
+					    	  for (var court of resultObj.courtList) {
+					    		  showList.append("<tr>" +
+										    			      "<td>" + court.event_name + "</td>" +
+										    			      "<td></td>" +
+										    			      "<td>" +
+										    			      "<i id='updateCourt' class='fa fa-pencil ibutton alterar " + court.event_code + "'></i>" +
+										    			      "<i id='deleteCourt' class='fa fa-trash ibutton excluir " + court.event_code + "'></i>" +
+										    			      "</td></tr>")
+					    	  }
+					    }
+					  })
+	        }
+	      }
+	    })
+     }
   })
   
     
@@ -458,6 +460,7 @@
 		        	    var ajaxResult = resultObj.ajaxResult;
 		        	    if(ajaxResult.status == 'success') {
 			        	    swal("Deleted!", "정상적으로 삭제되었습니다.", "success");
+			        	    list();
 		        	    } else {
 		        	    	  swal("Oops...", "정상적으로 삭제되지 않았습니다.","error");
 		        	    }
