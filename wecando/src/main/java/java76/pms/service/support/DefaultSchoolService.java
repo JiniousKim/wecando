@@ -2,7 +2,6 @@ package java76.pms.service.support;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,11 +25,11 @@ public class DefaultSchoolService implements SchoolService {
     return schoolDao.selectList(paramMap);
   }
 
-  public int sch_register(Map<String,Object> schoolMap) {
+  public int sch_register(HashMap<String,Object> schoolMap) {
     return schoolDao.sch_insert(schoolMap);
   }
 
-  public int sch_change(Map<String,Object> schoolMap) {
+  public int sch_change(HashMap<String,Object> schoolMap) {
     return schoolDao.sch_update(schoolMap);
   }
 
@@ -42,7 +41,7 @@ public class DefaultSchoolService implements SchoolService {
   		return schoolDao.sch_Manager(m_no);
   }
   
-  public int sch_manage_update(Map<String,Object> schoolMap) {
+  public int sch_manage_update(HashMap<String,Object> schoolMap) {
   	  return schoolDao.sch_manage_update(schoolMap);
   }
 }
