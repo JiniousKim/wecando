@@ -30,25 +30,25 @@ public class SchoolController {
 		schoolMap.put("sch_location", school.getSch_location());
 		schoolMap.put("sch_tel", school.getSch_tel());
 		schoolMap.put("m_no", m_no);
-		int mng_no = 0;
+		int sch_no = 0;
 		try{
-			mng_no = schoolService.get_sch(sch_name);
-			if (mng_no > 0) {
-				schoolService.sch_change(schoolMap);
-				memberService.update_manage(mng_no, m_no);
+			sch_no = schoolService.get_sch(school.getSch_location());
+			if (sch_no > 0) {
+				schoolService.sch_manage_update(schoolMap);
+				memberService.update_manage(sch_no, m_no);
 			}
 		} catch (Exception e) {
-			try {
-				schoolService.sch_register(schoolMap);
-				mng_no = schoolService.get_sch(sch_name);
-				System.out.println(mng_no);
-				memberService.update_manage(mng_no, m_no);
-			} catch (Exception te) {
-				resultMap.put("status", "failure");
+				try {
+					schoolService.sch_register(schoolMap);
+					sch_no = schoolService.get_sch(school.getSch_location());
+					memberService.update_manage(sch_no, m_no);
+				} catch (Exception te) {
+					resultMap.put("status", "failure");
+					return resultMap;
+				}
+				resultMap.put("status", "success");
+				resultMap.put("school", school);
 				return resultMap;
-			}
-			resultMap.put("status", "success");
-			return resultMap;
 		}
 		
 		resultMap.put("status", "success");
@@ -73,37 +73,7 @@ public class SchoolController {
 	
 	@RequestMapping(value="changeSchool", method=RequestMethod.POST)
 	public Object changeSchool(String sch_name, int m_no) throws Exception {
-		HashMap<String, Object> schoolMap = new HashMap<>();
-		HashMap<String, Object> resultMap	= new HashMap<>();
-		School school = null;
-		int mng_no = 0;
-		try{
-			school = new SearchSchool().getSchool(sch_name);
-			schoolMap.put("sch_name", school.getSch_name());
-			schoolMap.put("sch_location", school.getSch_location());
-			schoolMap.put("sch_tel", school.getSch_tel());
-			schoolMap.put("m_no", m_no);
-			mng_no = schoolService.get_sch(sch_name);
-			if (mng_no > 0) {
-				schoolService.sch_change(schoolMap);
-				memberService.update_manage(mng_no, m_no);
-			}
-		} catch (Exception e) {
-			try {
-				schoolService.sch_register(schoolMap);
-				mng_no = schoolService.get_sch(sch_name);
-				memberService.update_manage(mng_no, m_no);
-			} catch (Exception te) {
-				resultMap.put("status", "failure");
-				return resultMap;
-			}
-			resultMap.put("status", "success");
-			resultMap.put("school", school);
-			return resultMap;
-		}
-		resultMap.put("status", "success");
-		resultMap.put("school", school);
-		return resultMap;
+		return "";
 	}
 	
 	@RequestMapping(value="changeSchool", method=RequestMethod.GET)

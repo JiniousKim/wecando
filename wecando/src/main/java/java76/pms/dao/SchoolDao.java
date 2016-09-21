@@ -16,7 +16,9 @@ public interface SchoolDao {
   
   School sch_Manager(int m_no);
   
-  int get_sch(String sch_name);
+  int get_sch(String sch_location);
+  
+  int sch_manage_update(Map<String, Object> schoolMap);
 }
 
 

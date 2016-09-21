@@ -43,7 +43,7 @@
   <select id="get_sch" parameterType="String" resultType="int">
     select sch_num
     from school
-    where sch_name = #{sch_name}
+    where sch_location = #{sch_location}
   </select>
   
   <update id="sch_update" parameterType="school">
@@ -51,6 +51,13 @@
       sch_name=#{sch_name, jdbcType=VARCHAR},
       sch_loacation=#{sch_location, jdbcType=VARCHAR},
       sch_tel=#{sch_tel, jdbcType=VARCHAR},
+      member_num=#{m_no}
+    where 
+      sch_num = #{sch_num}
+  </update>
+  
+  <update id="sch_manage_update" parameterType="school">
+    update school set
       member_num=#{m_no}
     where 
       sch_num = #{sch_num}

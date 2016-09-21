@@ -34,12 +34,16 @@ public class DefaultSchoolService implements SchoolService {
     return schoolDao.sch_update(schoolMap);
   }
 
-  public int get_sch(String sch_name) {
-  		return schoolDao.get_sch(sch_name);
+  public int get_sch(String sch_location) {
+  		return schoolDao.get_sch(sch_location);
   }
   
   public School sch_Manager(int m_no) {
   		return schoolDao.sch_Manager(m_no);
+  }
+  
+  public int sch_manage_update(Map<String,Object> schoolMap) {
+  	  return schoolDao.sch_manage_update(schoolMap);
   }
 }
 
