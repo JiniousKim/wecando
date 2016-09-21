@@ -56,7 +56,7 @@
       sch_num = #{sch_num}
   </update>
   
-  <update id="sch_manage_update" parameterType="schoolMap">
+  <update id="sch_manage_update" parameterType="map">
     update school set
       member_num=#{m_no}
     where 

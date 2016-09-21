@@ -33,14 +33,16 @@ public class SchoolController {
 		int sch_no = 0;
 		try{
 			sch_no = schoolService.get_sch(school.getSch_location());
+			schoolMap.put("sch_num", sch_no);
 			if (sch_no > 0) {
 				schoolService.sch_manage_update(schoolMap);
 				memberService.update_manage(sch_no, m_no);
 			}
 		} catch (Exception e) {
 				try {
-					schoolService.sch_register(schoolMap);
 					sch_no = schoolService.get_sch(school.getSch_location());
+					schoolMap.put("sch_num", sch_no);
+					schoolService.sch_register(schoolMap);
 					memberService.update_manage(sch_no, m_no);
 				} catch (Exception te) {
 					resultMap.put("status", "failure");
