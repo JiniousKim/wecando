@@ -1,6 +1,5 @@
 package java76.pms.service.support;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +13,8 @@ import java76.pms.service.CourtService;
 public class DefaultCourtService implements CourtService {
 	@Autowired CourtDao courtDao;
 	
-	public int insert_court(HashMap<String, Object> paramMap) {
-		return courtDao.insertCourt(paramMap);
+	public int insert_court(Court court) {
+		return courtDao.insertCourt(court);
 	}
 	
 	public List<Court> courtList(int sch_no) {
@@ -24,6 +23,18 @@ public class DefaultCourtService implements CourtService {
 	
 	public int removeAllCourt(String code) {
 		return courtDao.removeAllCourt(code);
+	}
+	
+	public Court setCourt(String code) {
+		return courtDao.setCourt(code);
+	}
+	
+	public int updateCourt(Court court) {
+		return courtDao.updateCourt(court);
+	}
+	
+	public int removeCourt(String court_code) {
+		return courtDao.removeCourt(court_code);
 	}
 }
 

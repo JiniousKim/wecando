@@ -23,16 +23,16 @@ public class CourtController {
 			                   int court_cnt, int court_max,
 			                   int court_price) {
 		
-		HashMap<String, Object> paramMap = new HashMap<>();
 		event_code = event_code.replace(" ", "");
 		String court_code = sch_no + event_code; 
 		String cc = court_code;
+		Court court = new Court();
 		
-		paramMap.put("sch_no", sch_no);
-		paramMap.put("court_cnt", court_cnt);
-		paramMap.put("event_code", event_code);
-		paramMap.put("court_max", court_max);
-		paramMap.put("court_price", court_price);
+		court.setCourt_cnt(court_cnt);
+		court.setCourt_max(court_max);
+		court.setSch_no(sch_no);
+		court.setCourt_price(court_price);
+		court.setEvent_code(event_code);
 		
 		for (int i = 1; i <= court_cnt; i++) {
 			if (i < 10) {
@@ -40,9 +40,9 @@ public class CourtController {
 			} else {
 				court_code = cc + i;
 			}
-			paramMap.put("court_code", court_code);
+			court.setCourt_code(court_code);
 			try {
-				if (courtService.insert_court(paramMap) > 0) {}
+				if (courtService.insert_court(court) > 0) {}
 			} catch (Exception e) {
 				return new AjaxResult("failure", null);
 			}
@@ -91,4 +91,71 @@ public class CourtController {
 		
 		return new AjaxResult("success", null);
 	}
+	
+	@RequestMapping(value="setCourt", method=RequestMethod.POST)
+	public Object setCourt (String event_code,
+			                    int sch_no) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<>();
+		event_code = (event_code.replace("fa fa-pencil ibutton alterar ", ""))
+				.toUpperCase().replace(" ", "");
+		String code = sch_no + event_code;
+		Court court = new Court();
+		try {
+			court = courtService.setCourt(code);
+		} catch (Exception e) {
+			resultMap.put("status", "failure");
+		}
+		resultMap.put("court", court);
+		resultMap.put("status", "success");
+		return resultMap;
+	}
+	
+	@RequestMapping(value="updateCourt", method=RequestMethod.POST)
+	public Object updateCourt(String event_code,
+			 								      int sch_no,
+			 								      int court_cnt,
+			 								      int current_cnt,
+			 								      int court_max,
+			 								      int court_price) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<>();
+		event_code = event_code.replace(" " , "");
+		String court_code = sch_no + event_code;
+		String cc = court_code;
+		Court court = new Court();
+		court.setCourt_cnt(court_cnt);
+		court.setCourt_max(court_max);
+		court.setCourt_price(court_price);
+		court.setEvent_code(event_code);
+		court.setSch_no(sch_no);
+		try {
+			if (courtService.updateCourt(court) > 0) {};
+			if (current_cnt == court_cnt) {} 
+			else if (current_cnt < court_cnt) {
+				for(int i = current_cnt + 1; i < court_cnt; i++) {
+					if (i < 10) {
+						court_code = cc + "0" + i;
+					} else {
+						court_code = cc + i;
+					}
+					court.setCourt_code(court_code);
+					courtService.insert_court(court);
+				}
+			} else {
+				for(int i = court_cnt + 1; i < current_cnt; i++) {
+					if (i < 10) {
+						court_code = cc + "0" + i;
+					} else {
+						court_code = cc + i;
+					}
+					courtService.removeCourt(court_code);
+				}
+			}
+		} catch (Exception e) {
+			resultMap.put("status", "failure");
+			return resultMap;
+		}
+		
+		return resultMap;
+	}
+	
 }

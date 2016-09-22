@@ -234,6 +234,10 @@
                     <div style='position:absolute; top:86%; left:9%;'>
                   <button type='button' class='btn btn-theme' id='insertEvent'>추가하기</button>
                   </div>
+                  <div style='position:absolute; top:86%; left:9%; display:none;'>
+                  <input style='display:none;' id='current_cnt'>
+                  <button type='button' class='btn btn-theme' id='updateEvent'>변경하기</button>
+                  </div>
                   <div style='position:absolute; top:86%; left:16%;'>
                   <button type='button' class='btn btn-theme05'>입력취소</button>
                   </div>
@@ -353,7 +357,7 @@
 									    			      "<td>" + court.event_name + "</td>" +
 									    			      "<td></td>" +
 									    			      "<td>" +
-									    			      "<i id='updateCourt' class='fa fa-pencil ibutton alterar " + court.event_code + "'></i>" +
+									    			      "<i id='setCourt' class='fa fa-pencil ibutton alterar " + court.event_code + "'></i>" +
 									    			      "<i id='deleteCourt' class='fa fa-trash ibutton excluir " + court.event_code + "'></i>" +
 									    			      "</td></tr>")
 				    	  }
@@ -427,8 +431,80 @@
     	  }
     })
     
-    $(document).on("click", '#updateCourt', function(e) {
-    	  alert('변경');
+    
+    $(document).on("click", '#setCourt', function(e) {
+    	  $('#insertEvent').css('display', 'none');
+    	  $('#updateEvent').css('display', '');
+    	  var form_data = new FormData();
+    	  var event = e.target.getAttribute('class');
+    	  form_data.append("event_code", event);
+    	  form_data.append("sch_no", $('#sch_no').val());
+    	  $.ajax({
+        url : contextRoot + '/court/ajax/setCourt.do',
+        type : 'post',
+        dataType : 'json',
+        contentType : false,
+        processData : false,
+        data : form_data,
+        success : function(resultObj) {
+        	  var court = resultObj.court;
+        	  document.getElementById('court_cnt').value = court.court_cnt;
+          document.getElementById('court_price').value = court.court_price;
+          document.getElementById('court_max').value = court.court_max;
+          document.getElementById('select[name=ec]').value = court.event_name;
+          document.getElementById('current_cnt').value = court.court_cnt;
+        }
+      })
+    })
+    
+    $(document).on("click", "$updateCourt", function(e) {
+    	  var form_data = new FormData();
+    	  if ($('#court_max').val() == '') {
+        swal("Oops...", "인원 수를 잘못 입력하셨습니다.","error");
+      } else if ($('#court_price').val() == '') {
+        swal("Oops...", "이용 금액을 잘못 입력하셨습니다.","error");
+      } else if (eventcode == '') {
+        swal("Oops...", "이용종목을 잘못 입력하셨습니다.","error");
+      } else {
+    	    form_data.append("sch_no", $('#sch_no').val());
+        form_data.append("event_code", $('#select[name=ec]').val());
+        form_data.append("court_cnt", $('#court_cnt').val());
+        form_data.append("current_cnt", $('#current_cnt').val());
+        form_data.append("court_max", $('#court_max').val());
+        form_data.append("court_price", $('#court_price').val());
+        swal({   
+            title: "정말 변경 하겠습니까?",   
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#7AC943",   
+            confirmButtonText: "네, 변경할래요!",   
+            cancelButtonText: "앗, 아니요!",   
+            closeOnConfirm: false,   
+            closeOnCancel: false  }, 
+            function(isConfirm) {   
+              if (isConfirm) {
+                $.ajax({
+	                url : contextRoot + '/court/ajax/updateCourt.do',
+	                type : 'post',
+	                dataType : 'json',
+	                contentType : false,
+	                processData : false,
+	                data : form_data,
+	                success : function(resultObj) {
+	                  var ajaxResult = resultObj.ajaxResult;
+	                  if(ajaxResult.status == 'success') {
+	                    swal("Deleted!", "정상적으로 변경되었습니다.", "success");
+	                    window.location.reload(true);
+	                  } else {
+	                      swal("Oops...", "정상적으로 변경되지 않았습니다.","error");
+	                  }
+	                }
+                })
+              } else {     
+                swal("Cancelled", "요청을 취소하였습니다.", "error");   
+            }
+        })
+      }
     })
     
     $(document).on("click",'#deleteCourt', function(e) {
@@ -458,6 +534,7 @@
 		        	    var ajaxResult = resultObj.ajaxResult;
 		        	    if(ajaxResult.status == 'success') {
 			        	    swal("Deleted!", "정상적으로 삭제되었습니다.", "success");
+			        	    window.location.reload(true);
 		        	    } else {
 		        	    	  swal("Oops...", "정상적으로 삭제되지 않았습니다.","error");
 		        	    }
@@ -558,6 +635,7 @@
                            document.getElementById('school_location').value = school.sch_location;
                            document.getElementById('school_tel').value = school.sch_tel;
                            document.getElementById('sch_no').value = school.sch_no;
+                           window.location.reload(true);
                          } else {
                            swal('Error','변경할 수 없습니다.', "error");                          
                          }
@@ -606,6 +684,7 @@
                            document.getElementById('school_location').value = school.sch_location;
                           document.getElementById('school_tel').value = school.sch_tel;
                           document.getElementById('sch_no').value = school.sch_no;
+                          window.location.reload(true);
                         } else {
                           swal('Error','등록할 수 없습니다.', "error");                          
                         }
@@ -617,28 +696,6 @@
             } 
          });
        });
-    }
-    
-    function setEvent() {
-    	  $('#event_list').click(function(e) {
-    		  var id = e.target.getAttribute('id');
-    		  var form_data = new FormData();
-    		  form_data.append('event_code', $('#event_code').val());
-    		  form_data.append('sch_no',$('#sch_no').val());
-    		  form_data.append('court_cnt', $('#court_cnt').val());
-    		  form_data.append('court_price', $('#court_price').val());
-    		  form_data.append('court_max', $('#court_max').val());
-    		  $.ajax({
-    			  url : contextRoot + '/event/ajax/addCourt',
-    			  type : 'post',
-    			  dataType : 'json',
-    			  cache : false,
-    			  data : form_data,
-    			  success : function(resultObj) {
-    				  
-    			  }
-    		  })
-    	  })
     }
     
     function logout() {

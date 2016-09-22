@@ -24,7 +24,7 @@
   </resultMap>
   
     
-  <insert id="insertCourt" parameterType="map">
+  <insert id="insertCourt" parameterType="court">
     insert into court(court_code, court_cnt, event_code, sch_num, court_price, court_max)
     values(#{court_code, jdbcType=VARCHAR}, #{court_cnt}, 
            #{event_code, jdbcType=VARCHAR}, #{sch_no},
@@ -43,7 +43,31 @@
   
   <delete id="removeAllCourt" parameterType="String">
     delete from court
-    where court_code like '%' || #{code} || '%'
+    where court_code like #{code} || '%'
+  </delete>
+  
+  <select id="setCourt" parameterType="String" resultType="Court">
+    select distinct event_code,
+           court_cnt,
+           court_price,
+           court_max,
+           event_name
+    from court 
+    where court_code like #{code} || '%'
+  </select>
+  
+  <update id="updateCourt" parameterType="court">
+    update court set
+      court_max = #{court_max},
+      court_price = #{court_price},
+      court_cnt = #{court_cnt}
+    where court_code = #{court_code} || '%'
+  </update>
+  
+  <delete id="removeCourt" parameterType="String">
+    delete 
+    from court
+    where court_code = #{court_code}
   </delete>
   
 </mapper>
