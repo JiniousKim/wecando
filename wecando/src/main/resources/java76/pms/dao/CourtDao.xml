@@ -52,7 +52,7 @@
            court_price,
            court_max,
            event_name
-    from court 
+    from court natural left outer join event
     where court_code like #{code} || '%'
   </select>
   

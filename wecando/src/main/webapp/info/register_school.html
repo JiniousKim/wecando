@@ -468,7 +468,7 @@
       })
     })
     
-    $(document).on("click", "$updateCourt", function(e) {
+    $(document).on("click", "#updateCourt", function(e) {
     	  var form_data = new FormData();
     	  if ($('#court_max').val() == '') {
         swal("Oops...", "인원 수를 잘못 입력하셨습니다.","error");
@@ -629,7 +629,7 @@
              }, 
              function(isConfirm) {   
               if (isConfirm) {     
-              if ( ( id != '') && (id != null)) {
+              if ( ( id != '') && (id != null) && ($('#school_name').val() != id)) {
                     $.ajax({
                       url : contextRoot + '/school/ajax/addSchool.do',
                       type : 'post',
@@ -648,7 +648,6 @@
                            document.getElementById('school_location').value = school.sch_location;
                            document.getElementById('school_tel').value = school.sch_tel;
                            document.getElementById('sch_no').value = school.sch_no;
-                           window.location.reload(true);
                          } else {
                            swal('Error','변경할 수 없습니다.', "error");                          
                          }
@@ -656,7 +655,7 @@
                  })
                }   
              } else {     
-                swal("Cancelled", "변경을 취소하였습니다.", "error");   
+                swal("Cancelled", "변경 할 수 없습니다.", "error");   
              } 
           });
         });
@@ -695,9 +694,8 @@
                            var school = resultObj.school;
                            document.getElementById('school_name').value = school.sch_name;
                            document.getElementById('school_location').value = school.sch_location;
-                          document.getElementById('school_tel').value = school.sch_tel;
-                          document.getElementById('sch_no').value = school.sch_no;
-                          window.location.reload(true);
+                           document.getElementById('school_tel').value = school.sch_tel;
+                           document.getElementById('sch_no').value = school.sch_no;
                         } else {
                           swal('Error','등록할 수 없습니다.', "error");                          
                         }
