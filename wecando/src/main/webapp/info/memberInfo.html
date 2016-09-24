@@ -26,36 +26,6 @@
 
   <div id="login-page">
     <div class="container">
-      <!-- Modal -->
-      <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" id="myModal1"
-        class="modal fade">
-        <form class="form-login" action="auth.html">
-          <div class="modal-header">
-            <h2 class="form-login-heading">sign in now</h2>
-          </div>
-          <div class="login-wrap">
-            <input type="text" class="f-c" placeholder="User ID" autofocus> <br>
-            <input type="password" class="f-c" placeholder="Password"> <label
-              class="checkbox"> <span class="pull-right"> <a data-toggle="modal"
-                href="index.html#myModal2"> Forgot Password?</a>
-            </span>
-            </label>
-            <button class="btn b-t btn-block" href="index.html" type="submit">
-              <i class="fa fa-lock"></i> SIGN IN
-            </button>
-            <hr>
-            <div class="login-social-link centered">
-              <p>or you can sign in via your social network</p>
-              <button class="btn btn-facebook" type="submit">
-                <i class="fa fa-facebook"></i> Facebook
-              </button>
-            </div>
-            <div class="registration">
-              Don't have an account yet?<br /> <a class="" href="#"> Create an account </a>
-            </div>
-          </div>
-        </form>
-      </div>
 
       <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
         id="myModal2" class="modal fade">
@@ -204,10 +174,10 @@
                                 </div>
                                 </div>
                                 <div id="buttons">
-                                    <button class="btn btn-theme04" id='outAccount' onclick="javascript:history.back()">탈퇴</button>
+                                    <button class="btn btn-theme04" id='outAccount'>탈퇴</button>
                                     <button class="btn btn-theme03" id="beforeCh">변경하기</button>
+                                    <button class="btn btn-theme04" id="cancle" style='margin-left:200px;' >취소</button>
                                     <button class="btn btn-theme" id="afterCh">변경완료</button>
-                                    <button class="btn btn-theme04" onclick="javascript:history.back()" id="cancle">취소</button>
                                 </div>
                             </div>
                             </div>
@@ -298,10 +268,10 @@
        $("#outAccount").css("display", "none");
        $("#beforeCh").css("display", "none");
        $("#passwordForm").css("display", "");
-        $("#password2Form").css("display", "");
-        $("#chTelForm").css("display", "");
-        $("#cancle").css("display", "");
-        $("#afterCh").css("display", "");
+       $("#password2Form").css("display", "");
+       $("#chTelForm").css("display", "");
+       $("#cancle").css("display", "");
+       $("#afterCh").css("display", "");
   })
   
   $(document).on('click', '#afterCh', function() {
@@ -314,6 +284,21 @@
       } else {
           sweetAlert("Good!", "우와~~~", "success")
       }
+  })
+  
+  $(document).on('click', '#cancle', function() {
+	  $("#telForm").css("display", "");
+    $("#outAccount").css("display", "");
+    $("#beforeCh").css("display", "");
+    $("#passwordForm").css("display", "none");
+    $("#password2Form").css("display", "none");
+    $("#chTelForm").css("display", "none");
+    $("#cancle").css("display", "none");
+    $("#afterCh").css("display", "none");
+  })
+  
+  $(document).on('click', '#outAccount', function(e) {
+	  
   })
   
   </script>

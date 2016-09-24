@@ -239,8 +239,8 @@
                   <button type='button' class='btn btn-theme' id='updateEvent'>변경하기</button>
                   </div>
                   <div style='position:absolute; top:86%; left:16%;'>
-                  <button type='button' class='btn btn-theme05'>입력취소</button>
-                  </div>
+											<button id='clear' type='button' class='btn btn-theme05'>입력취소</button>
+										</div>
                   </div>
                   <div id='addList' class='addlist'>
                   <table>
@@ -388,6 +388,17 @@
       $('#m_password').html('');
       $('#m_email').val('');
       $('#m_password').val('');
+    })
+    
+    $(document).on("click","#clear", function(e) {
+    	  $('#court_max').val('');
+    	  $('#court_price').val('');
+    	  $('#court_cnt').val(1);
+    	  $('select[name=ec]').val('');
+    })
+    
+    $(document).on("click", ".confirm", function() {
+    	  window.location.reload();
     })
     
     $(document).on("click",'#insertEvent', function(e) {
