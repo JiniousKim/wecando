@@ -5,11 +5,6 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="Dashboard">
-<meta name="keyword"
-	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
 <title>Wecando</title>
 
@@ -26,6 +21,7 @@
 <!-- Custom styles for this template -->
 <link href="../../css/style.css" rel="stylesheet">
 <link href="../../css/style-responsive.css" rel="stylesheet">
+<link rel="shortcut icon" type="image/x-icon" href="../../img/logo.png" />
 <script src="../../js/dj_check.js" type="text/javascript"></script>
 
 <link rel="stylesheet" type="text/css"
@@ -182,6 +178,16 @@
 	<script src="../../lib/sweetalert/sweetalert.min.js"></script>
 
 	<script>
+	 $(document).ready(function(e) {
+		 $.ajax({
+       url : contextRoot + '/auth/ajax/logout.do',
+       type : 'post',
+       dataType : 'json',
+       cache : false,
+       success : function(resultObj) {}
+     })
+	 })
+	 
    $('#nick').on('hide.bs.modal', function (e) {
        $('#m_n').html('');
        $('#m_n').val('');

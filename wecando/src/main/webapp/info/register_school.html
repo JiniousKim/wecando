@@ -16,7 +16,7 @@
 <link href="../css/style.css" rel="stylesheet">
 <link href="../css/button.css" rel="stylesheet">
 <link href="../css/style-responsive.css" rel="stylesheet">
-
+<link rel="shortcut icon" type="image/x-icon" href="../img/logo.png" />
 <script src="../js/chart-master/Chart.js"></script>
 
 <link rel="stylesheet" type="text/css"
@@ -494,9 +494,11 @@
 	                  var ajaxResult = resultObj.ajaxResult;
 	                  if(ajaxResult.status == 'success') {
 	                    swal("Deleted!", "정상적으로 변경되었습니다.", "success");
+	                    $('#insertEvent').css('display', '');
+	                    $('#updateEvent').css('display', 'none');
 	                    window.location.reload(true);
 	                  } else {
-	                      swal("Oops...", "정상적으로 변경되지 않았습니다.","error");
+	                    swal("Oops...", "정상적으로 변경되지 않았습니다.","error");
 	                  }
 	                }
                 })
