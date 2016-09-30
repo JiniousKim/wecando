@@ -15,15 +15,69 @@ public class SchEvent  implements Serializable {
 	protected String 			T16_18;
 	protected String 			T18_20;
 	protected String 			T20_22;
-	protected School				school;
-	protected Event				event;
-	protected Court				court;
+  protected String   		event_code;
+  protected String				court_code;
+  protected int					sch_no;
+  protected String				sch_location;
+  public String getSch_location() {
+		return sch_location;
+	}
+
+
+	public void setSch_location(String sch_location) {
+		this.sch_location = sch_location;
+	}
+
+	protected String				sch_name;
 	
+	public String getEvent_code() {
+		return event_code;
+	}
+
+
+	public void setEvent_code(String event_code) {
+		this.event_code = event_code;
+	}
+
+
+	public String getCourt_code() {
+		return court_code;
+	}
+
+
+	public void setCourt_code(String court_code) {
+		this.court_code = court_code;
+	}
+
+
+
+
+	public int getSch_no() {
+		return sch_no;
+	}
+
+
+	public void setSch_no(int sch_no) {
+		this.sch_no = sch_no;
+	}
+
+
+	public String getSch_name() {
+		return sch_name;
+	}
+
+
+	public void setSch_name(String sch_name) {
+		this.sch_name = sch_name;
+	}
+
+
 	@Override
 	public String toString() {
 		return "SchEvent [schevent_date=" + schevent_date + ", T6_8=" + T6_8 + ", T8_10=" + T8_10 + ", T10_12=" + T10_12
 		    + ", T12_14=" + T12_14 + ", T14_16=" + T14_16 + ", T16_18=" + T16_18 + ", T18_20=" + T18_20 + ", T20_22="
-		    + T20_22 + ", school=" + school + ", event=" + event + ", court=" + court + "]";
+		    + T20_22 + ", event_code=" + event_code + ", court_code=" + court_code + ", sch_location=" + sch_location
+		    + ", sch_name=" + sch_name + "]";
 	}
 
 
@@ -116,31 +170,5 @@ public class SchEvent  implements Serializable {
 		T20_22 = t20_22;
 	}
 
-
-	public School getSchool() {
-		return school;
-	}
-
-
-	public void setSchool(School school) {
-		this.school = school;
-	}
-
-
-	public Event getEvent() {
-		return event;
-	}
-
-	public void setEvent(Event event) {
-		this.event = event;
-	}
-
-	public Court getCourt() {
-		return court;
-	}
-
-	public void setCourt(Court court) {
-		this.court = court;
-	}
 	public SchEvent() {}
 }

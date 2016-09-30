@@ -2669,3 +2669,117 @@ div.col-md-4 a {
   background-color: #ed5565;
   border-color: #da4453;
 }
+
+.dj {
+  margin-left : 60px;
+  width : 930px;
+  height : inherit;
+  overflow : hidden;
+}
+
+.dj: hover {
+  overflow : auto;
+}
+
+.dj > hr {
+  margin-top: -20px;
+  color : #f120d9;
+}
+
+.wecando {
+  position: inherit;
+  left : 500px;
+  width : 400px;
+  height : auto;
+  top : -40px;
+}
+
+
+
+#sch_list {
+  height: 700px;
+  overflow: auto;
+}
+
+#sch_list:hover {
+  overflow:auto;
+}
+
+.defaultDate > input{
+  width:250px;
+  height:45px;
+  color: #ffffff;
+  font-size: 16px;
+  padding: 0 10px;
+  line-height: 60px;
+  background: #ff865c;
+  text-align: center;
+  border:none;
+}
+
+.card {
+  width : 700px; 
+  margin-top:20px; 
+  height:200px; 
+  margin-left:30px; 
+  background-color:#f2f2f2;
+}
+
+.card_title {
+  position:relative;
+  width:466px;
+  background-color:white;
+  height:40px;  
+  left:200px; 
+}
+
+.card_time {
+    position:relative; 
+    width:490px; 
+    height:130px; 
+    top:20px;
+    overflow :auto;
+}
+
+.card_photo {
+    position:relative; 
+    left:10px; 
+    top:10px; 
+    width:190px; 
+    height:170px; 
+    background-color:white;
+}
+
+.card_name {
+    color:black; 
+    font-size:20px; 
+    padding-top:5px
+}
+.card_name > i {
+    font-size: 24px;
+}
+
+.time_table {
+    background-color: white;
+    width: 95%;
+    height: 100px;
+    color : black;
+    border : 1px solid grey;
+    overflow : auto;
+}
+
+.time_table > thead {
+    column-span: 3px;
+    font-size: 20px;
+    border-bottom: 2px solid black;
+    width : 200px;
+    text-align: center;
+    color : darkcyan;
+}
+
+
+.time_table > tbody {
+    text-align: left;
+    font-size: 15px;
+    color : black;
+}

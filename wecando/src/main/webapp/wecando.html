@@ -229,15 +229,24 @@
 					<h3>지역 선택</h3>
 					<div id="map" class="row mt"></div>
 				</div>
+                <div class="col-lg-3 ds dj">
+                  <div class="btn-group" id='eventlist' style='top:30px;'>
+                    <select id='event_list' name='ec' class='dropdown-toggle' data-toggle='dropdown' name='event_code'>
+                      <option class='dropdown-menu' selected>종목 선택</option>
+                    </select>
+                  </div>
+                  <div class='wecando'>
+                    <img style='width:400px; height:100px;' src="img/black_logo.png">
+                  </div>
+                  <hr>
+                  <div id='sch_list'>
+                    <div class='defaultDate'><input id='chooseDate' readonly></div>
+                </div>
+               </div> 
 				<!-- /col-lg-3 -->
 			</section>
 		</section>
 		<footer class="site-footer">
-			<div class="text-center">
-				2014 - Alvarez.is <a href="wecando.html#" class="go-top"> <i
-					class="fa fa-angle-up"></i>
-				</a>
-			</div>
 		</footer>
 	</section>
 
@@ -276,6 +285,9 @@
 	</script>
 
 	<script type="application/javascript">
+    var date;
+    
+    
     $(document).ready(function () {
         $("#date-popover").popover({html: true, trigger: "manual"});
         $("#date-popover").hide();
@@ -284,6 +296,7 @@
         });
         $("#my-calendar").zabuto_calendar({
             action: function () {
+                alert(this.id);
                 return myDateFunction(this.id, false);
             },
             action_nav: function () {
@@ -293,7 +306,102 @@
                 {type: "text", label: "Special event", badge: "00"},
                 {type: "block", label: "Regular event", }
             ]
-        });  
+        });
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1; //January is 0!
+        var yyyy = today.getFullYear();
+
+        if(dd<10) {
+            dd='0'+dd
+        } 
+
+        if(mm<10) {
+            mm='0'+mm
+        }
+        
+
+        date = yyyy + '년 ' + mm + '월 ' + dd + '일';
+
+        document.getElementById('chooseDate').value = date;
+        
+        /* $.ajax({
+        	  url : contextRoot + '/info/ajax/schoolList.do',
+        	  type : 'post',
+        	  dataType : 'json',
+        	  cache : false,
+        	  processData : false,
+        	  async : false,
+        	  success : function(resultObj) {
+        		  console.log(resultObj);
+        		  var showSchool = $('#sch_list');
+        		  for (var school in resultObj) {
+	        		  showSchool.append("<div class='card'><div class='card_photo'>" +
+	                              "<div class='card_title'><div class='card_name'> " +
+	                              "<i class='fa fa-university'>&nbsp;" + askldfjlks + "</i></div>" +
+	                              "<div class='card_time'><table class='time_table'>" +
+	                              "<thead><tr><th>이용가능 시간</th><th>대관비용</th><th colspan='5px;'>사용가능 여부</th>" +
+	                              "</tr></thead><tbody>"  +
+	                              "<tr>" +
+	                                "<td>06:00 ~ 08:00</td>" +
+	                                "<td>" + + "</td>" +
+	                                "<td>" + + "</td>" +
+	                              "</tr> +
+			                          "<tr>" +
+			                            "<td>08:00 ~ 10:00</td>" +
+			                            "<td>" + + "</td>" +
+			                            "<td>" + + "</td>" +
+			                          "</tr>" +
+			                          "<tr>" +
+		                              "<td>10:00 ~ 12:00</td>" +
+		                              "<td>" + + "</td>" +
+		                              "<td>" + + "</td>" +
+		                            "</tr>" +
+		                            "<tr>" +
+		                              "<td>12:00 ~ 14:00</td>" +
+		                              "<td>" + + "</td>" +
+		                              "<td>" + + "</td>" +
+		                            "</tr>" +
+	                              "<tr>" +
+	                                "<td>14:00 ~ 16:00</td>" +
+	                                "<td>" + + "</td>" +
+	                                "<td>" + + "</td>" +
+	                              "</tr>" +
+	                              "<tr>" +
+	                                "<td>16:00 ~ 18:00</td>" +
+	                                "<td>" + + "</td>" +
+	                                "<td>" + + "</td>" +
+	                              "</tr>" +
+		                            "<tr>" +
+			                            "<td>18:00 ~ 20:00</td>" +
+			                            "<td>" + + "</td>" +
+			                            "<td>" + + "</td>" +
+			                          "</tr>" +
+			                          "<tr>" +
+				                          "<td>20:00 ~ 22:00</td>" +
+				                          "<td>" + + "</td>" +
+				                          "<td>" + + "</td>" +
+				                        "</tr></tbody></table></div></div></div>")
+        			  
+        		  }
+				  }
+        }) */
+        
+        $.ajax({
+         url : contextRoot + '/info/ajax/eventList.do',
+         type : 'post',
+         dataType : 'json',
+         cache : false,
+         processData : false,
+         contentType : false,
+         async : false,
+         success : function(resultObj) {
+           var list = $('#event_list');
+           for(var event of resultObj.eventList) {
+              list.append("<option value='" + event.event_code + "'>" + event.event_name + "</option>")
+           }
+         }
+      })
         
        /*  <!-- 종목 등록 -->
         <!--
@@ -344,9 +452,15 @@
           }
         }
       })
+    
 	
 	</script>
 	<script>
+        $(document).on("click", "#dddd", function() {
+            date = 'asdf';
+            $('#sch_list').append(date);
+            document.getElementById('chooseDate').value = date;
+        })
 	  $('#myModal1').on('hide.bs.modal', function (e) {
       $('#m_email').html('');
       $('#m_password').html('');
