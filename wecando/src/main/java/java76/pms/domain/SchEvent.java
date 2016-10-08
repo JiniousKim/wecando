@@ -6,7 +6,7 @@ import java.util.Date;
 public class SchEvent  implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	protected Date					schevent_date;
+	protected Date					event_date;
 	protected String 			T6_8;
 	protected String 			T8_10;
 	protected String 			T10_12;
@@ -74,20 +74,20 @@ public class SchEvent  implements Serializable {
 
 	@Override
 	public String toString() {
-		return "SchEvent [schevent_date=" + schevent_date + ", T6_8=" + T6_8 + ", T8_10=" + T8_10 + ", T10_12=" + T10_12
+		return "SchEvent [schevent_date=" + event_date + ", T6_8=" + T6_8 + ", T8_10=" + T8_10 + ", T10_12=" + T10_12
 		    + ", T12_14=" + T12_14 + ", T14_16=" + T14_16 + ", T16_18=" + T16_18 + ", T18_20=" + T18_20 + ", T20_22="
 		    + T20_22 + ", event_code=" + event_code + ", court_code=" + court_code + ", sch_location=" + sch_location
 		    + ", sch_name=" + sch_name + "]";
 	}
 
 
-	public Date getSchevent_date() {
-		return schevent_date;
+	public Date getEvent_date() {
+		return event_date;
 	}
 
 
-	public void setSchevent_date(Date schevent_date) {
-		this.schevent_date = schevent_date;
+	public void setEvent_date(Date event_date) {
+		this.event_date = event_date;
 	}
 
 

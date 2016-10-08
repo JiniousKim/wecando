@@ -1,5 +1,6 @@
 package java76.pms.service.support;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,12 @@ import java76.pms.service.SchEventService;
 public class DefaultSchEventService implements SchEventService {
 	@Autowired SchEventDao schEventDao;
 	
-	public List<SchEvent> schEventList(String event_code) {
-		return schEventDao.schEventList(event_code);
+	public List<SchEvent> schEventList() {
+		return schEventDao.schEventList();
+	}
+	
+	public int createTime(HashMap<String, Object> paramMap) {
+		return schEventDao.createTime(paramMap);
 	}
 }
 

@@ -11,6 +11,7 @@ public interface CourtDao {
   Court setCourt(String code);
   int updateCourt(Court court);
   int removeCourt(String court_code);
+  List<String> courtcodeList();
 }
 
 

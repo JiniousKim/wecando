@@ -7,16 +7,39 @@
   <resultMap type="SchEvent" id="scheventMap">
     <id column="event_date" property="schevent_date"/>
     <result column="event_code" property="event_code"/>
+    <result column="court_code" property="court_code" />
     <result column="sch_location" property="sch_location" />
     <result column="member_num" property="m_no" />
     <result column="T6_8" property="T6_8" />
-    <result column="T6_8" property="T8_10" />
-    <result column="T6_8" property="T10_12" />
-    <result column="T6_8" property="T12_14" />
-    <result column="T6_8" property="T14_16" />
-    <result column="T6_8" property="T16_18" />
-    <result column="T6_8" property="T18_20" />
-    <result column="T6_8" property="T20_22" />
+    <result column="T8_10" property="T8_10" />
+    <result column="T10_12" property="T10_12" />
+    <result column="T12_14" property="T12_14" />
+    <result column="T14_16" property="T14_16" />
+    <result column="T16_18" property="T16_18" />
+    <result column="T18_20" property="T18_20" />
+    <result column="T20_22" property="T20_22" />
   </resultMap>
+  
+  <insert id="createTime" parameterType='map'>
+    insert into SCHEVENT(court_code, event_code, sch_no, event_date)
+    values(#{court_code, jdbcType=VARCHAR}, #{event_code, jdbcType=VARCHAR},
+           #{sch_no}, TO_DATE(#event_date#, "YYYY-MM-DD"))
+  </insert>
+  
+  <select id="schEventList" resultMap='SchEvent'>
+    select event_date as event_date,
+           T6_8       as T6_8,
+           T8_10      as T8_10,
+           T10_12     as T10_12,
+           T12_14     as T12_14,
+           T14_16     as T14_16,
+           T16_18     as T16_18,
+           T18_20     as T18_20,
+           T20_22     as T20_22,
+           event_code as event_code,
+           court_code as court_code,
+           sch_num    as sch_no
+     from SCHEVENT
+  </select>
   
 </mapper>

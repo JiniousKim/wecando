@@ -70,4 +70,9 @@
     where court_code = #{court_code}
   </delete>
   
+  <select id="courtcodeList">
+    select court_code
+    from court
+  </select>
+  
 </mapper>
