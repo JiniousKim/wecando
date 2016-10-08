@@ -88,8 +88,8 @@
       </div>
     </aside>
     <section id="main-content">
-			<section class="wrapper">
-				<div id="auth">
+      <section class="wrapper">
+        <div id="auth">
                     <div id="check">
                         <img id="joinus" src="../img/mypage.png">
                         <!-- INLINE FORM ELELEMNTS -->
@@ -120,35 +120,35 @@
                                 </h1>
                                 <div class="form-group3 join" id="emailForm">
                                 <label class="col-lg-2 col-sm-2 control-label"> 이메일</label>
-                                <div class="col-lg-10">
+                                <div class="col-lg-10 aa">
                                     <p class="form-control-static" style="color: #777;">
-                                    <input id='member_email' readonly></p>
+                                    <input id='member_email' class='aa' readonly></p>
                                 </div>
                                 </div>
                                 <div id='nameForm' class="form-group3">
                                 <label class="col-sm-2 col-sm-2 control-label"> 이름</label>
-                                <div class="col-sm-10">
+                                <div class="col-sm-10 aa">
                                     <p class="form-control-static" style="color: #777;">
-                                    <input id='member_name' readonly></p>
+                                    <input id='member_name' class='aa'  readonly></p>
                                 </div>
                                 </div>
                                 <div id='nickForm' class="form-group3">
                                 <label class="col-sm-2 col-sm-2 control-label"> 닉네임</label>
-                                <div class="col-sm-10">
+                                <div class="col-sm-10 aa">
                                     <p class="form-control-static" style="color: #777;">
-                                    <input id='member_nick' readonly></p>
+                                    <input id='member_nick' class='aa'  readonly></p>
                                 </div>
                                 </div>
                                 <div id="telForm" class="form-group3">
                                 <label class="col-sm-2 col-sm-2 control-label"> 전화번호</label>
-                                <div class="col-sm-10">
+                                <div class="col-sm-10 aa">
                                     <p class="form-control-static" style="color: #777;">
-                                    <input id='member_tel' readonly></p>
+                                    <input id='member_tel' class='aa'  readonly></p>
                                 </div>
                                 </div>
                                  <div id='passwordForm' class="form-group3 has-feedback">
                                     <label class="col-sm-2 col-sm-2 control-label"> 비밀번호</label>
-                                    <div class="col-sm-10">
+                                    <div class="col-sm-10 aa">
                                         <input type="password" id='password'
                                         onchange="check(this.id);" class="form-control"
                                         placeholder="">
@@ -183,10 +183,10 @@
                             </div>
                         </div>
                     </div>
-				</div>
-			</section>
-		</section>
-	</section>
+        </div>
+      </section>
+    </section>
+  </section>
   <script src="../js/jquery.js"></script>
   <script src="../js/jquery-1.8.3.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>
@@ -202,7 +202,7 @@
       
       $("#changeInfo").css("display", "none");
       
-	   $.ajax({
+     $.ajax({
       url : contextRoot + '/auth/ajax/check_session.do',
       type : 'post',
       dataType : 'json',
@@ -215,7 +215,7 @@
         var sM = $('#sub_menu');
         var ajaxresult = resultObj;
         if (ajaxresult.status == 'failure') {
-        	  	location.replace("http://localhost:8080/wecando/login.html");
+              location.replace("http://localhost:8080/wecando/login.html");
         } else {
            loginAva.append("<ul class='nav pull-right top-menu'>"
                + "<li><a class='logout'"
@@ -248,16 +248,21 @@
         var member = resultObj.loginUser;
         // var show = $('#auth');
         if (status == 'failure') {
-        	  sweetAlert("Oops...", "정보가 맞지 않습니다.", "error")
+            sweetAlert("Oops...", "정보가 맞지 않습니다.", "error")
         } else {
-        	   $('#checkmem').css('display', 'none');
+             $('#checkmem').css('display', 'none');
                $("#changeInfo").css("display", "");
                $("#passwordForm").css("display", "none");
                $("#password2Form").css("display", "none");
                $("#chTelForm").css("display", "none");
                $("#cancle").css("display", "none");
                $("#afterCh").css("display", "none");
-           console.log(member);
+               console.log(member);
+               document.getElementById('member_email').value = member.m_email;
+               document.getElementById('member_name').value = member.m_name;
+               document.getElementById('member_nick').value = member.m_nick;
+               document.getElementById('member_tel').value = member.m_tel;
+               
         }
       }
     })
@@ -288,7 +293,7 @@
   })
   
   $(document).on('click', '#cancle', function() {
-	  $("#telForm").css("display", "");
+    $("#telForm").css("display", "");
     $("#outAccount").css("display", "");
     $("#beforeCh").css("display", "");
     $("#passwordForm").css("display", "none");
@@ -299,42 +304,42 @@
   })
   
   $(document).on('click', '#outAccount', function(e) {
-	  
+    
   })
   
   </script>
   <script>
   function logout() {
-	    $.ajax({
-	      url : contextRoot + '/auth/ajax/logout.do',
-	      type : 'post',
-	      dataType : 'json',
-	      cache : false,
-	      success : function(resultObj) {
-	        var ajaxresult = resultObj.AjaxResult;
-	        if (ajaxresult.status == 'success') {
-	          location.replace("http://localhost:8080/wecando/login.html");
-	        } else {
-	          sweetAlert("Oops...", "Logout에 실패하였습니다.",  "error");
-	        }
-	      }
-	    })
-	  }
+      $.ajax({
+        url : contextRoot + '/auth/ajax/logout.do',
+        type : 'post',
+        dataType : 'json',
+        cache : false,
+        success : function(resultObj) {
+          var ajaxresult = resultObj.AjaxResult;
+          if (ajaxresult.status == 'success') {
+            location.replace("http://localhost:8080/wecando/login.html");
+          } else {
+            sweetAlert("Oops...", "Logout에 실패하였습니다.",  "error");
+          }
+        }
+      })
+    }
   
     $(document).on("click",'#update',function(e) {
-    	  var form_data = new FormData();
-    	  $.ajax({
-    		  url : contextRoot + '/member/ajax/update.do',
-    		  type : 'post',
-    		  dataType : 'json',
-    		  cache : false,
-    		  processData : false,
-  	      contentType : false,
-  	      data : form_data,
-  	      success : function(resultObj) {
-  	    	    
-  	      }
-    	  })
+        var form_data = new FormData();
+        $.ajax({
+          url : contextRoot + '/member/ajax/update.do',
+          type : 'post',
+          dataType : 'json',
+          cache : false,
+          processData : false,
+          contentType : false,
+          data : form_data,
+          success : function(resultObj) {
+              
+          }
+        })
     })
   </script>
 </body>
