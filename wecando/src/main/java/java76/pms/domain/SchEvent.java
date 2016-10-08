@@ -6,7 +6,7 @@ import java.util.Date;
 public class SchEvent  implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	protected Date					event_date;
+	protected String				event_date;
 	protected String 			T6_8;
 	protected String 			T8_10;
 	protected String 			T10_12;
@@ -19,6 +19,9 @@ public class SchEvent  implements Serializable {
   protected String				court_code;
   protected int					sch_no;
   protected String				sch_location;
+  protected String				sch_name;
+
+  
   public String getSch_location() {
 		return sch_location;
 	}
@@ -28,7 +31,6 @@ public class SchEvent  implements Serializable {
 		this.sch_location = sch_location;
 	}
 
-	protected String				sch_name;
 	
 	public String getEvent_code() {
 		return event_code;
@@ -48,9 +50,6 @@ public class SchEvent  implements Serializable {
 	public void setCourt_code(String court_code) {
 		this.court_code = court_code;
 	}
-
-
-
 
 	public int getSch_no() {
 		return sch_no;
@@ -81,12 +80,12 @@ public class SchEvent  implements Serializable {
 	}
 
 
-	public Date getEvent_date() {
+	public String getEvent_date() {
 		return event_date;
 	}
 
 
-	public void setEvent_date(Date event_date) {
+	public void setEvent_date(String event_date) {
 		this.event_date = event_date;
 	}
 

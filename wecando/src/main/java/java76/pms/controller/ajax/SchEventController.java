@@ -47,7 +47,6 @@ public class SchEventController {
 	public List<SchEvent> schEventList () throws Exception {
 		List<SchEvent> resultList = schEventService.schEventList();
 		
-		
 		return resultList;
 	}
 	

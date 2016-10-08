@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java76.pms.domain.AjaxResult;
 import java76.pms.domain.Event;
+import java76.pms.domain.SchEvent;
 import java76.pms.service.EventService;
 import java76.pms.service.SchEventService;
 
@@ -47,5 +48,11 @@ public class InfoController {
 		return resultMap;
 	}
 	
+	@RequestMapping(value="list", method=RequestMethod.POST)
+	public List<SchEvent> schEventList () throws Exception {
+		List<SchEvent> resultList = schEventService.schEventList();
+		
+		return resultList;
+	}
 	
 }
