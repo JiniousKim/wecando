@@ -122,28 +122,28 @@
                                 <label class="col-lg-2 col-sm-2 control-label"> 이메일</label>
                                 <div class="col-lg-10">
                                     <p class="form-control-static" style="color: #777;">
-                                    <%=request.getParameter("m_email")%></p>
+                                    <input id='member_email' readonly></p>
                                 </div>
                                 </div>
                                 <div id='nameForm' class="form-group3">
                                 <label class="col-sm-2 col-sm-2 control-label"> 이름</label>
                                 <div class="col-sm-10">
                                     <p class="form-control-static" style="color: #777;">
-                                    <%=request.getParameter("m_name")%></p>
+                                    <input id='member_name' readonly></p>
                                 </div>
                                 </div>
                                 <div id='nickForm' class="form-group3">
                                 <label class="col-sm-2 col-sm-2 control-label"> 닉네임</label>
                                 <div class="col-sm-10">
                                     <p class="form-control-static" style="color: #777;">
-                                    <%=request.getParameter("닉네임 받아오기")%></p>
+                                    <input id='member_nick' readonly></p>
                                 </div>
                                 </div>
                                 <div id="telForm" class="form-group3">
                                 <label class="col-sm-2 col-sm-2 control-label"> 전화번호</label>
                                 <div class="col-sm-10">
                                     <p class="form-control-static" style="color: #777;">
-                                    <%=request.getParameter("전화번호 받아오기")%></p>
+                                    <input id='member_tel' readonly></p>
                                 </div>
                                 </div>
                                  <div id='passwordForm' class="form-group3 has-feedback">
@@ -257,6 +257,7 @@
                $("#chTelForm").css("display", "none");
                $("#cancle").css("display", "none");
                $("#afterCh").css("display", "none");
+           console.log(member);
         }
       }
     })

@@ -1,7 +1,6 @@
 package java76.pms.domain;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class SchEvent  implements Serializable {
 	private static final long serialVersionUID = 1L;
