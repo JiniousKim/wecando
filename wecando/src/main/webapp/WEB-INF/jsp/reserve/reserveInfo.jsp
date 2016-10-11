@@ -8,21 +8,21 @@
 <title>WECANDO</title>
 
 <!-- Bootstrap core CSS -->
-<link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../../css/bootstrap.css" rel="stylesheet">
 <!--external css-->
-<link href="../font-awesome/css/font-awesome.css" rel="stylesheet" />
-<link rel="stylesheet" type="text/css" href="../css/zabuto_calendar.css">
+<link href="../../font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="../../css/zabuto_calendar.css">
 <link rel="stylesheet" type="text/css"
-  href="../js/gritter/css/jquery.gritter.css" />
-<link rel="stylesheet" type="text/css" href="../lineicons/style.css">
-<link rel="shortcut icon" type="image/x-icon" href="../img/logo.png" />
+  href="../../js/gritter/css/jquery.gritter.css" />
+<link rel="stylesheet" type="text/css" href="../../lineicons/style.css">
+<link rel="shortcut icon" type="image/x-icon" href="../../img/logo.png" />
 
 <!-- Custom styles for this template -->
-<link href="../css/style.css" rel="stylesheet">
-<link href="../css/style-responsive.css" rel="stylesheet">
+<link href="../../css/style.css" rel="stylesheet">
+<link href="../../css/style-responsive.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css"
-  href="../lib/sweetalert/sweetalert.css">
-<script src="../js/chart-master/Chart.js"></script>
+  href="../../lib/sweetalert/sweetalert.css">
+<script src="../../js/chart-master/Chart.js"></script>
 </head>
 <body>
   <div id="login-page">
@@ -96,8 +96,8 @@
         <div class="fa fa-bars tooltips" data-placement="right"
           data-original-title="Toggle Navigation"></div>
       </div>
-      <a href="../wecando.html" class="logo"> <img id="wecando_white"
-        src="../img/wecando_white.png">
+      <a href="../../wecando.html" class="logo"> <img id="wecando_white"
+        src="../../img/wecando_white.png">
       </a>
       <!-- login 버튼 스크립트로 내려서 login and logout 구현 -->
       <div class="top-menu" id='login_ava'></div>
@@ -105,15 +105,15 @@
     <aside>
       <div id="sidebar" class="nav-collapse">
         <ul class="sidebar-menu" id="nav-accordion">
-          <li class="sub-menu"><a href="../javascript:;"> <i
+          <li class="sub-menu"><a href="../../javascript:;"> <i
               class="fa fa-calendar"></i> <span>예약 정보</span>
           </a>
             <ul class="sub">
-              <li><a href="../general.html">내 예약정보</a></li>
-              <li><a href="../buttons.html">신청된 정보</a></li>
+              <li><a href="../../general.html">내 예약정보</a></li>
+              <li><a href="../../buttons.html">신청된 정보</a></li>
             </ul></li>
 
-          <li class="sub-menu"><a href="../javascript:;"> <i
+          <li class="sub-menu"><a href="../../javascript:;"> <i
               class="fa fa-user"></i> <span>마이 페이지</span>
           </a>
             <ul class="sub" id='sub_menu'>
@@ -126,13 +126,13 @@
       <section class="wrapper">
                 <div class="col-lg-3 ds dj">
                   <div class='wecando'>
-                    <img style='margin-top:30px; width:400px; height:100px;' src="../img/black_logo.png">
+                    <img style='margin-top:30px; width:400px; height:100px;' src="../../img/black_logo.png">
                   </div>
                   <hr>
                   <div id='sch_list'>
                     <div class='defaultDate'>
               <a class='logout' data-toggle='modal'
-              href='../wecando.html#dateModal1'><input id='chooseDate' readonly></a>
+              href='../../wecando.html#dateModal1'><input id='chooseDate' value=<%=request.getParameter("event_date") %> readonly></a>
               </div>
             <div style='width:100%; height:180px; margin-top:30px;'>
             <div class="row mt">
@@ -143,15 +143,15 @@
                     <input type='hidden' class='form-control-static' id='sch_no' value='' readonly="readonly" >
                     <label class='col-lg-2 col-sm-2 control-label'> 학교 이름</label>
                     <div class='col-lg-10'>
-                    <input class='form-control-static' id='school_name' value='' readonly="readonly" > 
+                    <input class='form-control-static' id='school_name' value=<%=request.getParameter("sch_name") %> readonly="readonly" > 
                     </div>
                     <label class='col-lg-2 col-sm-2 control-label'> 학교 위치</label>
                     <div class='col-lg-10'> 
-                    <input class='form-control-static' id='school_location' value='' readonly="readonly" >
+                    <input class='form-control-static' id='school_location' value=<%=request.getParameter("sch_location") %> readonly="readonly" >
                     </div>
                     <label class='col-lg-2 col-sm-2 control-label'> 전화 번호</label>
                     <div class='col-lg-10'>
-                    <input class='form-control-static' id='school_tel' value='' readonly="readonly" >
+                    <input class='form-control-static' id='school_tel' value=<%=request.getParameter("sch_tel") %> readonly="readonly" >
                     </div>
                   </div>
                 </form>
@@ -232,23 +232,23 @@
   </section>
 
 
-  <script src="../js/jquery.js"></script>
-  <script src="../js/jquery-1.8.3.min.js"></script>
-  <script src="../js/bootstrap.min.js"></script>
+  <script src="../../js/jquery.js"></script>
+  <script src="../../js/jquery-1.8.3.min.js"></script>
+  <script src="../../js/bootstrap.min.js"></script>
   <script class="include" type="text/javascript"
-    src="../js/jquery.dcjqaccordion.2.7.js"></script>
-  <script src="../js/jquery.scrollTo.min.js"></script>
-  <script src="../js/jquery.nicescroll.js" type="text/javascript"></script>
-  <script src="../js/jquery.sparkline.js"></script>
+    src="../../js/jquery.dcjqaccordion.2.7.js"></script>
+  <script src="../../js/jquery.scrollTo.min.js"></script>
+  <script src="../../js/jquery.nicescroll.js" type="text/javascript"></script>
+  <script src="../../js/jquery.sparkline.js"></script>
 
-  <script src="../js/common-scripts.js"></script>
+  <script src="../../js/common-scripts.js"></script>
 
-  <script type="text/javascript" src="../js/gritter/js/jquery.gritter.js"></script>
-  <script type="text/javascript" src="../js/gritter-conf.js"></script>
+  <script type="text/javascript" src="../../js/gritter/js/jquery.gritter.js"></script>
+  <script type="text/javascript" src="../../js/gritter-conf.js"></script>
 
-  <script src="../js/sparkline-chart.js"></script>
-  <script src="../js/zabuto_calendar.js"></script>
-  <script src="../lib/sweetalert/sweetalert.min.js"></script>
+  <script src="../../js/sparkline-chart.js"></script>
+  <script src="../../js/zabuto_calendar.js"></script>
+  <script src="../../lib/sweetalert/sweetalert.min.js"></script>
   <script type="text/javascript"
     src="//apis.daum.net/maps/maps3.js?apikey=90d863ade026cac74762f5c9d8c37284&libraries=services">
   
@@ -267,7 +267,7 @@
     var geocoder = new daum.maps.services.Geocoder();
     
     // 주소로 좌표를 검색합니다
-    geocoder.addr2coord('서울시 관악구 봉천로 505 원당초등학교', function(status, result) {
+    geocoder.addr2coord($('#school_location').val(), function(status, result) {
 
     // 정상적으로 검색이 완료됐으면 
      if (status === daum.maps.services.Status.OK) {
@@ -295,7 +295,6 @@
   <script type="application/javascript">
     var date;
     
-    
     $(document).ready(function () {
         $("#date-popover").popover({html: true, trigger: "manual"});
         $("#date-popover").hide();
@@ -314,23 +313,6 @@
                 return myNavFunction(this.id);
             }
         });
-        var today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth()+1; //January is 0!
-        var yyyy = today.getFullYear();
-
-        if(dd<10) {
-            dd='0'+dd
-        } 
-
-        if(mm<10) {
-            mm='0'+mm
-        }
-        
-
-        date = yyyy + '-' + mm + '-' + dd;
-
-        document.getElementById('chooseDate').value = date;
         
         $.ajax({
          url : contextRoot + '/info/ajax/eventList.do',
