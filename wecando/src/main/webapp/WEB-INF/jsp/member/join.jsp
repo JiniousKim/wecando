@@ -87,6 +87,10 @@
                       style='display:none;'>기호는 들어갈 수 없습니다.</div>
                   </div>
                   </div>
+                  <button id='modal_close' type="button" style='display:none;' class="close" data-dismiss="modal">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span>
+                              </button>
                 </div>
               </div>
             </div>
@@ -310,6 +314,7 @@
                         if (isConfirm) {     
                           swal("등록성공!", "닉네임이 등록되었습니다.", "success");   
                       document.getElementById('m_nick').value = $('#m_n').val();
+                      $('#modal_close').trigger('click');
                         } else {     
                           swal("등록취소", "다시 닉네임을 설정해주세요.", "error");   
                       }

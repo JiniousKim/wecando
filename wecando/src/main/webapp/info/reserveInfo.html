@@ -93,34 +93,32 @@
 				<div class="fa fa-bars tooltips" data-placement="right"
 					data-original-title="Toggle Navigation"></div>
 			</div>
-			<a href="wecando.html" class="logo"> <img id="wecando_white"
+			<a href="../wecando.html" class="logo"> <img id="wecando_white"
 				src="../img/wecando_white.png">
 			</a>
 			<!-- login 버튼 스크립트로 내려서 login and logout 구현 -->
 			<div class="top-menu" id='login_ava'></div>
 		</header>
 		<aside>
-			<div id="sidebar" class="nav-collapse">
-				<ul class="sidebar-menu" id="nav-accordion">
-					<li class="sub-menu"><a href="../javascript:;"> <i
-							class="fa fa-calendar"></i> <span>예약 정보</span>
-					</a>
-						<ul class="sub">
-							<li><a href="../general.html">General</a></li>
-							<li><a href="../buttons.html">Buttons</a></li>
-							<li><a href="../panels.html">Panels</a></li>
-						</ul></li>
+      <div id="sidebar" class="nav-collapse">
+        <ul class="sidebar-menu" id="nav-accordion">
+          <li class="sub-menu"><a href="../javascript:;"> <i
+              class="fa fa-calendar"></i> <span>예약 정보</span>
+          </a>
+            <ul class="sub">
+              <li><a href="../general.html">내 예약정보</a></li>
+              <li><a href="../buttons.html">신청된 정보</a></li>
+            </ul></li>
 
-					<li class="sub-menu"><a href="../javascript:;"> <i
-							class="fa fa-user"></i> <span>마이 페이지</span>
-					</a>
-						<ul class="sub" id='sub_menu'>
-							<li><a href="info/memberInfo.html">내 정보</a></li>
-							<li><a href="todo_list.html">Todo List</a></li>
-						</ul></li>
-				</ul>
-			</div>
-		</aside>
+          <li class="sub-menu"><a href="../javascript:;"> <i
+              class="fa fa-user"></i> <span>마이 페이지</span>
+          </a>
+            <ul class="sub" id='sub_menu'>
+              <li><a href="memberInfo.html">내 정보</a></li>
+            </ul></li>
+        </ul>
+      </div>
+    </aside>
 		<section id="main-content">
 			<section class="wrapper">
                 <div class="col-lg-3 ds dj">
@@ -400,36 +398,17 @@
 	
 	</script>
 	<script>
-        $(document).on("click", "#dddd", function() {
-            date = 'asdf';
-            $('#sch_list').append(date);
-            document.getElementById('chooseDate').value = date;
-        })
-	  $('#myModal1').on('hide.bs.modal', function (e) {
-      $('#m_email').html('');
-      $('#m_password').html('');
-      $('#m_email').val('');
-      $('#m_password').val('');
-	  })
-	 $(document).on("click", "#gu-btn-group", function(e){
-         var ID = e.target.getAttribute('id');
-         var gu = ID.replace('-btn','');
-         if( $('#' + gu).attr('class') == 'location_seoul_gu clicked') {
-             $('#' + gu).fadeOut(1000);
-             $('#' + ID).css('background-color','');
-             $('#' + ID).css('color', 'black');
-             $('#' + gu).removeClass('clicked');
-         } else {
-             $('#' + gu).fadeIn(1000);
-             $('#' + ID).css('background-color','#ae1630');
-             $('#' + ID).css('color', 'white');
-             $('#' + gu).addClass('clicked');
-         }
-     })
+    $(document).on("click", "#dddd", function() {
+        date = 'asdf';
+        $('#sch_list').append(date);
+        document.getElementById('chooseDate').value = date;
+    })
+    
      
      $(document).on('click','#chooseDate', function(e) {
          
      })
+     
 		function logout() {
 			$.ajax({
 				url : contextRoot + '/auth/ajax/logout.do',
@@ -445,10 +424,6 @@
 					}
 				}
 			})
-		}
-
-		function join() {
-			location	.replace("http://localhost:8080/wecando/loginpage/auth.html");
 		}
 
 		function login() {

@@ -86,6 +86,10 @@
             </div>
           </div>
           <div class="modal-foot"></div>
+          <button id='modal_close' type="button" style='display:none;' class="close" data-dismiss="modal">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span>
+                              </button>
         </div>
       </div>
     </div>
@@ -113,6 +117,10 @@
             </div>
           </div>
           <div class="modal-foot"></div>
+          <button id='modal_close' type="button" style='display:none;' class="close" data-dismiss="modal">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span>
+                              </button>
         </div>
       </div>
     </div>
@@ -654,6 +662,7 @@
 	                           document.getElementById('school_location').value = school.sch_location;
 	                           document.getElementById('school_tel').value = school.sch_tel;
 	                           document.getElementById('sch_no').value = school.sch_no;
+	                           $('#modal_close').trigger('click');
 	                         } else {
 	                           swal('Error','변경할 수 없습니다.', "error");                          
 	                         }
@@ -703,6 +712,7 @@
                            document.getElementById('school_location').value = school.sch_location;
                            document.getElementById('school_tel').value = school.sch_tel;
                            document.getElementById('sch_no').value = school.sch_no;
+                           $('#modal_close').trigger('click');
                         } else {
                           swal('Error','등록할 수 없습니다.', "error");                          
                         }
