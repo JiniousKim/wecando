@@ -6,8 +6,8 @@ import java.util.List;
 import java76.pms.domain.SchEvent;
 
 public interface SchEventService {
-	List<SchEvent> schEventList();
-	
+	List<SchEvent> schEventList(HashMap<String, Object> paramMap);
+	int schEventCnt();
 	int createTime(HashMap<String, Object> paramMap);
 }
 

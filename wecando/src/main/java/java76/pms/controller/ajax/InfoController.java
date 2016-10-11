@@ -1,5 +1,6 @@
 package java76.pms.controller.ajax;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java76.pms.domain.AjaxResult;
 import java76.pms.domain.Event;
@@ -49,8 +51,23 @@ public class InfoController {
 	}
 	
 	@RequestMapping(value="list", method=RequestMethod.POST)
-	public List<SchEvent> schEventList () throws Exception {
-		List<SchEvent> resultList = schEventService.schEventList();
+	public Object schEventList (
+			@RequestParam(defaultValue="1") int pageNo,
+      @RequestParam(defaultValue="10") int pageSize,
+      @RequestParam(defaultValue="서울시") String keyword) throws Exception {
+		List<SchEvent> resultList = new ArrayList<SchEvent>();
+		HashMap<String, Object> paramMap = new HashMap<>();
+		
+		paramMap.put("startIndex", (pageNo - 1) * pageSize);
+		paramMap.put("pageNum", pageNo);
+		paramMap.put("pageSize", pageSize);
+		paramMap.put("keyword", keyword);
+		
+		try {
+			resultList = schEventService.schEventList(paramMap);	
+		} catch (Exception e) {
+			return new AjaxResult("failure", null);
+		}
 		
 		return resultList;
 	}

@@ -14,12 +14,16 @@ import java76.pms.service.SchEventService;
 public class DefaultSchEventService implements SchEventService {
 	@Autowired SchEventDao schEventDao;
 	
-	public List<SchEvent> schEventList() {
-		return schEventDao.schEventList();
+	public List<SchEvent> schEventList(HashMap<String, Object> paramMap) {
+		return schEventDao.schEventList(paramMap);
 	}
 	
 	public int createTime(HashMap<String, Object> paramMap) {
 		return schEventDao.createTime(paramMap);
+	}
+	
+	public int schEventCnt() {
+		return schEventDao.schEventCnt();
 	}
 }
 
