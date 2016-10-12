@@ -17,6 +17,7 @@ import java76.pms.domain.Event;
 import java76.pms.domain.SchEvent;
 import java76.pms.service.EventService;
 import java76.pms.service.SchEventService;
+import java76.pms.service.SchoolService;
 
 @Controller("ajax.InfoController")
 @RequestMapping("/info/ajax/*")
@@ -24,6 +25,7 @@ public class InfoController {
 	@Autowired EventService eventService;
 	@Autowired ServletContext servletContext;
 	@Autowired SchEventService schEventService;
+	@Autowired SchoolService	schoolService;
 	
 	@RequestMapping(value="eventList", method=RequestMethod.POST)
 	public Object getEventList() throws Exception {
@@ -50,6 +52,13 @@ public class InfoController {
 		return resultMap;
 	}
 	
+	@RequestMapping(value="AllschoolList", method=RequestMethod.POST)
+	public Object AllschoolList() throws Exception {
+		List<String> resultList	= schoolService.AllschoolList();
+		System.out.println(resultList);
+		return resultList;
+	}
+	
 	@RequestMapping(value="list", method=RequestMethod.POST)
 	public Object schEventList (
 			@RequestParam(defaultValue="1") int pageNo,
@@ -70,6 +79,29 @@ public class InfoController {
 		}
 		
 		return resultList;
+	}
+	
+	@RequestMapping(value="search_sch", method=RequestMethod.POST)
+	public Object search_sch(String sch_name,
+													 String event_code,
+													 String event_date,
+													 int sch_num) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<>();
+		HashMap<String, Object> paramMap = new HashMap<>();
+		
+		paramMap.put("event_code", event_code);
+		paramMap.put("event_date", event_date);
+		try {
+			sch_num = schoolService.get_sch_num(sch_name);
+			paramMap.put("sch_num", sch_num);
+		} catch (Exception e) {
+			e.printStackTrace();
+			resultMap.put("status", "failure");
+			return resultMap;
+		}
+		
+		resultMap.put("status", "success");
+		return resultMap;
 	}
 	
 }

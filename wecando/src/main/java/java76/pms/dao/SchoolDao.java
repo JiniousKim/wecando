@@ -18,7 +18,11 @@ public interface SchoolDao {
   
   int get_sch(String sch_location);
   
+  int get_sch_num(String sch_name);
+  
   int sch_manage_update(Map<String, Object> schoolMap);
+  
+  List<String> AllschoolList();
 }
 
 

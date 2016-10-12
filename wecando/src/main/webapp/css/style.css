@@ -2732,8 +2732,8 @@ div.col-md-4 a {
 .card {
   width : 700px; 
   margin-top:20px; 
-  height:200px; 
-  margin-left:30px; 
+  height:230px; 
+  margin-left:30px;
   background-color:#f2f2f2;
 }
 
@@ -2742,14 +2742,15 @@ div.col-md-4 a {
   width:466px;
   background-color:white;
   height:40px;  
-  left:200px; 
+  left:30px;
+  top:18px;
 }
 
 .card_time {
     position:relative; 
-    width:490px; 
-    height:130px; 
-    top:20px;
+    width:470px;
+    height:210px; 
+    left:210px;
     overflow :auto;
 }
 
@@ -2773,7 +2774,7 @@ div.col-md-4 a {
 
 .time_table {
     background-color: white;
-    width: 95%;
+    width: 100%;
     height: 100px;
     color : black;
     border : 1px solid grey;
@@ -2827,4 +2828,50 @@ div.col-md-4 a {
 .aa {
 	margin-top : -10px;
 	border : none;
+}
+
+.reserve-btn {
+	border: none;
+  background-color: white;
+  color: blue;
+  margin-left: 10px;
+}
+
+input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-size: 26px;
+    background-image: url('../img/searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 10px 45px;
+    transition: width 0.4s ease-in-out;
+    color : black;
+}
+
+input[type=text]:focus {
+    width: 400px;
+    margin: -270px;
+    position : relative;
+    top: 20px;
+}
+
+input[type=text]: visited {
+	position : relative;
+	top: 20px;
+}
+
+input[type=text]: actived {
+  position : relative;
+  top: 20px;
+}
+
+.searchBox {
+    position: absolute;
+    top: 110px;
+    left: 730px;
 }

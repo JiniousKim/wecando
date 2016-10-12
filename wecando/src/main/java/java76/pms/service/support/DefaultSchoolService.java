@@ -44,6 +44,14 @@ public class DefaultSchoolService implements SchoolService {
   public int sch_manage_update(HashMap<String,Object> schoolMap) {
   	  return schoolDao.sch_manage_update(schoolMap);
   }
+  
+  public int get_sch_num(String sch_name) {
+  		return schoolDao.get_sch_num(sch_name);
+  }
+  
+  public List<String> AllschoolList() {
+  		return schoolDao.AllschoolList();
+  }
 }
 
 

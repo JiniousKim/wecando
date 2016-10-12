@@ -14,6 +14,9 @@ public interface SchoolService {
   int get_sch(String sch_location);
   School sch_Manager(int m_no);
   int sch_manage_update(HashMap<String, Object> schoolMap);
+  int get_sch_num(String sch_name);
+  
+  List<String> AllschoolList();
 }
 
 

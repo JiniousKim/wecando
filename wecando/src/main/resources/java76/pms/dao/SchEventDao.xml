@@ -51,4 +51,23 @@
     from SCHEVNET
   </select>
   
+  <select id="searchSchEvent" parameterType='map' resultType="SchEvent">
+    select sch_name     as sch_name,
+           court_code   as court_code,
+           T6_8         as T6_8,
+           T8_10        as T8_10,
+           T10_12       as T10_12,
+           T12_14       as T12_14,
+           T14_16       as T14_16,
+           T16_18       as T16_18,
+           T18_20       as T18_20,
+           T20_22       as T20_22,
+           court_price  as court_price
+    from SCHEVENT natural left outer join court natural left outer join school
+    where event_code = #{event_code} and 
+          sch_num = #{sch_num} and 
+          event_date = TO_DATE(#event_date#, "YYYY-MM-DD")
+           
+  </select>
+  
 </mapper>

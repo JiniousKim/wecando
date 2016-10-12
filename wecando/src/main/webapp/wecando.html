@@ -24,9 +24,10 @@
 <link href="css/style-responsive.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css"
 	href="lib/sweetalert/sweetalert.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="js/chart-master/Chart.js"></script>
 
-<link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
 </head>
 <body>
 	<div id="login-page">
@@ -65,7 +66,6 @@
 				</form>
 			</div>
 			<!-- modal -->
-
 		</div>
 	</div>
 
@@ -190,9 +190,8 @@
 					<li class="sub-menu"><a href="javascript:;"> <i
 							class="fa fa-calendar"></i> <span>예약 정보</span>
 					</a>
-						<ul class="sub">
+						<ul class="sub" id='sub_m'>
 							<li><a href="general.html">내 예약정보</a></li>
-							<li><a href="buttons.html">신청된 정보</a></li>
 						</ul></li>
 
 					<li class="sub-menu"><a href="javascript:;"> <i
@@ -200,7 +199,6 @@
 					</a>
 						<ul class="sub" id='sub_menu'>
 							<li><a href="info/memberInfo.html">내 정보</a></li>
-							<li><a href="todo_list.html">Todo List</a></li>
 						</ul></li>
 				</ul>
 			</div>
@@ -210,64 +208,64 @@
 					<!-- / calendar -->
 					<h3>지역 선택</h3>
 					<div id="map" class="row mt">
-                    <img class='location_seoul' src="img/location/seoul.png">
-                    <img id='dobong' style='display:none;' class='location_seoul_gu' src="img/location/dobong.png">
-                    <img id='dongdaemun' style='display:none;' class='location_seoul_gu' src="img/location/dongdaemun.png">
-                    <img id='dongjak' style='display:none;' class='location_seoul_gu' src="img/location/dongjak.png">
-                    <img id='eunpyeong' style='display:none;' class='location_seoul_gu' src="img/location/eunpyeong.png">
-                    <img id='gangbuk' style='display:none;' class='location_seoul_gu' src="img/location/gangbuk.png">
-                    <img id='gangdong' style='display:none;' class='location_seoul_gu' src="img/location/gangdong.png">
-                    <img id='gangnam' style='display:none;' class='location_seoul_gu' src="img/location/gangnam.png">
-                    <img id='gangseo' style='display:none;' class='location_seoul_gu' src="img/location/gangseo.png">
-                    <img id='geumcheon' style='display:none;' class='location_seoul_gu' src="img/location/geumcheon.png">
-                    <img id='guro' style='display:none;' class='location_seoul_gu' src="img/location/guro.png">
-                    <img id='gwanak' style='display:none;' class='location_seoul_gu' src="img/location/gwanak.png">
-                    <img id='gwangjin' style='display:none;' class='location_seoul_gu' src="img/location/gwangjin.png">
-                    <img id='jongno' style='display:none;' class='location_seoul_gu' src="img/location/jongno.png">
-                    <img id='junggu' style='display:none;' class='location_seoul_gu' src="img/location/junggu.png">
-                    <img id='jungnang' style='display:none;' class='location_seoul_gu' src="img/location/jungnang.png">
-                    <img id='mapo' style='display:none;' class='location_seoul_gu' src="img/location/mapo.png">
-                    <img id='nowon' style='display:none;' class='location_seoul_gu' src="img/location/nowon.png">
-                    <img id='seocho' style='display:none;' class='location_seoul_gu' src="img/location/seocho.png">
-                    <img id='seodaemun' style='display:none;' class='location_seoul_gu' src="img/location/seodaemun.png">
-                    <img id='seongbuk' style='display:none;' class='location_seoul_gu' src="img/location/seongbuk.png">
-                    <img id='seongdong' style='display:none;' class='location_seoul_gu' src="img/location/seongdong.png">
-                    <img id='songpa' style='display:none;' class='location_seoul_gu' src="img/location/songpa.png">
-                    <img id='ueongdeungpo' style='display:none;' class='location_seoul_gu' src="img/location/ueongdeungpo.png">
-                    <img id='yangcheon' style='display:none;' class='location_seoul_gu' src="img/location/yangcheon.png">
-                    <img id='yongsan' style='display:none;' class='location_seoul_gu' src="img/location/yongsan.png">
-                    <div id='gu-btn-group'>
-                        <button id='dobong-btn' class='gu-btn' style='left:181px; top:38px;' type="button">도봉구</button>
-                        <button id='nowon-btn' class='gu-btn' style='left:181px; top:60px;' type="button">노원구</button>
-                        <button id='gangbuk-btn' class='gu-btn' style='left:100px; top:59px;' type="button">강북구</button>
-                        <button id='seongbuk-btn' class='gu-btn' style='left:70px; top:90px;' type="button">성북구</button>
-                        <button id='eunpyeong-btn' class='gu-btn' style='left:-22px; top:63px;' type="button">은평구</button>
-                        <button id='jongno-btn' class='gu-btn' style='left:-22px; top:103px;' type="button">종로구</button>
-                        <button id='seodaemun-btn' class='gu-btn' style='left:-86px; top:103px;' type="button">서대문구</button>
-                        <button id='jungnang-btn' class='gu-btn' style='left:-6px; top:90px;' type="button">중랑구</button>
-                        <button id='dongdaemun-btn' class='gu-btn' style='width:40px; left:-73px; top:108px;' type="button">동대문구</button>
-                        <button id='gangseo-btn' class='gu-btn' style='left:26px; top:85px;' type="button">강서구</button>
-                        <button id='mapo-btn' class='gu-btn' style='left:51px; top:85px;' type="button">마포구</button>
-                        <button id='junggu-btn' class='gu-btn' style='left:85px; top:90px;' type="button">중구</button>
-                        <button id='seongdong-btn' class='gu-btn' style='left:86px; top:99px;' type="button">성동구</button>
-                        <button id='gwangjin-btn' class='gu-btn' style='left:86px; top:103px;' type="button">광진구</button>
-                        <button id='gangdong-btn' class='gu-btn' style='left:95px; top:98px;' type="button">강동구</button>
-                        <button id='gangnam-btn' class='gu-btn' style=' top:145px;' type="button">강남구</button>
-                        <button id='songpa-btn' class='gu-btn' style='left:2px; top:130px;' type="button">송파구</button>
-                        <button id='yongsan-btn' class='gu-btn' style='left:-120px; top:110px;' type="button">용산구</button>
-                        <button id='yangcheon-btn' class='gu-btn' style='left:50px; top:102px;' type="button">양천구</button>
-                        <button id='ueongdeungpo-btn' class='gu-btn' style='width:35px;left:52px; top:102px;' type="button">영등포구</button>
-                        <button id='dongjak-btn' class='gu-btn' style='left:45px; top:116px;' type="button">동작구</button>
-                        <button id='seocho-btn' class='gu-btn' style='left:60px; top:137px;' type="button">서초구</button>
-                        <button id='gwanak-btn' class='gu-btn' style='left:-20px; top:147px;' type="button">관악구</button>
-                        <button id='geumcheon-btn' class='gu-btn' style='width:1px; left:-75px; top:137px;' type="button">금천구</button>
-                        <button id='guro-btn' class='gu-btn' style='left:-125px; top:120px;' type="button">구로구</button>
-                    </div>
-                    
-                    </div>
-                    <div style='height: 30px;'>
-                    </div>
-                    <h3>날짜 선택</h3>
+           <img class='location_seoul' src="img/location/seoul.png">
+           <img id='dobong' style='display:none;' class='location_seoul_gu' src="img/location/dobong.png">
+           <img id='dongdaemun' style='display:none;' class='location_seoul_gu' src="img/location/dongdaemun.png">
+           <img id='dongjak' style='display:none;' class='location_seoul_gu' src="img/location/dongjak.png">
+           <img id='eunpyeong' style='display:none;' class='location_seoul_gu' src="img/location/eunpyeong.png">
+           <img id='gangbuk' style='display:none;' class='location_seoul_gu' src="img/location/gangbuk.png">
+           <img id='gangdong' style='display:none;' class='location_seoul_gu' src="img/location/gangdong.png">
+           <img id='gangnam' style='display:none;' class='location_seoul_gu' src="img/location/gangnam.png">
+           <img id='gangseo' style='display:none;' class='location_seoul_gu' src="img/location/gangseo.png">
+           <img id='geumcheon' style='display:none;' class='location_seoul_gu' src="img/location/geumcheon.png">
+           <img id='guro' style='display:none;' class='location_seoul_gu' src="img/location/guro.png">
+           <img id='gwanak' style='display:none;' class='location_seoul_gu' src="img/location/gwanak.png">
+           <img id='gwangjin' style='display:none;' class='location_seoul_gu' src="img/location/gwangjin.png">
+           <img id='jongno' style='display:none;' class='location_seoul_gu' src="img/location/jongno.png">
+           <img id='junggu' style='display:none;' class='location_seoul_gu' src="img/location/junggu.png">
+           <img id='jungnang' style='display:none;' class='location_seoul_gu' src="img/location/jungnang.png">
+           <img id='mapo' style='display:none;' class='location_seoul_gu' src="img/location/mapo.png">
+           <img id='nowon' style='display:none;' class='location_seoul_gu' src="img/location/nowon.png">
+           <img id='seocho' style='display:none;' class='location_seoul_gu' src="img/location/seocho.png">
+           <img id='seodaemun' style='display:none;' class='location_seoul_gu' src="img/location/seodaemun.png">
+           <img id='seongbuk' style='display:none;' class='location_seoul_gu' src="img/location/seongbuk.png">
+           <img id='seongdong' style='display:none;' class='location_seoul_gu' src="img/location/seongdong.png">
+           <img id='songpa' style='display:none;' class='location_seoul_gu' src="img/location/songpa.png">
+           <img id='ueongdeungpo' style='display:none;' class='location_seoul_gu' src="img/location/ueongdeungpo.png">
+           <img id='yangcheon' style='display:none;' class='location_seoul_gu' src="img/location/yangcheon.png">
+           <img id='yongsan' style='display:none;' class='location_seoul_gu' src="img/location/yongsan.png">
+           <div id='gu-btn-group'>
+               <button value="도봉구" id='dobong-btn' class='gu-btn' style='left:181px; top:38px;' type="button">도봉구</button>
+               <button value="노원구" id='nowon-btn' class='gu-btn' style='left:181px; top:60px;' type="button">노원구</button>
+               <button value="강북구" id='gangbuk-btn' class='gu-btn' style='left:100px; top:59px;' type="button">강북구</button>
+               <button value="성북구" id='seongbuk-btn' class='gu-btn' style='left:70px; top:90px;' type="button">성북구</button>
+               <button value="은평구" id='eunpyeong-btn' class='gu-btn' style='left:-22px; top:63px;' type="button">은평구</button>
+               <button value="종로구" id='jongno-btn' class='gu-btn' style='left:-22px; top:103px;' type="button">종로구</button>
+               <button value="서대문구" id='seodaemun-btn' class='gu-btn' style='left:-86px; top:103px;' type="button">서대문구</button>
+               <button value="중랑구" id='jungnang-btn' class='gu-btn' style='left:-6px; top:90px;' type="button">중랑구</button>
+               <button value="동대문구" id='dongdaemun-btn' class='gu-btn' style='width:40px; left:-73px; top:108px;' type="button">동대문구</button>
+               <button value="강서구" id='gangseo-btn' class='gu-btn' style='left:26px; top:85px;' type="button">강서구</button>
+               <button value="마포구" id='mapo-btn' class='gu-btn' style='left:51px; top:85px;' type="button">마포구</button>
+               <button value="중구" id='junggu-btn' class='gu-btn' style='left:85px; top:90px;' type="button">중구</button>
+               <button value="성동구" id='seongdong-btn' class='gu-btn' style='left:86px; top:99px;' type="button">성동구</button>
+               <button value="광진구" id='gwangjin-btn' class='gu-btn' style='left:86px; top:103px;' type="button">광진구</button>
+               <button value="강동구" id='gangdong-btn' class='gu-btn' style='left:95px; top:98px;' type="button">강동구</button>
+               <button value="강남구" id='gangnam-btn' class='gu-btn' style=' top:145px;' type="button">강남구</button>
+               <button value="송파구" id='songpa-btn' class='gu-btn' style='left:2px; top:130px;' type="button">송파구</button>
+               <button value="용산구" id='yongsan-btn' class='gu-btn' style='left:-120px; top:110px;' type="button">용산구</button>
+               <button value="양천구" id='yangcheon-btn' class='gu-btn' style='left:50px; top:102px;' type="button">양천구</button>
+               <button value="영등포구" id='ueongdeungpo-btn' class='gu-btn' style='width:35px;left:52px; top:102px;' type="button">영등포구</button>
+               <button value="동작구" id='dongjak-btn' class='gu-btn' style='left:45px; top:116px;' type="button">동작구</button>
+               <button value="서초구" id='seocho-btn' class='gu-btn' style='left:60px; top:137px;' type="button">서초구</button>
+               <button value="관악구" id='gwanak-btn' class='gu-btn' style='left:-20px; top:147px;' type="button">관악구</button>
+               <button value="금천구" id='geumcheon-btn' class='gu-btn' style='width:1px; left:-75px; top:137px;' type="button">금천구</button>
+               <button value="구로구" id='guro-btn' class='gu-btn' style='left:-125px; top:120px;' type="button">구로구</button>
+           </div>
+           
+           </div>
+           <div style='height: 30px;'>
+           </div>
+           <h3>날짜 선택</h3>
 					<!-- CALENDAR-->
 					<div id="calendar" class="mb">
 						<div class="panel green-panel">
@@ -285,9 +283,14 @@
 				</div>
         <div class="col-lg-3 ds dj">
           <div class="btn-group" id='eventlist' style='top:30px;'>
+              <div class='searchBox'>
+                 <input id='autocomplete' type="text" name="search" placeholder="학교 검색" onkeypress="onkeyPress()">
+              </div>
             <select id='event_list' name='ec' class='dropdown-toggle' data-toggle='dropdown' name='event_code'>
               <option class='dropdown-menu' selected>종목 선택</option>
             </select>
+              
+              
           </div>
           <div class='wecando'>
             <img style='width:400px; height:100px;' src="img/black_logo.png">
@@ -295,10 +298,15 @@
           <hr>
           <div id='sch_list'>
             <div class='defaultDate'><input id='chooseDate' readonly></div>
-            <div class='card'><div class='card_photo'> 
-                                <div class='card_title'><div class='card_name'>  
-                                <i class='fa fa-university'>&nbsp;  askldfjlks  </i></div> 
-                                <div class='card_time'><table class='time_table'> 
+            <div>
+                          <div class='card_title'>
+                                  <div class='card_name'><i class='fa fa-university'>&nbsp;  askldfjlks  </i></div> 
+                         </div>
+                      <div class='card'>
+                          
+                          <div class='card_photo'> 
+                              
+                          <div class='card_time'><table class='time_table'> 
                                 <thead>
                                 <tr>
                                 <th>이용가능 시간</th><th>대관비용</th><th colspan='5px;'>사용가능 여부</th> 
@@ -306,52 +314,76 @@
                                 <tr> 
                                   <td>&nbsp;&nbsp;&nbsp;06:00 ~ 08:00</td> 
                                   <td>&nbsp;&nbsp;&nbsp;5000원</td> 
-                                      <td>&nbsp;&nbsp;&nbsp;
-                                      <form action="http://localhost:8080/wecando/reserve/ajax/reserveInfo.do" method='POST'>
-                                      <input type='hidden' name='event_date' value='2016-10-11'>
-                                      <input type='hidden' name='sch_name' value=''>
-                                      <input type='hidden' name='sch_location' value=''>
-                                      <input type='hidden' name='sch_tel' value=''>
-                                      <input type='hidden' name='court_code' value=''>
-                                      <button type='submit'>예약 가능</button></form>
-                                      </td> 
-                                </tr> 
-                                <tr> 
-                                  <td>08:00 ~ 10:00</td> 
-                                  <td>   </td> 
-                                  <td>   </td> 
-                                </tr> 
-                                <tr> 
-                                  <td>10:00 ~ 12:00</td> 
-                                  <td>   </td> 
-                                  <td>   </td> 
-                                </tr> 
-                                <tr> 
-                                  <td>12:00 ~ 14:00</td> 
-                                  <td>   </td> 
-                                  <td>   </td> 
-                                </tr> 
-                                <tr> 
-                                  <td>14:00 ~ 16:00</td> 
-                                  <td>   </td> 
-                                  <td>   </td> 
-                                </tr> 
-                                <tr> 
-                                  <td>16:00 ~ 18:00</td> 
-                                  <td>   </td> 
-                                  <td>   </td> 
-                                </tr> 
-                                <tr> 
-                                  <td>18:00 ~ 20:00</td> 
-                                  <td>   </td> 
-                                  <td>   </td> 
-                                </tr> 
-                                <tr> 
-                                  <td>20:00 ~ 22:00</td> 
-                                  <td>   </td> 
-                                  <td>   </td> 
-                                </tr></tbody></table></div></div></div>
-                  </div>
+                                  <td>
+                                    <form action="http://localhost:8080/wecando/reserve/ajax/reserveInfo.do" method='POST'>
+                                    <input type='hidden' name='event_date' value='2016-10-11'>
+                                    <input type='hidden' name='sch_name' value=''>
+                                    <input type='hidden' name='sch_location' value=''>
+                                    <input type='hidden' name='sch_tel' value=''>
+                                    <input type='hidden' name='court_code' value=''>
+                                    <input type='hidden' name='event_time' value=''>
+                                    <button type='submit' class='reserve-btn'>예약 가능</button></form>
+                                  </td>
+                                </tr>
+                              <tr> 
+                                  <td>&nbsp;&nbsp;&nbsp;06:00 ~ 08:00</td> 
+                                  <td>&nbsp;&nbsp;&nbsp;5000원</td> 
+                                  <td>
+                                    <form action="http://localhost:8080/wecando/reserve/ajax/reserveInfo.do" method='POST'>
+                                    <input type='hidden' name='event_date' value='2016-10-11'>
+                                    <input type='hidden' name='sch_name' value=''>
+                                    <input type='hidden' name='sch_location' value=''>
+                                    <input type='hidden' name='sch_tel' value=''>
+                                    <input type='hidden' name='court_code' value=''>
+                                    <input type='hidden' name='event_time' value=''>
+                                    <button type='submit' class='reserve-btn'>예약 가능</button></form>
+                                  </td>
+                                </tr>
+                              <tr> 
+                                  <td>&nbsp;&nbsp;&nbsp;06:00 ~ 08:00</td> 
+                                  <td>&nbsp;&nbsp;&nbsp;5000원</td> 
+                                  <td>
+                                    <form action="http://localhost:8080/wecando/reserve/ajax/reserveInfo.do" method='POST'>
+                                    <input type='hidden' name='event_date' value='2016-10-11'>
+                                    <input type='hidden' name='sch_name' value=''>
+                                    <input type='hidden' name='sch_location' value=''>
+                                    <input type='hidden' name='sch_tel' value=''>
+                                    <input type='hidden' name='court_code' value=''>
+                                    <input type='hidden' name='event_time' value=''>
+                                    <button type='submit' class='reserve-btn'>예약 가능</button></form>
+                                  </td>
+                                </tr>
+                              <tr> 
+                                  <td>&nbsp;&nbsp;&nbsp;06:00 ~ 08:00</td> 
+                                  <td>&nbsp;&nbsp;&nbsp;5000원</td> 
+                                  <td>
+                                    <form action="http://localhost:8080/wecando/reserve/ajax/reserveInfo.do" method='POST'>
+                                    <input type='hidden' name='event_date' value='2016-10-11'>
+                                    <input type='hidden' name='sch_name' value=''>
+                                    <input type='hidden' name='sch_location' value=''>
+                                    <input type='hidden' name='sch_tel' value=''>
+                                    <input type='hidden' name='court_code' value=''>
+                                    <input type='hidden' name='event_time' value=''>
+                                    <button type='submit' class='reserve-btn'>예약 가능</button></form>
+                                  </td>
+                                </tr>
+                              <tr> 
+                                  <td>&nbsp;&nbsp;&nbsp;06:00 ~ 08:00</td> 
+                                  <td>&nbsp;&nbsp;&nbsp;5000원</td> 
+                                  <td>
+                                    <form action="http://localhost:8080/wecando/reserve/ajax/reserveInfo.do" method='POST'>
+                                    <input type='hidden' name='event_date' value='2016-10-11'>
+                                    <input type='hidden' name='sch_name' value=''>
+                                    <input type='hidden' name='sch_location' value=''>
+                                    <input type='hidden' name='sch_tel' value=''>
+                                    <input type='hidden' name='court_code' value=''>
+                                    <input type='hidden' name='event_time' value=''>
+                                    <button type='submit' class='reserve-btn'>예약 가능</button></form>
+                                  </td>
+                                </tr>
+                                </tbody></table></div></div>
+                  </div></div>
+                  
         </div>
        </div> 
 				<!-- /col-lg-3 -->
@@ -360,9 +392,10 @@
 		</footer>
 	</section>
 
-
 	<script src="js/jquery.js"></script>
 	<script src="js/jquery-1.8.3.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script class="include" type="text/javascript"
 		src="js/jquery.dcjqaccordion.2.7.js"></script>
@@ -381,22 +414,24 @@
 	<script src='lib/jquery.min.js'></script>
 	<script src='lib/moment.min.js'></script>
 	<script src='fullcalendar/fullcalendar.js'></script>
-	<script type="text/javascript"
-		src="//apis.daum.net/maps/maps3.js?apikey=90d863ade026cac74762f5c9d8c37284"></script>
 	<script>
-//		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-//		mapOption = {
-//			center : new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-//			level : 3
-//		// 지도의 확대 레벨
-//		};
-//
-//		var map = new daum.maps.Map(mapContainer, mapOption);
+	$(function(){
+		 $.ajax({
+			 url : contextRoot + '/info/ajax/AllschoolList.do',
+			 type : 'post',
+			 dataType : 'json',
+			 success : function(resultObj) {
+				 console.log(resultObj);
+			 }
+		 })
+	    var autocomplete_text = ["자동완성기능","Autocomplete","개발로짜","국이"];
+	         $("#autocomplete").autocomplete({
+	            source: autocomplete_text
+	         });
+	})
 	</script>
-
 	<script type="application/javascript">
     var date;
-    
     
     $(document).ready(function () {
         $("#date-popover").popover({html: true, trigger: "manual"});
@@ -494,8 +529,7 @@
         		  }
 				  }
         }) */
-        
-        $.ajax({
+		 $.ajax({
          url : contextRoot + '/info/ajax/eventList.do',
          type : 'post',
          dataType : 'json',
@@ -541,6 +575,7 @@
         success : function(resultObj) {
         	  var loginAva = $('#login_ava');
         	  var sM = $('#sub_menu');
+        	  var sub = $('#sub_m');
           var ajaxresult = resultObj;
           if (ajaxresult.status == 'failure') {
         	  loginAva.append("<ul class='nav pull-right top-menu'>"
@@ -557,24 +592,30 @@
         	    sM.append(
         	     "<li><a href='info/register_school.html'>학교 정보</a></li>"		
         	    )
+        	    sub.append(
+              "<li><a href='buttons.html'>신청된 정보</a></li>"
+        	    	)
           }
         }
       })
      
 	
+	
 	</script>
 	<script>
-        $(document).on("click", "#dddd", function() {
-            date = 'asdf';
-            $('#sch_list').append(date);
-            document.getElementById('chooseDate').value = date;
-        })
+    $(document).on("click", "#dddd", function() {
+        date = 'asdf';
+        $('#sch_list').append(date);
+        document.getElementById('chooseDate').value = date;
+    })
+    
 	  $('#myModal1').on('hide.bs.modal', function (e) {
       $('#m_email').html('');
       $('#m_password').html('');
       $('#m_email').val('');
       $('#m_password').val('');
 	  })
+	  
 	 $(document).on("click", "#gu-btn-group", function(e){
          var ID = e.target.getAttribute('id');
          var gu = ID.replace('-btn','');
@@ -590,6 +631,21 @@
              $('#' + gu).addClass('clicked');
          }
      })
+     
+    function onkeyPress() {
+    	  if(event.keyCode == 13) {
+    		  var school_name = $('#search_text').val();
+    		  $.ajax({
+    			  url : contextRoot + '/info/ajax/search_sch.do',
+    			  type : 'post',
+    			  dataType : 'json',
+    			  success : function(resultObj) {
+    				  console.log(resultObj);
+    			  }
+    		  })
+      }
+    }
+     
 		function logout() {
 			$.ajax({
 				url : contextRoot + '/auth/ajax/logout.do',

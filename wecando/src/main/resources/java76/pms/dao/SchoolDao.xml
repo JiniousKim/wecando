@@ -46,6 +46,11 @@
     where sch_location = #{sch_location}
   </select>
   
+  <select id="AllschoolList" resultType="String">
+    select sch_name
+    from school;
+  </select>
+  
   <update id="sch_update" parameterType="school">
     update school set
       sch_name=#{sch_name, jdbcType=VARCHAR},

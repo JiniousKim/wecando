@@ -108,9 +108,8 @@
           <li class="sub-menu"><a href="../../javascript:;"> <i
               class="fa fa-calendar"></i> <span>예약 정보</span>
           </a>
-            <ul class="sub">
+            <ul class="sub" id='sub_m'>
               <li><a href="../../general.html">내 예약정보</a></li>
-              <li><a href="../../buttons.html">신청된 정보</a></li>
             </ul></li>
 
           <li class="sub-menu"><a href="../../javascript:;"> <i
@@ -143,15 +142,15 @@
                     <input type='hidden' class='form-control-static' id='sch_no' value='' readonly="readonly" >
                     <label class='col-lg-2 col-sm-2 control-label'> 학교 이름</label>
                     <div class='col-lg-10'>
-                    <input class='form-control-static' id='school_name' value=<%=request.getParameter("sch_name") %> readonly="readonly" > 
+                    <input class='form-control-static' id='school_name' readonly="readonly" value=<%=request.getParameter("sch_name")%> > 
                     </div>
                     <label class='col-lg-2 col-sm-2 control-label'> 학교 위치</label>
                     <div class='col-lg-10'> 
-                    <input class='form-control-static' id='school_location' value=<%=request.getParameter("sch_location") %> readonly="readonly" >
+                    <input class='form-control-static' id='school_location' readonly="readonly" value=<%=request.getParameter("sch_location") %>>
                     </div>
                     <label class='col-lg-2 col-sm-2 control-label'> 전화 번호</label>
                     <div class='col-lg-10'>
-                    <input class='form-control-static' id='school_tel' value=<%=request.getParameter("sch_tel") %> readonly="readonly" >
+                    <input class='form-control-static' id='school_tel' readonly="readonly" value=<%=request.getParameter("sch_tel") %>>
                     </div>
                   </div>
                 </form>
@@ -167,10 +166,15 @@
                     <select id='event_list' name='ec' class='dropdown-toggle' data-toggle='dropdown' name='event_code'>
                       <option class='dropdown-menu' selected>종목 선택</option>
                     </select>
-                      <div class='card'><div class='card_photo'> 
-                                <div class='card_title'><div class='card_name'>  
-                                <i class='fa fa-university'>&nbsp;  askldfjlks  </i></div> 
-                                <div class='card_time'><table class='time_table'> 
+                      <div>
+                          <div class='card_title'>
+                                  <div class='card_name'><i class='fa fa-university'>&nbsp;  askldfjlks  </i></div> 
+                         </div>
+                      <div class='card'>
+                          
+                          <div class='card_photo'> 
+                              
+                          <div class='card_time'><table class='time_table'> 
                                 <thead>
                                 <tr>
                                 <th>이용가능 시간</th><th>대관비용</th><th colspan='5px;'>사용가능 여부</th> 
@@ -214,8 +218,8 @@
                                   <td>20:00 ~ 22:00</td> 
                                   <td>   </td> 
                                   <td>   </td> 
-                                </tr></tbody></table></div></div></div>
-                  </div>
+                                </tr></tbody></table></div></div>
+                  </div></div>
                 </div>
                </div>
                 <div style='width:100%; text-align:left; margin-top:-70px; margin-left:50px; margin-bottom:30px;'>
@@ -230,8 +234,6 @@
     <footer class="site-footer">
     </footer>
   </section>
-
-
   <script src="../../js/jquery.js"></script>
   <script src="../../js/jquery-1.8.3.min.js"></script>
   <script src="../../js/bootstrap.min.js"></script>
@@ -254,8 +256,8 @@
   
   </script>
   <script>
-  var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = {
+	  var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	    mapOption = {
         center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
         level: 5 // 지도의 확대 레벨
     };  
@@ -288,8 +290,8 @@
 
         // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
         map.setCenter(coords);
-    } 
-  });    
+		  } 
+		});    
   </script>
 
   <script type="application/javascript">
@@ -314,34 +316,23 @@
             }
         });
         
-        $.ajax({
-         url : contextRoot + '/info/ajax/eventList.do',
-         type : 'post',
-         dataType : 'json',
-         cache : false,
-         processData : false,
-         contentType : false,
-         async : false,
-         success : function(resultObj) {
-           var list = $('#event_list');
-           for(var event of resultObj.eventList) {
-              list.append("<option value='" + event.event_code + "'>" + event.event_name + "</option>")
-           }
-         }
-      })
-        
-       /*  <!-- 종목 등록 -->
-        <!--
-        $.ajax({
-          url : contextRoot + '/member/ajax/setset.do',
-          type : 'post',
-          dataType : 'json',
-          cache : false,
-          success : function(e) {
-            
+     $.ajax({
+        url : contextRoot + '/info/ajax/eventList.do',
+        type : 'post',
+        dataType : 'json',
+        cache : false,
+        processData : false,
+        contentType : false,
+        async : false,
+        success : function(resultObj) {
+          var list = $('#event_list');
+          for(var event of resultObj.eventList) {
+             list.append("<option value='" + event.event_code + "'>" + event.event_name + "</option>")
           }
-        }) --> */
+        }
+      })
     });
+    
     function myNavFunction(id) {
         $("#date-popover").hide();
         var nav = $("#" + id).data("navigation");
@@ -360,6 +351,7 @@
         success : function(resultObj) {
             var loginAva = $('#login_ava');
             var sM = $('#sub_menu');
+            var sub = $('#sub_m');
           var ajaxresult = resultObj;
           if (ajaxresult.status == 'failure') {
             loginAva.append("<ul class='nav pull-right top-menu'>"
@@ -376,6 +368,9 @@
               sM.append(
                "<li><a href='info/register_school.html'>학교 정보</a></li>"   
               )
+              sub.append(
+              "<li><a href='buttons.html'>신청된 정보</a></li>"
+            		  )
           }
         }
       })
@@ -389,11 +384,6 @@
         document.getElementById('chooseDate').value = date;
     })
     
-     
-     $(document).on('click','#chooseDate', function(e) {
-         
-     })
-     
     function logout() {
       $.ajax({
         url : contextRoot + '/auth/ajax/logout.do',
@@ -407,32 +397,6 @@
           } else {
             sweetAlert("Oops...", "Logout에 실패하였습니다.", "error");
           }
-        }
-      })
-    }
-
-    function login() {
-      var form_data = new FormData();
-      form_data.append("m_email", $('#m_email').val());
-      form_data.append("m_password", $('#m_password').val());
-      $.ajax({
-        url : contextRoot + '/auth/ajax/login.do',
-        type : 'post',
-        dataType : 'json',
-        cache : false,
-        contentType : false,
-        processData : false,
-        data : form_data,
-        success : function(resultObj) {
-          var ajaxResult = resultObj;
-          if (ajaxResult.status == 'success') {
-            location.replace("http://localhost:8080/wecando/wecando.html");
-          } else {
-            sweetAlert("Oops...","아이디 또는 비밀번호가 일치하지 않습니다.", "error");
-          }
-        },
-        error : function(resultObj) {
-          sweetAlert("Oops...", "아이디 또는 비밀번호가 일치하지 않습니다.","error");
         }
       })
     }
