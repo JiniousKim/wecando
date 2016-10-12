@@ -48,7 +48,7 @@
   
   <select id="AllschoolList" resultType="String">
     select sch_name
-    from school;
+    from school
   </select>
   
   <update id="sch_update" parameterType="school">

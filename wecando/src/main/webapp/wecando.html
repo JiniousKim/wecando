@@ -415,21 +415,24 @@
 	<script src='lib/moment.min.js'></script>
 	<script src='fullcalendar/fullcalendar.js'></script>
 	<script>
-	$(function(){
-		 $.ajax({
-			 url : contextRoot + '/info/ajax/AllschoolList.do',
-			 type : 'post',
-			 dataType : 'json',
-			 success : function(resultObj) {
-				 console.log(resultObj);
-			 }
-		 })
-	    var autocomplete_text = ["자동완성기능","Autocomplete","개발로짜","국이"];
-	         $("#autocomplete").autocomplete({
-	            source: autocomplete_text
-	         });
-	})
-	</script>
+       $(function(){
+         $.ajax({
+           url : contextRoot + '/info/ajax/AllschoolList.do',
+           type : 'post',
+           dataType : 'json',
+           success : function(resultObj) {
+             var List = resultObj.stringList;
+             var autocomplete_text = [];
+             for(var i = 0; i < List.length; i++) {
+                         autocomplete_text[i] = List[i];         
+             }
+               $("#autocomplete").autocomplete({
+                  source: autocomplete_text
+               });
+           }
+         })
+       })
+  </script>
 	<script type="application/javascript">
     var date;
     
