@@ -298,7 +298,7 @@
           <hr>
           <div id='sch_list'>
             <div class='defaultDate'><input id='chooseDate' readonly></div>
-            <div>
+                <div>
                           <div class='card_title'>
                                   <div class='card_name'><i class='fa fa-university'>&nbsp;  askldfjlks  </i></div> 
                          </div>
@@ -383,9 +383,10 @@
                                 </tr>
                                 </tbody></table></div></div>
                   </div></div>
-                  
+                  <div id='search_sch_list'>
+                  </div>
         </div>
-       </div> 
+        </div>
         <!-- /col-lg-3 -->
     </section>
     <footer class="site-footer">
@@ -449,6 +450,8 @@
                 return myNavFunction(this.id);
             }
         });
+        
+        $("#search_sch_list").css('display', 'none');
         var today = new Date();
         var dd = today.getDate();
         var mm = today.getMonth()+1; //January is 0!
@@ -646,11 +649,89 @@
             data : form_data,
             success : function(resultObj) {
               console.log(resultObj);
+              $('#search_sch_list').css('display', '');
+              $('#sch_list').css('display', 'none');
+              var show = $('#search_sch_list');
+              show.append("<form action='http://localhost:8080/wecando/reserve/ajax/reserveInfo.do' method='post'>" +
+               "<input type='hidden' id='select_sch_name' value=''>" +
+               "<input type='hidden' id='select_sch_location' value=''>" +
+               "<input type='hidden' id='select_sch_tel' value=''>" +
+               "<input type='hidden' id='select_court_code' value=''>" +
+               "<input type='hidden' id='select_court_price' value=''>" +
+               "<div class='defaultDate'><input id='chooseDate' readonly></div>" +
+                "   <div class='card_title'>" +
+                 "          <div class='card_name'><i class='fa fa-university'>&nbsp;<input id='title_school_name' style='border:none;' value='' readonly></i></div>" + 
+                  "</div>" +
+               "<div class='card'>" +
+                "   <div class='card_photo'> " +
+                 "  <div class='card_time'><table class='time_table'> " +
+                  "       <thead>" +
+                   "      <tr>" +
+                    "     <th>이용가능 시간</th><th>대관비용</th><th colspan='5px;'>사용가능 여부</th> " +
+                     "    </tr></thead><tbody> " + 
+                      "   <tr> " +
+                       "    <td>&nbsp;&nbsp;&nbsp;06:00 ~ 08:00</td> " +
+                        "   <td>&nbsp;&nbsp;&nbsp;5000원</td> " +
+                         "  <td>" +
+                          "   <button value='T06_08' name='select_Time' type='button' class='reserve-btn'>예약 가능</button>" +
+                           "</td>" +
+                         "</tr>" +
+                       "<tr> " +
+                       "    <td>&nbsp;&nbsp;&nbsp;08:00 ~ 10:00</td> " +
+                        "   <td>&nbsp;&nbsp;&nbsp;5000원</td> " +
+                         "  <td>" +
+                          "   <button value='T08_10' name='select_Time' type='button' class='reserve-btn'>예약 가능</button>" +
+                           "</td>" +
+                         "</tr>" +
+                       "<tr> " +
+                        "   <td>&nbsp;&nbsp;&nbsp;10:00 ~ 12:00</td> " +
+                         "  <td>&nbsp;&nbsp;&nbsp;5000원</td> " +
+                          " <td>" +
+                           "  <button value='T10_12' name='select_Time' type='button' class='reserve-btn'>예약 가능</button>" +
+                         "  </td>" +
+                        " </tr>" +
+                       "<tr> " +
+                           "<td>&nbsp;&nbsp;&nbsp;12:00 ~ 14:00</td> " +
+                           "<td>&nbsp;&nbsp;&nbsp;5000원</td> " +
+                           "<td>" +
+                          "   <button value='T12_14' name='select_Time' type='button' class='reserve-btn'>예약 가능</button>" +
+                         "  </td>" +
+                        " </tr>" +
+                       "<tr> " +
+                           "<td>&nbsp;&nbsp;&nbsp;14:00 ~ 16:00</td> " +
+                           "<td>&nbsp;&nbsp;&nbsp;5000원</td> " +
+                           "<td>" +
+                          "   <button value='T14_16' name='select_Time' type='button' class='reserve-btn'>예약 가능</button>" +
+                         "  </td>" +
+                        " </tr>" +
+                       "<tr> " +
+                           "<td>&nbsp;&nbsp;&nbsp;16:00 ~ 18:00</td> " +
+                           "<td>&nbsp;&nbsp;&nbsp;5000원</td> " +
+                           "<td>" +
+                          "   <button value='T16_18' name='select_Time' type='button' class='reserve-btn'>예약 가능</button>" +
+                         "  </td>" +
+                        " </tr>" +
+                       "<tr> " +
+                           "<td>&nbsp;&nbsp;&nbsp;18:00 ~ 20:00</td> " +
+                           "<td>&nbsp;&nbsp;&nbsp;5000원</td> " +
+                           "<td>" +
+                          "   <button value='T18_20' name='select_Time' type='button' class='reserve-btn'>예약 가능</button>" +
+                         "  </td>" +
+                        " </tr>" +
+                       "<tr> " +
+                           "<td>&nbsp;&nbsp;&nbsp;20:00 ~ 22:00</td>" + 
+                           "<td>&nbsp;&nbsp;&nbsp;5000원</td> " +
+                           "<td>" +
+                            " <button value='T20_22' name='select_Time' type='button' class='reserve-btn'>예약 가능</button>" +
+                           "</td>" +
+                         "</tr>" +
+                         "</tbody></table></div></div>" +
+                  "</div></form>") 
             }
           })
       }
     }
-     
+      
     function logout() {
       $.ajax({
         url : contextRoot + '/auth/ajax/logout.do',

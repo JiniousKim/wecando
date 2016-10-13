@@ -62,7 +62,13 @@
            T16_18       as T16_18,
            T18_20       as T18_20,
            T20_22       as T20_22,
-           court_price  as court_price
+           court_price  as court_price,
+           event_code   as event_code,
+           sch_location as sch_location,
+           sch_tel      as sch_tel,
+           court_cnt    as court_cnt,
+           TO_CHAR(event_date, 'YYYY-MM-DD') as event_date,
+           sch_num      as sch_num
     from SCHEVENT natural left outer join court natural left outer join school
     where event_code = #{event_code} and 
           sch_num = #{sch_num} and 

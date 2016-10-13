@@ -2732,7 +2732,7 @@ div.col-md-4 a {
 .card {
   width : 700px; 
   margin-top:20px; 
-  height:230px; 
+  height:250px; 
   margin-left:30px;
   background-color:#f2f2f2;
 }
@@ -2749,7 +2749,7 @@ div.col-md-4 a {
 .card_time {
     position:relative; 
     width:470px;
-    height:210px; 
+    height:230; 
     left:210px;
     overflow :auto;
 }
@@ -2775,7 +2775,7 @@ div.col-md-4 a {
 .time_table {
     background-color: white;
     width: 100%;
-    height: 100px;
+    height: 100%;
     color : black;
     border : 1px solid grey;
     overflow : auto;
