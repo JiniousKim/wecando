@@ -16,7 +16,7 @@ public class SchEvent  implements Serializable {
 	protected String 			T20_22;
   protected String   		event_code;
   protected String				court_code;
-  protected int					sch_no;
+  protected int					sch_num;
   protected String				sch_location;
   protected String				sch_name;
 
@@ -50,13 +50,13 @@ public class SchEvent  implements Serializable {
 		this.court_code = court_code;
 	}
 
-	public int getSch_no() {
-		return sch_no;
+	public int getSch_num() {
+		return sch_num;
 	}
 
 
-	public void setSch_no(int sch_no) {
-		this.sch_no = sch_no;
+	public void setSch_num(int sch_num) {
+		this.sch_num = sch_num;
 	}
 
 
@@ -72,10 +72,10 @@ public class SchEvent  implements Serializable {
 
 	@Override
 	public String toString() {
-		return "SchEvent [schevent_date=" + event_date + ", T6_8=" + T6_8 + ", T8_10=" + T8_10 + ", T10_12=" + T10_12
+		return "SchEvent [event_date=" + event_date + ", T6_8=" + T6_8 + ", T8_10=" + T8_10 + ", T10_12=" + T10_12
 		    + ", T12_14=" + T12_14 + ", T14_16=" + T14_16 + ", T16_18=" + T16_18 + ", T18_20=" + T18_20 + ", T20_22="
-		    + T20_22 + ", event_code=" + event_code + ", court_code=" + court_code + ", sch_location=" + sch_location
-		    + ", sch_name=" + sch_name + "]";
+		    + T20_22 + ", event_code=" + event_code + ", court_code=" + court_code + ", sch_num=" + sch_num
+		    + ", sch_location=" + sch_location + ", sch_name=" + sch_name + "]";
 	}
 
 

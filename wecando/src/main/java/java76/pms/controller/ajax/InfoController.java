@@ -84,15 +84,13 @@ public class InfoController {
 	@RequestMapping(value="search_sch", method=RequestMethod.POST)
 	public Object search_sch(String sch_name,
 													 String event_code,
-													 String event_date,
-													 int sch_num) throws Exception {
+													 String event_date) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<>();
 		HashMap<String, Object> paramMap = new HashMap<>();
-		
 		paramMap.put("event_code", event_code);
 		paramMap.put("event_date", event_date);
 		try {
-			sch_num = schoolService.get_sch_num(sch_name);
+			int sch_num = schoolService.get_sch_num(sch_name);
 			paramMap.put("sch_num", sch_num);
 			SchEvent schEvent = schEventService.searchSchEvent(paramMap);
 			resultMap.put("schEvent", schEvent);
