@@ -46,6 +46,12 @@
     where sch_location = #{sch_location}
   </select>
   
+  <select id="get_sch_num" parameterType="String" resultType="int">
+    select sch_num
+    from school
+    where sch_name = #{sch_name}
+  </select>
+  
   <select id="AllschoolList" resultType="String">
     select sch_name
     from school

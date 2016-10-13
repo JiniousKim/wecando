@@ -2845,12 +2845,12 @@ input[type=text] {
     font-size: 16px;
     background-color: white;
     background-size: 26px;
-    background-image: url('../img/searchicon.png');
+    background-image: url(../img/searchicon.png);
     background-position: 10px 10px;
     background-repeat: no-repeat;
-    padding: 12px 20px 10px 45px;
+    padding: 12px 20px 10px 40px;
     transition: width 0.4s ease-in-out;
-    color : black;
+    color: black;
 }
 
 input[type=text]:focus {

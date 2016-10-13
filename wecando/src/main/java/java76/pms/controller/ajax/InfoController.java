@@ -94,12 +94,13 @@ public class InfoController {
 		try {
 			sch_num = schoolService.get_sch_num(sch_name);
 			paramMap.put("sch_num", sch_num);
+			SchEvent schEvent = schEventService.searchSchEvent(paramMap);
+			resultMap.put("schEvent", schEvent);
 		} catch (Exception e) {
 			e.printStackTrace();
 			resultMap.put("status", "failure");
 			return resultMap;
 		}
-		
 		resultMap.put("status", "success");
 		return resultMap;
 	}
