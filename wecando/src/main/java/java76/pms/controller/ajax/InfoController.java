@@ -93,7 +93,7 @@ public class InfoController {
 			int sch_num = schoolService.get_sch_num(sch_name);
 			paramMap.put("sch_num", sch_num);
 			List<SchEvent> schEventList = schEventService.searchSchEvent(paramMap);
-			resultMap.put("schEvent", schEvent);
+			resultMap.put("schEventList", schEventList);
 		} catch (Exception e) {
 			e.printStackTrace();
 			resultMap.put("status", "failure");

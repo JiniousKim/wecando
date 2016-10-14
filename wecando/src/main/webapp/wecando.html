@@ -24,6 +24,7 @@
 <link href="css/style-responsive.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css"
   href="lib/sweetalert/sweetalert.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="js/chart-master/Chart.js"></script>
 
 </head>
@@ -646,11 +647,14 @@
             processData : false,
             data : form_data,
             success : function(resultObj) {
-              console.log(resultObj);
+              var schEventList = resultObj.schEventList;
+              console.log(schEventList);
               $('#search_sch_list').css('display', '');
               $('#sch_list').css('display', 'none');
-              document.getElementById('chooseDate').value = schEvent.event_date;
               var show = $('#search_sch_list');
+              for (var schEvent in schEventList) {
+              document.getElementById('chooseDate').value = schEvent.event_date;
+              console.log(schEvent);
               show.append("<form action='http://localhost:8080/wecando/reserve/ajax/reserveInfo.do' method='post'>" +
                "<input type='hidden' id='select_sch_name' value=''>" +
                "<input type='hidden' id='select_sch_location' value=''>" +
@@ -726,8 +730,8 @@
                            "</tbody></table></div></div>" +
                     "</div></form>");
                     if (schEvent.t6_8 == '0') {
-                    	  $('#' + schEvent.court_code +'t6_8').css('display','');
-                    	  $('#' + schEvent.court_code +'t6_8i').css('display','none');
+                        $('#' + schEvent.court_code +'t6_8').css('display','');
+                        $('#' + schEvent.court_code +'t6_8i').css('display','none');
                     } else {
                       $('#' + schEvent.court_code +'t6_8').css('display','none');
                       $('#' + schEvent.court_code +'t6_8i').css('display','');
@@ -781,9 +785,10 @@
                       $('#' + schEvent.court_code +'t20_22').css('display','none');
                       $('#' + schEvent.court_code +'t20_22i').css('display','');
                     }
-            }
+                 }
+              }
           })
-      }
+       }
     }
       
     function logout() {
