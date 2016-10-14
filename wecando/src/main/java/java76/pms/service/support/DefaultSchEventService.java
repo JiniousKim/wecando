@@ -26,7 +26,7 @@ public class DefaultSchEventService implements SchEventService {
 		return schEventDao.schEventCnt();
 	}
 	
-	public SchEvent searchSchEvent(HashMap<String, Object> paramMap) {
+	public List<SchEvent> searchSchEvent(HashMap<String, Object> paramMap) {
 		return schEventDao.searchSchEvent(paramMap);
 	}
 }
