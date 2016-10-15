@@ -636,6 +636,17 @@
     function onkeyPress() {
         if(event.keyCode == 13) {
           var form_data = new FormData();
+          
+          if ($('#autocomplete').val() == '') {
+        	    swal('Oops...','학교 이름을 입력해주세요', 'error');
+          }
+          else if ($('#chooseDate').val() == '') {
+        	    swal('Oops...','날짜를 정확하게 입력해주세용!', 'error');
+          }
+          else if ($('select[name=ec]').val() == '') {
+        	    swal('Oops...', '종목을 선택해 주세용!', 'error');
+          }
+          else {
           form_data.append("sch_name", $('#autocomplete').val());
           form_data.append("event_date", $('#chooseDate').val());
           form_data.append("event_code", $("select[name=ec]").val());
@@ -787,7 +798,8 @@
                     }
                  }
               }
-          })
+            })
+          }
        }
     }
       

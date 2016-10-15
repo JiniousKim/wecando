@@ -2526,7 +2526,7 @@ div.col-md-4 a {
 
 .b-s {
   position: absolute;
-  width: 140px
+  width: 140px;
 }
 
 .b-s1 {
@@ -2880,4 +2880,40 @@ div.col-md-4 a {
     opacity: 0.6;
     cursor: not-allowed;
     color : red;
+}
+
+.card_sch_name {
+    color:black; 
+    font-size:20px; 
+    padding-top:5px
+}
+.card_sch_name > i {
+    font-size: 24px;
+}
+
+.client_reserveList {
+    position:absolute; 
+    width:53%;
+    left:20%;
+    height:auto; 
+    background-color:white; 
+    margin:auto;
+}
+
+.client_reserveCard {
+    position: relative; 
+    width:50%; 
+    height:auto;
+}
+
+.client_reserveContent {
+    position:relative; 
+    width:100%; 
+    height:270px;
+}
+
+.reserve_title {
+    width:20%; 
+    padding-top:10px; 
+    padding-left:10px;
 }
