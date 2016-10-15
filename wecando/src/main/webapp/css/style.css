@@ -2837,7 +2837,7 @@ div.col-md-4 a {
   margin-left: 10px;
 }
 
-input[type=text] {
+.search_text {
     width: 130px;
     box-sizing: border-box;
     border: 2px solid #ccc;
@@ -2853,19 +2853,19 @@ input[type=text] {
     color: black;
 }
 
-input[type=text]:focus {
+.search_text:focus {
     width: 400px;
     margin: -270px;
     position : relative;
     top: 20px;
 }
 
-input[type=text]: visited {
+.search_text: visited {
 	position : relative;
 	top: 20px;
 }
 
-input[type=text]: actived {
+.search_text: actived {
   position : relative;
   top: 20px;
 }
@@ -2874,4 +2874,10 @@ input[type=text]: actived {
     position: absolute;
     top: 110px;
     left: 730px;
+}
+
+.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    color : red;
 }
