@@ -2917,3 +2917,24 @@ div.col-md-4 a {
     padding-top:10px; 
     padding-left:10px;
 }
+
+.reserve_title > p {
+    font-size:20px; 
+    color:#424a5d;
+}
+
+.reserve_content {
+    position: relative; 
+    left:15%; 
+    top:-190px; 
+    width:80%
+}
+
+.reserve_content > input {
+    border:none; 
+    width:100%; 
+    font-size:20px; 
+    margin-bottom:7px; 
+    color:black; 
+    background-color:#f2f2f2
+}
