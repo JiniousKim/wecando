@@ -45,7 +45,6 @@
     </property>
   </bean>
   
- <bean id="careerAlarmService" class="java76.pms.util.DatabaseCheck" />
  <task:scheduler id="gsScheduler" pool-size="10" />
  <task:executor id="gsTaskExecutor" pool-size="10" />
  <task:annotation-driven executor="gsTaskExecutor"

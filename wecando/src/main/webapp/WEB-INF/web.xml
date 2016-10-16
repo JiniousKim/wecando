@@ -18,11 +18,6 @@
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
   
-  <listener>
-    <listener-class>java76.pms.util.DatabaseCheck</listener-class>
-  </listener>
-
-
 <!-- 필터 등록하기 -->
   <filter>
     <filter-name>CharacterEncodingFilter</filter-name>
