@@ -1,0 +1,60 @@
+@import url('http://fonts.googleapis.com/css?family=Amarante');
+
+::selection { background: #5f74a0; color: #fff; }
+::-moz-selection { background: #5f74a0; color: #fff; }
+::-webkit-selection { background: #5f74a0; color: #fff; }
+
+/** page structure **/
+#list_wrapper {
+  display: block;
+  width: 850px;
+  background: #fff;
+  margin: 0 60px;
+  position: relative;
+  padding: 22px 17px;
+  -webkit-box-shadow: 2px 2px 3px -1px rgba(0,0,0,0.35);
+}
+
+#keywords {
+	position: relative;
+  margin: 0 auto;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+}
+
+#keywords thead.list {
+  cursor: pointer;
+  background: #495268;
+}
+#keywords thead.list tr th { 
+  font-weight: bold;
+  padding: 12px 30px;
+  padding-left: 42px;
+}
+#keywords thead.list tr th span { 
+  padding-right: 20px;
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+}
+
+#keywords thead.list tr th.headerSortUp, #keywords thead.list tr th.headerSortDown {
+  background: #424a5d;
+}
+
+#keywords thead.list tr th.headerSortUp span {
+  background-image: url('http://i.imgur.com/SP99ZPJ.png');
+}
+#keywords thead.list tr th.headerSortDown span {
+  background-image: url('http://i.imgur.com/RkA9MBo.png');
+}
+
+#keywords tbody tr { 
+  color: #555;
+}
+#keywords tbody tr td {
+  text-align: center;
+  padding: 15px 10px;
+}
+#keywords tbody tr td.lalign {
+  text-align: left;
+}

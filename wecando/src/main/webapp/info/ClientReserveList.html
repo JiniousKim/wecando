@@ -13,8 +13,9 @@
 <link rel="stylesheet" type="text/css" href="../lineicons/style.css">
 
 <!-- Custom styles for this template -->
+<link href="../css/list.css" rel="stylesheet">
 <link href="../css/style.css" rel="stylesheet">
-<link href="../css/button.css" rel="stylesheet">
+<!-- <link href="../css/button.css" rel="stylesheet"> -->
 <link href="../css/style-responsive.css" rel="stylesheet">
 <link rel="shortcut icon" type="image/x-icon" href="../img/logo.png" />
 <script src="../js/chart-master/Chart.js"></script>
@@ -31,69 +32,7 @@
     </div>
   </div>
 
-  <!-- School Search -->
-  <div class="search_school">
-    <div class="modal fade" id="search_school" tabindex="-1" role="dialog"
-      aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"
-              aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">학교 검색</h4>
-          </div>
-          <div class="modal-body">
-            <input type="text" class="form-control col-sm-3 inputbox" id="s_sch">
-            <button type="button" class="btn btn-default" onclick="search();">검색</button>
-            <div class="col-lg-10">
-              <p class="form-control-static"
-                style="color: #777; margin-top: 10px">검색 결과</p>
-              <div id="ss"></div>
-            </div>
-          </div>
-          <div class="modal-foot"></div>
-          <button id='modal_close' type="button" style='display:none;' class="close" data-dismiss="modal">
-                                <span aria-hidden="true">&times;</span>
-                                <span class="sr-only">Close</span>
-                              </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- /school_search -->
-  
-  <!-- School Search -->
-  <div class="change_school">
-    <div class="modal fade" id="change_school" tabindex="-1" role="dialog"
-      aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"
-              aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">학교 검색</h4>
-          </div>
-          <div class="modal-body">
-            <input type="text" class="form-control col-sm-3 inputbox" id="c_sch">
-            <button type="button" class="btn btn-default" onclick="ch_search();">검색</button>
-            <div class="col-lg-10">
-              <p class="form-control-static"
-                style="color: #777; margin-top: 10px">검색 결과</p>
-              <div id="cs"></div>
-            </div>
-          </div>
-          <div class="modal-foot"></div>
-          <button id='modal_close' type="button" style='display:none;' class="close" data-dismiss="modal">
-                                <span aria-hidden="true">&times;</span>
-                                <span class="sr-only">Close</span>
-                              </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- /school_search -->
-
-  <section id="container" class="sidebar-closed">
+  <section id="container" class="sidebar">
     <header class="header black-bg">
       <div class="sidebar-toggle-box">
         <div class="fa fa-bars tooltips" data-placement="right"
@@ -111,7 +50,7 @@
               class="fa fa-calendar"></i> <span>예약 정보</span>
           </a>
             <ul class="sub">
-              <li><a href="general.html">현재 예약 정보</a></li>
+              <li><a href="ClientCurrentReserveList.html">현재 예약 정보</a></li>
               <li><a href="ClientReserveList.html">지난 예약 정보</a></li>
             </ul></li>
 
@@ -127,48 +66,78 @@
     <section id="main-content">
       <section class="wrapper">
         <div id="auth">
-          <div class='client_reserveList'>
-            <div id='client_reserveCard'>
-                <div class='card'>
-                  <div class='card_sch_name'><i class='fa fa-university'>&nbsp;  askldfjlks  </i></div> 
-                  <div class='client_reserveContent'>
-                    <div class='reserve_title'>
-                     <p>이용 날짜 : </p>
-                     <p>학교 주소 : </p>
-                     <p>학교 번호 : </p>
-                     <p>이용 종목 : </p>
-                     <p>이용 시간 : </p>
-                    </div>
-                    <div class='reserve_content'>
-                      <input value="이지현 바보" readonly>
-                      <input value="이지현 생각충" readonly>
-                      <input value="이지현 꿀꿀이" readonly>
-                      <input value="이지현 잠만보" readonly>
-                      <input value="이지현 메롱" readonly>
-                    </div> 
-                  </div>
-                </div>
-                <div class='card'>
-                  <div class='card_sch_name'><i class='fa fa-university'>&nbsp;  askldfjlks  </i></div> 
-                  <div class='client_reserveContent'>
-                    <div class='reserve_title'>
-                     <p>이용 날짜 : </p>
-                     <p>학교 주소 : </p>
-                     <p>학교 번호 : </p>
-                     <p>이용 종목 : </p>
-                     <p>이용 시간 : </p>
-                    </div>
-                    <div class='reserve_content'>
-                      <input value="이지현 바보" readonly>
-                      <input value="이지현 생각충" readonly>
-                      <input value="이지현 꿀꿀이" readonly>
-                      <input value="이지현 잠만보" readonly>
-                      <input value="이지현 메롱" readonly>
-                    </div> 
-                  </div>
-                </div>
-              </div>
-            </div>
+        <img id="joinus" src="../img/reserveList.png">
+          <div id="list_wrapper">
+					  <table id="keywords" cellspacing="0" cellpadding="0">
+					    <thead class='list'>
+					      <tr>
+					        <th><span>Keywords</span></th>
+					        <th><span>Impressions</span></th>
+					        <th><span>Clicks</span></th>
+					        <th><span>CTR</span></th>
+					        <th><span>Rank</span></th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					      <tr>
+					        <td class="lalign">silly tshirts</td>
+					        <td>6,000</td>
+					        <td>110</td>
+					        <td>1.8%</td>
+					        <td>22.2</td>
+					      </tr>
+					      <tr>
+					        <td class="lalign">silly tshirts</td>
+					        <td>6,000</td>
+					        <td>110</td>
+					        <td>1.8%</td>
+					        <td>22.2</td>
+					      </tr>
+					      <tr>
+					        <td class="lalign">silly tshirts</td>
+					        <td>6,000</td>
+					        <td>110</td>
+					        <td>1.8%</td>
+					        <td>22.2</td>
+					      </tr>
+					      <tr>
+					        <td class="lalign">desktop workspace photos</td>
+					        <td>2,200</td>
+					        <td>500</td>
+					        <td>22%</td>
+					        <td>8.9</td>
+					      </tr>
+					      <tr>
+					        <td class="lalign">arrested development quotes</td>
+					        <td>13,500</td>
+					        <td>900</td>
+					        <td>6.7%</td>
+					        <td>12.0</td>
+					      </tr>
+					      <tr>
+					        <td class="lalign">popular web series</td>
+					        <td>8,700</td>
+					        <td>350</td>
+					        <td>4%</td>
+					        <td>7.0</td>
+					      </tr>
+					      <tr>
+					        <td class="lalign">2013 webapps</td>
+					        <td>9,900</td>
+					        <td>460</td>
+					        <td>4.6%</td>
+					        <td>11.5</td>
+					      </tr>
+					      <tr>
+					        <td class="lalign">ring bananaphone</td>
+					        <td>10,500</td>
+					        <td>748</td>
+					        <td>7.1%</td>
+					        <td>17.3</td>
+					      </tr>
+					    </tbody>
+					  </table>
+					 </div>
           </div>
           <!-- INLINE FORM ELELEMNTS -->
           <!-- /row -->

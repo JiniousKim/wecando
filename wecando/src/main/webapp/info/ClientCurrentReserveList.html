@@ -31,69 +31,7 @@
     </div>
   </div>
 
-  <!-- School Search -->
-  <div class="search_school">
-    <div class="modal fade" id="search_school" tabindex="-1" role="dialog"
-      aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"
-              aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">학교 검색</h4>
-          </div>
-          <div class="modal-body">
-            <input type="text" class="form-control col-sm-3 inputbox" id="s_sch">
-            <button type="button" class="btn btn-default" onclick="search();">검색</button>
-            <div class="col-lg-10">
-              <p class="form-control-static"
-                style="color: #777; margin-top: 10px">검색 결과</p>
-              <div id="ss"></div>
-            </div>
-          </div>
-          <div class="modal-foot"></div>
-          <button id='modal_close' type="button" style='display:none;' class="close" data-dismiss="modal">
-                                <span aria-hidden="true">&times;</span>
-                                <span class="sr-only">Close</span>
-                              </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- /school_search -->
-  
-  <!-- School Search -->
-  <div class="change_school">
-    <div class="modal fade" id="change_school" tabindex="-1" role="dialog"
-      aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"
-              aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">학교 검색</h4>
-          </div>
-          <div class="modal-body">
-            <input type="text" class="form-control col-sm-3 inputbox" id="c_sch">
-            <button type="button" class="btn btn-default" onclick="ch_search();">검색</button>
-            <div class="col-lg-10">
-              <p class="form-control-static"
-                style="color: #777; margin-top: 10px">검색 결과</p>
-              <div id="cs"></div>
-            </div>
-          </div>
-          <div class="modal-foot"></div>
-          <button id='modal_close' type="button" style='display:none;' class="close" data-dismiss="modal">
-                                <span aria-hidden="true">&times;</span>
-                                <span class="sr-only">Close</span>
-                              </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- /school_search -->
-
-  <section id="container" class="sidebar-closed">
+  <section id="container" class="sidebar">
     <header class="header black-bg">
       <div class="sidebar-toggle-box">
         <div class="fa fa-bars tooltips" data-placement="right"
@@ -127,11 +65,46 @@
     <section id="main-content">
       <section class="wrapper">
         <div id="auth">
+          <img id="joinus" src="../img/currentReserve.png">
           <div class='client_reserveList'>
-            <div id='client_reserveCard'>
-                <div class='card'>
-                  <div class='card_sch_name'><i class='fa fa-university'>&nbsp;  askldfjlks  </i></div> 
-                  <div class='client_reserveContent'>
+	          <div class='dashed_border'>
+	            <div class='reserve_card'>
+	              <div class='card_sch_name'><i class='fa fa-university'>&nbsp; 상명대학교 사범대학 부속여자고등학교   </i></div> 
+	              <hr>
+	              <div class='client_reserveContent'>
+	                <div class='reserve_img'>
+	                 <img src="../img/school.png">
+	                </div>
+	                <div class='reserve_contents'>
+		                <div class='reserve_title'>
+		                 <p>이용 날짜 : </p>
+		                 <p>학교 주소 : </p>
+		                 <p>학교 번호 : </p>
+		                 <p>이용 종목 : </p>
+		                 <p>이용 시간 : </p>
+		                </div>
+		                <div class='reserve_content'>
+		                  <input value="이지현 바보" readonly>
+		                  <input value="이지현 생각충" readonly>
+		                  <input value="이지현 꿀꿀이" readonly>
+		                  <input value="이지현 잠만보" readonly>
+		                  <input value="이지현 메롱" readonly>
+		                </div>
+	                </div> 
+	              </div>
+	            </div>
+	            </div>
+            </div>
+            <div class='client_reserveList'>
+            <div class='dashed_border'>
+              <div class='reserve_card'>
+                <div class='card_sch_name'><i class='fa fa-university'>&nbsp; 상명대학교 사범대학 부속여자고등학교   </i></div> 
+                <hr>
+                <div class='client_reserveContent'>
+                  <div class='reserve_img'>
+                   <img src="../img/school.png">
+                  </div>
+                  <div class='reserve_contents'>
                     <div class='reserve_title'>
                      <p>이용 날짜 : </p>
                      <p>학교 주소 : </p>
@@ -145,28 +118,10 @@
                       <input value="이지현 꿀꿀이" readonly>
                       <input value="이지현 잠만보" readonly>
                       <input value="이지현 메롱" readonly>
-                    </div> 
-                  </div>
-                </div>
-                <div class='card'>
-                  <div class='card_sch_name'><i class='fa fa-university'>&nbsp;  askldfjlks  </i></div> 
-                  <div class='client_reserveContent'>
-                    <div class='reserve_title'>
-                     <p>이용 날짜 : </p>
-                     <p>학교 주소 : </p>
-                     <p>학교 번호 : </p>
-                     <p>이용 종목 : </p>
-                     <p>이용 시간 : </p>
                     </div>
-                    <div class='reserve_content'>
-                      <input value="이지현 바보" readonly>
-                      <input value="이지현 생각충" readonly>
-                      <input value="이지현 꿀꿀이" readonly>
-                      <input value="이지현 잠만보" readonly>
-                      <input value="이지현 메롱" readonly>
-                    </div> 
-                  </div>
+                  </div> 
                 </div>
+              </div>
               </div>
             </div>
           </div>

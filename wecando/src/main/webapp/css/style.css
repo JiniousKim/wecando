@@ -2885,56 +2885,100 @@ div.col-md-4 a {
 .card_sch_name {
     color:black; 
     font-size:20px; 
-    padding-top:5px
+    padding: 12px 0 0 18px;
 }
 .card_sch_name > i {
     font-size: 24px;
 }
 
 .client_reserveList {
-    position:absolute; 
-    width:53%;
-    left:20%;
-    height:auto; 
-    background-color:white; 
-    margin:auto;
-}
-
-.client_reserveCard {
-    position: relative; 
-    width:50%; 
-    height:auto;
+	  margin-bottom: 30px;
+    border-radius: 22px;
+    position: relative;
+    width: 908px;
+    left: 40px;
+    height: 282px;
+    background-color: #424a5d;
 }
 
 .client_reserveContent {
     position:relative; 
     width:100%; 
     height:270px;
+     margin: 0 0 0 11px;
+}
+
+.reserve_contents {
+	  float: left;
+    display: block;
+    width: 64%;
+    height: 200px;
+/*     border: 1px solid red; */
+}
+
+.reserve_img {
+    float: left;
+    width: 32%;
+    display: block;
+/*     border: 1px solid blue; */
+}
+
+.reserve_img img {
+    width: 250px;
+    margin: 10px;
+    box-shadow: 8px 8px 3px -2px #bbb;
 }
 
 .reserve_title {
     width:20%; 
     padding-top:10px; 
     padding-left:10px;
+/*     border: 1px solid black; */
 }
 
 .reserve_title > p {
     font-size:20px; 
-    color:#424a5d;
+    color:black;
 }
 
 .reserve_content {
     position: relative; 
-    left:15%; 
+    left:18%; 
     top:-190px; 
-    width:80%
+    width:80%;
+/*     border: 1px solid green; */
 }
 
 .reserve_content > input {
     border:none; 
     width:100%; 
     font-size:20px; 
-    margin-bottom:7px; 
-    color:black; 
-    background-color:#f2f2f2
+    margin-bottom:8px; 
+    color:#424a5d; 
+    background-color:white;
+}
+
+.reserve_card {
+	  border-radius: 22px;
+    width: 875px;
+    margin-top: 7px;
+    height: 253px;
+    margin-left: 8px;
+    background-color: white;
+}
+
+.reserve_card > hr {
+    margin: 2px 10px -3px 15px;
+    width: 96%;
+}
+
+.dashed_border {
+	  position: relative;
+    top: 7px;
+    border: 1px dashed pink;
+    margin-top: 7px;
+    width: 891.5px;
+    margin-left: 8px;
+    border-radius: 22px;
+    height: 95%;
 }
