@@ -846,6 +846,29 @@
         }
       })
     }
+    
+    // 구 검색 무한 스크롤
+    $("#sch_list").scroll(function() {
+      
+        var scrollHeight = $("#sch_list").prop("scrollHeight") - $("#sch_list").scrollTop();
+        var documentHeight = $("#sch_list").height();
+        
+        if (scrollHeight == documentHeight) {
+           // loadSchoolList(); 
+        }
+    });
+   
+    // 학교 검색 무한 스크롤
+   $("#search_sch_list").scroll(function() {
+       
+       var scrollHeight = $("#search_sch_list").prop("scrollHeight") - $("#search_sch_list").scrollTop();
+       var documentHeight = $("#search_sch_list").height();
+       
+       if (scrollHeight == documentHeight) {
+          // loaSearchSchoolList(); 
+       }
+   });
+
   </script>
 </body>
 </html>
