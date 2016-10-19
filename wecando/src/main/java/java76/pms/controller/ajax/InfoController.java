@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java76.pms.domain.AjaxResult;
 import java76.pms.domain.Event;
@@ -45,11 +46,12 @@ public class InfoController {
 	
 	@RequestMapping(value="search_gu", method=RequestMethod.POST)
 	public Object schoolList(String event_code,
-													List<String> gu_name_List,
-													String event_date) throws Exception {
+													List<String> gu_list,
+													String event_date,
+		@RequestParam(defaultValue="0") int pageNum,
+		@RequestParam(defaultValue="5") int pageSize) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<>();
 		HashMap<String, Object> paramMap = new HashMap<>();
-		
 		try {
 			
 		} catch (Exception e) {
