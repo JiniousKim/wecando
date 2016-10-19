@@ -40,9 +40,9 @@ public class SchoolController {
 			}
 		} catch (Exception e) {
 				try {
+					schoolService.sch_register(schoolMap);
 					sch_no = schoolService.get_sch(school.getSch_location());
 					schoolMap.put("sch_num", sch_no);
-					schoolService.sch_register(schoolMap);
 					memberService.update_manage(sch_no, m_no);
 				} catch (Exception te) {
 					resultMap.put("status", "failure");
