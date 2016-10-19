@@ -405,7 +405,6 @@
    $(document).on("click", "#gu-btn-group", function(e){
          var ID = e.target.getAttribute('id');
          var gu = ID.replace('-btn','');
-         var cnt = 0;
          if( $('#' + gu).attr('class') == 'location_seoul_gu clicked') {
              $('#' + gu).fadeOut(1000);
              $('#' + ID).css('background-color','');
@@ -425,7 +424,7 @@
              gu_list.push($('#' + ID).val());
          }
          
-         pageNum = 0;
+         pageNum = 1;
          gu_data.append('event_date',$('#chooseDate').val());
          gu_data.append('event_code', $("select[name=ec]").val());
          gu_data.append('gu_list',gu_list);

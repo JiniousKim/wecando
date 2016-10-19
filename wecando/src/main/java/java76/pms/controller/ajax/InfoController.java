@@ -48,18 +48,24 @@ public class InfoController {
 	public Object schoolList(String event_code,
 													List<String> gu_list,
 													String event_date,
-		@RequestParam(defaultValue="0") int pageNum,
+		@RequestParam(defaultValue="1") int pageNum,
 		@RequestParam(defaultValue="5") int pageSize) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<>();
 		HashMap<String, Object> paramMap = new HashMap<>();
-		try {
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			resultMap.put("status", "failure");
-			return resultMap;
-		}
-		
+		paramMap.put("startIndex", (pageNum - 1) * pageSize);
+		paramMap.put("endIndex", (pageNum - 1) * pageSize + pageSize);
+		System.out.println(gu_list);
+		paramMap.put("event_date", event_date);
+		paramMap.put("event_code", event_code);
+//		try {
+//			List<SchEvent> schEventList = schEventService.schEventList(paramMap);
+//			resultMap.put("schEventList", schEventList);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			resultMap.put("status", "failure");
+//			return resultMap;
+//		}
+		resultMap.put("status", "success");
 		return resultMap;
 	}
 	
