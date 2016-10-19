@@ -20,7 +20,7 @@ import java76.pms.service.SchoolService;
 
 @Controller("ajax.InfoController")
 @RequestMapping("/info/ajax/*")
-public class InfoController { 
+public class InfoController<E> { 
 	@Autowired EventService eventService;
 	@Autowired ServletContext servletContext;
 	@Autowired SchEventService schEventService;
@@ -46,7 +46,7 @@ public class InfoController {
 	
 	@RequestMapping(value="search_gu", method=RequestMethod.POST)
 	public Object schoolList(String event_code,
-													List<String> gu_list,
+													List<E> gu_list,
 													String event_date,
 		@RequestParam(defaultValue="1") int pageNum,
 		@RequestParam(defaultValue="5") int pageSize) throws Exception {
