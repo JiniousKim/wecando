@@ -49,9 +49,8 @@ public class SchEventController {
 	@RequestMapping(value="list", method=RequestMethod.POST)
 	public Object schEventList (
 			@RequestParam(defaultValue="1") int pageNo,
-      @RequestParam(defaultValue="10") int pageSize,
-      @RequestParam(defaultValue="서울시") String keyword,
-      @RequestParam(defaultValue="soccer")String event_code) throws Exception {
+      @RequestParam(defaultValue="3") int pageSize,
+      String keyword, String event_code) throws Exception {
 		List<SchEvent> resultList = new ArrayList<SchEvent>();
 		HashMap<String, Object> paramMap = new HashMap<>();
 		HashMap<String, Object> resultMap = new HashMap<>();

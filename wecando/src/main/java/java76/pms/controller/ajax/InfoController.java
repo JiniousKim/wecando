@@ -1,6 +1,5 @@
 package java76.pms.controller.ajax;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -10,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java76.pms.domain.AjaxResult;
 import java76.pms.domain.Event;
@@ -45,9 +43,20 @@ public class InfoController {
 		return "redirect:../../error.html";
 	}
 	
-	@RequestMapping(value="schoolList", method=RequestMethod.POST)
-	public Object schoolList(String event_code) throws Exception {
+	@RequestMapping(value="search_gu", method=RequestMethod.POST)
+	public Object schoolList(String event_code,
+													List<String> gu_name_List,
+													String event_date) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<>();
+		HashMap<String, Object> paramMap = new HashMap<>();
+		
+		try {
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			resultMap.put("status", "failure");
+			return resultMap;
+		}
 		
 		return resultMap;
 	}
@@ -55,29 +64,6 @@ public class InfoController {
 	@RequestMapping(value="AllschoolList", method=RequestMethod.POST)
 	public Object AllschoolList() throws Exception {
 		List<String> resultList	= schoolService.AllschoolList();
-		System.out.println(resultList);
-		return resultList;
-	}
-	
-	@RequestMapping(value="list", method=RequestMethod.POST)
-	public Object schEventList (
-			@RequestParam(defaultValue="1") int pageNo,
-      @RequestParam(defaultValue="10") int pageSize,
-      @RequestParam(defaultValue="서울시") String keyword) throws Exception {
-		List<SchEvent> resultList = new ArrayList<SchEvent>();
-		HashMap<String, Object> paramMap = new HashMap<>();
-		
-		paramMap.put("startIndex", (pageNo - 1) * pageSize);
-		paramMap.put("pageNum", pageNo);
-		paramMap.put("pageSize", pageSize);
-		paramMap.put("keyword", keyword);
-		
-		try {
-			resultList = schEventService.schEventList(paramMap);	
-		} catch (Exception e) {
-			return new AjaxResult("failure", null);
-		}
-		
 		return resultList;
 	}
 	
