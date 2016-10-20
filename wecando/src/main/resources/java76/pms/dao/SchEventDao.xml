@@ -47,10 +47,13 @@
 		            sch_num    as sch_num,
 		            court_price as court_price,
 		            sch_location as sch_location,
-		            sch_name   as sch_name
+		            sch_name   as sch_name,
+		            court_cnt  as court_cnt,
+		            sch_tel    as sch_tel,
+		            event_name as event_name
          FROM SCHEVENT natural left outer join court natural left outer join school
          where event_date = TO_DATE(#{event_date}, 'YYYY-MM-DD') AND 
-               event_code = #{event_code}
+               event_code = #{event_code} AND sch_location like '%' || #{gu_name} || '%'
     ) A
     ) WHERE
     RNUM > #{startIndex} AND #{endIndex} >= RNUM

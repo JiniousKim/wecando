@@ -1,5 +1,6 @@
 package java76.pms.controller.ajax;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -20,7 +21,7 @@ import java76.pms.service.SchoolService;
 
 @Controller("ajax.InfoController")
 @RequestMapping("/info/ajax/*")
-public class InfoController<E> { 
+public class InfoController { 
 	@Autowired EventService eventService;
 	@Autowired ServletContext servletContext;
 	@Autowired SchEventService schEventService;
@@ -54,17 +55,20 @@ public class InfoController<E> {
 		HashMap<String, Object> paramMap = new HashMap<>();
 		paramMap.put("startIndex", (pageNum - 1) * pageSize);
 		paramMap.put("endIndex", (pageNum - 1) * pageSize + pageSize);
-		System.out.println(gu_list);
-		paramMap.put("event_date", event_date);
-		paramMap.put("event_code", event_code);
-//		try {
-//			List<SchEvent> schEventList = schEventService.schEventList(paramMap);
-//			resultMap.put("schEventList", schEventList);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			resultMap.put("status", "failure");
-//			return resultMap;
-//		}
+		List<SchEvent> schEventList = new ArrayList<>();
+		
+		for(String str : gu_list) {
+			try {
+				paramMap.put("gu_name", str);
+				schEventList.addAll(schEventService.schEventList(paramMap));
+			} catch (Exception e) {
+				e.printStackTrace();
+				resultMap.put("status", "failure");
+				return resultMap;
+			}
+			resultMap.put("schEventList", schEventList);
+		}
+		System.out.println(schEventList);
 		resultMap.put("status", "success");
 		return resultMap;
 	}

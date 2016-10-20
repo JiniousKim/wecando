@@ -15,13 +15,40 @@ public class SchEvent  implements Serializable {
 	protected String 			T18_20;
 	protected String 			T20_22;
   protected String   		event_code;
+  protected String				event_name;
   protected int				  court_cnt;
 	protected String				court_code;
+	protected int    			court_price;
   protected int					sch_num;
   protected String				sch_location;
   protected String				sch_name;
+  protected String 			sch_tel;
 
-  public int getCourt_cnt() {
+  public String getEvent_name() {
+		return event_name;
+	}
+
+	public void setEvent_name(String event_name) {
+		this.event_name = event_name;
+	}
+
+	public int getCourt_price() {
+		return court_price;
+	}
+
+	public void setCourt_price(int court_price) {
+		this.court_price = court_price;
+	}
+
+	public String getSch_tel() {
+		return sch_tel;
+	}
+
+	public void setSch_tel(String sch_tel) {
+		this.sch_tel = sch_tel;
+	}
+
+	public int getCourt_cnt() {
   	return court_cnt;
   }
   
@@ -82,8 +109,9 @@ public class SchEvent  implements Serializable {
 	public String toString() {
 		return "SchEvent [event_date=" + event_date + ", T6_8=" + T6_8 + ", T8_10=" + T8_10 + ", T10_12=" + T10_12
 		    + ", T12_14=" + T12_14 + ", T14_16=" + T14_16 + ", T16_18=" + T16_18 + ", T18_20=" + T18_20 + ", T20_22="
-		    + T20_22 + ", event_code=" + event_code + ", court_cnt=" + court_cnt + ", court_code=" + court_code
-		    + ", sch_num=" + sch_num + ", sch_location=" + sch_location + ", sch_name=" + sch_name + "]";
+		    + T20_22 + ", event_code=" + event_code + ", event_name=" + event_name + ", court_cnt=" + court_cnt
+		    + ", court_code=" + court_code + ", court_price=" + court_price + ", sch_num=" + sch_num + ", sch_location="
+		    + sch_location + ", sch_name=" + sch_name + ", sch_tel=" + sch_tel + "]";
 	}
 
 
