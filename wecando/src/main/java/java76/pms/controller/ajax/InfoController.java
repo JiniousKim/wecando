@@ -46,7 +46,7 @@ public class InfoController<E> {
 	
 	@RequestMapping(value="search_gu", method=RequestMethod.POST)
 	public Object schoolList(String event_code,
-													List<String> gu_list,
+													String[] gu_list,
 													String event_date,
 		@RequestParam(defaultValue="1") int pageNum,
 		@RequestParam(defaultValue="5") int pageSize) throws Exception {
