@@ -434,6 +434,7 @@
     // 구 검색 스크롤 끝나면 호출
     function loadSchoolList(gu_data) {
     console.log('start');
+    jQuery.ajaxSettings.traditional = true;
     	$.ajax({
        url : contextRoot + '/info/ajax/search_gu.do',
        type : 'post',
