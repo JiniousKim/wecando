@@ -7,7 +7,13 @@
   <resultMap type="SchEvent" id="scheventMap">
     <id column="event_date" property="schevent_date"/>
     <result column="event_code" property="event_code"/>
+    <result column="event_name" property="event_name" />
     <result column="court_code" property="court_code" />
+    <result column="court_price" property="court_price" />
+    <result column="court_cnt" property="court_cnt" />
+    <result column="sch_name" property="sch_name" />
+    <result column="sch_tel" property="sch_tel" />
+    <result column="sch_num" property="sch_num" />
     <result column="sch_location" property="sch_location" />
     <result column="member_num" property="m_no" />
     <result column="T6_8" property="T6_8" />
