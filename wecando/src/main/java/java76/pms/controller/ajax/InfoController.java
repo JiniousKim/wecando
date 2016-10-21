@@ -69,8 +69,9 @@ public class InfoController {
 				resultMap.put("status", "failure");
 				return resultMap;
 			}
-			resultMap.put("schEventList", schEventList);
+			paramMap.remove("gu_name");
 		}
+		resultMap.put("schEventList", schEventList);
 		System.out.println(schEventList);
 		resultMap.put("status", "success");
 		return resultMap;

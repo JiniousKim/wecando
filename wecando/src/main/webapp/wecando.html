@@ -450,6 +450,7 @@
 	           for (var schEvent of schEventList) {
 	             document.getElementById('chooseDate').value = schEvent.event_date;
 	           console.log(schEvent);
+               gu_data.remove("event_date");
 	           show.append("<form action='http://localhost:8080/wecando/reserve/ajax/reserveInfo.do' method='post'>" +
 	            "<input type='hidden' id='select_sch_name' value='" + schEvent.sch_name + "'>" +
 	            "<input type='hidden' id='select_sch_location' value='" + schEvent.sch_location + "'>" +
@@ -581,6 +582,7 @@
 	                   $('#' + schEvent.court_code +'t20_22i').css('display','');
 	                 }
 	              }
+                 
 	           }
 	         })
 	    }
