@@ -57,7 +57,7 @@ public class InfoController {
 		paramMap.put("startIndex", (pageNum - 1) * pageSize);
 		paramMap.put("endIndex", (pageNum - 1) * pageSize + pageSize);
 		paramMap.put("select_event_date", event_date);
-		paramMap.put("event_code", event_code);
+		paramMap.put("select_event_code", event_code);
 		List<SchEvent> schEventList = new ArrayList<>();
 		
 		for(String str : gu_list) {
