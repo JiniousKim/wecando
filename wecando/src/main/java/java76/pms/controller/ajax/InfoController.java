@@ -46,7 +46,8 @@ public class InfoController {
 	}
 	
 	@RequestMapping(value="search_gu", method=RequestMethod.POST)
-	public Object schoolList(String event_code,
+	public Object schoolList(
+		@RequestParam(defaultValue="")String event_code,
 													String[] gu_list,
 													String event_date,
 		@RequestParam(defaultValue="1") int pageNum,
@@ -55,6 +56,8 @@ public class InfoController {
 		HashMap<String, Object> paramMap = new HashMap<>();
 		paramMap.put("startIndex", (pageNum - 1) * pageSize);
 		paramMap.put("endIndex", (pageNum - 1) * pageSize + pageSize);
+		paramMap.put("select_event_date", event_date);
+		paramMap.put("event_code", event_code);
 		List<SchEvent> schEventList = new ArrayList<>();
 		
 		for(String str : gu_list) {
