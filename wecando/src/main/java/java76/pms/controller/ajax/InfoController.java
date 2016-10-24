@@ -70,7 +70,13 @@ public class InfoController {
 			paramMap.remove("gu_name");
 		}
 	  List<SchEvent> realList = new ArrayList<>();
-	  for (int i = (pageNum - 1) * pageSize; i < (pageNum - 1) * pageSize + pageSize; i++) {
+	  int startPage = (pageNum - 1) * pageSize;
+	  int endPage = (pageNum - 1) * pageSize + pageSize;
+	  if (schEventList.size() < endPage) {
+	  	  endPage = schEventList.size();
+	  }
+	  
+	  for (int i = startPage; i < endPage; i++) {
 	  		realList.add(schEventList.get(i));
 	  }
 		
