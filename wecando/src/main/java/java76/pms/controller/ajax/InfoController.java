@@ -54,8 +54,6 @@ public class InfoController {
 		@RequestParam(defaultValue="5") int pageSize) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<>();
 		HashMap<String, Object> paramMap = new HashMap<>();
-		paramMap.put("startIndex", (pageNum - 1) * pageSize);
-		paramMap.put("endIndex", (pageNum - 1) * pageSize + pageSize);
 		paramMap.put("select_event_date", event_date);
 		paramMap.put("select_event_code", event_code);
 		List<SchEvent> schEventList = new ArrayList<>();
@@ -71,8 +69,13 @@ public class InfoController {
 			}
 			paramMap.remove("gu_name");
 		}
-		resultMap.put("schEventList", schEventList);
-		System.out.println(schEventList);
+	  List<SchEvent> realList = new ArrayList<>();
+	  for (int i = (pageNum - 1) * pageSize; i < (pageNum - 1) * pageSize + pageSize; i++) {
+	  		realList.add(schEventList.get(i));
+	  }
+		
+		resultMap.put("schEventList", realList);
+		System.out.println(realList);
 		resultMap.put("status", "success");
 		return resultMap;
 	}

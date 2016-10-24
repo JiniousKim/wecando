@@ -33,36 +33,26 @@
   </insert>
   
   <select id="schEventList" parameterType='map' resultType='SchEvent'>
-    SELECT * 
-    FROM (
-    SELECT A.*,
-           ROWNUM AS RNUM,
-           COUNT(*) OVER() AS TOTCNT
-    FROM (
-         SELECT TO_CHAR(event_date, 'YYYY-MM-DD') as event_date,
-		            T6_8       as T6_8,
-			          T8_10      as T8_10,
-		            T10_12     as T10_12,
-		            T12_14     as T12_14,
-		            T14_16     as T14_16,
-		            T16_18     as T16_18,
-		            T18_20     as T18_20,
-		            T20_22     as T20_22,
-		            event_code as event_code,
-		            court_code as court_code,
-		            sch_num    as sch_num,
-		            court_price as court_price,
-		            sch_location as sch_location,
-		            sch_name   as sch_name,
-		            court_cnt  as court_cnt,
-		            sch_tel    as sch_tel
-         FROM SCHEVENT natural left outer join court natural left outer join school
-         where event_date = TO_DATE(#{select_event_date}, 'YYYY-MM-DD') AND 
-               event_code = #{select_event_code} AND sch_location like '%' || #{gu_name} || '%'
-    ) A
-    ) WHERE
-    RNUM > #{startIndex} AND #{endIndex} >= RNUM
-    
+     SELECT TO_CHAR(event_date, 'YYYY-MM-DD') as event_date,
+          T6_8       as T6_8,
+          T8_10      as T8_10,
+          T10_12     as T10_12,
+          T12_14     as T12_14,
+          T14_16     as T14_16,
+          T16_18     as T16_18,
+          T18_20     as T18_20,
+          T20_22     as T20_22,
+          event_code as event_code,
+          court_code as court_code,
+          sch_num    as sch_num,
+          court_price as court_price,
+          sch_location as sch_location,
+          sch_name   as sch_name,
+          court_cnt  as court_cnt,
+          sch_tel    as sch_tel
+     FROM SCHEVENT natural left outer join court natural left outer join school
+     where event_date = TO_DATE(#{select_event_date}, 'YYYY-MM-DD') AND 
+           event_code = #{select_event_code} AND sch_location like '%' || #{gu_name} || '%'
   </select>
   
   <select id="schEventCnt">
