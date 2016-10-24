@@ -253,6 +253,7 @@
          
          if (scrollHeight == documentHeight) {
               pageNum++;
+              alert(pageNum);
               loadSchoolList();
          }
      });
@@ -421,7 +422,6 @@
          }
          
          pageNum = 1;
-         alert(pageNum);
          $('#sch_list').val('');
          loadClickSchoolList();
      })
