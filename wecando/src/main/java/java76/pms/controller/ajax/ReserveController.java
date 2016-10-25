@@ -16,7 +16,7 @@ public class ReserveController {
 	@Autowired ServletContext servletContext;
 	
 	@RequestMapping(value="reserveInfo", method=RequestMethod.POST)
-	public Object getEventList() throws Exception {
+	public String getEventList() throws Exception {
 		return "/reserve/reserveInfo";
 	}
 	

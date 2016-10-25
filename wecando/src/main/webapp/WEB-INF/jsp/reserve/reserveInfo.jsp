@@ -97,7 +97,7 @@
                   <div id='sch_list'>
                     <div class='defaultDate'>
               <a class='logout' data-toggle='modal'
-              href='../../wecando.html#dateModal1'><input id='chooseDate' value=<%=request.getParameter("select_event_date") %> readonly></a>
+              href='../../wecando.html#dateModal1'><input id='chooseDate' value=<%=request.getParameter("select_event_date")%> readonly></a>
               </div>
             <div style='width:100%; height:180px; margin-top:30px;'>
             <div class="row mt">
