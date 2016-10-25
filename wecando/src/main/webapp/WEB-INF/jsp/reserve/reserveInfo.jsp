@@ -27,41 +27,7 @@
 <body>
   <div id="login-page">
     <div class="container">
-      <!-- Modal -->
       <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog"
-        id="myModal1" class="modal fade">
-        <form class="form-login">
-          <div class="modal-header" style="background-color: #2b4e55;">
-            <h2 style="background-color: #2b4e55;" class="form-login-heading">sign
-              in now</h2>
-          </div>
-          <div class="login-wrap">
-            <div class="input-ikon">
-              <i class='fa fa-user sc'></i>
-            </div>
-            <input type="text" id="m_email" class="f-c i-t"
-              placeholder="User ID" autofocus> <br>
-            <div class='input-ikon2'>
-              <i class='fa fa-lock sc'></i>
-            </div>
-            <input type="password" id="m_password" class="f-c i-t"
-              placeholder="Password">
-            <div style='margin-top: 30px;'>
-              <div class='b-s'>
-                <button class="btn btn-block bh" type="button"
-                  onclick="login();">LOGIN</button>
-              </div>
-              <div class="b-s1">
-                <button type='button' class="btn bh btn-block" onclick="join();">SIGN
-                  UP</button>
-              </div>
-              <hr>
-            </div>
-          </div>
-        </form>
-      </div>
-      <!-- modal -->
-            <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog"
         id="dateModal1" class="modal fade">
               <div class="col-lg-3 ds">
           <!-- CALENDAR-->
@@ -131,7 +97,7 @@
                   <div id='sch_list'>
                     <div class='defaultDate'>
               <a class='logout' data-toggle='modal'
-              href='../../wecando.html#dateModal1'><input id='chooseDate' value=<%=request.getParameter("event_date") %> readonly></a>
+              href='../../wecando.html#dateModal1'><input id='chooseDate' value=<%=request.getParameter("select_event_date") %> readonly></a>
               </div>
             <div style='width:100%; height:180px; margin-top:30px;'>
             <div class="row mt">
