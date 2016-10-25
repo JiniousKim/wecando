@@ -108,15 +108,15 @@
                     <input type='hidden' class='form-control-static' id='sch_no' value='' readonly="readonly" >
                     <label class='col-lg-2 col-sm-2 control-label'> 학교 이름</label>
                     <div class='col-lg-10'>
-                    <input class='form-control-static' id='school_name' readonly="readonly" value=<%=request.getParameter("sch_name")%> > 
+                    <input class='form-control-static' id='school_name' readonly="readonly" value=<%=request.getParameter("select_sch_name")%> > 
                     </div>
                     <label class='col-lg-2 col-sm-2 control-label'> 학교 위치</label>
                     <div class='col-lg-10'> 
-                    <input class='form-control-static' id='school_location' readonly="readonly" value=<%=request.getParameter("sch_location") %>>
+                    <input class='form-control-static' id='school_location' readonly="readonly" value=<%=request.getParameter("select_sch_location") %>>
                     </div>
                     <label class='col-lg-2 col-sm-2 control-label'> 전화 번호</label>
                     <div class='col-lg-10'>
-                    <input class='form-control-static' id='school_tel' readonly="readonly" value=<%=request.getParameter("sch_tel") %>>
+                    <input class='form-control-static' id='school_tel' readonly="readonly" value=<%=request.getParameter("select_sch_tel") %>>
                     </div>
                   </div>
                 </form>
@@ -128,66 +128,78 @@
             <!-- col-lg-12-->
           </div>
                   </div>
-                  <div class="btn-group" id='eventlist' style='top:30px;'>
                     <select id='event_list' name='ec' class='dropdown-toggle' data-toggle='dropdown' name='event_code'>
                       <option class='dropdown-menu' selected>종목 선택</option>
                     </select>
                       <div>
-                          <div class='card_title'>
-                                  <div class='card_name'><i class='fa fa-university'>&nbsp;  askldfjlks  </i></div> 
-                         </div>
-                      <div class='card'>
-                          
-                          <div class='card_photo'> 
-                              
-                          <div class='card_time'><table class='time_table'> 
-                                <thead>
-                                <tr>
-                                <th>이용가능 시간</th><th>대관비용</th><th colspan='5px;'>사용가능 여부</th> 
-                                </tr></thead><tbody>  
-                                <tr> 
-                                  <td>&nbsp;&nbsp;&nbsp;06:00 ~ 08:00</td> 
-                                  <td>&nbsp;&nbsp;&nbsp;5000원</td> 
-                                      <td>&nbsp;&nbsp;&nbsp;<a href="#">사용 가능</a></td> 
-                                </tr> 
-                                <tr> 
-                                  <td>08:00 ~ 10:00</td> 
-                                  <td>   </td> 
-                                  <td>   </td> 
-                                </tr> 
-                                <tr> 
-                                  <td>10:00 ~ 12:00</td> 
-                                  <td>   </td> 
-                                  <td>   </td> 
-                                </tr> 
-                                <tr> 
-                                  <td>12:00 ~ 14:00</td> 
-                                  <td>   </td> 
-                                  <td>   </td> 
-                                </tr> 
-                                <tr> 
-                                  <td>14:00 ~ 16:00</td> 
-                                  <td>   </td> 
-                                  <td>   </td> 
-                                </tr> 
-                                <tr> 
-                                  <td>16:00 ~ 18:00</td> 
-                                  <td>   </td> 
-                                  <td>   </td> 
-                                </tr> 
-                                <tr> 
-                                  <td>18:00 ~ 20:00</td> 
-                                  <td>   </td> 
-                                  <td>   </td> 
-                                </tr> 
-                                <tr> 
-                                  <td>20:00 ~ 22:00</td> 
-                                  <td>   </td> 
-                                  <td>   </td> 
-                                </tr></tbody></table></div></div>
-                  </div></div>
-                </div>
-               </div>
+                          <div class='card_title'> 
+                           <div class='card_name'><i class='fa fa-university'>&nbsp;<input id='title_school_name' style='border:none;' value='  schEvent.sch_name  ' readonly></i></div>  
+                  </div> 
+               <div class='card'> 
+                   <div class='card_photo'>  
+                   <div class='card_time'><table class='time_table'>  
+                         <thead> 
+                         <tr> 
+                         <th>이용가능 시간</th><th>대관비용</th><th colspan='5px;'>사용가능 여부</th>  
+                         </tr></thead><tbody>   
+                         <tr>  
+                           <td>&nbsp;&nbsp;&nbsp;06:00 ~ 08:00</td>  
+                           <td>&nbsp;&nbsp;&nbsp;  schEvent.court_price  원</td>  
+                           <td><button id='  schEvent.court_code  t6_8' value='T06_08' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button> 
+                         <button id='  schEvent.court_code  t6_8i' class='reserve-btn disabled'>예약 불가</button> 
+                        </td> 
+                           </tr> 
+                           <tr>  
+                           <td>&nbsp;&nbsp;&nbsp;08:00 ~ 10:00</td>  
+                           <td>&nbsp;&nbsp;&nbsp;  schEvent.court_price  원</td>  
+                           <td><button id='  schEvent.court_code  t8_10' value='T08_10' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button> 
+                           <button id='  schEvent.court_code  t8_10i' class='reserve-btn disabled'>예약 불가</button> 
+                           </td> 
+                           </tr> 
+                           <tr>  
+                           <td>&nbsp;&nbsp;&nbsp;10:00 ~ 12:00</td>  
+                           <td>&nbsp;&nbsp;&nbsp;  schEvent.court_price  원</td>  
+                           <td><button id='  schEvent.court_code  t10_12' value='T08_10' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button> 
+                           <button id='  schEvent.court_code  t10_12i' class='reserve-btn disabled'>예약 불가</button> 
+                           </td> 
+                           </tr> 
+                           <tr>  
+                           <td>&nbsp;&nbsp;&nbsp;12:00 ~ 14:00</td>  
+                           <td>&nbsp;&nbsp;&nbsp;  schEvent.court_price  원</td>  
+                           <td><button id='  schEvent.court_code  t12_14' value='T12_14' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button> 
+                           <button id='  schEvent.court_code  t12_14i' class='reserve-btn disabled'>예약 불가</button> 
+                           </td> 
+                           </tr> 
+                           <tr>  
+                           <td>&nbsp;&nbsp;&nbsp;14:00 ~ 16:00</td>  
+                           <td>&nbsp;&nbsp;&nbsp;  schEvent.court_price  원</td>  
+                           <td><button id='  schEvent.court_code  t14_16' value='T14_16' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button> 
+                           <button id='  schEvent.court_code  t14_16i' class='reserve-btn disabled'>예약 불가</button> 
+                           </td> 
+                            </tr> 
+                           <tr>  
+                           <td>&nbsp;&nbsp;&nbsp;16:00 ~ 18:00</td>  
+                           <td>&nbsp;&nbsp;&nbsp;  schEvent.court_price  원</td>  
+                           <td><button id='  schEvent.court_code  t16_18' value='T16_18' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button> 
+                           <button id='  schEvent.court_code  t16_18i' class='reserve-btn disabled'>예약 불가</button> 
+                           </td> 
+                           </tr> 
+                           <tr>  
+                           <td>&nbsp;&nbsp;&nbsp;18:00 ~ 20:00</td>  
+                           <td>&nbsp;&nbsp;&nbsp;  schEvent.court_price  원</td>  
+                           <td><button id='  schEvent.court_code  t18_20' value='T18_20' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button> 
+                           <button id='  schEvent.court_code  t18_20i' class='reserve-btn disabled'>예약 불가</button> 
+                           </td> 
+                           </tr> 
+                           <tr>  
+                           <td>&nbsp;&nbsp;&nbsp;20:00 ~ 22:00</td>  
+                           <td>&nbsp;&nbsp;&nbsp;  schEvent.court_price  원</td>  
+                           <td><button id='  schEvent.court_code  t20_22' value='T20_22' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button> 
+                           <button id='  schEvent.court_code  t20_22i' class='reserve-btn disabled'>예약 불가</button> 
+                           </td> 
+                           </tr> 
+                           </tbody></table></div></div> 
+                    </div>
                 <div style='width:100%; text-align:left; margin-top:-70px; margin-left:50px; margin-bottom:30px;'>
                    <button class='btn btn-theme04' type="reset">예약 취소</button>
                    <button class='btn btn-theme03' type='button'>예약 하기</button> 
