@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="java76.pms.dao.ReserveDao">
+  <resultMap type="reserve" id="reserveMap">
+    <id column="reserve_num" property="res_no"/>
+    <result column="reserve_person" property="res_person" />
+    <result column="reserve_date" property="res_date" />
+    <result column="member_num" property="m_no" />
+    <result column="sch_num" property="sch_num" />
+    <result column="event_code" property="event_code" />
+    <result column="court_code" property="court_code" />
+    <result column="event_date" property="event_date" />
+  </resultMap>
+  
+  <insert id="doReserve" parameterType='reserve'>
+    insert into reserve(reserve_num, reserve_person, reserve_date,
+           reserve_pro, member_num, sch_num, event_code, court_code, event_date, event_time)
+      values(reserve_incre.nextval, #{res_person}, TO_DATE(SYSDATE, 'YYYYMMDDHH24MISS'),
+           #{res_pro}, #{m_no}, #{sch_num}, #{event_code, jdbcType=VARCHAR},
+           #{court_code, jdbcType=VARCHAR}, TO_DATE(#{event_date}, 'YYYY-MM-DD'),
+           #{event_time, jdbcType=VARCHAR})
+  </insert>
+  
+  
+  
+  
+</mapper>

@@ -10,12 +10,143 @@ public class Reserve  implements Serializable {
 	protected int			  res_person;
 	protected String    res_pro;
 	protected Date    		res_date;
-	protected Member			member;
-	protected Event			event;
-	protected Court			court;
-	protected SchEvent		schevent;
+	protected int				m_no;
+	protected String			m_email;
+	protected	String			m_nick;
+	protected String			court_code;
+	protected String    	event_date;
+	protected String 		T6_8;
+	protected String 		T8_10;
+	protected String 		T10_12;
+	protected String 		T12_14;
+	protected String 		T14_16;
+	protected String 		T16_18;
+	protected String 		T18_20;
+	protected String 		T20_22;
+	protected int    		court_price;
 	
 	public Reserve() {}
+
+	@Override
+	public String toString() {
+		return "Reserve [res_no=" + res_no + ", res_person=" + res_person + ", res_pro=" + res_pro + ", res_date="
+		    + res_date + ", m_no=" + m_no + ", m_email=" + m_email + ", m_nick=" + m_nick + ", court_code=" + court_code
+		    + ", event_date=" + event_date + ", T6_8=" + T6_8 + ", T8_10=" + T8_10 + ", T10_12=" + T10_12 + ", T12_14="
+		    + T12_14 + ", T14_16=" + T14_16 + ", T16_18=" + T16_18 + ", T18_20=" + T18_20 + ", T20_22=" + T20_22
+		    + ", court_price=" + court_price + "]";
+	}
+
+	public int getM_no() {
+		return m_no;
+	}
+
+	public void setM_no(int m_no) {
+		this.m_no = m_no;
+	}
+
+	public String getM_email() {
+		return m_email;
+	}
+
+	public void setM_email(String m_email) {
+		this.m_email = m_email;
+	}
+
+	public String getM_nick() {
+		return m_nick;
+	}
+
+	public void setM_nick(String m_nick) {
+		this.m_nick = m_nick;
+	}
+
+	public String getCourt_code() {
+		return court_code;
+	}
+
+	public void setCourt_code(String court_code) {
+		this.court_code = court_code;
+	}
+
+	public String getEvent_date() {
+		return event_date;
+	}
+
+	public void setEvent_date(String event_date) {
+		this.event_date = event_date;
+	}
+
+	public String getT6_8() {
+		return T6_8;
+	}
+
+	public void setT6_8(String t6_8) {
+		T6_8 = t6_8;
+	}
+
+	public String getT8_10() {
+		return T8_10;
+	}
+
+	public void setT8_10(String t8_10) {
+		T8_10 = t8_10;
+	}
+
+	public String getT10_12() {
+		return T10_12;
+	}
+
+	public void setT10_12(String t10_12) {
+		T10_12 = t10_12;
+	}
+
+	public String getT12_14() {
+		return T12_14;
+	}
+
+	public void setT12_14(String t12_14) {
+		T12_14 = t12_14;
+	}
+
+	public String getT14_16() {
+		return T14_16;
+	}
+
+	public void setT14_16(String t14_16) {
+		T14_16 = t14_16;
+	}
+
+	public String getT16_18() {
+		return T16_18;
+	}
+
+	public void setT16_18(String t16_18) {
+		T16_18 = t16_18;
+	}
+
+	public String getT18_20() {
+		return T18_20;
+	}
+
+	public void setT18_20(String t18_20) {
+		T18_20 = t18_20;
+	}
+
+	public String getT20_22() {
+		return T20_22;
+	}
+
+	public void setT20_22(String t20_22) {
+		T20_22 = t20_22;
+	}
+
+	public int getCourt_price() {
+		return court_price;
+	}
+
+	public void setCourt_price(int court_price) {
+		this.court_price = court_price;
+	}
 
 	public int getRes_no() {
 		return res_no;
@@ -49,41 +180,4 @@ public class Reserve  implements Serializable {
 		this.res_date = res_date;
 	}
 
-	public Member getMember() {
-		return member;
-	}
-
-	public void setMember(Member member) {
-		this.member = member;
-	}
-
-	public Event getEvent() {
-		return event;
-	}
-
-	public void setEvent(Event event) {
-		this.event = event;
-	}
-
-	public Court getCourt() {
-		return court;
-	}
-
-	public void setCourt(Court court) {
-		this.court = court;
-	}
-
-	public SchEvent getSchevent() {
-		return schevent;
-	}
-
-	public void setSchevent(SchEvent schevent) {
-		this.schevent = schevent;
-	}
-
-	@Override
-	public String toString() {
-		return "Reserve [res_no=" + res_no + ", res_person=" + res_person + ", res_pro=" + res_pro + ", res_date="
-		    + res_date + ", member=" + member + ", event=" + event + ", court=" + court + ", schevent=" + schevent + "]";
-	}
 }

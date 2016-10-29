@@ -340,11 +340,11 @@
           }
         }) --> */
     });
+    
     function myNavFunction(id) {
         $("#date-popover").hide();
         var nav = $("#" + id).data("navigation");
         var to = $("#" + id).data("to");
-        console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
     }
     
     $.ajax({
@@ -454,11 +454,13 @@
              console.log(schEvent);
              show.append("<form action='http://localhost:8080/wecando/reserve/ajax/reserveInfo.do' method='post'>" +
               "<input type='hidden' name='select_sch_name' value='" + schEvent.sch_name + "'>" +
+              "<input type='hidden' name='select_sch_num' value='" + schEvent.sch_num + "'>" +
               "<input type='hidden' name='select_sch_location' value='" + schEvent.sch_location + "'>" +
               "<input type='hidden' name='select_sch_tel' value='" + schEvent.sch_tel + "'>" +
               "<input type='hidden' name='select_court_code' value='" + schEvent.court_code + "'>" +
               "<input type='hidden' name='select_court_price' value='" + schEvent.court_price + "'>" +
               "<input type='hidden' name='select_event_date' value='" + schEvent.event_date + "'>" +
+              "<input type='hidden' name='select_event_code' value='" + schEvent.event_code + "'>" +
                "   <div class='card_title'>" +
                 "          <div class='card_name'><i class='fa fa-university'>&nbsp;<input id='title_school_name' style='border:none;' value='" + schEvent.sch_name + "' readonly></i></div>" + 
                  "</div>" +
