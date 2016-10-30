@@ -25,45 +25,14 @@
 <script src="../../js/chart-master/Chart.js"></script>
 </head>
 <body>
-  <div id="login-page">
-    <div class="container">
-      <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog"
-        id="dateModal1" class="modal fade">
-              <div class="col-lg-3 ds">
-          <!-- CALENDAR-->
-                    <h3>날짜 선택</h3>
-          <div id="calendar" class="mb">
-            <div class="panel green-panel">
-              <div class="panel-body">
-                <div id="date-popover" class="popover top"
-                  style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
-                  <div class="arrow"></div>
-                  <h3 class="popover-title" style="disadding: none;"></h3>
-                  <div id="date-popover-content" class="popover-content"></div>
-                </div>
-                <div id="my-calendar"></div>
-                                <button id='modal_close' type="button" style='display:none;' class="close" data-dismiss="modal">
-                                <span aria-hidden="true">&times;</span>
-                                <span class="sr-only">Close</span>
-                              </button>
-              </div>
-            </div>
-          </div>
-        </div>
-                
-      </div>
-
-    </div>
-  </div>
-
-  <section id="container" class="sidebar-closed">
+  <section id="container" class="sidebar">
     <header class="header black-bg">
       <div class="sidebar-toggle-box">
         <div class="fa fa-bars tooltips" data-placement="right"
           data-original-title="Toggle Navigation"></div>
       </div>
-      <a href="../../wecando.html" class="logo"> <img id="wecando_white"
-        src="../../img/wecando_white.png">
+      <a href="wecando.html" class="logo"> <img id="wecando_white"
+        src="img/wecando_white.png">
       </a>
       <!-- login 버튼 스크립트로 내려서 login and logout 구현 -->
       <div class="top-menu" id='login_ava'></div>
@@ -71,14 +40,14 @@
     <aside>
       <div id="sidebar" class="nav-collapse">
         <ul class="sidebar-menu" id="nav-accordion">
-          <li class="sub-menu"><a href="../../javascript:;"> <i
+          <li class="sub-menu"><a href="javascript:;"> <i
               class="fa fa-calendar"></i> <span>예약 정보</span>
           </a>
             <ul class="sub" id='sub_m'>
-              <li><a href="../../general.html">내 예약정보</a></li>
+              <li><a href="general.html">내 예약정보</a></li>
             </ul></li>
 
-          <li class="sub-menu"><a href="../../javascript:;"> <i
+          <li class="sub-menu"><a href="javascript:;"> <i
               class="fa fa-user"></i> <span>마이 페이지</span>
           </a>
             <ul class="sub" id='sub_menu'>
@@ -89,132 +58,67 @@
     </aside>
     <section id="main-content">
       <section class="wrapper">
-                <div class="col-lg-3 ds dj">
-                  <div class='wecando'>
-                    <img style='margin-top:30px; width:400px; height:100px;' src="../../img/black_logo.png">
-                  </div>
-                  <hr>
-                  <div id='sch_list'>
-                    <div class='defaultDate'>
-              <a class='logout' data-toggle='modal'
-              href='../../wecando.html#dateModal1'><input id='chooseDate' value=<%=request.getParameter("select_event_date")%> readonly></a>
-              </div>
-            <div style='width:100%; height:180px; margin-top:30px;'>
-            <div class="row mt">
-            <div class="col-lg-12" style='left:-10px; top:25px;'>
-              <div class="form-panel-email" style='width:100%;'>
-                <form class="form-horizontal style-form" method="post">
-                  <div class="form-group" id='result'>
-                    <input type='hidden' class='form-control-static' id='sch_no' value='<%= request.getParameter("select_sch_num") %>' readonly="readonly" >
-                    <label class='col-lg-2 col-sm-2 control-label'> 학교 이름</label>
-                    <div class='col-lg-10'>
-                    <input class='form-control-static' id='school_name' readonly="readonly" value=<%=request.getParameter("select_sch_name")%> > 
-                    </div>
-                    <label class='col-lg-2 col-sm-2 control-label'> 학교 위치</label>
-                    <div class='col-lg-10'>
-                    
-                    <input class='form-control-static' id='school_location' readonly="readonly" value='<%=request.getParameter("select_sch_location")%>'>
-                    </div>
-                    <label class='col-lg-2 col-sm-2 control-label'> 전화 번호</label>
-                    <div class='col-lg-10'>
-                    <input class='form-control-static' id='school_tel' readonly="readonly" value=<%=request.getParameter("select_sch_tel") %>>
-                    </div>
-                  </div>
-                </form>
-              </div>
-                <div id='map' style='width:320px; height:200px; position: absolute; right:0px; top:-50px; background-color:black; z-index:1'>
-                    
-                  </div>
-            </div>
-            <!-- col-lg-12-->
+        <div class="col-lg-3 ds dj" style='padding-bottom: 15px;'>
+          <div class='reserveDiv'>
+            <img src="img/reserveimage.png">
           </div>
-                  </div>
-                    <select id='event_list' name='ec' class='dropdown-toggle' data-toggle='dropdown' name='event_code'>
-                      <option class='dropdown-menu' selected>종목 선택</option>
-                    </select>
-                      <div>
-                          <div class='card_title'> 
-                           <div class='card_name'><i class='fa fa-university'>&nbsp;<input id='title_school_name' style='border:none;' value='<%=request.getParameter("select_sch_name")%>' readonly></i></div>  
-                  </div> 
-               <div class='card'> 
-                   <input id="court_code" type="hidden" value='<%=request.getParameter("select_court_code") %>'>  
-                   <input id="event_code" type="hidden" value='<%=request.getParameter("select_event_code") %>'>
-                   <div class='card_photo'>  
-                   <div class='card_time'><table class='time_table'>
-                         <thead> 
-                         <tr> 
-                         <th>이용가능 시간</th><th>대관비용</th><th colspan='5px;'>사용가능 여부</th>  
-                         </tr></thead><tbody>   
-                         <tr>  
-                           <td>&nbsp;&nbsp;&nbsp;06:00 ~ 08:00</td>  
-                           <td>&nbsp;&nbsp;&nbsp;  schEvent.court_price  원</td>  
-                           <td><button id='  schEvent.court_code  t6_8' value='T06_08' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button> 
-                         <button id='  schEvent.court_code  t6_8i' class='reserve-btn disabled'>예약 불가</button> 
-                        </td> 
-                           </tr> 
-                           <tr>  
-                           <td>&nbsp;&nbsp;&nbsp;08:00 ~ 10:00</td>  
-                           <td>&nbsp;&nbsp;&nbsp;  schEvent.court_price  원</td>  
-                           <td><button id='  schEvent.court_code  t8_10' value='T08_10' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button> 
-                           <button id='  schEvent.court_code  t8_10i' class='reserve-btn disabled'>예약 불가</button> 
-                           </td> 
-                           </tr> 
-                           <tr>  
-                           <td>&nbsp;&nbsp;&nbsp;10:00 ~ 12:00</td>  
-                           <td>&nbsp;&nbsp;&nbsp;  schEvent.court_price  원</td>  
-                           <td><button id='  schEvent.court_code  t10_12' value='T08_10' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button> 
-                           <button id='  schEvent.court_code  t10_12i' class='reserve-btn disabled'>예약 불가</button> 
-                           </td> 
-                           </tr> 
-                           <tr>  
-                           <td>&nbsp;&nbsp;&nbsp;12:00 ~ 14:00</td>  
-                           <td>&nbsp;&nbsp;&nbsp;  schEvent.court_price  원</td>  
-                           <td><button id='  schEvent.court_code  t12_14' value='T12_14' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button> 
-                           <button id='  schEvent.court_code  t12_14i' class='reserve-btn disabled'>예약 불가</button> 
-                           </td> 
-                           </tr> 
-                           <tr>  
-                           <td>&nbsp;&nbsp;&nbsp;14:00 ~ 16:00</td>  
-                           <td>&nbsp;&nbsp;&nbsp;  schEvent.court_price  원</td>  
-                           <td><button id='  schEvent.court_code  t14_16' value='T14_16' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button> 
-                           <button id='  schEvent.court_code  t14_16i' class='reserve-btn disabled'>예약 불가</button> 
-                           </td> 
-                            </tr> 
-                           <tr>  
-                           <td>&nbsp;&nbsp;&nbsp;16:00 ~ 18:00</td>  
-                           <td>&nbsp;&nbsp;&nbsp;  schEvent.court_price  원</td>  
-                           <td><button id='  schEvent.court_code  t16_18' value='T16_18' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button> 
-                           <button id='  schEvent.court_code  t16_18i' class='reserve-btn disabled'>예약 불가</button> 
-                           </td> 
-                           </tr> 
-                           <tr>  
-                           <td>&nbsp;&nbsp;&nbsp;18:00 ~ 20:00</td>  
-                           <td>&nbsp;&nbsp;&nbsp;  schEvent.court_price  원</td>  
-                           <td><button id='  schEvent.court_code  t18_20' value='T18_20' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button> 
-                           <button id='  schEvent.court_code  t18_20i' class='reserve-btn disabled'>예약 불가</button> 
-                           </td> 
-                           </tr> 
-                           <tr>  
-                           <td>&nbsp;&nbsp;&nbsp;20:00 ~ 22:00</td>  
-                           <td>&nbsp;&nbsp;&nbsp;  schEvent.court_price  원</td>  
-                           <td><button id='  schEvent.court_code  t20_22' value='T20_22' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button> 
-                           <button id='  schEvent.court_code  t20_22i' class='reserve-btn disabled'>예약 불가</button> 
-                           </td> 
-                           </tr> 
-                           </tbody></table></div></div>
-                           </div>
-                           </div> 
-                    </div>
-                <div style='width:100%; text-align:left; margin-top:-70px; margin-left:50px; margin-bottom:30px;'>
-                   <button class='btn btn-theme04' type="reset">예약 취소</button>
-                   <button class='btn btn-theme03' type='button'>예약 하기</button> 
-                </div>
-                   
-                </div>
+          <hr>
+          <div class='sch_info'>
+            <div class='school'>
+              <div class='field'>
+                <label> 학교 이름 :</label>
+                <input id='school_name' readonly="readonly" value='' >
+              </div> 
+              <div class='field'>
+                <label> 학교 위치 :</label>
+                <input id='school_location' style='width: 85%; display: block;margin-left: 30px;' readonly="readonly" value='' >
+              </div> 
+              <div class='field' style='margin-top: 18px;'>
+                <label> 학교 번호 :</label>
+                <input id='school_tel' readonly="readonly" value='' >
+              </div> 
+            </div>
+            <div class='map_border'>
+                <div id='map'></div>
+            </div>
+        </div>
+        <hr style='margin: 30px 0;'>
+       <div class='reserve_info'>
+         <div class='field' style='margin-top: 18px;'>
+            <label> 종목 명 :&nbsp&nbsp&nbsp</label>
+            <input id='school_tel' readonly="readonly" value='' >
+          </div>
+         <div class='field' style='margin-top: 18px;'>
+            <label> 코트 번호 :</label>
+            <input id='school_tel' readonly="readonly" value='' >
+          </div>
+         <div class='field' style='margin-top: 18px;'>
+            <label> 이용 시간 :</label>
+            <input id='school_tel' readonly="readonly" value='' >
+          </div>
+         <div class='field' style='margin-top: 18px;'>
+            <label> 이용 금액 :</label>
+            <input id='school_tel' readonly="readonly" value='' >
+          </div>
+         <div class='field' style='margin-top: 18px;'>
+            <label> 최대 인원 :</label>
+            <input id='school_tel' readonly="readonly" value='53' >
+          </div>
+         <div class='field' style='margin-top: 18px;'>
+            <label> 신청 이용자 수</label>
+            <input id='court_cnt' type="number" name="points" min="0" max="10" step="1" value="1">
+          </div>
+        <div class='reserveBtn'>
+           <button class='btn btn-theme04' type="reset">예약 취소</button>
+           <button class='btn btn-theme03' type='button'>예약 하기</button> 
+        </div>
+        <img src='img/link.png'>
+        <img src='img/link.png' style='left: 320px;'>
+       </div>
+           
+        </div>
       </section> 
     </section>
-    <footer class="site-footer">
-    </footer>
   </section>
   <script src="../../js/jquery.js"></script>
   <script src="../../js/jquery-1.8.3.min.js"></script>

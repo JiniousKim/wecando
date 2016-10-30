@@ -2331,14 +2331,6 @@ label {
   margin-left: -10px;
 }
 
-#map {
-  width: 310px;
-  height: 250px;
-  margin-right: 5px;
-  margin-left: 7px;
-  box-shadow: 0px 1px 18px 2px inset;
-}
-
 #auth {
   margin-top: 30px;
   margin-left: 10px;
@@ -2984,4 +2976,102 @@ div.col-md-4 a {
     margin-left: 8px;
     border-radius: 22px;
     height: 95%;
+}
+
+.sch_info {
+	height:180px;
+	margin-top:30px;
+/* 	border: 1px solid black; */
+}
+
+.school {
+/* 	border: 1px solid red; */
+	display: inline-block;
+	position: relative;
+	float: left;
+	width: 65%;
+	height: inherit;
+}
+
+#map {
+  height: inherit;
+/*   border: 1px solid blue; */
+  position: relative;
+  width: 100%;
+  border-radius: 19px;
+  border: 1px solid white;
+}
+
+.map_border {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  float: left;
+  width: 35%;
+	height: inherit;
+  border-radius: 19px;
+      box-shadow: 5px 6px 5px -4px gray;
+	
+}
+
+.field {
+/* 	border: 1px solid blue; */
+    margin-bottom: 10px;
+}
+
+.field label {
+	color: black;
+  font-size: 20px;
+  left: 15px;
+  position: relative;
+}
+
+.field input {
+    color: black;
+    font-size: 20px;
+    left: 28px;
+    position: relative;
+    width: 77%;
+    border: none;
+}
+
+.reserve_info {
+	border: 1px solid #e5e4e4;
+  height: 380px;
+  margin-bottom: 15px;
+  width: 50%;
+  position: relative;
+  left: 200px;
+  border-radius: 15px;
+  box-shadow: 8px 7px 4px -1px rgba(201, 203, 210, 0.76);
+}
+
+.reserveBtn {
+/*   margin-left:50px; */
+}
+
+.reserve_info > .field > input{
+	width: 55%;
+}
+
+.reserve_info > .field > #court_cnt {
+	  color: black;
+    text-align: center;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 51px;
+}
+
+.reserve_info > img {
+    position: absolute;
+    top: -43px;
+    width: 20px;
+    left: 100px;
+}
+
+.card_sch_name > button {
+	float: right;
+  right: 32px;
+  position: relative;
+  top: -5px;
 }
