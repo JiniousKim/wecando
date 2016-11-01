@@ -31,7 +31,7 @@
         <div class="fa fa-bars tooltips" data-placement="right"
           data-original-title="Toggle Navigation"></div>
       </div>
-      <a href="wecando.html" class="logo"> <img id="wecando_white"
+      <a href="../../wecando.html" class="logo"> <img id="wecando_white"
         src="../../img/wecando_white.png">
       </a>
       <!-- login 버튼 스크립트로 내려서 login and logout 구현 -->
@@ -67,15 +67,15 @@
             <div class='school'>
               <div class='field'>
                 <label> 학교 이름 :</label>
-                <input id='school_name' readonly="readonly" value='<%=request.getParameter("select_school_name") %>' >
+                <input id='school_name' readonly="readonly" value='<%=request.getParameter("select_sch_name") %>' >
               </div> 
               <div class='field'>
                 <label> 학교 위치 :</label>
-                <input id='school_location' style='width: 85%; display: block;margin-left: 30px;' readonly="readonly" value='<%=request.getParameter("select_school_location") %>' >
+                <input id='school_location' style='width: 85%; display: block;margin-left: 30px;' readonly="readonly" value='<%=request.getParameter("select_sch_location") %>' >
               </div> 
               <div class='field' style='margin-top: 18px;'>
                 <label> 학교 번호 :</label>
-                <input id='school_tel' readonly="readonly" value='<%=request.getParameter("select_school_tel") %>' >
+                <input id='school_tel' readonly="readonly" value='<%=request.getParameter("select_sch_tel") %>' >
               </div> 
             </div>
             <div class='map_border'>
@@ -86,23 +86,23 @@
        <div class='reserve_info'>
          <div class='field' style='margin-top: 18px;'>
             <label> 종목 명 :&nbsp&nbsp&nbsp</label>
-            <input id='school_tel' readonly="readonly" value='<%=request.getParameter("select_event_name") %>' >
+            <input id='event_name' readonly="readonly" value='<%=request.getParameter("select_event_name") %>' >
           </div>
          <div class='field' style='margin-top: 18px;'>
             <label> 코트 번호 :</label>
-            <input id='school_tel' readonly="readonly" value='<%=request.getParameter("select_court_cnt") %>' >
+            <input id='court_cnt' readonly="readonly" value='<%=request.getParameter("select_court_cnt") %>' >
           </div>
          <div class='field' style='margin-top: 18px;'>
             <label> 이용 시간 :</label>
-            <input id='school_tel' readonly="readonly" value='<%=request.getParameter("select_event_time") %>' >
+            <input id='event_time' readonly="readonly" value='<%=request.getParameter("select_event_time") %>' >
           </div>
          <div class='field' style='margin-top: 18px;'>
             <label> 이용 금액 :</label>
-            <input id='school_tel' readonly="readonly" value='<%=request.getParameter("select_court_price") %>' >
+            <input id='court_price' readonly="readonly" value='<%=request.getParameter("select_court_price") %>' >
           </div>
          <div class='field' style='margin-top: 18px;'>
             <label> 최대 인원 :</label>
-            <input id='school_tel' readonly="readonly" value='<%=request.getParameter("select_court_max") %>' >
+            <input id='court_max' readonly="readonly" value='<%=request.getParameter("select_court_max") %>' >
           </div>
          <div class='field' style='margin-top: 18px;'>
             <label> 신청 이용자 수</label>
@@ -181,24 +181,6 @@
     var m_no;
     
     $(document).ready(function () {
-        $("#date-popover").popover({html: true, trigger: "manual"});
-        $("#date-popover").hide();
-        $("#date-popover").click(function (e) {
-            $(this).hide();
-        });
-        $("#my-calendar").zabuto_calendar({
-            action: function () {
-                var day = this.id.split('_');
-                var selectedDay = day[3];
-                document.getElementById('chooseDate').value = selectedDay;
-                $('#modal_close').trigger('click');
-                //return myDateFunction(this.id, false);
-            },
-            action_nav: function () {
-                //return myNavFunction(this.id);
-            }
-        });
-        
      $.ajax({
         url : contextRoot + '/info/ajax/eventList.do',
         type : 'post',
@@ -214,8 +196,6 @@
           }
         }
       })
-    });
-    
     $.ajax({
         url : contextRoot + '/auth/ajax/check_session.do',
         type : 'post',
@@ -243,24 +223,20 @@
           } 
           if (ajaxresult.grade == 2) {
               sM.append(
-               "<li><a href='info/register_school.html'>학교 정보</a></li>"   
+               "<li><a href='../../info/register_school.html'>학교 정보</a></li>"   
               )
               sub.append(
-              "<li><a href='buttons.html'>신청된 정보</a></li>"
+              "<li><a href='../../info/ClientReserveList.html'>신청된 정보</a></li>"
                   )
           }
         }
       })
+    });
+    
      
   
   </script>
   <script>
-    $(document).on("click", "#dddd", function() {
-        date = 'asdf';
-        $('#sch_list').append(date);
-        document.getElementById('chooseDate').value = date;
-    })
-    
     function logout() {
       $.ajax({
         url : contextRoot + '/auth/ajax/logout.do',
