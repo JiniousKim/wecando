@@ -25,7 +25,7 @@ public class ReserveController {
 		return "/reserve/reserveInfo";
 	}
 	
-	@RequestMapping(value="reserve", method=RequestMethod.POST)
+	@RequestMapping(value="doReserve", method=RequestMethod.POST)
 	public Object doReserve(int m_no,
 			                    String event_date,
 			                    String court_code,

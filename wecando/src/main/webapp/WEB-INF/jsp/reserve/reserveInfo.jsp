@@ -106,7 +106,7 @@
           </div>
          <div class='field' style='margin-top: 18px;'>
             <label> 신청 이용자 수</label>
-            <input id='court_cnt' type="number" name="points" min="0" max="10" step="1" value="1">
+            <input id='user_cnt' type="number" name="points" min="0" max="<%= request.getParameter("select_court_max") %>" step="1" value="1">
           </div>
         <div class='reserveBtn'>
            <button style='margin-left:250px;' class='btn btn-theme04' type="reset">예약 취소</button>
@@ -186,6 +186,9 @@
         type : 'post',
         dataType : 'json',
         cache : false,
+        data : {
+        	  event_code : $('#event_name').val();
+        }
         processData : false,
         contentType : false,
         async : false,
