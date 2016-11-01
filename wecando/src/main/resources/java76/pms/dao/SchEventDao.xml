@@ -49,7 +49,8 @@
           sch_location as sch_location,
           sch_name   as sch_name,
           court_cnt  as court_cnt,
-          sch_tel    as sch_tel
+          sch_tel    as sch_tel,
+          court_max  as court_max
      FROM SCHEVENT natural left outer join court natural left outer join school
      where event_date = TO_DATE(#{select_event_date}, 'YYYY-MM-DD') AND 
            event_code = #{select_event_code} AND sch_location like '%' || #{gu_name} || '%'

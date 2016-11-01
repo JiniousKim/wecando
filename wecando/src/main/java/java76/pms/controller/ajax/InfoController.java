@@ -40,6 +40,19 @@ public class InfoController {
 		return resultMap;
 	}
 	
+	@RequestMapping(value="eventName", method=RequestMethod.POST)
+	public Object getEventName(String event_code) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<>();
+		try {
+			String event_name = eventService.getEventName(event_code);
+			resultMap.put("event_name", event_name);
+		} catch (Exception e) {
+			return new AjaxResult("failure", null);
+		}
+		resultMap.put("status", "success");
+		return resultMap;
+	}
+	
 	@RequestMapping(value="eventList", method=RequestMethod.GET)
 	public String get_EventList() {
 		return "redirect:../../error.html";

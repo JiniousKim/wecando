@@ -25,11 +25,6 @@ public class ReserveController {
 		return "/reserve/reserveInfo";
 	}
 	
-	@RequestMapping(value="eventList", method=RequestMethod.GET)
-	public String get_EventList() {
-		return "redirect:../../error.html";
-	}
-	
 	@RequestMapping(value="reserve", method=RequestMethod.POST)
 	public Object doReserve(int m_no,
 			                    String event_date,
@@ -49,6 +44,7 @@ public class ReserveController {
 		paramMap.put("res_person", user_cnt);
 		paramMap.put("res_pro", "예약완료");
 		paramMap.put("event_time", event_time);
+		System.out.println(event_time);
 		try {
 		  if (reserveService.doReserve(paramMap) > 0) {
 			  	switch(event_time) {

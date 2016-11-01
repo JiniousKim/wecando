@@ -16,5 +16,11 @@
            event_code
     from event
     order by event_name asc
+  </select>
+  
+  <select id="getEventName" resultType='String'>
+    select event_name
+    from event
+    where event_code = #{event_code}
   </select>    
 </mapper>

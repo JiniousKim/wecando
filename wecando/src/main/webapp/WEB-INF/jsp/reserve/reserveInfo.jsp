@@ -90,11 +90,11 @@
           </div>
          <div class='field' style='margin-top: 18px;'>
             <label> 코트 번호 :</label>
-            <input id='court_cnt' readonly="readonly" value='<%=request.getParameter("select_court_cnt") %>' >
+            <input id='court_code' readonly="readonly" value='<%=request.getParameter("select_court_code") %>' >
           </div>
          <div class='field' style='margin-top: 18px;'>
             <label> 이용 시간 :</label>
-            <input id='event_time' readonly="readonly" value='<%=request.getParameter("select_event_time") %>' >
+            <input id='event_time' readonly="readonly" value='<%=request.getParameter("select_Time") %>' >
           </div>
          <div class='field' style='margin-top: 18px;'>
             <label> 이용 금액 :</label>
@@ -182,7 +182,7 @@
     
     $(document).ready(function () {
      $.ajax({
-        url : contextRoot + '/info/ajax/eventList.do',
+        url : contextRoot + '/info/ajax/eventName.do',
         type : 'post',
         dataType : 'json',
         cache : false,
@@ -190,10 +190,7 @@
         contentType : false,
         async : false,
         success : function(resultObj) {
-          var list = $('#event_list');
-          for(var event of resultObj.eventList) {
-             list.append("<option value='" + event.event_code + "'>" + event.event_name + "</option>")
-          }
+        	  document.getElementById('event_name').value = resultObj.event_name;
         }
       })
     $.ajax({

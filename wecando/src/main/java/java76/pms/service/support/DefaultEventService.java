@@ -20,6 +20,10 @@ public class DefaultEventService implements EventService {
   public Event getEvent(String event_code) {
   		return eventDao.getEvent(event_code);
   }
+  
+  public String getEventName(String event_code) {
+  	  return eventDao.getEventName(event_code);
+  }
 }
 
 
