@@ -32,7 +32,7 @@
           data-original-title="Toggle Navigation"></div>
       </div>
       <a href="wecando.html" class="logo"> <img id="wecando_white"
-        src="img/wecando_white.png">
+        src="../../img/wecando_white.png">
       </a>
       <!-- login 버튼 스크립트로 내려서 login and logout 구현 -->
       <div class="top-menu" id='login_ava'></div>
@@ -44,14 +44,14 @@
               class="fa fa-calendar"></i> <span>예약 정보</span>
           </a>
             <ul class="sub" id='sub_m'>
-              <li><a href="general.html">내 예약정보</a></li>
+              <li><a href="../../info/ClientCurrentReserveList.html">내 예약정보</a></li>
             </ul></li>
 
           <li class="sub-menu"><a href="javascript:;"> <i
               class="fa fa-user"></i> <span>마이 페이지</span>
           </a>
             <ul class="sub" id='sub_menu'>
-              <li><a href="memberInfo.html">내 정보</a></li>
+              <li><a href="../../info/memberInfo.html">내 정보</a></li>
             </ul></li>
         </ul>
       </div>
@@ -60,22 +60,22 @@
       <section class="wrapper">
         <div class="col-lg-3 ds dj" style='padding-bottom: 15px;'>
           <div class='reserveDiv'>
-            <img src="img/reserveimage.png">
+            <img src="../../img/reserveimage.png">
           </div>
           <hr>
           <div class='sch_info'>
             <div class='school'>
               <div class='field'>
                 <label> 학교 이름 :</label>
-                <input id='school_name' readonly="readonly" value='' >
+                <input id='school_name' readonly="readonly" value='<%=request.getParameter("select_school_name") %>' >
               </div> 
               <div class='field'>
                 <label> 학교 위치 :</label>
-                <input id='school_location' style='width: 85%; display: block;margin-left: 30px;' readonly="readonly" value='' >
+                <input id='school_location' style='width: 85%; display: block;margin-left: 30px;' readonly="readonly" value='<%=request.getParameter("select_school_location") %>' >
               </div> 
               <div class='field' style='margin-top: 18px;'>
                 <label> 학교 번호 :</label>
-                <input id='school_tel' readonly="readonly" value='' >
+                <input id='school_tel' readonly="readonly" value='<%=request.getParameter("select_school_tel") %>' >
               </div> 
             </div>
             <div class='map_border'>
@@ -86,34 +86,34 @@
        <div class='reserve_info'>
          <div class='field' style='margin-top: 18px;'>
             <label> 종목 명 :&nbsp&nbsp&nbsp</label>
-            <input id='school_tel' readonly="readonly" value='' >
+            <input id='school_tel' readonly="readonly" value='<%=request.getParameter("select_event_name") %>' >
           </div>
          <div class='field' style='margin-top: 18px;'>
             <label> 코트 번호 :</label>
-            <input id='school_tel' readonly="readonly" value='' >
+            <input id='school_tel' readonly="readonly" value='<%=request.getParameter("select_court_cnt") %>' >
           </div>
          <div class='field' style='margin-top: 18px;'>
             <label> 이용 시간 :</label>
-            <input id='school_tel' readonly="readonly" value='' >
+            <input id='school_tel' readonly="readonly" value='<%=request.getParameter("select_event_time") %>' >
           </div>
          <div class='field' style='margin-top: 18px;'>
             <label> 이용 금액 :</label>
-            <input id='school_tel' readonly="readonly" value='' >
+            <input id='school_tel' readonly="readonly" value='<%=request.getParameter("select_court_price") %>' >
           </div>
          <div class='field' style='margin-top: 18px;'>
             <label> 최대 인원 :</label>
-            <input id='school_tel' readonly="readonly" value='53' >
+            <input id='school_tel' readonly="readonly" value='<%=request.getParameter("select_court_max") %>' >
           </div>
          <div class='field' style='margin-top: 18px;'>
             <label> 신청 이용자 수</label>
             <input id='court_cnt' type="number" name="points" min="0" max="10" step="1" value="1">
           </div>
         <div class='reserveBtn'>
-           <button class='btn btn-theme04' type="reset">예약 취소</button>
+           <button style='margin-left:250px;' class='btn btn-theme04' type="reset">예약 취소</button>
            <button class='btn btn-theme03' type='button'>예약 하기</button> 
         </div>
-        <img src='img/link.png'>
-        <img src='img/link.png' style='left: 320px;'>
+        <img src='../../img/link.png'>
+        <img src='../../img/link.png' style='left: 320px;'>
        </div>
            
         </div>
@@ -279,31 +279,31 @@
     }
     
     function doReserve() {
-    	  var form_data = new FormData();
-    	  form_data.append("m_no", m_no);
-    	  form_data.append("sch_num", $('#sch_no').val());
-    	  form_data.append("event_code", $('#event_code').val());
-    	  form_data.append("event_date", $('#chooseDate').val());
-    	  form_data.append("court_code", $('#court_code').val());
-    	  form_data.append("user_cnt", $('#user_cnt').val());
-    	  form_data.append("event_time", $('#event_time').val());
-    	  $.ajax({
-    		  url : contextRoot + '/reserve/ajax/doReserve.do',
-    		  type : 'post',
-    		  dataType : 'json',
-    		  cache : false,
-    		  processData : false,
-    		  contextType : false,
-    		  data : form_data,
-    		  success : function(resultObj) {
-    			  var ajaxResult = resultObj.AjaxResult;
-    			  if (ajaxResult.status == 'success') {
-    				  swal('Good', '예약에 성공하였습니다.', 'success');
-    			  } else {
-    				  swal('Oops', '예약에 실패했습니다.', 'error');
-    			  }
-    		  }
-    	  })
+        var form_data = new FormData();
+        form_data.append("m_no", m_no);
+        form_data.append("sch_num", $('#sch_no').val());
+        form_data.append("event_code", $('#event_code').val());
+        form_data.append("event_date", $('#chooseDate').val());
+        form_data.append("court_code", $('#court_code').val());
+        form_data.append("user_cnt", $('#user_cnt').val());
+        form_data.append("event_time", $('#event_time').val());
+        $.ajax({
+          url : contextRoot + '/reserve/ajax/doReserve.do',
+          type : 'post',
+          dataType : 'json',
+          cache : false,
+          processData : false,
+          contextType : false,
+          data : form_data,
+          success : function(resultObj) {
+            var ajaxResult = resultObj.AjaxResult;
+            if (ajaxResult.status == 'success') {
+              swal('Good', '예약에 성공하였습니다.', 'success');
+            } else {
+              swal('Oops', '예약에 실패했습니다.', 'error');
+            }
+          }
+        })
     }
   </script>
 </body>
