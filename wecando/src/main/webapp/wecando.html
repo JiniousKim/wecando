@@ -88,7 +88,8 @@
               class="fa fa-calendar"></i> <span>예약 정보</span>
           </a>
             <ul class="sub" id='sub_m'>
-              <li><a href="general.html">내 예약정보</a></li>
+              <li><a href="info/ClientCurrentReserveList.html">내 예약정보</a></li>
+              <li><a href="info/ClientLastList.html">지난 예약정보</a>
             </ul></li>
 
           <li class="sub-menu"><a href="javascript:;"> <i
@@ -202,8 +203,6 @@
         </div>
         <!-- /col-lg-3 -->
     </section>
-    <footer class="site-footer">
-    </footer>
   </section>
 
   <script src="js/jquery.js"></script>
@@ -286,10 +285,6 @@
                   } else {
                       swal('Oops...', '이용이 불가능한 날짜 입니다.', 'error');
                   }
-                return myDateFunction(this.id, false);
-            },
-            action_nav: function () {
-                return myNavFunction(this.id);
             }
         });
         
@@ -376,7 +371,7 @@
                "<li><a href='info/register_school.html'>학교 정보</a></li>"   
               )
               sub.append(
-              "<li><a href='buttons.html'>신청된 정보</a></li>"
+              "<li><a href='info/ClientReserveList.html'>신청된 정보</a></li>"
                 )
           }
         }

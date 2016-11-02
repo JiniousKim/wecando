@@ -18,13 +18,19 @@
   <insert id="doReserve" parameterType='reserve'>
     insert into reserve(reserve_num, reserve_person, reserve_date,
            reserve_pro, member_num, sch_num, event_code, court_code, event_date, event_time)
-      values(reserve_incre.nextval, #{res_person}, TO_DATE(SYSDATE, 'YYYYMMDDHH24MISS'),
+      values(reserve_incre.nextval, #{res_person}, SYSDATE,
            #{res_pro, jdbcType=VARCHAR}, #{m_no}, #{sch_num}, #{event_code, jdbcType=VARCHAR},
            #{court_code, jdbcType=VARCHAR}, TO_DATE(#{event_date}, 'YYYY-MM-DD'),
            #{event_time, jdbcType=VARCHAR})
   </insert>
   
-  
+  <select id="reserveInfo" parameterType='reserve'>
+    select *
+    from reserve
+    where TO_CHAR(event_date=(select event_date
+                              from reserve
+                              where member_num=#{m_no}), 'YYYYMMDD') - TO_CHAR(SYSDATE,'YYYYMMDD') > 0
+  </select>
   
   
 </mapper>
