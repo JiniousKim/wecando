@@ -87,112 +87,112 @@
   
   <update id="reserveT6_8" parameterType='map'>
     update SCHEVENT set
-      T6_8 = '1'
+      T6_8 = #{time, jdbcType=VARCHAR}
     where
       event_date = #{event_date} and court_code = #{court_code}
   </update>
   
   <update id="reserveT8_10" parameterType='map'>
     update SCHEVENT set
-      T8_10 = '1'
+      T8_10 = #{time, jdbcType=VARCHAR}
     where
       event_date = #{event_date} and court_code = #{court_code}
   </update>
   
   <update id="reserveT10_12" parameterType='map'>
     update SCHEVENT set
-      T10_12 = '1'
+      T10_12 = #{time, jdbcType=VARCHAR}
     where
       event_date = #{event_date} and court_code = #{court_code}
   </update>
   
   <update id="reserveT12_14" parameterType='map'>
     update SCHEVENT set
-      T12_14 = '1'
+      T12_14 = #{time, jdbcType=VARCHAR}
     where
       event_date = #{event_date} and court_code = #{court_code}
   </update>
   
   <update id="reserveT14_16" parameterType='map'>
     update SCHEVENT set
-      T14_16 = '1'
+      T14_16 = #{time, jdbcType=VARCHAR}
     where
       event_date = #{event_date} and court_code = #{court_code}
   </update>
   
   <update id="reserveT16_18" parameterType='map'>
     update SCHEVENT set
-      T16_18 = '1'
+      T16_18 = #{time, jdbcType=VARCHAR}
     where
       event_date = #{event_date} and court_code = #{court_code}
   </update>
   
   <update id="reserveT18_20" parameterType='map'>
     update SCHEVENT set
-      T18_20 = '1'
+      T18_20 = #{time, jdbcType=VARCHAR}
     where
       event_date = #{event_date} and court_code = #{court_code}
   </update>
   
   <update id="reserveT20_22" parameterType='map'>
     update SCHEVENT set
-      T20_22 = '1'
+      T20_22 = #{time, jdbcType=VARCHAR}
     where
       event_date = #{event_date} and court_code = #{court_code}
   </update>
   
   <update id="cancleT6_8" parameterType='map'>
     update SCHEVENT set
-      T6_8 = '0'
+      T6_8 = #{time, jdbcType=VARCHAR}
     where
       event_date = #{event_date} and court_code = #{court_code}
   </update>
   
   <update id="cancleT8_10" parameterType='map'>
     update SCHEVENT set
-      T8_10 = '0'
+      T8_10 = #{time, jdbcType=VARCHAR}
     where
       event_date = #{event_date} and court_code = #{court_code}
   </update>
   
   <update id="cancleT10_12" parameterType='map'>
     update SCHEVENT set
-      T10_12 = '0'
+      T10_12 = #{time, jdbcType=VARCHAR}
     where
       event_date = #{event_date} and court_code = #{court_code}
   </update>
   
   <update id="cancleT12_14" parameterType='map'>
     update SCHEVENT set
-      T12_14 = '0'
+      T12_14 = #{time, jdbcType=VARCHAR}
     where
       event_date = #{event_date} and court_code = #{court_code}
   </update>
   
   <update id="cancleT14_16" parameterType='map'>
     update SCHEVENT set
-      T14_16 = '0'
+      T14_16 = #{time, jdbcType=VARCHAR}
     where
       event_date = #{event_date} and court_code = #{court_code}
   </update>
   
   <update id="cancleT16_18" parameterType='map'>
     update SCHEVENT set
-      T16_18 = '0'
+      T16_18 = #{time, jdbcType=VARCHAR}
     where
       event_date = #{event_date} and court_code = #{court_code}
   </update>
   
   <update id="cancleT18_20" parameterType='map'>
     update SCHEVENT set
-      T18_20 = '0'
+      T18_20 = #{time, jdbcType=VARCHAR}
     where
       event_date = #{event_date} and court_code = #{court_code}
   </update>
   
   <update id="cancleT20_22" parameterType='map'>
     update SCHEVENT set
-      T20_22 = '0'
+      T20_22 = #{time, jdbcType=VARCHAR}
     where
       event_date = #{event_date} and court_code = #{court_code}
   </update>
