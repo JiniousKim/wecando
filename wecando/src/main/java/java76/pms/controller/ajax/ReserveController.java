@@ -1,6 +1,7 @@
 package java76.pms.controller.ajax;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java76.pms.domain.AjaxResult;
+import java76.pms.domain.Reserve;
 import java76.pms.service.ReserveService;
 import java76.pms.service.SchEventService;
 
@@ -79,9 +81,16 @@ public class ReserveController {
 	@RequestMapping(value="reserveInfoList", method=RequestMethod.POST)
 	public Object reserveInfo(int m_no) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<>();
+		try {
+			List<Reserve> reserveList = reserveService.reserveInfoList(m_no);
+			resultMap.put("reserveList", reserveList);
+		} catch (Exception e) {
+			e.printStackTrace();
+			resultMap.put("status", "failure");
+			return resultMap;
+		}
 		
-		
-		
+		resultMap.put("status", "success");
 		return resultMap;
 	}
 }

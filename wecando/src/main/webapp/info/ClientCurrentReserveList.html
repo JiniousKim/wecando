@@ -98,8 +98,8 @@
 	      success : function(resultObj) {
 	        var loginAva = $('#login_ava');
 	        var sM = $('#sub_menu');
+	        m_no = resultObj.m_no;
 	        var ajaxresult = resultObj;
-	        m_no = ajaxresult.m_no;
 	        if (ajaxresult.status == 'failure') {
 	              location.replace("http://localhost:8080/wecando/login.html");
 	        } else {
@@ -124,9 +124,11 @@
     	  cache : false,
       processData : false,
       contentType : false,
+      data : form_data,
       async : false,
       success : function(resultObj) {
     	    var reserveList = resultObj.reserveList;
+    	    if (resultObj.status == 'success') {
     	    var show = $('#joinus');
     	    for (var reserve of reserveList) {
 	    	    show.append("<div class='client_reserveList'>" +
@@ -161,8 +163,11 @@
 				    "</div>" +
 				    "</div>" +
 				  "</div>")
+    	      }
+    	    } else {
+    	    	  swal('Oops...', '예약한 정보가 없습니다.', 'error');
     	    }
-      }
+  	    }
     })
     
   })

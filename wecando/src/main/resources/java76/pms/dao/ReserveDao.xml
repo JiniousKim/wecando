@@ -26,7 +26,7 @@
   
   <select id="reserveInfoList" parameterType='int' resultMap="reserveMap">
     select *
-    from reserve
+    from reserve natural left outer join school natural left outer join court
     where TO_CHAR(event_date, 'YYYYMMDD') - TO_CHAR(SYSDATE,'YYYYMMDD') > 0 
           and member_num = #{m_no}
   </select>
