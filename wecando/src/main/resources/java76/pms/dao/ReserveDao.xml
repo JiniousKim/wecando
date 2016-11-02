@@ -19,7 +19,7 @@
     insert into reserve(reserve_num, reserve_person, reserve_date,
            reserve_pro, member_num, sch_num, event_code, court_code, event_date, event_time)
       values(reserve_incre.nextval, #{res_person}, TO_DATE(SYSDATE, 'YYYYMMDDHH24MISS'),
-           #{res_pro}, #{m_no}, #{sch_num}, #{event_code, jdbcType=VARCHAR},
+           #{res_pro, jdbcType=VARCHAR}, #{m_no}, #{sch_num}, #{event_code, jdbcType=VARCHAR},
            #{court_code, jdbcType=VARCHAR}, TO_DATE(#{event_date}, 'YYYY-MM-DD'),
            #{event_time, jdbcType=VARCHAR})
   </insert>
