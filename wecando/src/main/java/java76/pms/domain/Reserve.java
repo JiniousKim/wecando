@@ -23,9 +23,54 @@ public class Reserve  implements Serializable {
 	protected String 		T16_18;
 	protected String 		T18_20;
 	protected String 		T20_22;
+	protected int				sch_num;
+	protected String    	sch_location;
+	protected String			sch_name;
+	protected String			sch_tel;
+	protected String			event_time;
 	protected int    		court_price;
 	
 	public Reserve() {}
+
+	public int getSch_num() {
+		return sch_num;
+	}
+
+	public void setSch_num(int sch_num) {
+		this.sch_num = sch_num;
+	}
+
+	public String getSch_location() {
+		return sch_location;
+	}
+
+	public void setSch_location(String sch_location) {
+		this.sch_location = sch_location;
+	}
+
+	public String getSch_name() {
+		return sch_name;
+	}
+
+	public void setSch_name(String sch_name) {
+		this.sch_name = sch_name;
+	}
+
+	public String getSch_tel() {
+		return sch_tel;
+	}
+
+	public void setSch_tel(String sch_tel) {
+		this.sch_tel = sch_tel;
+	}
+
+	public String getEvent_time() {
+		return event_time;
+	}
+
+	public void setEvent_time(String event_time) {
+		this.event_time = event_time;
+	}
 
 	@Override
 	public String toString() {
@@ -33,7 +78,8 @@ public class Reserve  implements Serializable {
 		    + res_date + ", m_no=" + m_no + ", m_email=" + m_email + ", m_nick=" + m_nick + ", court_code=" + court_code
 		    + ", event_date=" + event_date + ", T6_8=" + T6_8 + ", T8_10=" + T8_10 + ", T10_12=" + T10_12 + ", T12_14="
 		    + T12_14 + ", T14_16=" + T14_16 + ", T16_18=" + T16_18 + ", T18_20=" + T18_20 + ", T20_22=" + T20_22
-		    + ", court_price=" + court_price + "]";
+		    + ", sch_num=" + sch_num + ", sch_location=" + sch_location + ", sch_name=" + sch_name + ", sch_tel=" + sch_tel
+		    + ", event_time=" + event_time + ", court_price=" + court_price + "]";
 	}
 
 	public int getM_no() {
