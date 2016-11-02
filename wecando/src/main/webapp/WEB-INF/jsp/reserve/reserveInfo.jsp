@@ -86,15 +86,18 @@
        <div class='reserve_info'>
          <div class='field' style='margin-top: 18px;'>
             <label> 종목 명 :&nbsp&nbsp&nbsp</label>
-            <input id='event_name' readonly="readonly" value='<%=request.getParameter("select_event_name") %>' >
+            <input type='hidden' id='event_name' readonly="readonly" value='<%=request.getParameter("select_event_code") %>' >
+            <input id='event_n' readonly>         
           </div>
          <div class='field' style='margin-top: 18px;'>
             <label> 코트 번호 :</label>
-            <input id='court_code' readonly="readonly" value='<%=request.getParameter("select_court_code") %>' >
+            <input type='hidden' id='court_code' readonly="readonly" value='<%=request.getParameter("select_court_code") %>' >
+            <input id='event_c' readonly>
           </div>
          <div class='field' style='margin-top: 18px;'>
             <label> 이용 시간 :</label>
-            <input id='event_time' readonly="readonly" value='<%=request.getParameter("select_Time") %>' >
+            <input type='hidden' id='event_time' readonly="readonly" value='<%=request.getParameter("select_Time") %>' >
+            <input id='event_t' readonly>
           </div>
          <div class='field' style='margin-top: 18px;'>
             <label> 이용 금액 :</label>
@@ -106,11 +109,11 @@
           </div>
          <div class='field' style='margin-top: 18px;'>
             <label> 신청 이용자 수</label>
-            <input id='user_cnt' type="number" name="points" min="0" max="<%= request.getParameter("select_court_max") %>" step="1" value="1">
+            <input id='court_cnt' type="number" name="points" min="0" max="<%= request.getParameter("select_court_max") %>" step="1" value="1">
           </div>
         <div class='reserveBtn'>
-           <button style='margin-left:250px;' class='btn btn-theme04' type="reset">예약 취소</button>
-           <button class='btn btn-theme03' type='button'>예약 하기</button> 
+           <button style='margin-left:250px;' class='btn btn-theme04'>예약 취소</button>
+           <button id='reserveButton' class='btn btn-theme03' type='button'>예약 하기</button> 
         </div>
         <img src='../../img/link.png'>
         <img src='../../img/link.png' style='left: 320px;'>
@@ -181,19 +184,34 @@
     var m_no;
     
     $(document).ready(function () {
+    	  var time = $('#event_time').val();
+    	  switch(time) {
+	    	  case "T6_8" : document.getElementById('event_t').value = "06:00 ~ 08:00";break;
+	    	  case "T8_10" : document.getElementById('event_t').value = "08:00 ~ 10:00";break;
+	    	  case "T10_12" : document.getElementById('event_t').value = "10:00 ~ 12:00";break;
+	    	  case "T12_14" : document.getElementById('event_t').value = "12:00 ~ 14:00";break;
+	    	  case "T14_16" : document.getElementById('event_t').value = "14:00 ~ 16:00";break;
+	    	  case "T16_18" : document.getElementById('event_t').value = "16:00 ~ 18:00";break;
+	    	  case "T18_20" : document.getElementById('event_t').value = "18:00 ~ 20:00";break;
+	    	  case "T20_22" : document.getElementById('event_t').value = "20:00 ~ 22:00";break;
+    	  }
+    	  
+    	  var code = $('#court_code').val();
+    	  code = code.split(code.length-1, code.length);
+    	  document.getElementById('court_c').value = code;
+      var form_data = new FormData();
+      form_data.append("event_code", $('#event_name').val());
      $.ajax({
         url : contextRoot + '/info/ajax/eventName.do',
         type : 'post',
         dataType : 'json',
         cache : false,
-        data : {
-        	  event_code : $('#event_name').val();
-        }
+        data : form_data,
         processData : false,
         contentType : false,
         async : false,
         success : function(resultObj) {
-        	  document.getElementById('event_name').value = resultObj.event_name;
+            document.getElementById('event_n').value = resultObj.event_name;
         }
       })
     $.ajax({
@@ -254,33 +272,33 @@
       })
     }
     
-    function doReserve() {
-        var form_data = new FormData();
-        form_data.append("m_no", m_no);
-        form_data.append("sch_num", $('#sch_no').val());
-        form_data.append("event_code", $('#event_code').val());
-        form_data.append("event_date", $('#chooseDate').val());
-        form_data.append("court_code", $('#court_code').val());
-        form_data.append("user_cnt", $('#user_cnt').val());
-        form_data.append("event_time", $('#event_time').val());
-        $.ajax({
-          url : contextRoot + '/reserve/ajax/doReserve.do',
-          type : 'post',
-          dataType : 'json',
-          cache : false,
-          processData : false,
-          contextType : false,
-          data : form_data,
-          success : function(resultObj) {
-            var ajaxResult = resultObj.AjaxResult;
-            if (ajaxResult.status == 'success') {
-              swal('Good', '예약에 성공하였습니다.', 'success');
-            } else {
-              swal('Oops', '예약에 실패했습니다.', 'error');
-            }
-          }
-        })
-    }
+    $(document).on("click", "#reserveButton", function() {
+	        var form_data = new FormData();
+	        form_data.append("m_no", m_no);
+	        form_data.append("sch_num", $('#sch_no').val());
+	        form_data.append("event_code", $('#event_code').val());
+	        form_data.append("event_date", $('#chooseDate').val());
+	        form_data.append("court_code", $('#court_code').val());
+	        form_data.append("user_cnt", $('#user_cnt').val());
+	        form_data.append("event_time", $('#event_time').val());
+	        $.ajax({
+	          url : contextRoot + '/reserve/ajax/doReserve.do',
+	          type : 'post',
+	          dataType : 'json',
+	          cache : false,
+	          processData : false,
+	          contextType : false,
+	          data : form_data,
+	          success : function(resultObj) {
+	            var ajaxResult = resultObj.AjaxResult;
+	            if (ajaxResult.status == 'success') {
+	              swal('Good', '예약에 성공하였습니다.', 'success');
+	            } else {
+	              swal('Oops', '예약에 실패했습니다.', 'error');
+	            }
+	          }
+	        }) 
+    })
   </script>
 </body>
 </html>
