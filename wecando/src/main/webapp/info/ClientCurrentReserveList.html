@@ -100,7 +100,7 @@
 	        var sM = $('#sub_menu');
 	        m_no = resultObj.m_no;
 	        var ajaxresult = resultObj;
-	        if (ajaxresult.status == 'failure') {
+	        if (resultObj.status == 'failure') {
 	              location.replace("http://localhost:8080/wecando/login.html");
 	        } else {
 	           loginAva.append("<ul class='nav pull-right top-menu'>"
