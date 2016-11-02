@@ -78,7 +78,7 @@ public class ReserveController {
 		return new AjaxResult("success", null);
 	}
 	
-	@RequestMapping(value="reserveInfo", method=RequestMethod.POST)
+	@RequestMapping(value="reserveInfoList", method=RequestMethod.POST)
 	public Object reserveInfo(int m_no) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<>();
 		
