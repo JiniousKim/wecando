@@ -68,6 +68,7 @@
               <div class='field'>
                 <label> 학교 이름 :</label>
                 <input id='school_name' readonly="readonly" value='<%=request.getParameter("select_sch_name") %>' >
+                <input type='hidden' id='school_num' readonly value=<%= request.getParameter("select_sch_num") %>>         
               </div> 
               <div class='field'>
                 <label> 학교 위치 :</label>
@@ -85,6 +86,7 @@
         <hr style='margin: 30px 0;'>
        <div class='reserve_info'>
          <div class='field' style='margin-top: 18px;'>
+            <input type="hidden" id="member_num" readonly>
             <label> 종목 명 :&nbsp&nbsp&nbsp</label>
             <input type='hidden' id='event_name' readonly="readonly" value='<%=request.getParameter("select_event_code") %>' >
             <input id='event_n' readonly>         
@@ -94,6 +96,10 @@
             <input type='hidden' id='court_code' readonly="readonly" value='<%=request.getParameter("select_court_code") %>' >
             <input id='event_c' readonly>
           </div>
+         <div class='field' style='margin-top: 18px;'>
+            <label> 이용 날짜 :</label>
+            <input id='event_date' readonly="readonly" value='<%=request.getParameter("select_event_date") %>' >
+         </div> 
          <div class='field' style='margin-top: 18px;'>
             <label> 이용 시간 :</label>
             <input type='hidden' id='event_time' readonly="readonly" value='<%=request.getParameter("select_Time") %>' >
@@ -181,21 +187,20 @@
 
   <script type="application/javascript">
     var date;
-    var m_no;
     
     $(document).ready(function () {
-    	  var time = $('#event_time').val();
-    	  switch(time) {
-	    	  case "T6_8" : document.getElementById('event_t').value = "06:00 ~ 08:00";break;
-	    	  case "T8_10" : document.getElementById('event_t').value = "08:00 ~ 10:00";break;
-	    	  case "T10_12" : document.getElementById('event_t').value = "10:00 ~ 12:00";break;
-	    	  case "T12_14" : document.getElementById('event_t').value = "12:00 ~ 14:00";break;
-	    	  case "T14_16" : document.getElementById('event_t').value = "14:00 ~ 16:00";break;
-	    	  case "T16_18" : document.getElementById('event_t').value = "16:00 ~ 18:00";break;
-	    	  case "T18_20" : document.getElementById('event_t').value = "18:00 ~ 20:00";break;
-	    	  case "T20_22" : document.getElementById('event_t').value = "20:00 ~ 22:00";break;
-    	  }
-    	  
+        var time = $('#event_time').val();
+        switch(time) {
+          case "T6_8" : document.getElementById('event_t').value = "06:00 ~ 08:00";break;
+          case "T8_10" : document.getElementById('event_t').value = "08:00 ~ 10:00";break;
+          case "T10_12" : document.getElementById('event_t').value = "10:00 ~ 12:00";break;
+          case "T12_14" : document.getElementById('event_t').value = "12:00 ~ 14:00";break;
+          case "T14_16" : document.getElementById('event_t').value = "14:00 ~ 16:00";break;
+          case "T16_18" : document.getElementById('event_t').value = "16:00 ~ 18:00";break;
+          case "T18_20" : document.getElementById('event_t').value = "18:00 ~ 20:00";break;
+          case "T20_22" : document.getElementById('event_t').value = "20:00 ~ 22:00";break;
+        }
+        
       var form_data = new FormData();
       form_data.append("event_code", $('#event_name').val());
      $.ajax({
@@ -213,7 +218,7 @@
       })
       var code = $('#court_code').val();
         code = code.substring(code.length-1, code.length);
-        document.getElementById('court_c').value = code;
+        document.getElementById('event_c').value = code;
     $.ajax({
         url : contextRoot + '/auth/ajax/check_session.do',
         type : 'post',
@@ -226,7 +231,7 @@
           var loginAva = $('#login_ava');
           var sM = $('#sub_menu');
           var sub = $('#sub_m');
-          m_no = resultObj.m_no;
+          document.getElementById('member_num').value = resultObj.m_no;
           var ajaxresult = resultObj;
           if (ajaxresult.status == 'failure') {
             loginAva.append("<ul class='nav pull-right top-menu'>"
@@ -273,31 +278,38 @@
     }
     
     $(document).on("click", "#reserveButton", function() {
-	        var form_data = new FormData();
-	        form_data.append("m_no", m_no);
-	        form_data.append("sch_num", $('#sch_no').val());
-	        form_data.append("event_code", $('#event_code').val());
-	        form_data.append("event_date", $('#chooseDate').val());
-	        form_data.append("court_code", $('#court_code').val());
-	        form_data.append("user_cnt", $('#user_cnt').val());
-	        form_data.append("event_time", $('#event_time').val());
-	        $.ajax({
-	          url : contextRoot + '/reserve/ajax/doReserve.do',
-	          type : 'post',
-	          dataType : 'json',
-	          cache : false,
-	          processData : false,
-	          contextType : false,
-	          data : form_data,
-	          success : function(resultObj) {
-	            var ajaxResult = resultObj.AjaxResult;
-	            if (ajaxResult.status == 'success') {
-	              swal('Good', '예약에 성공하였습니다.', 'success');
-	            } else {
-	              swal('Oops', '예약에 실패했습니다.', 'error');
-	            }
-	          }
-	        }) 
+          var form_data = new FormData();
+          console.log($('#member_num').val());
+          console.log($('#school_num').val());
+          console.log($('#event_name').val());
+          console.log($('#event_date').val());
+          console.log($('#court_code').val());
+          console.log($('#court_cnt').val());
+          console.log($('#event_time').val());
+          form_data.append("m_no", $('#member_num').val());
+          form_data.append("sch_num", $('#school_num').val());
+          form_data.append("event_code", $('#event_name').val());
+          form_data.append("event_date", $('#event_date').val());
+          form_data.append("court_code", $('#court_code').val());
+          form_data.append("user_cnt", $('#court_cnt').val());
+          form_data.append("event_time", $('#event_time').val());
+          $.ajax({
+            url : contextRoot + '/reserve/ajax/doReserve.do',
+            type : 'post',
+            dataType : 'json',
+            cache : false,
+            processData : false,
+            contentType : false,
+            data : form_data,
+            success : function(resultObj) {
+              var ajaxResult = resultObj.AjaxResult;
+              if (ajaxResult.status == 'success') {
+                swal('Good', '예약에 성공하였습니다.', 'success');
+              } else {
+                swal('Oops', '예약에 실패했습니다.', 'error');
+              }
+            }
+          }) 
     })
   </script>
 </body>

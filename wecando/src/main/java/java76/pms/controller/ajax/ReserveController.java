@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java76.pms.domain.AjaxResult;
 import java76.pms.service.ReserveService;
@@ -27,8 +26,7 @@ public class ReserveController {
 	}
 	
 	@RequestMapping(value="doReserve", method=RequestMethod.POST)
-	public Object doReserve(
-			@RequestParam(required=false) int m_no,
+	public Object doReserve(int m_no,
 			                    String event_date,
 			                    String court_code,
 			                    String event_code,
