@@ -196,9 +196,6 @@
 	    	  case "T20_22" : document.getElementById('event_t').value = "20:00 ~ 22:00";break;
     	  }
     	  
-    	  var code = $('#court_code').val();
-    	  code = code.split(code.length-1, code.length);
-    	  document.getElementById('court_c').value = code;
       var form_data = new FormData();
       form_data.append("event_code", $('#event_name').val());
      $.ajax({
@@ -214,6 +211,9 @@
             document.getElementById('event_n').value = resultObj.event_name;
         }
       })
+      var code = $('#court_code').val();
+        code = code.substring(code.length-1, code.length);
+        document.getElementById('court_c').value = code;
     $.ajax({
         url : contextRoot + '/auth/ajax/check_session.do',
         type : 'post',
