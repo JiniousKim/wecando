@@ -36,7 +36,6 @@ public class ReserveController {
 			                    ) throws Exception {
 		HashMap<String, Object> paramMap = new HashMap<>();
 		HashMap<String, Object> updateMap = new HashMap<>();
-		System.out.println(m_no);
 		paramMap.put("m_no", m_no);
 		paramMap.put("court_code", court_code);
 		paramMap.put("event_date", event_date);
@@ -45,29 +44,28 @@ public class ReserveController {
 		paramMap.put("res_person", user_cnt);
 		paramMap.put("res_pro", "예약완료");
 		paramMap.put("event_time", event_time);
-		System.out.println(event_time);
 		try {
 		  if (reserveService.doReserve(paramMap) > 0) {
 		  	  updateMap.put("event_date", event_date);
 		  	  updateMap.put("court_code", court_code);
-		  	  System.out.println("시작");
+		  	  updateMap.put("time", "1");
 			  	switch(event_time) {
 				  	case "T6_8" :
-				  		{schEventService.reserveT6_8(updateMap);System.out.println("시작1"); break;}
+				  		{schEventService.reserveT6_8(updateMap); break;}
 				  	case "T8_10" :
-				  		{schEventService.reserveT8_10(updateMap);System.out.println("시작2"); break;}
+				  		{schEventService.reserveT8_10(updateMap); break;}
 				  	case "T10_12" :
-				  		{schEventService.reserveT10_12(updateMap);System.out.println("시작3"); break;}
+				  		{schEventService.reserveT10_12(updateMap); break;}
 				  	case "T12_14" : 
-				  	  {schEventService.reserveT12_14(updateMap);System.out.println("시작4"); break;}
+				  	  {schEventService.reserveT12_14(updateMap); break;}
 				  	case "T14_16" :
-				  		{schEventService.reserveT14_16(updateMap);System.out.println("시작5"); break;}
+				  		{schEventService.reserveT14_16(updateMap); break;}
 				  	case "T16_18" :
-				  	  {schEventService.reserveT16_18(updateMap);System.out.println("시작6"); break;}
+				  	  {schEventService.reserveT16_18(updateMap); break;}
 				  	case "T18_20" :
-				  	  {schEventService.reserveT18_20(updateMap);System.out.println("시작7"); break;}
+				  	  {schEventService.reserveT18_20(updateMap); break;}
 				  	case "T20_22" :
-				  	  {schEventService.reserveT20_22(updateMap);System.out.println("시작8"); break;}
+				  	  {schEventService.reserveT20_22(updateMap); break;}
 			  	}
 		  }
 		} catch(Exception e) {

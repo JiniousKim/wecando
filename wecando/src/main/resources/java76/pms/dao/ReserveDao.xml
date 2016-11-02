@@ -24,12 +24,11 @@
            #{event_time, jdbcType=VARCHAR})
   </insert>
   
-  <select id="reserveInfo" parameterType='reserve'>
+  <select id="reserveInfoList" parameterType='int' resultMap="reserveMap">
     select *
     from reserve
-    where TO_CHAR(event_date=(select event_date
-                              from reserve
-                              where member_num=#{m_no}), 'YYYYMMDD') - TO_CHAR(SYSDATE,'YYYYMMDD') > 0
+    where TO_CHAR(event_date, 'YYYYMMDD') - TO_CHAR(SYSDATE,'YYYYMMDD') > 0 
+          and member_num = #{m_no}
   </select>
   
   
