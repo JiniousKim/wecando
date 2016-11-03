@@ -190,7 +190,9 @@
           </div>
           <hr>
           <div class='defaultDate'><input id='chooseDate' readonly></div>
-          <div id='example'></div>
+          <div id='example'>
+            
+          </div>
           <div id='sch_list'></div>
           <div id='search_sch_list'></div>
         </div>
@@ -275,6 +277,7 @@
       });
       
       $("#search_sch_list").css('display', 'none');
+      $("#sch_list").css('display', 'none');
       var today = new Date();
       var dd = today.getDate();
       var mm = today.getMonth()+1; //January is 0!

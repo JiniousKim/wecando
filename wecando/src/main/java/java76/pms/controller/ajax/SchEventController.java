@@ -28,22 +28,23 @@ public class SchEventController {
 	@Autowired ServletContext servletContext;
 	
 	//@Scheduled(cron="0 0 0 * * 0/6")
-	@Scheduled(cron="0 50 04 * * ?")
+	@Scheduled(cron="0 00 05 * * ?")
 	public void init(){
 		System.out.println("run => " + schEventService);
-		HashMap<String, Object> paramMap = new HashMap<>();
 		if (schEventService != null) {
 			List<Court> resultList = courtService.courtcodeList();
-			String date = new TimeTable().getTime();
-			date = "2016-11-06";
+			//String date = new TimeTable().getTime();
+			String date = "2016-11-06";
+			HashMap<String, Object> paramMap = new HashMap<>();
 			
 			try {
 				for(Court court : resultList) {
 					paramMap.put("event_date", date);
 					paramMap.put("court_code", court.getCourt_code());
-					paramMap.put("evnet_code", court.getEvent_code());
+					paramMap.put("event_code", court.getEvent_code());
 					paramMap.put("sch_no", court.getSch_no());
 					schEventService.createTime(paramMap);
+					paramMap.clear();
 					continue;
 				}
 			} catch (Exception e) {
