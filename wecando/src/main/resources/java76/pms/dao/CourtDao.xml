@@ -70,8 +70,10 @@
     where court_code = #{court_code}
   </delete>
   
-  <select id="courtcodeList">
-    select court_code
+  <select id="courtcodeList" resultMap='courtMap'>
+    select court_code as court_code,
+           event_code as event_code,
+           sch_num    as sch_no
     from court
   </select>
   

@@ -37,7 +37,7 @@ public class DefaultCourtService implements CourtService {
 		return courtDao.removeCourt(court_code);
 	}
 	
-	public List<String> courtcodeList() {
+	public List<Court> courtcodeList() {
 		return courtDao.courtcodeList();
 	}
 }

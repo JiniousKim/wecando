@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java76.pms.domain.AjaxResult;
+import java76.pms.domain.Court;
 import java76.pms.domain.SchEvent;
 import java76.pms.service.CourtService;
 import java76.pms.service.SchEventService;
@@ -27,19 +28,21 @@ public class SchEventController {
 	@Autowired ServletContext servletContext;
 	
 	//@Scheduled(cron="0 0 0 * * 0/6")
-	@Scheduled(cron="0 31 04 * * ?")
+	@Scheduled(cron="0 43 04 * * ?")
 	public void init(){
 		System.out.println("run => " + schEventService);
 		HashMap<String, Object> paramMap = new HashMap<>();
 		if (schEventService != null) {
-			List<String> resultList = courtService.courtcodeList();
+			List<Court> resultList = courtService.courtcodeList();
 			String date = new TimeTable().getTime();
 			date = "2016-11-06";
 			
 			try {
-				for(String court_code : resultList) {
+				for(Court court : resultList) {
 					paramMap.put("event_date", date);
-					paramMap.put("court_code", court_code);
+					paramMap.put("court_code", court.getCourt_code());
+					paramMap.put("evnet_code", court.getEvent_code());
+					paramMap.put("sch_no", court.getSch_no());
 					schEventService.createTime(paramMap);
 					continue;
 				}

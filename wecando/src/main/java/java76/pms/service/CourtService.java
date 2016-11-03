@@ -11,7 +11,7 @@ public interface CourtService {
 	Court setCourt(String code);
 	int updateCourt(Court court);
 	int removeCourt(String court_code);
-	List<String> courtcodeList();
+	List<Court> courtcodeList();
 }
 
 
