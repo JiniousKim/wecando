@@ -241,8 +241,6 @@
 	    var test2 = test.outerHeight();
 	    
 	    if (test1 == (test2 + 0.2356203641318)) {
-	    	  pageNum++;
-	      alert(pageNum);
 	      loadSchoolList();
 	    }
     });
@@ -395,7 +393,6 @@
           gu_list.push($('#' + ID).val());
       }
       
-      pageNum = 1;
       $('#sch_list').val('');
       loadClickSchoolList();
     })
@@ -407,6 +404,7 @@
       } else {
         var gu_data = new FormData();
         pageNum++;
+        console.log(pageNum);
         gu_data.append('event_date',$('#chooseDate').val());
         gu_data.append('gu_list', gu_list);
         gu_data.append('event_code', $("select[name=ec]").val());
