@@ -87,11 +87,15 @@
 		</section>
 	</section>
 	<script src="../js/jquery.js"></script>
-	<script src="../js/bootstrap.min.js"></script>
-	<script class="include" type="text/javascript"
-		src="../js/jquery.dcjqaccordion.2.7.js"></script>
-	<script src="../js/common-scripts.js"></script>
-	<script src="../lib/sweetalert/sweetalert.min.js"></script>
+  <script src="../js/jquery-1.8.3.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script class="include" type="text/javascript"
+    src="../js/jquery.dcjqaccordion.2.7.js"></script>
+  <script src="../js/jquery.scrollTo.min.js"></script>
+  <script src="../js/jquery.nicescroll.js" type="text/javascript"></script>
+  <script src="../js/jquery.sparkline.js"></script>
+  <script src="../js/common-scripts.js"></script>
+  <script src="../lib/sweetalert/sweetalert.min.js"></script>
 	<script>
 	  $(document).ready(function() {
 	    $.ajax({
@@ -109,22 +113,13 @@
           var ajaxresult = resultObj;
           m_no = resultObj.m_no;
           if (ajaxresult.status == 'failure') {
-              
+        	    loginAva.append("<ul class='nav pull-right top-menu'>"
+        	             + "<li><a class='logout' data-toggle='modal'"
+        	             + "href='wecando.html#myModal1'>Login</a></li>"
+        	             + "</ul>")
           } else {
         	    location.replace("http://localhost:8080/wecando/wecando.html");
-            loginAva.append("<ul class='nav pull-right top-menu'>"
-							              + "<li><a class='logout'"
-							              + "href='' onclick='logout();'>Logout</a></li>"
-							              + "</ul>")
           } 
-          if (ajaxresult.grade == 2) {
-              sM.append(
-               "<li><a href='register_school.html'>학교 정보</a></li>"   
-              )
-              sub.append(
-              "<li><a href='ClientReserveList.html'>신청된 정보</a></li>"
-                )
-          }
         }
       })
 	  })

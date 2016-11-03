@@ -35,24 +35,21 @@
       </a>
     </header>
     <aside>
-      <div id="sidebar" class="nav-collapse ">
+      <div id="sidebar" class="nav-collapse">
         <ul class="sidebar-menu" id="nav-accordion">
-          <li class="sub-menu"><a href="../../javascript:;"> <i
+          <li class="sub-menu"><a href="javascript:;"> <i
               class="fa fa-calendar"></i> <span>예약 정보</span>
           </a>
-            <ul class="sub">
-              <li><a href="../general.html">General</a></li>
-              <li><a href="../buttons.html">Buttons</a></li>
-              <li><a href="../panels.html">Panels</a></li>
+            <ul class="sub" id='sub_m'>
+              <li><a href="../../info/ClientCurrentReserveList.html">내 예약정보</a></li>
+              <li><a href="../../info/ClientLastList.html">지난 예약정보</a>
             </ul></li>
 
-          <li class="sub-menu"><a href="../../javascript:;"> <i
+          <li class="sub-menu"><a href="javascript:;"> <i
               class="fa fa-user"></i> <span>마이 페이지</span>
           </a>
-            <ul class="sub">
-              <li><a href="../calendar.html">Calendar</a></li>
-              <li><a href="../gallery.html">Gallery</a></li>
-              <li><a href="../todo_list.html">Todo List</a></li>
+            <ul class="sub" id='sub_menu'>
+              <li><a href="../../info/memberInfo.html">내 정보</a></li>
             </ul></li>
         </ul>
       </div>
@@ -99,31 +96,56 @@
   
   <script>
   $(document).ready(function(e) {
-	    var form_data = new FormData();
-	    form_data.append("m_email", $('#m_email').val());
-	    form_data.append("email_code", $('#email_code').val());
-	    $.ajax({
-	      url : contextRoot + '/member/ajax/check_ava.do',
-	       type : 'post',
-	       dataType : 'json',
-	       cache : false,
-	       contentType : false,
-	       processData : false,
-	       data : form_data,
-	       success : function(resultObj) {
-	         var ajaxResult = resultObj.ajaxResult;
-	         if(ajaxResult.status == 'failure') {
-	           location.replace("http://localhost:8080/wecando/error.html");
-	         }
-	       }
-	    })
-	  })
+    var form_data = new FormData();
+    form_data.append("m_email", $('#m_email').val());
+    form_data.append("email_code", $('#email_code').val());
+    $.ajax({
+      url : contextRoot + '/auth/ajax/check_session.do',
+      type : 'post',
+      dataType : 'json',
+      cache : false,
+      processData : false,
+      contentType : false,
+      async : false,
+      success : function(resultObj) {
+        var loginAva = $('#login_ava');
+        var sM = $('#sub_menu');
+        var sub = $('#sub_m');
+        var ajaxresult = resultObj;
+        m_no = resultObj.m_no;
+        if (ajaxresult.status == 'failure') {
+            loginAva.append("<ul class='nav pull-right top-menu'>"
+                     + "<li><a class='logout' data-toggle='modal'"
+                     + "href='wecando.html#myModal1'>Login</a></li>"
+                     + "</ul>")
+        } else {
+            location.replace("http://localhost:8080/wecando/wecando.html");
+        } 
+      }
+    })
+    $.ajax({
+      url : contextRoot + '/member/ajax/check_ava.do',
+       type : 'post',
+       dataType : 'json',
+       cache : false,
+       contentType : false,
+       processData : false,
+       data : form_data,
+       success : function(resultObj) {
+         var ajaxResult = resultObj.ajaxResult;
+         if(ajaxResult.status == 'failure') {
+           location.replace("http://localhost:8080/wecando/error.html");
+         }
+       }
+    })
+    
+  })
 	  
-	  var m_email = $('#m_email').val();
+  var m_email = $('#m_email').val();
   var email_code = $('#email_code').val();
   var form = document.createElement("form");
-    form.setAttribute("method","post");
-    form.setAttribute("action","join.do");
+  form.setAttribute("method","post");
+  form.setAttribute("action","join.do");
   var input_email = document.createElement("input");
   input_email.setAttribute("type", "hidden");
   input_email.setAttribute("name", "m_email");
@@ -138,26 +160,26 @@
   form.appendChild(input_code);
   
   function submit_person() {
-     var pi = document.createElement("input");
-     pi.setAttribute("type", "hidden");
-     pi.setAttribute("name", "m_grade");
-     pi.setAttribute("value", 1);
-     form.appendChild(pi);
-     
-     document.body.appendChild(form);
-     
-     form.submit();
+    var pi = document.createElement("input");
+    pi.setAttribute("type", "hidden");
+    pi.setAttribute("name", "m_grade");
+    pi.setAttribute("value", 1);
+    form.appendChild(pi);
+    
+    document.body.appendChild(form);
+    
+    form.submit();
   }
   function submit_school() {
-     var pi = document.createElement("input");
-     pi.setAttribute("type", "hidden");
-     pi.setAttribute("name", "m_grade");
-     pi.setAttribute("value", 2);
-     form.appendChild(pi);
-     
-     document.body.appendChild(form);
-     
-     form.submit();
+    var pi = document.createElement("input");
+    pi.setAttribute("type", "hidden");
+    pi.setAttribute("name", "m_grade");
+    pi.setAttribute("value", 2);
+    form.appendChild(pi);
+    
+    document.body.appendChild(form);
+    
+    form.submit();
   }
   </script>
 </body>

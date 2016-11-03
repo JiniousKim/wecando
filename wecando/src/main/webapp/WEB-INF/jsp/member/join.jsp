@@ -195,7 +195,10 @@
         var ajaxresult = resultObj;
         m_no = resultObj.m_no;
         if (ajaxresult.status == 'failure') {
-            
+        	  loginAva.append("<ul class='nav pull-right top-menu'>"
+                    + "<li><a class='logout' data-toggle='modal'"
+                    + "href='wecando.html#myModal1'>Login</a></li>"
+                    + "</ul>")  
         } else {  
         	  location.replace("http://localhost:8080/wecando/wecando.html");
         } 
