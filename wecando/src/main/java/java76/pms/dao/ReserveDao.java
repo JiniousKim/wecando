@@ -8,6 +8,7 @@ import java76.pms.domain.Reserve;
 public interface ReserveDao {
 	int doReserve(HashMap<String, Object> paramMap);
 	List<Reserve> reserveInfoList(int m_no);
+	List<Reserve> ClientReserveList(int m_no);
 }
 
 

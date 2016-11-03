@@ -94,4 +94,19 @@ public class ReserveController {
 		resultMap.put("status", "success");
 		return resultMap;
 	}
+	
+	@RequestMapping(value="ClientReserveList", method=RequestMethod.POST)
+	public Object ClientReserveList(int m_no) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<>();
+		try {
+			List<Reserve> reserveList = reserveService.ClientReserveList(m_no);
+			resultMap.put("reserveList", reserveList);
+		} catch (Exception e) {
+			e.printStackTrace();
+			resultMap.put("status", "failure");
+			return resultMap;
+		}
+		resultMap.put("status", "success");
+		return resultMap;
+	}
 }

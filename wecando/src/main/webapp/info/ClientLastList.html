@@ -44,20 +44,20 @@
       <div class="top-menu" id='login_ava'></div>
     </header>
     <aside>
-      <div id="sidebar" class="nav-collapse ">
+      <div id="sidebar" class="nav-collapse">
         <ul class="sidebar-menu" id="nav-accordion">
-          <li class="sub-menu"><a href="../javascript:;"> <i
+          <li class="sub-menu"><a href="javascript:;"> <i
               class="fa fa-calendar"></i> <span>예약 정보</span>
           </a>
-            <ul class="sub">
-              <li><a href="ClientCurrentReserveList.html">현재 예약 정보</a></li>
-              <li><a href="ClientReserveList.html">지난 예약 정보</a></li>
+            <ul class="sub" id='sub_m'>
+              <li><a href="ClientCurrentReserveList.html">내 예약정보</a></li>
+              <li><a href="ClientLastList.html">지난 예약정보</a>
             </ul></li>
 
-          <li class="sub-menu"><a href="../javascript:;"> <i
+          <li class="sub-menu"><a href="javascript:;"> <i
               class="fa fa-user"></i> <span>마이 페이지</span>
           </a>
-            <ul class="sub" id="sub_menu">
+            <ul class="sub" id='sub_menu'>
               <li><a href="memberInfo.html">내 정보</a></li>
             </ul></li>
         </ul>
@@ -156,6 +156,40 @@
   <script src="../js/common-scripts.js"></script>
   <script src="../lib/sweetalert/sweetalert.min.js"></script>
   <script>
+  $(document).ready(function() {
+	  $.ajax({
+	      url : contextRoot + '/auth/ajax/check_session.do',
+	      type : 'post',
+	      dataType : 'json',
+	      cache : false,
+	      processData : false,
+	      contentType : false,
+	      async : false,
+	      success : function(resultObj) {
+	          var loginAva = $('#login_ava');
+	          var sM = $('#sub_menu');
+	          var sub = $('#sub_m');
+	        var ajaxresult = resultObj;
+	        if (ajaxresult.status == 'failure') {
+	            location.replace("http://localhost:8080/wecando/wecando.html");
+	        } else {
+	           loginAva.append("<ul class='nav pull-right top-menu'>"
+	               + "<li><a class='logout'"
+	               + "href='' onclick='logout();'>Logout</a></li>"
+	               + "</ul>")
+	        } 
+	        if (ajaxresult.grade == 2) {
+	            sM.append(
+	             "<li><a href='register_school.html'>학교 정보</a></li>"   
+	            )
+	            sub.append(
+	            "<li><a href='ClientReserveList.html'>신청된 정보</a></li>"
+	              )
+	        }
+	      }
+	    })
+  })
+  
   </script>
 </body>
 </html>

@@ -2934,11 +2934,10 @@ div.col-md-4 a {
 }
 
 .reserve_content {
-    position: relative; 
-    left:18%; 
-    top:-190px; 
-    width:80%;
-/*     border: 1px solid green; */
+    position: relative;
+    left: 21%;
+    top: -192px;
+    width: 80%;
 }
 
 .reserve_content > input {

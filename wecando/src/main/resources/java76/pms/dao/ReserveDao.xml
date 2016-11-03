@@ -41,5 +41,24 @@
           and member_num = #{m_no}
   </select>
   
+  <select id="reserveLastList" parameterType='int' resultMap="reserveMap">
+    select *
+    from reserve natural left outer join school natural left outer join event
+    where 0 >= TO_CHAR(event_date, 'YYYYMMDD') - TO_CHAR(SYSDATE, 'YYYYMMDD')
+          and member_num = #{m_no}
+  </select>
+  
+  <select id="ClientReserveList" parameterType='int' resultMap="reserveMap">
+    select member_nick as m_nick,
+           event_name  as event_name,
+           TO_CHAR(event_date,'YYYY-MM-DD')  as event_date,
+           event_time  as event_time,
+           reserve_person as res_person
+    from reserve natural left outer join member natural left outer join court natural left outer join event
+    where sch_num=(select mng_no
+                   from member
+                   where member_num = #{m_no})
+    order by event_date desc
+  </select>
   
 </mapper>

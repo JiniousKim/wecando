@@ -45,6 +45,7 @@
           </a>
             <ul class="sub" id='sub_m'>
               <li><a href="../../info/ClientCurrentReserveList.html">내 예약정보</a></li>
+              <li><a href="../../info/ClientLastList.html">지난 예약정보</a>
             </ul></li>
 
           <li class="sub-menu"><a href="javascript:;"> <i
@@ -234,10 +235,7 @@
           document.getElementById('member_num').value = resultObj.m_no;
           var ajaxresult = resultObj;
           if (ajaxresult.status == 'failure') {
-            loginAva.append("<ul class='nav pull-right top-menu'>"
-             + "<li><a class='logout' data-toggle='modal'"
-             + "href='wecando.html#myModal1'>Login</a></li>"
-             + "</ul>")
+        	    location.replace("http://localhost:8080/wecando/wecando.html");
           } else {
              loginAva.append("<ul class='nav pull-right top-menu'>"
                  + "<li><a class='logout'"

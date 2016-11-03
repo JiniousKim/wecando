@@ -21,7 +21,10 @@ public class DefaultReserveService implements ReserveService {
   public List<Reserve> reserveInfoList(int m_no) {
   	  return reserveDao.reserveInfoList(m_no);
   }
-
+  
+  public List<Reserve> ClientReserveList(int m_no) {
+	  return reserveDao.ClientReserveList(m_no);
+  }
 }
 
 
