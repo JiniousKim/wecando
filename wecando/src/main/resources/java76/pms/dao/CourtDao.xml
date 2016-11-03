@@ -11,19 +11,8 @@
     <result column="court_price" property="court_price" />
     <result column="event_code" property="event_code" />
     <result column="sch_num" property="sch_no" />
-    <collection property="event" column="event_code" ofType="Event" resultMap="eventMap"/>
-    <collection property="school" column="sch_no" ofType="School" resultMap="schoolMap" />
   </resultMap>
   
-  <resultMap id="schoolMap" type="School">
-    <id property="sch_num" column="sch_no" />
-  </resultMap>
-  <resultMap id="eventMap" type="Event">
-    <id property="event_code" column="event_code" />
-    <result property="event_name" column="event_name" />
-  </resultMap>
-  
-    
   <insert id="insertCourt" parameterType="court">
     insert into court(court_code, court_cnt, event_code, sch_num, court_price, court_max)
     values(#{court_code, jdbcType=VARCHAR}, #{court_cnt}, 

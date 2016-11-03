@@ -28,7 +28,7 @@ public class SchEventController {
 	@Autowired ServletContext servletContext;
 	
 	//@Scheduled(cron="0 0 0 * * 0/6")
-	@Scheduled(cron="0 43 04 * * ?")
+	@Scheduled(cron="0 50 04 * * ?")
 	public void init(){
 		System.out.println("run => " + schEventService);
 		HashMap<String, Object> paramMap = new HashMap<>();
