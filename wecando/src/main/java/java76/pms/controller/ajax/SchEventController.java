@@ -62,8 +62,15 @@ public class SchEventController {
 		try {
 			resultList = schEventService.schEventList(paramMap);
 			List<SchEvent> result = new ArrayList<>();
-			for (int i = startIndex; i < endIndex; i++) {
-				result.add(resultList.get(i));
+			int total = resultList.size();
+			if ((total - endIndex) > 0) {
+				for (int i = startIndex; i < endIndex; i++) {
+					result.add(resultList.get(i));
+				}
+			} else {
+				for (int i = startIndex; i < total; i++) {
+					result.add(resultList.get(i));
+				}
 			}
 			resultMap.put("resultList", result);
 		} catch (Exception e) {
