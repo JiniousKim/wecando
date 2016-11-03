@@ -406,6 +406,7 @@
         swal('Oops...', '종목을 선택하지 않았어용~', 'error');
       } else {
         var gu_data = new FormData();
+        pageNum++;
         gu_data.append('event_date',$('#chooseDate').val());
         gu_data.append('gu_list', gu_list);
         gu_data.append('event_code', $("select[name=ec]").val());
@@ -568,7 +569,7 @@
     } 
     
     function loadClickSchoolList() {
-    	  pageNum = 0;
+    	  pageNum = 1;
       if ($("select[name=ec]").val() == '') {
         swal('Oops...', '종목을 선택하지 않았어용~', 'error');
       } else {
