@@ -35,15 +35,32 @@
            sch_name     as sch_name,
            event_name   as event_name,
            TO_CHAR(event_date, 'YYYY-MM-DD')   as event_date,
-           event_time   as event_time
+           event_time   as event_time,
+           reserve_num  as res_no
     from reserve natural left outer join school natural left outer join event
     where TO_CHAR(event_date, 'YYYYMMDD') - TO_CHAR(SYSDATE,'YYYYMMDD') > 0 
           and member_num = #{m_no}
   </select>
   
+  <select id="getReserve" parameterType='int' resultMap="resultMap">
+    select court_code as court_code,
+           TO_CHAR(event_date, 'YYYY-MM-DD') as event_date
+    from reserve
+    where reserve_num = #{res_no}
+  </select>
+  
+  <delete id="cancleRserve" parameterType='map'>
+    delete from reserve
+    where member_num = #{m_no} and reserve_num = #{res_no}
+  </delete>
+  
   <select id="reserveLastList" parameterType='int' resultMap="reserveMap">
-    select *
-    from reserve natural left outer join school natural left outer join event
+    select sch_name as sch_name,
+           event_name as event_name,
+           TO_CHAR(event_date, 'YYYY-MM-DD') as event_date,
+           event_time as event_time,
+           court_price as court_price
+    from reserve natural left outer join school natural left outer join event natural left join court
     where 0 >= TO_CHAR(event_date, 'YYYYMMDD') - TO_CHAR(SYSDATE, 'YYYYMMDD')
           and member_num = #{m_no}
   </select>

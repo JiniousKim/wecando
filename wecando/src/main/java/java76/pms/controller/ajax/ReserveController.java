@@ -109,4 +109,62 @@ public class ReserveController {
 		resultMap.put("status", "success");
 		return resultMap;
 	}
+	
+	@RequestMapping(value="cancleReserve", method=RequestMethod.POST)
+	public Object cancleReserve(int res_no,
+														  int m_no,
+														  String event_date,
+														  String court_code,
+														  String event_time) throws Exception {
+		HashMap<String, Object> paramMap = new HashMap<>();
+		HashMap<String, Object> updateMap = new HashMap<>();
+		paramMap.put("res_no", res_no);
+		paramMap.put("m_no", m_no);
+		try {
+			Reserve reserve = reserveService.getReserve(res_no);
+			if (reserveService.cancleReserve(paramMap) > 0) {
+				updateMap.put("event_date", reserve.getEvent_date());
+		  	  updateMap.put("court_code", reserve.getCourt_code());
+		  	  updateMap.put("time", "0");
+			  	switch(event_time) {
+				  	case "T6_8" :
+				  		{schEventService.cancleT6_8(updateMap); break;}
+				  	case "T8_10" :
+				  		{schEventService.cancleT8_10(updateMap); break;}
+				  	case "T10_12" :
+				  		{schEventService.cancleT10_12(updateMap); break;}
+				  	case "T12_14" : 
+				  	  {schEventService.cancleT12_14(updateMap); break;}
+				  	case "T14_16" :
+				  		{schEventService.cancleT14_16(updateMap); break;}
+				  	case "T16_18" :
+				  	  {schEventService.cancleT16_18(updateMap); break;}
+				  	case "T18_20" :
+				  	  {schEventService.cancleT18_20(updateMap); break;}
+				  	case "T20_22" :
+				  	  {schEventService.cancleT20_22(updateMap); break;}
+			  	}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new AjaxResult("failure", null);
+		}
+		
+		return new AjaxResult("success", null);
+	}
+	
+	@RequestMapping(value="reserveLastList", method=RequestMethod.POST)
+	public Object reserveLastList(int m_no) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<>();
+		try {
+			List<Reserve> reserveList = reserveService.reserveLastList(m_no);
+			resultMap.put("resereveList", reserveList);
+		} catch (Exception e) {
+			e.printStackTrace();
+			resultMap.put("status", "failure");
+			return resultMap;
+		}
+		resultMap.put("status", "success");
+		return resultMap;
+	}
 }

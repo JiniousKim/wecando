@@ -94,9 +94,9 @@
       contentType : false,
       async : false,
       success : function(resultObj) {
-         var loginAva = $('#login_ava');
-         var sM = $('#sub_menu');
-         var sub = $('#sub_m');
+        var loginAva = $('#login_ava');
+        var sM = $('#sub_menu');
+        var sub = $('#sub_m');
         var ajaxresult = resultObj;
         m_no = resultObj.m_no;
         if (ajaxresult.status == 'failure') {
@@ -138,7 +138,7 @@
 				    "<div class='reserve_card'>" +
 				      "<div class='card_sch_name'>" +
 				      "<i class='fa fa-university'>&nbsp; " + reserve.sch_name + "   </i>" +
-				      "<button class='btn btn-theme04' type='reset'>예약 취소</button>" +
+				      "<button class='btn btn-theme04' onclick='cancle(" + reserve.res_no + ")'>예약 취소</button>" +
 				      "</div>" +
 				      "<hr>" +
 				      "<div class='client_reserveContent'>" +
@@ -182,11 +182,32 @@
     	    }
   	    }
     })
-    
   })
-  
-  
-  
+  </script>
+  <script>
+    function cancle(var res_no) {
+    	  var form_data = new FormData();
+    	  form_data.append("m_no", m_no);
+    	  form_data.append("res_no", res_no);
+    	  $.ajax({
+    		  url : contextRoot + '/reserve/ajax/cancleReserve.do',
+    		  type : 'post',
+        dataType : 'json',
+        cache : false,
+ 	      processData : false,
+ 	      contentType : false,
+ 	      data : form_data,
+ 	      async : false,
+ 	      success : function(resultObj) {
+ 	    	    var ajaxResult = resultObj.AjaxResult;
+ 	    	    if (ajaxResult.status == 'success') {
+ 	    	    	  swal('Good', '정상적으로 예약을 취소했습니다.', 'success');
+ 	    	    } else {
+ 	    	    	  swal('Oops...', '예약취소에 실패했습니다. 다시 시도해주세요.', 'error');
+ 	    	    }
+ 	      }
+    	  })
+    })
   </script>
 </body>
 </html>

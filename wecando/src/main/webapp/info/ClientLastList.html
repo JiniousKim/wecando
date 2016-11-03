@@ -71,70 +71,14 @@
 					  <table id="keywords" cellspacing="0" cellpadding="0">
 					    <thead class='list'>
 					      <tr>
-					        <th><span>Keywords</span></th>
-					        <th><span>Impressions</span></th>
-					        <th><span>Clicks</span></th>
-					        <th><span>CTR</span></th>
-					        <th><span>Rank</span></th>
+					        <th><span>학교명</span></th>
+					        <th><span>이용종목</span></th>
+					        <th><span>이용날짜</span></th>
+					        <th><span>이용시간</span></th>
+					        <th><span>이용인원</span></th>
 					      </tr>
 					    </thead>
-					    <tbody>
-					      <tr>
-					        <td class="lalign">silly tshirts</td>
-					        <td>6,000</td>
-					        <td>110</td>
-					        <td>1.8%</td>
-					        <td>22.2</td>
-					      </tr>
-					      <tr>
-					        <td class="lalign">silly tshirts</td>
-					        <td>6,000</td>
-					        <td>110</td>
-					        <td>1.8%</td>
-					        <td>22.2</td>
-					      </tr>
-					      <tr>
-					        <td class="lalign">silly tshirts</td>
-					        <td>6,000</td>
-					        <td>110</td>
-					        <td>1.8%</td>
-					        <td>22.2</td>
-					      </tr>
-					      <tr>
-					        <td class="lalign">desktop workspace photos</td>
-					        <td>2,200</td>
-					        <td>500</td>
-					        <td>22%</td>
-					        <td>8.9</td>
-					      </tr>
-					      <tr>
-					        <td class="lalign">arrested development quotes</td>
-					        <td>13,500</td>
-					        <td>900</td>
-					        <td>6.7%</td>
-					        <td>12.0</td>
-					      </tr>
-					      <tr>
-					        <td class="lalign">popular web series</td>
-					        <td>8,700</td>
-					        <td>350</td>
-					        <td>4%</td>
-					        <td>7.0</td>
-					      </tr>
-					      <tr>
-					        <td class="lalign">2013 webapps</td>
-					        <td>9,900</td>
-					        <td>460</td>
-					        <td>4.6%</td>
-					        <td>11.5</td>
-					      </tr>
-					      <tr>
-					        <td class="lalign">ring bananaphone</td>
-					        <td>10,500</td>
-					        <td>748</td>
-					        <td>7.1%</td>
-					        <td>17.3</td>
-					      </tr>
+					    <tbody id='resultReserveList'>
 					    </tbody>
 					  </table>
 					 </div>
@@ -158,37 +102,82 @@
   <script>
   $(document).ready(function() {
 	  $.ajax({
-	      url : contextRoot + '/auth/ajax/check_session.do',
-	      type : 'post',
-	      dataType : 'json',
-	      cache : false,
-	      processData : false,
-	      contentType : false,
-	      async : false,
-	      success : function(resultObj) {
-	          var loginAva = $('#login_ava');
-	          var sM = $('#sub_menu');
-	          var sub = $('#sub_m');
-	        var ajaxresult = resultObj;
-	        if (ajaxresult.status == 'failure') {
-	            location.replace("http://localhost:8080/wecando/wecando.html");
-	        } else {
-	           loginAva.append("<ul class='nav pull-right top-menu'>"
-	               + "<li><a class='logout'"
-	               + "href='' onclick='logout();'>Logout</a></li>"
-	               + "</ul>")
-	        } 
-	        if (ajaxresult.grade == 2) {
-	            sM.append(
-	             "<li><a href='register_school.html'>학교 정보</a></li>"   
-	            )
-	            sub.append(
-	            "<li><a href='ClientReserveList.html'>신청된 정보</a></li>"
-	              )
-	        }
-	      }
-	    })
+      url : contextRoot + '/auth/ajax/check_session.do',
+      type : 'post',
+      dataType : 'json',
+      cache : false,
+      processData : false,
+      contentType : false,
+      async : false,
+      success : function(resultObj) {
+          var loginAva = $('#login_ava');
+          var sM = $('#sub_menu');
+          var sub = $('#sub_m');
+        var ajaxresult = resultObj;
+        if (ajaxresult.status == 'failure') {
+            location.replace("http://localhost:8080/wecando/wecando.html");
+        } else {
+           loginAva.append("<ul class='nav pull-right top-menu'>"
+               + "<li><a class='logout'"
+               + "href='' onclick='logout();'>Logout</a></li>"
+               + "</ul>")
+        } 
+        if (ajaxresult.grade == 2) {
+           sM.append(
+            "<li><a href='register_school.html'>학교 정보</a></li>"   
+           )
+           sub.append(
+           "<li><a href='ClientReserveList.html'>신청된 정보</a></li>"
+           )
+        }
+      }
+    })
+    var form_data = new FormData();
+	  form_data.append("m_no", m_no);
+	  
+	  $.ajax({
+		  url : contextRoot + '/reserve/ajax/reserveLastList.do',
+		  type : 'post',
+		  dataType : 'json',
+      cache : false,
+      processData : false,
+      contentType : false,
+      async : false,
+      data : form_data,
+      success : function(resultObj) {
+    	    if (resultObj.status == 'success') {
+    	    	  var reserveList = resultObj.reserveList;
+    	    	  for (var reserve of reserveList) {
+    	    		  switch(reserve.event_time) {
+              case "T6_8" : reserve.event_time ="06:00~08:00"; break;
+              case "T8_10" : reserve.event_time = "08:00~10:00"; break;
+              case "T10_12" : reserve.event_time = "10:00~12:00"; break;
+              case "T12_14" : reserve.event_time = "12:00~14:00"; break;
+              case "T14_16" : reserve.event_time = "14:00~16:00"; break;
+              case "T16_18" : reserve.event_time = "16:00~18:00"; break;
+              case "T18_20" : reserve.event_time = "18:00~20:00"; break;
+              case "T20_22" : reserve.event_time = "20:00~22:00"; break;
+            }
+            show.append("<tr>" +
+             "<td class='lalign'>" + reserve.sch_name +  "</td>" +
+             "<td>" + reserve.event_name + "</td>" +
+             "<td>" + reserve.event_date + "</td>" +
+             "<td>" + reserve.event_time + "</td>" +
+             "<td>" + reserve.court_price + "</td>" +
+             "</tr>")
+            }
+    	    	  }
+    	    } else {
+    	    	  swal('Oops...','예약한 정보가 없습니다.','error');
+    	    }
+    	    
+      }
+	  })
+  
+  
   })
+  
+  
   
   </script>
 </body>

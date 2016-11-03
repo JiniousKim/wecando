@@ -18,12 +18,24 @@ public class DefaultReserveService implements ReserveService {
   		return reserveDao.doReserve(paramMap);
   }
   
+  public int cancleReserve(HashMap<String, Object> paramMap) {
+  	  return reserveDao.cancleReserve(paramMap);
+  }
+  
   public List<Reserve> reserveInfoList(int m_no) {
   	  return reserveDao.reserveInfoList(m_no);
   }
   
+  public List<Reserve> reserveLastList(int m_no) {
+  	  return reserveDao.reserveLastList(m_no);
+  }
+  
   public List<Reserve> ClientReserveList(int m_no) {
 	  return reserveDao.ClientReserveList(m_no);
+  }
+  
+  public Reserve getReserve(int res_no) {
+  	  return reserveDao.getReserve(res_no);
   }
 }
 
