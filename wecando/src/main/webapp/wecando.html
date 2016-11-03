@@ -191,11 +191,15 @@
           <hr>
           <div class='defaultDate'><input id='chooseDate' readonly></div>
           <div id='example' style='width:inherit; height:500px;'>
-            <div style='border: 1px bold black;'>
+            <div style='border: 1px solid black; width:200px; height:100px;'>
+            <i id="non_calendar" class='fa fa-calendar' style='font-size:50px; margin-top:50px;'></i>
+            <i id="select_calendar" class='fa fa-calendar' style='font-size:50px; color:red; margin-top:50px; z-index:2;'></i>
             </div>
-            <div style='border: 1px bold red;'>
+            <div style='border: 1px solid red; width:200px; height:100px;'>
+            <i id="non_event" class='fa fa-check' style='font-size:50px; margin-top:50px;'></i>
+            <i id="select_event" class='fa fa-check' style='font-size:50px; color:red;margin-top:50px;'></i>
             </div>
-            <div style='border: 1px bold yellow;'>
+            <div style='border: 1px solid yellow; width:200px; height:100px;'>
             </div>
           </div>
           <div id='sch_list'></div>
@@ -275,6 +279,8 @@
                 if (date == 0 || date == 6) {
                 swal('Good', '이용 가능한 날짜 입니다.', 'success');  
                 document.getElementById('chooseDate').value = day;
+                $('#select_calendar').css('display', '');
+                $('#non_calendar').css('display', 'none');
                 } else {
                     swal('Oops...', '이용이 불가능한 날짜 입니다.', 'error');
                 }
@@ -283,6 +289,8 @@
       
       $("#search_sch_list").css('display', 'none');
       $("#sch_list").css('display', 'none');
+      $('#select_event').css('display', 'none');
+      $('#select_calendar').css('display', 'none');
       var today = new Date();
       var dd = today.getDate();
       var mm = today.getMonth()+1; //January is 0!
@@ -370,6 +378,13 @@
       date = 'asdf';
       $('#sch_list').append(date);
       document.getElementById('chooseDate').value = date;
+  })
+  
+  $(document).on("click", "#event_list", function() {
+	  if ($("select[name=ec]").val() != '') {
+		  $('#select_event').css('display', '');
+		  $('#non_event').css('display', 'none');
+    }
   })
   
   $('#myModal1').on('hide.bs.modal', function (e) {

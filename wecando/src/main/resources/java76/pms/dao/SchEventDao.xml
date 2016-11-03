@@ -29,7 +29,7 @@
   <insert id="createTime" parameterType='map'>
     insert into SCHEVENT(court_code, event_code, sch_num, event_date)
     values(#{court_code, jdbcType=VARCHAR}, #{event_code, jdbcType=VARCHAR},
-           #{sch_no}, TO_DATE(#{event_date}, "YYYY-MM-DD"))
+           #{sch_no}, TO_DATE(#{event_date}, 'YYYY-MM-DD'))
   </insert>
   
   <select id="schEventList" parameterType='map' resultType='SchEvent'>

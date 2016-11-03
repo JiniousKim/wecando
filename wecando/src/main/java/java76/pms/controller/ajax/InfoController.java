@@ -72,14 +72,11 @@ public class InfoController {
 		List<SchEvent> schEventList = new ArrayList<>();
 		
 		for(String str : gu_list) {
-			try {
-				paramMap.put("gu_name", str);
+			paramMap.put("gu_name", str);
+			if (schEventService.schEventList(paramMap).size() > 0){
 				schEventList.addAll(schEventService.schEventList(paramMap));
-			} catch (Exception e) {
-				e.printStackTrace();
-				resultMap.put("status", "failure");
-				return resultMap;
 			}
+			resultMap.put("status", "failure");
 			paramMap.remove("gu_name");
 		}
 	  List<SchEvent> realList = new ArrayList<>();
