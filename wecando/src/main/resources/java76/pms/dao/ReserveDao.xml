@@ -44,7 +44,8 @@
   
   <select id="getReserve" parameterType='int' resultMap="resultMap">
     select court_code as court_code,
-           TO_CHAR(event_date, 'YYYY-MM-DD') as event_date
+           TO_CHAR(event_date, 'YYYY-MM-DD') as event_date,
+           event_time as event_time
     from reserve
     where reserve_num = #{res_no}
   </select>

@@ -126,7 +126,7 @@ public class ReserveController {
 				updateMap.put("event_date", reserve.getEvent_date());
 		  	  updateMap.put("court_code", reserve.getCourt_code());
 		  	  updateMap.put("time", "0");
-			  	switch(event_time) {
+			  	switch(reserve.getEvent_time()) {
 				  	case "T6_8" :
 				  		{schEventService.cancleT6_8(updateMap); break;}
 				  	case "T8_10" :
