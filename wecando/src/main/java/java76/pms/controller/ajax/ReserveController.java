@@ -83,6 +83,7 @@ public class ReserveController {
 		HashMap<String, Object> resultMap = new HashMap<>();
 		try {
 			List<Reserve> reserveList = reserveService.reserveInfoList(m_no);
+			System.out.println(reserveList);
 			resultMap.put("reserveList", reserveList);
 		} catch (Exception e) {
 			e.printStackTrace();

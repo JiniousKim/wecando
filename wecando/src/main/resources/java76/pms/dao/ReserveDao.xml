@@ -34,7 +34,7 @@
            sch_location as sch_location,
            sch_name     as sch_name,
            event_name   as event_name,
-           event_date   as event_date,
+           TO_CHAR(event_date, 'YYYY-MM-DD')   as event_date,
            event_time   as event_time
     from reserve natural left outer join school natural left outer join event
     where TO_CHAR(event_date, 'YYYYMMDD') - TO_CHAR(SYSDATE,'YYYYMMDD') > 0 
