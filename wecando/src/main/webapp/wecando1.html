@@ -401,6 +401,7 @@
         gu_data.append('event_date',$('#chooseDate').val());
         gu_data.append('gu_list', gu_list);
         gu_data.append('event_code', $("select[name=ec]").val());
+        gu_data.append('pageNum', pageNum);
            jQuery.ajaxSettings.traditional = true;
           $.ajax({
            url : contextRoot + '/info/ajax/search_gu.do',
@@ -411,9 +412,6 @@
            data : gu_data,
            success : function(resultObj) {
              var schEventList = resultObj.schEventList;
-             console.log(schEventList);
-             $('#search_sch_list').css('display', 'none');
-             $('#sch_list').css('display', '');
              var show = $('#sch_list');
              for (var schEvent of schEventList) {
              document.getElementById('chooseDate').value = schEvent.event_date;
