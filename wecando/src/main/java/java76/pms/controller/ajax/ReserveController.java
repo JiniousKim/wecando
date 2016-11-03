@@ -158,7 +158,7 @@ public class ReserveController {
 		HashMap<String, Object> resultMap = new HashMap<>();
 		try {
 			List<Reserve> reserveList = reserveService.reserveLastList(m_no);
-			resultMap.put("resereveList", reserveList);
+			resultMap.put("reserveList", reserveList);
 		} catch (Exception e) {
 			e.printStackTrace();
 			resultMap.put("status", "failure");
