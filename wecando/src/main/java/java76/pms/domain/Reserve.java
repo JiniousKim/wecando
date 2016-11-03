@@ -29,9 +29,18 @@ public class Reserve  implements Serializable {
 	protected String			sch_tel;
 	protected String			event_time;
 	protected String			event_code;
+	protected String    event_name;
 	protected int    		court_price;
 	
 	public Reserve() {}
+
+	public String getEvent_name() {
+		return event_name;
+	}
+
+	public void setEvent_name(String event_name) {
+		this.event_name = event_name;
+	}
 
 	public String getEvent_code() {
 		return event_code;
@@ -88,7 +97,8 @@ public class Reserve  implements Serializable {
 		    + ", event_date=" + event_date + ", T6_8=" + T6_8 + ", T8_10=" + T8_10 + ", T10_12=" + T10_12 + ", T12_14="
 		    + T12_14 + ", T14_16=" + T14_16 + ", T16_18=" + T16_18 + ", T18_20=" + T18_20 + ", T20_22=" + T20_22
 		    + ", sch_num=" + sch_num + ", sch_location=" + sch_location + ", sch_name=" + sch_name + ", sch_tel=" + sch_tel
-		    + ", event_time=" + event_time + ", event_code=" + event_code + ", court_price=" + court_price + "]";
+		    + ", event_time=" + event_time + ", event_code=" + event_code + ", event_name=" + event_name + ", court_price="
+		    + court_price + "]";
 	}
 
 	public int getM_no() {

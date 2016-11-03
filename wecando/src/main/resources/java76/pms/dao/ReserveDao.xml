@@ -15,6 +15,7 @@
     <result column="sch_tel" property="sch_tel" />
     <result column="event_time" property="event_time" />
     <result column="event_code" property="event_code" />
+    <result column="event_name" property="event_name" />
     <result column="court_code" property="court_code" />
     <result column="event_date" property="event_date" />
   </resultMap>
@@ -29,8 +30,13 @@
   </insert>
   
   <select id="reserveInfoList" parameterType='int' resultMap="reserveMap">
-    select *
-    from reserve natural left outer join school natural left outer join court
+    select sch_tel as sch_tel,
+           sch_location as sch_location,
+           sch_name     as sch_name,
+           event_name   as event_name,
+           event_date   as event_date,
+           event_time   as event_time
+    from reserve natural left outer join school natural left outer join event
     where TO_CHAR(event_date, 'YYYYMMDD') - TO_CHAR(SYSDATE,'YYYYMMDD') > 0 
           and member_num = #{m_no}
   </select>
