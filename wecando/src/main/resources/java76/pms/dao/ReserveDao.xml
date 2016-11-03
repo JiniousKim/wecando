@@ -42,7 +42,7 @@
           and member_num = #{m_no}
   </select>
   
-  <select id="getReserve" parameterType='int' resultMap="resultMap">
+  <select id="getReserve" parameterType='int' resultMap="reserveMap">
     select court_code as court_code,
            TO_CHAR(event_date, 'YYYY-MM-DD') as event_date,
            event_time as event_time
@@ -50,7 +50,7 @@
     where reserve_num = #{res_no}
   </select>
   
-  <delete id="cancleRserve" parameterType='map'>
+  <delete id="cancleReserve" parameterType='map'>
     delete from reserve
     where member_num = #{m_no} and reserve_num = #{res_no}
   </delete>
