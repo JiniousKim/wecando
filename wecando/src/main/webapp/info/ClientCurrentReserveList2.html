@@ -66,6 +66,7 @@
       <section class="wrapper">
         <div id="auth">
           <img id="joinus" src="../img/currentReserve.png">
+          <div id='resultreservelist'>
           <div class='client_reserveList'> 
           <div class='dashed_border'> 
             <div class='reserve_card'> 
@@ -97,6 +98,40 @@
               </div> 
             </div> 
             </div> 
+          </div>
+          <div class='client_reserveList'> 
+          <div class='dashed_border'> 
+            <div class='reserve_card'> 
+              <div class='card_sch_name'> 
+              <i class='fa fa-university'>&nbsp; 대일외국어고등학교   </i> 
+              <button class='btn btn-theme04' type='reset'>예약 취소</button> 
+              </div> 
+              <hr> 
+              <div class='client_reserveContent'> 
+                <div class='reserve_img'> 
+                 <img src='../img/school.png'> 
+                </div> 
+                <div class='reserve_contents'> 
+                  <div class='reserve_title'> 
+                   <p>이용 날짜 : </p> 
+                   <p>학교 주소 : </p> 
+                   <p>학교 번호 : </p> 
+                   <p>이용 종목 : </p> 
+                   <p>이용 시간 : </p> 
+                  </div> 
+                  <div class='reserve_content'> 
+                    <input value='2016-11-04' readonly> 
+                    <input value='서울특별시 성북구 서경로 116 (정릉동,대일외국어고등학교)' readonly> 
+                    <input value='02-940-0700' readonly> 
+                    <input value='배드민턴' readonly> 
+                    <input value='06~08' readonly> 
+                  </div> 
+                </div>  
+              </div> 
+            </div> 
+            </div> 
+          </div>
+          
           </div>
           </div>
           <!-- INLINE FORM ELELEMNTS -->
@@ -160,7 +195,7 @@
       success : function(resultObj) {
     	    var reserveList = resultObj.reserveList;
     	    if (resultObj.status == 'success') {
-    	    var show = $('#joinus');
+    	    var show = $('#resultreservelist');
     	    for (var reserve of reserveList) {
 	    	    show.append("<div class='client_reserveList'>" +
 				  "<div class='dashed_border'>" +
