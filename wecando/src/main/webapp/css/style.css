@@ -2690,11 +2690,8 @@ div.col-md-4 a {
 
 #sch_list {
   height: 700px;
-  overflow: auto;
-}
-
-#sch_list:hover {
-  overflow:auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .defaultDate > input{

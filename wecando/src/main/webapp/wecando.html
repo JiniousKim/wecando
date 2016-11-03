@@ -405,7 +405,7 @@
       pageNum = 1;
       $('#sch_list').val('');
       loadClickSchoolList();
-  })
+    })
      
     // 구 검색 스크롤 끝나면 호출
     function loadSchoolList() {
@@ -431,7 +431,7 @@
              $('#sch_list').css('display', '');
              var show = $('#sch_list');
              for (var schEvent of schEventList) {
-               document.getElementById('chooseDate').value = schEvent.event_date;
+             document.getElementById('chooseDate').value = schEvent.event_date;
              console.log(schEvent);
              show.append("<form action='http://localhost:8080/wecando/reserve/ajax/reserveInfo.do' method='post'>" +
               "<input type='hidden' name='select_sch_name' value='" + schEvent.sch_name + "'>" +
