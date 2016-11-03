@@ -28,6 +28,44 @@
 	href="../../lib/sweetalert/sweetalert.css">
 </head>
 <body>
+  <div id="login-page">
+    <div class="container">
+      <!-- Modal -->
+      <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog"
+        id="myModal1" class="modal fade">
+        <form class="form-login">
+          <div class="modal-header" style="background-color: #2b4e55;">
+            <h2 style="background-color: #2b4e55;" class="form-login-heading">sign
+              in now</h2>
+          </div>
+          <div class="login-wrap">
+            <div class="input-ikon">
+              <i class='fa fa-user sc'></i>
+            </div>
+            <input type="text" id="m_email" class="f-c i-t"
+              placeholder="User ID" autofocus> <br>
+            <div class='input-ikon2'>
+              <i class='fa fa-lock sc'></i>
+            </div>
+            <input type="password" id="m_password" class="f-c i-t"
+              placeholder="Password">
+            <div style='margin-top: 30px;'>
+              <div class='b-s'>
+                <button class="btn btn-block bh" type="button"
+                  onclick="login();">LOGIN</button>
+              </div>
+              <div class="b-s1">
+                <button type='button' class="btn bh btn-block" onclick="join();">SIGN
+                  UP</button>
+              </div>
+              <hr>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- modal -->
+    </div>
+  </div>
 	<section id="container" class="sidebar-closed">
 		<header class="header black-bg">
 			<div class="sidebar-toggle-box">
@@ -37,6 +75,7 @@
 			<a href="../../wecando.html" class="logo"> <img
 				id="wecando_white" src="../../img/wecando_white.png">
 			</a>
+			<div class="top-menu" id='login_ava'></div>
 		</header>
 		<aside>
 			<div id="sidebar" class="nav-collapse">
