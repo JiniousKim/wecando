@@ -26,19 +26,22 @@ public class SchEventController {
 	@Autowired CourtService courtService;
 	@Autowired ServletContext servletContext;
 	
-	@Scheduled(cron="0 0 0 * * 0/6")
+	//@Scheduled(cron="0 0 0 * * 0/6")
+	@Scheduled(cron="0 31 04 * * ?")
 	public void init(){
 		System.out.println("run => " + schEventService);
 		HashMap<String, Object> paramMap = new HashMap<>();
 		if (schEventService != null) {
 			List<String> resultList = courtService.courtcodeList();
 			String date = new TimeTable().getTime();
+			date = "2016-11-06";
 			
 			try {
 				for(String court_code : resultList) {
 					paramMap.put("event_date", date);
 					paramMap.put("court_code", court_code);
 					schEventService.createTime(paramMap);
+					continue;
 				}
 			} catch (Exception e) {
 				
