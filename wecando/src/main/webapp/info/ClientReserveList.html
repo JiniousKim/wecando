@@ -172,8 +172,24 @@
 	    	   }
 	    })  
 	  })
-	  
-	  
+  </script>
+  <script>
+  function logout() {
+    $.ajax({
+      url : contextRoot + '/auth/ajax/logout.do',
+      type : 'post',
+      dataType : 'json',
+      cache : false,
+      success : function(resultObj) {
+        var ajaxresult = resultObj.AjaxResult;
+        if (ajaxresult.status == 'success') {
+          location.replace("http://localhost:8080/wecando/login.html");
+        } else {
+          sweetAlert("Oops...", "Logout에 실패하였습니다.","error");
+        }
+      }
+    })
+  }
   </script>
 </body>
 </html>

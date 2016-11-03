@@ -75,7 +75,7 @@
 					        <th><span>이용종목</span></th>
 					        <th><span>이용날짜</span></th>
 					        <th><span>이용시간</span></th>
-					        <th><span>이용인원</span></th>
+					        <th><span>이용금액</span></th>
 					      </tr>
 					    </thead>
 					    <tbody id='resultReserveList'>
@@ -148,6 +148,7 @@
       success : function(resultObj) {
     	    if (resultObj.status == 'success') {
     	    	  var reserveList = resultObj.reserveList;
+    	    	  var show = $('#resultReserveList');
     	    	  for (var reserve of reserveList) {
     	    		  switch(reserve.event_time) {
               case "T6_8" : reserve.event_time ="06:00~08:00"; break;
@@ -173,9 +174,24 @@
       }
     })
   })
-  
-  
-  
+  </script>
+  <script>
+  function logout() {
+    $.ajax({
+      url : contextRoot + '/auth/ajax/logout.do',
+      type : 'post',
+      dataType : 'json',
+      cache : false,
+      success : function(resultObj) {
+        var ajaxresult = resultObj.AjaxResult;
+        if (ajaxresult.status == 'success') {
+          location.replace("http://localhost:8080/wecando/login.html");
+        } else {
+          sweetAlert("Oops...", "Logout에 실패하였습니다.","error");
+        }
+      }
+    })
+  }
   </script>
 </body>
 </html>

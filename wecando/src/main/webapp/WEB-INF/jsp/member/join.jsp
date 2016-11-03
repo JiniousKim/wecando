@@ -39,27 +39,24 @@
 			</a>
 		</header>
 		<aside>
-			<div id="sidebar" class="nav-collapse ">
-				<ul class="sidebar-menu" id="nav-accordion">
-					<li class="sub-menu"><a href="../../javascript:;"> <i
-							class="fa fa-calendar"></i> <span>예약 정보</span>
-					</a>
-						<ul class="sub">
-							<li><a href="../general.html">General</a></li>
-							<li><a href="../buttons.html">Buttons</a></li>
-							<li><a href="../panels.html">Panels</a></li>
-						</ul></li>
+			<div id="sidebar" class="nav-collapse">
+        <ul class="sidebar-menu" id="nav-accordion">
+          <li class="sub-menu"><a href="javascript:;"> <i
+              class="fa fa-calendar"></i> <span>예약 정보</span>
+          </a>
+            <ul class="sub" id='sub_m'>
+              <li><a href="../../info/ClientCurrentReserveList.html">내 예약정보</a></li>
+              <li><a href="../../info/ClientLastList.html">지난 예약정보</a>
+            </ul></li>
 
-					<li class="sub-menu"><a href="../../javascript:;"> <i
-							class="fa fa-user"></i> <span>마이 페이지</span>
-					</a>
-						<ul class="sub">
-							<li><a href="../../info/memberInfo.html">내 정보</a></li>
-							<li><a href="../gallery.html">Gallery</a></li>
-							<li><a href="../todo_list.html">Todo List</a></li>
-						</ul></li>
-				</ul>
-			</div>
+          <li class="sub-menu"><a href="javascript:;"> <i
+              class="fa fa-user"></i> <span>마이 페이지</span>
+          </a>
+            <ul class="sub" id='sub_menu'>
+              <li><a href="../../info/memberInfo.html">내 정보</a></li>
+            </ul></li>
+        </ul>
+      </div>
 		</aside>
 		<section id="main-content">
 			<section class="wrapper">
@@ -184,12 +181,26 @@
 	<script>
 	 $(document).ready(function(e) {
 		 $.ajax({
-       url : contextRoot + '/auth/ajax/logout.do',
-       type : 'post',
-       dataType : 'json',
-       cache : false,
-       success : function(resultObj) {}
-     })
+      url : contextRoot + '/auth/ajax/check_session.do',
+      type : 'post',
+      dataType : 'json',
+      cache : false,
+      processData : false,
+      contentType : false,
+      async : false,
+      success : function(resultObj) {
+        var loginAva = $('#login_ava');
+        var sM = $('#sub_menu');
+        var sub = $('#sub_m');
+        var ajaxresult = resultObj;
+        m_no = resultObj.m_no;
+        if (ajaxresult.status == 'failure') {
+            
+        } else {  
+        	  location.replace("http://localhost:8080/wecando/wecando.html");
+        } 
+      }
+    })
 	 })
 	 
    $('#nick').on('hide.bs.modal', function (e) {

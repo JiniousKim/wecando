@@ -284,7 +284,7 @@
   <script>
   var m_no;
   $(document).ready(function () {
-    $.ajax({
+	  $.ajax({
       url : contextRoot + '/auth/ajax/check_session.do',
       type : 'post',
       dataType : 'json',
@@ -293,20 +293,26 @@
       contentType : false,
       async : false,
       success : function(resultObj) {
-        m_no = resultObj.m_no;
-        var sM = $('#sub_menu');
         var loginAva = $('#login_ava');
+        var sM = $('#sub_menu');
+        var sub = $('#sub_m');
         var ajaxresult = resultObj;
-        if (ajaxresult.grade != 2) {
+        m_no = resultObj.m_no;
+        if (ajaxresult.status == 'failure') {
             location.replace("http://localhost:8080/wecando/wecando.html");
         } else {
-           sM.append(
-            "<li><a href='info/register_school.html'>학교 정보</a></li>"   
-           )
            loginAva.append("<ul class='nav pull-right top-menu'>"
-             + "<li><a class='logout'"
-             + "href='' onclick='logout();'>Logout</a></li>"
-             + "</ul>")
+               + "<li><a class='logout'"
+               + "href='' onclick='logout();'>Logout</a></li>"
+               + "</ul>")
+        } 
+        if (ajaxresult.grade == 2) {
+           sM.append(
+            "<li><a href='register_school.html'>학교 정보</a></li>"   
+           )
+           sub.append(
+           "<li><a href='ClientReserveList.html'>신청된 정보</a></li>"
+           )
         }
       }
     })
