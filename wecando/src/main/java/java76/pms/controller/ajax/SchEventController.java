@@ -28,7 +28,7 @@ public class SchEventController {
 	@Autowired ServletContext servletContext;
 	
 	//@Scheduled(cron="0 0 0 * * 0/6")
-	@Scheduled(cron="0 00 05 * * ?")
+	@Scheduled(cron="0 10 05 * * ?")
 	public void init(){
 		System.out.println("run => " + schEventService);
 		if (schEventService != null) {
