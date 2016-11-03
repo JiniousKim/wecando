@@ -194,12 +194,10 @@
             <img style='width:400px; height:100px;' src="img/black_logo.png">
           </div>
           <hr>
-          <div id='sch_list'>
-            <div class='defaultDate'><input id='chooseDate' readonly></div>
-          </div>        
-          <div id='search_sch_list'>
-            <div class='defaultDate'><input id='chooseDate' readonly></div>
-          </div>
+          <div class='defaultDate'><input id='chooseDate' readonly></div>
+          <div id='example'></div>
+          <div id='sch_list'></div>
+          <div id='search_sch_list'></div>
         </div>
         <!-- /col-lg-3 -->
     </section>
@@ -224,19 +222,19 @@
   <script src="lib/sweetalert/sweetalert.min.js"></script>
   <script src='lib/jquery.min.js'></script>
   <script>
-       $(function(){
-         $.ajax({
-           url : contextRoot + '/info/ajax/AllschoolList.do',
-           type : 'post',
-           dataType : 'json',
-           success : function(resultObj) {
-             var autocomplete_text = resultObj.stringList;
-             $("#autocomplete").autocomplete({
-                source: autocomplete_text
-             });
-           }
-         })
-       })
+    $(function(){
+      $.ajax({
+        url : contextRoot + '/info/ajax/AllschoolList.do',
+        type : 'post',
+        dataType : 'json',
+        success : function(resultObj) {
+          var autocomplete_text = resultObj.stringList;
+          $("#autocomplete").autocomplete({
+             source: autocomplete_text
+          });
+        }
+      })
+    })
   </script>
   <script type="application/javascript">
     var date;
@@ -244,182 +242,170 @@
     var pageNum;
     var gu_list = new Array();
     // 구 검색 무한 스크롤
-     $("#sch_list").scroll(function() {
-       
-         var scrollHeight = $("#sch_list").prop("scrollHeight") - $("#sch_list").scrollTop();
-         var documentHeight = $("#sch_list").height();
-       
-         
-         if (scrollHeight == documentHeight) {
-              pageNum++;
-              alert(pageNum);
-              loadSchoolList();
-         }
-     });
+    $("#sch_list").scroll(function() {
+      var scrollHeight = $("#sch_list").prop("scrollHeight") - $("#sch_list").scrollTop();
+      var documentHeight = $("#sch_list").height();
     
-     // 학교 검색 무한 스크롤
+      
+      if (scrollHeight == documentHeight) {
+           pageNum++;
+           alert(pageNum);
+           loadSchoolList();
+      }
+    });
+    
     $("#search_sch_list").scroll(function() {
-        
-        var scrollHeight = $("#search_sch_list").prop("scrollHeight") - $("#search_sch_list").scrollTop();
-        var documentHeight = $("#search_sch_list").height();
-        
-        if (scrollHeight == documentHeight) {
-           //loadSearchSchoolList(); 
-        }
+      var scrollHeight = $("#search_sch_list").prop("scrollHeight") - $("#search_sch_list").scrollTop();
+      var documentHeight = $("#search_sch_list").height();
+      
+      if (scrollHeight == documentHeight) {
+         //loadSearchSchoolList(); 
+      }
     });
      
     $(document).ready(function () {
-        $("#date-popover").popover({html: true, trigger: "manual"});
-        $("#date-popover").hide();
-        $("#date-popover").click(function (e) {
-            $(this).hide();
-        });
-        $("#my-calendar").zabuto_calendar({
-            action: function () {
-                  var day = $("#" + this.id).data("date");
-                  var date = new Date(day).getDay();
-                  console.log(date);
-                  if (date == 0 || date == 6) {
-                  swal('Good', '이용 가능한 날짜 입니다.', 'success');  
-                  document.getElementById('chooseDate').value = day;
-                  } else {
-                      swal('Oops...', '이용이 불가능한 날짜 입니다.', 'error');
-                  }
-            }
-        });
-        
-        $("#search_sch_list").css('display', 'none');
-        var today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth()+1; //January is 0!
-        var yyyy = today.getFullYear();
+      $("#date-popover").popover({html: true, trigger: "manual"});
+      $("#date-popover").hide();
+      $("#date-popover").click(function (e) {
+          $(this).hide();
+      });
+      $("#my-calendar").zabuto_calendar({
+          action: function () {
+                var day = $("#" + this.id).data("date");
+                var date = new Date(day).getDay();
+                console.log(date);
+                if (date == 0 || date == 6) {
+                swal('Good', '이용 가능한 날짜 입니다.', 'success');  
+                document.getElementById('chooseDate').value = day;
+                } else {
+                    swal('Oops...', '이용이 불가능한 날짜 입니다.', 'error');
+                }
+          }
+      });
+      
+      $("#search_sch_list").css('display', 'none');
+      var today = new Date();
+      var dd = today.getDate();
+      var mm = today.getMonth()+1; //January is 0!
+      var yyyy = today.getFullYear();
 
-        if(dd<10) {
-            dd='0'+dd
-        } 
+      if(dd<10) {
+          dd='0'+dd
+      } 
 
-        if(mm<10) {
-            mm='0'+mm
-        }
-        
+      if(mm<10) {
+          mm='0'+mm
+      }
+      
 
-        date = yyyy + '-' + mm + '-' + dd;
+     date = yyyy + '-' + mm + '-' + dd;
 
-        document.getElementById('chooseDate').value = date;
+     document.getElementById('chooseDate').value = date;
         
      $.ajax({
-         url : contextRoot + '/info/ajax/eventList.do',
-         type : 'post',
-         dataType : 'json',
-         cache : false,
-         processData : false,
-         contentType : false,
-         async : false,
-         success : function(resultObj) {
-           var list = $('#event_list');
-           for(var event of resultObj.eventList) {
-              list.append("<option value='" + event.event_code + "'>" + event.event_name + "</option>")
-           }
+       url : contextRoot + '/info/ajax/eventList.do',
+       type : 'post',
+       dataType : 'json',
+       cache : false,
+       processData : false,
+       contentType : false,
+       async : false,
+       success : function(resultObj) {
+         var list = $('#event_list');
+         for(var event of resultObj.eventList) {
+            list.append("<option value='" + event.event_code + "'>" + event.event_name + "</option>")
          }
-      })
+       }
+    })
         
-       /*  <!-- 종목 등록 -->
-        <!--
-        $.ajax({
-          url : contextRoot + '/member/ajax/setset.do',
-          type : 'post',
-          dataType : 'json',
-          cache : false,
-          success : function(e) {
-            
-          }
-        }) --> */
-    });
+    /*  <!-- 종목 등록 -->
+     <!--
+     $.ajax({
+       url : contextRoot + '/member/ajax/setset.do',
+       type : 'post',
+       dataType : 'json',
+       cache : false,
+       success : function(e) {
+         
+       }
+     }) --> */
+   });
     
-    function myNavFunction(id) {
-        $("#date-popover").hide();
-        var nav = $("#" + id).data("navigation");
-        var to = $("#" + id).data("to");
-    }
-    
-    $.ajax({
-        url : contextRoot + '/auth/ajax/check_session.do',
-        type : 'post',
-        dataType : 'json',
-        cache : false,
-        processData : false,
-        contentType : false,
-        async : false,
-        success : function(resultObj) {
-            var loginAva = $('#login_ava');
-            var sM = $('#sub_menu');
-            var sub = $('#sub_m');
-          var ajaxresult = resultObj;
-          if (ajaxresult.status == 'failure') {
-            loginAva.append("<ul class='nav pull-right top-menu'>"
-             + "<li><a class='logout' data-toggle='modal'"
-             + "href='wecando.html#myModal1'>Login</a></li>"
+  $.ajax({
+    url : contextRoot + '/auth/ajax/check_session.do',
+    type : 'post',
+    dataType : 'json',
+    cache : false,
+    processData : false,
+    contentType : false,
+    async : false,
+    success : function(resultObj) {
+        var loginAva = $('#login_ava');
+        var sM = $('#sub_menu');
+        var sub = $('#sub_m');
+      var ajaxresult = resultObj;
+      if (ajaxresult.status == 'failure') {
+        loginAva.append("<ul class='nav pull-right top-menu'>"
+         + "<li><a class='logout' data-toggle='modal'"
+         + "href='wecando.html#myModal1'>Login</a></li>"
+         + "</ul>")
+      } else {
+         loginAva.append("<ul class='nav pull-right top-menu'>"
+             + "<li><a class='logout'"
+             + "href='' onclick='logout();'>Logout</a></li>"
              + "</ul>")
-          } else {
-             loginAva.append("<ul class='nav pull-right top-menu'>"
-                 + "<li><a class='logout'"
-                 + "href='' onclick='logout();'>Logout</a></li>"
-                 + "</ul>")
-          } 
-          if (ajaxresult.grade == 2) {
-              sM.append(
-               "<li><a href='info/register_school.html'>학교 정보</a></li>"   
-              )
-              sub.append(
-              "<li><a href='info/ClientReserveList.html'>신청된 정보</a></li>"
-                )
-          }
-        }
-      })
-     
-  
-  
+      } 
+      if (ajaxresult.grade == 2) {
+          sM.append(
+           "<li><a href='info/register_school.html'>학교 정보</a></li>"   
+          )
+          sub.append(
+          "<li><a href='info/ClientReserveList.html'>신청된 정보</a></li>"
+            )
+       }
+     }
+   })
   </script>
   <script>
-    $(document).on("click", "#dddd", function() {
-        date = 'asdf';
-        $('#sch_list').append(date);
-        document.getElementById('chooseDate').value = date;
-    })
-    
-    $('#myModal1').on('hide.bs.modal', function (e) {
-      $('#m_email').html('');
-      $('#m_password').html('');
-      $('#m_email').val('');
-      $('#m_password').val('');
-    })
+  $(document).on("click", "#dddd", function() {
+      date = 'asdf';
+      $('#sch_list').append(date);
+      document.getElementById('chooseDate').value = date;
+  })
+  
+  $('#myModal1').on('hide.bs.modal', function (e) {
+    $('#m_email').html('');
+    $('#m_password').html('');
+    $('#m_email').val('');
+    $('#m_password').val('');
+  })
     
    $(document).on("click", "#gu-btn-group", function(e){
-         var ID = e.target.getAttribute('id');
-         var gu = ID.replace('-btn','');
-         if( $('#' + gu).attr('class') == 'location_seoul_gu clicked') {
-             $('#' + gu).fadeOut(1000);
-             $('#' + ID).css('background-color','');
-             $('#' + ID).css('color', 'black');
-             $('#' + gu).removeClass('clicked');
-             
-             for(var i=0; i < gu_list.length; i++) {
-               if (gu_list[i] == $('#' + ID).val()) {
-                 delete gu_list[i];
-               }
-             }
-         } else {
-             $('#' + gu).fadeIn(1000);
-             $('#' + ID).css('background-color','#ae1630');
-             $('#' + ID).css('color', 'white');
-             $('#' + gu).addClass('clicked');
-             gu_list.push($('#' + ID).val());
-         }
-         
-         pageNum = 1;
-         $('#sch_list').val('');
-         loadClickSchoolList();
-     })
+      var ID = e.target.getAttribute('id');
+      var gu = ID.replace('-btn','');
+      if( $('#' + gu).attr('class') == 'location_seoul_gu clicked') {
+          $('#' + gu).fadeOut(1000);
+          $('#' + ID).css('background-color','');
+          $('#' + ID).css('color', 'black');
+          $('#' + gu).removeClass('clicked');
+          
+          for(var i=0; i < gu_list.length; i++) {
+            if (gu_list[i] == $('#' + ID).val()) {
+              delete gu_list[i];
+            }
+          }
+      } else {
+          $('#' + gu).fadeIn(1000);
+          $('#' + ID).css('background-color','#ae1630');
+          $('#' + ID).css('color', 'white');
+          $('#' + gu).addClass('clicked');
+          gu_list.push($('#' + ID).val());
+      }
+      
+      pageNum = 1;
+      $('#sch_list').val('');
+      loadClickSchoolList();
+  })
      
     // 구 검색 스크롤 끝나면 호출
     function loadSchoolList() {
