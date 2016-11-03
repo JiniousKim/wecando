@@ -48,27 +48,27 @@ public class SchEventController {
 	
 	@RequestMapping(value="list", method=RequestMethod.POST)
 	public Object schEventList (
-			@RequestParam(defaultValue="1") int pageNo,
-      @RequestParam(defaultValue="3") int pageSize,
+			@RequestParam(defaultValue="1") int pageNum,
+      @RequestParam(defaultValue="5") int pageSize,
       String keyword, String event_code) throws Exception {
 		List<SchEvent> resultList = new ArrayList<SchEvent>();
 		HashMap<String, Object> paramMap = new HashMap<>();
 		HashMap<String, Object> resultMap = new HashMap<>();
-		paramMap.put("startIndex", (pageNo - 1) * pageSize);
-		paramMap.put("pageNum", pageNo);
-		paramMap.put("pageSize", pageSize);
 		paramMap.put("keyword", keyword);
 		paramMap.put("event_code", event_code);
-		
-		int list_cnt = schEventService.schEventCnt();
+		int startIndex = (pageNum - 1) * pageSize;
+		int endIndex = (pageNum - 1) * pageSize + pageSize;
 		
 		try {
-			resultList = schEventService.schEventList(paramMap);	
+			resultList = schEventService.schEventList(paramMap);
+			List<SchEvent> result = new ArrayList<>();
+			for (int i = startIndex; i < endIndex; i++) {
+				result.add(resultList.get(i));
+			}
+			resultMap.put("resultList", result);
 		} catch (Exception e) {
 			return new AjaxResult("failure", null);
 		}
-		resultMap.put("cnt", list_cnt);
-		resultMap.put("resultList", resultList);
 		resultMap.put("status", "success");
 		return resultMap;
 	}
