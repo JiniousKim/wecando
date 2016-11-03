@@ -560,6 +560,7 @@
     } 
     
     function loadClickSchoolList() {
+    	  pageNum = 0;
       if ($("select[name=ec]").val() == '') {
         swal('Oops...', '종목을 선택하지 않았어용~', 'error');
       } else {
