@@ -83,15 +83,17 @@ public class ReserveController {
 		HashMap<String, Object> resultMap = new HashMap<>();
 		try {
 			List<Reserve> reserveList = reserveService.reserveInfoList(m_no);
-			System.out.println(reserveList);
 			resultMap.put("reserveList", reserveList);
+			if (reserveList.size() <= 0) {
+				resultMap.put("status", "failure");
+			} else {
+				resultMap.put("status", "success");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			resultMap.put("status", "failure");
 			return resultMap;
 		}
-		
-		resultMap.put("status", "success");
 		return resultMap;
 	}
 	
@@ -101,12 +103,17 @@ public class ReserveController {
 		try {
 			List<Reserve> reserveList = reserveService.ClientReserveList(m_no);
 			resultMap.put("reserveList", reserveList);
+			if (reserveList.size() <= 0) {
+				resultMap.put("status", "failure");
+			} else {
+				resultMap.put("status", "success");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			resultMap.put("status", "failure");
 			return resultMap;
 		}
-		resultMap.put("status", "success");
+		
 		return resultMap;
 	}
 	
@@ -159,12 +166,17 @@ public class ReserveController {
 		try {
 			List<Reserve> reserveList = reserveService.reserveLastList(m_no);
 			resultMap.put("reserveList", reserveList);
+			if (reserveList.size() <= 0) {
+				resultMap.put("status", "failure");
+			} else {
+				resultMap.put("status", "success");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			resultMap.put("status", "failure");
 			return resultMap;
 		}
-		resultMap.put("status", "success");
+		
 		return resultMap;
 	}
 }
