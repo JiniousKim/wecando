@@ -182,24 +182,26 @@
             <select id='event_list' name='ec' class='dropdown-toggle' data-toggle='dropdown' name='event_code'>
               <option class='dropdown-menu' value='' selected>종목 선택</option>
             </select>
-              
-              
           </div>
           <div class='wecando'>
             <img style='width:400px; height:100px;' src="img/black_logo.png">
           </div>
           <hr>
           <div class='defaultDate'><input id='chooseDate' readonly></div>
-          <div id='example' style='width:inherit; height:500px;'>
-            <div style='border: 1px solid black; width:200px; height:100px;'>
+          <div id='example' style='width: inherit;height: 500px;margin-left: 100px;'>
+            <div style='border: 1px solid black; width:200px; height:100px;margin-top: 60px;'>
+            <p>1. 날짜를 선택하세요
             <i id="non_calendar" class='fa fa-calendar' style='font-size:50px; margin-top:50px;'></i>
-            <i id="select_calendar" class='fa fa-calendar' style='font-size:50px; color:red; margin-top:50px; z-index:2;'></i>
+            <i id="select_calendar" class='fa fa-calendar' style='font-size:50px; color:green; margin-top:50px; z-index:2;'></i>
             </div>
-            <div style='border: 1px solid red; width:200px; height:100px;'>
+            <div style='border: 1px solid red; width:200px; height:100px;margin-left: 200px;margin-top: -100px;'>
+            <p>2. 종목을 선택하세요
             <i id="non_event" class='fa fa-check' style='font-size:50px; margin-top:50px;'></i>
-            <i id="select_event" class='fa fa-check' style='font-size:50px; color:red;margin-top:50px;'></i>
+            <i id="select_event" class='fa fa-check' style='font-size:50px; color:green;margin-top:50px;'></i>
             </div>
-            <div style='border: 1px solid yellow; width:200px; height:100px;'>
+            <div style='border: 1px solid yellow; width:230px; height:100px;margin-left: 400px; margin-top: -100px;'>
+            <p>3. 구 또는 학교를 검색해주세요
+            <i class='fa fa-university' style='font-size:50px;margin-top:50px;'></i>
             </div>
           </div>
           <div id='sch_list'></div>
@@ -282,7 +284,7 @@
                 $('#select_calendar').css('display', '');
                 $('#non_calendar').css('display', 'none');
                 } else {
-                    swal('Oops...', '이용이 불가능한 날짜 입니다.', 'error');
+                    swal('Oops...', '평일은 이용이 불가능합니다.', 'error');
                 }
           }
       });
@@ -381,9 +383,9 @@
   })
   
   $(document).on("click", "#event_list", function() {
-	  if ($("select[name=ec]").val() != '') {
-		  $('#select_event').css('display', '');
-		  $('#non_event').css('display', 'none');
+    if ($("select[name=ec]").val() != '') {
+      $('#select_event').css('display', '');
+      $('#non_event').css('display', 'none');
     }
   })
   
@@ -443,6 +445,7 @@
            success : function(resultObj) {
              var schEventList = resultObj.schEventList;
              var show = $('#sch_list');
+             $('#example').css('display', 'none');
              for (var schEvent of schEventList) {
              document.getElementById('chooseDate').value = schEvent.event_date;
              console.log(schEvent);
@@ -611,7 +614,11 @@
              console.log(schEventList);
              var show = $('#sch_list');
              show.html('');
-             show.css('');
+             show.css('display','');
+             $('#search_sch_list').css('display', 'none');
+             $('#search_sch_list').html('');
+             $('#search_sch_list').val('');
+             $('#example').css('display', 'none');
              for (var schEvent of schEventList) {
                document.getElementById('chooseDate').value = schEvent.event_date;
              console.log(schEvent);
@@ -788,6 +795,7 @@
               console.log(schEventList);
               $('#search_sch_list').css('display', '');
               $('#sch_list').css('display', 'none');
+              $('#example').css('display', 'none');
               var show = $('#search_sch_list');
               for (var schEvent of schEventList) {
                 document.getElementById('chooseDate').value = schEvent.event_date;
@@ -805,129 +813,129 @@
                "<input type='hidden' name='select_event_date' value='" + schEvent.event_date + "'>" +
                "<input type='hidden' name='select_event_code' value='" + schEvent.event_code + "'>" + 
                "   <div class='card_title'>" +
-                 "          <div class='card_name'><i class='fa fa-university'>&nbsp;<input id='title_school_name' style='border:none;' value='" + schEvent.sch_name + "' readonly></i></div>" + 
-                  "</div>" +
-               "<div class='card'>" +
-                "   <div class='card_photo'> " +
-                 "  <div class='card_time'><table class='time_table'> " +
-                  "       <thead>" +
-                   "      <tr>" +
-                    "     <th>이용가능 시간</th><th>대관비용</th><th colspan='5px;'>사용가능 여부</th> " +
-                     "    </tr></thead><tbody> " + 
-                      "   <tr> " +
-                       "    <td>&nbsp;&nbsp;&nbsp;06:00 ~ 08:00</td> " +
-                        "   <td>&nbsp;&nbsp;&nbsp;" + schEvent.court_price + "원</td> " +
-                         "  <td><button id='" + schEvent.court_code + "t6_8' value='T06_08' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button>" +
-                         "<button id='" + schEvent.court_code + "t6_8i' class='reserve-btn disabled'>예약 불가</button>" +
-                        "</td>" +
-                           "</tr>" +
-                           "<tr> " +
-                           "<td>&nbsp;&nbsp;&nbsp;08:00 ~ 10:00</td> " +
-                           "<td>&nbsp;&nbsp;&nbsp;" + schEvent.court_price + "원</td> " +
-                           "<td><button id='" + schEvent.court_code + "t8_10' value='T08_10' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button>" +
-                           "<button id='" + schEvent.court_code + "t8_10i' class='reserve-btn disabled'>예약 불가</button>" +
-                           "</td>" +
-                           "</tr>" +
-                           "<tr> " +
-                           "<td>&nbsp;&nbsp;&nbsp;10:00 ~ 12:00</td> " +
-                           "<td>&nbsp;&nbsp;&nbsp;" + schEvent.court_price + "원</td> " +
-                           "<td><button id='" + schEvent.court_code + "t10_12' value='T10_12' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button>" +
-                           "<button id='" + schEvent.court_code + "t10_12i' class='reserve-btn disabled'>예약 불가</button>" +
-                           "</td>" +
-                           "</tr>" +
-                           "<tr> " +
-                           "<td>&nbsp;&nbsp;&nbsp;12:00 ~ 14:00</td> " +
-                           "<td>&nbsp;&nbsp;&nbsp;" + schEvent.court_price + "원</td> " +
-                           "<td><button id='" + schEvent.court_code + "t12_14' value='T12_14' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button>" +
-                           "<button id='" + schEvent.court_code + "t12_14i' class='reserve-btn disabled'>예약 불가</button>" +
-                           "</td>" +
-                           "</tr>" +
-                           "<tr> " +
-                           "<td>&nbsp;&nbsp;&nbsp;14:00 ~ 16:00</td> " +
-                           "<td>&nbsp;&nbsp;&nbsp;" + schEvent.court_price + "원</td> " +
-                           "<td><button id='" + schEvent.court_code + "t14_16' value='T14_16' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button>" +
-                           "<button id='" + schEvent.court_code + "t14_16i' class='reserve-btn disabled'>예약 불가</button>" +
-                           "</td>" +
-                           " </tr>" +
-                           "<tr> " +
-                           "<td>&nbsp;&nbsp;&nbsp;16:00 ~ 18:00</td> " +
-                           "<td>&nbsp;&nbsp;&nbsp;" + schEvent.court_price + "원</td> " +
-                           "<td><button id='" + schEvent.court_code + "t16_18' value='T16_18' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button>" +
-                           "<button id='" + schEvent.court_code + "t16_18i' class='reserve-btn disabled'>예약 불가</button>" +
-                           "</td>" +
-                           "</tr>" +
-                           "<tr> " +
-                           "<td>&nbsp;&nbsp;&nbsp;18:00 ~ 20:00</td> " +
-                           "<td>&nbsp;&nbsp;&nbsp;" + schEvent.court_price + "원</td> " +
-                           "<td><button id='" + schEvent.court_code + "t18_20' value='T18_20' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button>" +
-                           "<button id='" + schEvent.court_code + "t18_20i' class='reserve-btn disabled'>예약 불가</button>" +
-                           "</td>" +
-                           "</tr>" +
-                           "<tr> " +
-                           "<td>&nbsp;&nbsp;&nbsp;20:00 ~ 22:00</td>" + 
-                           "<td>&nbsp;&nbsp;&nbsp;" + schEvent.court_price + "원</td> " +
-                           "<td><button id='" + schEvent.court_code + "t20_22' value='T20_22' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button>" +
-                           "<button id='" + schEvent.court_code + "t20_22i' class='reserve-btn disabled'>예약 불가</button>" +
-                           "</td>" +
-                           "</tr>" +
-                           "</tbody></table></div></div>" +
-                    "</div></form>");
-                    if (schEvent.t6_8 == '0') {
-                        $('#' + schEvent.court_code +'t6_8').css('display','');
-                        $('#' + schEvent.court_code +'t6_8i').css('display','none');
-                    } else {
-                      $('#' + schEvent.court_code +'t6_8').css('display','none');
-                      $('#' + schEvent.court_code +'t6_8i').css('display','');
-                    }
-                    if (schEvent.t8_10 == '0') {
-                      $('#' + schEvent.court_code +'t8_10').css('display','');
-                      $('#' + schEvent.court_code +'t8_10i').css('display','none');
-                    } else {
-                      $('#' + schEvent.court_code +'t8_10').css('display','none');
-                      $('#' + schEvent.court_code +'t8_10i').css('display','');
-                    }
-                    if (schEvent.t10_12 == '0') {
-                      $('#' + schEvent.court_code +'t10_12').css('display','');
-                      $('#' + schEvent.court_code +'t10_12i').css('display','none');
-                    } else {
-                      $('#' + schEvent.court_code +'t10_12').css('display','none');
-                      $('#' + schEvent.court_code +'t10_12i').css('display','');
-                    }
-                    if (schEvent.t12_14 == '0') {
-                      $('#' + schEvent.court_code +'t12_14').css('display','');
-                      $('#' + schEvent.court_code +'t12_14i').css('display','none');
-                    } else {
-                      $('#' + schEvent.court_code +'t12_14').css('display','none');
-                      $('#' + schEvent.court_code +'t12_14i').css('display','');
-                    }
-                    if (schEvent.t14_16 == '0') {
-                      $('#' + schEvent.court_code +'t14_16').css('display','');
-                      $('#' + schEvent.court_code +'t14_16i').css('display','none');
-                    } else {
-                      $('#' + schEvent.court_code +'t14_16').css('display','none');
-                      $('#' + schEvent.court_code +'t14_16i').css('display','');
-                    }
-                    if (schEvent.t16_18 == '0') {
-                      $('#' + schEvent.court_code +'t16_18').css('display','');
-                      $('#' + schEvent.court_code +'t16_18i').css('display','none');
-                    } else {
-                      $('#' + schEvent.court_code +'t16_18').css('display','none');
-                      $('#' + schEvent.court_code +'t16_18i').css('display','');
-                    }
-                    if (schEvent.t18_20 == '0') {
-                      $('#' + schEvent.court_code +'t18_20').css('display','');
-                      $('#' + schEvent.court_code +'t18_20i').css('display','none');
-                    } else {
-                      $('#' + schEvent.court_code +'t18_20').css('display','none');
-                      $('#' + schEvent.court_code +'t18_20i').css('display','');
-                    }
-                    if (schEvent.t20_22 == '0') {
-                      $('#' + schEvent.court_code +'t20_22').css('display','');
-                      $('#' + schEvent.court_code +'t20_22i').css('display','none');
-                    } else {
-                      $('#' + schEvent.court_code +'t20_22').css('display','none');
-                      $('#' + schEvent.court_code +'t20_22i').css('display','');
-                    }
+               "          <div class='card_name'><i class='fa fa-university'>&nbsp;<input id='title_school_name' style='border:none;' value='" + schEvent.sch_name + "' readonly></i></div>" + 
+                "</div>" +
+             "<div class='card'>" +
+              "   <div class='card_photo'> " +
+               "  <div class='card_time'><table class='time_table'> " +
+                "       <thead>" +
+                 "      <tr>" +
+                  "     <th>이용가능 시간</th><th>대관비용</th><th colspan='5px;'>사용가능 여부</th> " +
+                   "    </tr></thead><tbody> " + 
+                    "   <tr> " +
+                     "    <td>&nbsp;&nbsp;&nbsp;06:00 ~ 08:00</td> " +
+                     "   <td>&nbsp;&nbsp;&nbsp;" + schEvent.court_price + "원</td> " +
+                       "  <td><button id='" + schEvent.court_code + "t6_8' value='T06_08' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button>" +
+                       "<button id='" + schEvent.court_code + "t6_8i' class='reserve-btn disabled'>예약 불가</button>" +
+                      "</td>" +
+                         "</tr>" +
+                         "<tr> " +
+                         "<td>&nbsp;&nbsp;&nbsp;08:00 ~ 10:00</td> " +
+                         "   <td>&nbsp;&nbsp;&nbsp;" + schEvent.court_price + "원</td> " +
+                         "<td><button id='" + schEvent.court_code + "t8_10' value='T08_10' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button>" +
+                         "<button id='" + schEvent.court_code + "t8_10i' class='reserve-btn disabled'>예약 불가</button>" +
+                         "</td>" +
+                         "</tr>" +
+                         "<tr> " +
+                         "<td>&nbsp;&nbsp;&nbsp;10:00 ~ 12:00</td> " +
+                         "   <td>&nbsp;&nbsp;&nbsp;" + schEvent.court_price + "원</td> " +
+                         "<td><button id='" + schEvent.court_code + "t10_12' value='T10_12' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button>" +
+                         "<button id='" + schEvent.court_code + "t10_12i' class='reserve-btn disabled'>예약 불가</button>" +
+                         "</td>" +
+                         "</tr>" +
+                         "<tr> " +
+                         "<td>&nbsp;&nbsp;&nbsp;12:00 ~ 14:00</td> " +
+                         "   <td>&nbsp;&nbsp;&nbsp;" + schEvent.court_price + "원</td> " +
+                         "<td><button id='" + schEvent.court_code + "t12_14' value='T12_14' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button>" +
+                         "<button id='" + schEvent.court_code + "t12_14i' class='reserve-btn disabled'>예약 불가</button>" +
+                         "</td>" +
+                         "</tr>" +
+                         "<tr> " +
+                         "<td>&nbsp;&nbsp;&nbsp;14:00 ~ 16:00</td> " +
+                         "   <td>&nbsp;&nbsp;&nbsp;" + schEvent.court_price + "원</td> " +
+                         "<td><button id='" + schEvent.court_code + "t14_16' value='T14_16' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button>" +
+                         "<button id='" + schEvent.court_code + "t14_16i' class='reserve-btn disabled'>예약 불가</button>" +
+                         "</td>" +
+                         " </tr>" +
+                         "<tr> " +
+                         "<td>&nbsp;&nbsp;&nbsp;16:00 ~ 18:00</td> " +
+                         "   <td>&nbsp;&nbsp;&nbsp;" + schEvent.court_price + "원</td> " +
+                         "<td><button id='" + schEvent.court_code + "t16_18' value='T16_18' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button>" +
+                         "<button id='" + schEvent.court_code + "t16_18i' class='reserve-btn disabled'>예약 불가</button>" +
+                         "</td>" +
+                         "</tr>" +
+                         "<tr> " +
+                         "<td>&nbsp;&nbsp;&nbsp;18:00 ~ 20:00</td> " +
+                         "   <td>&nbsp;&nbsp;&nbsp;" + schEvent.court_price + "원</td> " +
+                         "<td><button id='" + schEvent.court_code + "t18_20' value='T18_20' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button>" +
+                         "<button id='" + schEvent.court_code + "t18_20i' class='reserve-btn disabled'>예약 불가</button>" +
+                         "</td>" +
+                         "</tr>" +
+                         "<tr> " +
+                         "<td>&nbsp;&nbsp;&nbsp;20:00 ~ 22:00</td>" + 
+                         "<td>&nbsp;&nbsp;&nbsp;" + schEvent.court_price + "원</td> " +
+                         "<td><button id='" + schEvent.court_code + "t20_22' value='T20_22' name='select_Time' type='submit' class='reserve-btn'>예약 가능</button>" +
+                         "<button id='" + schEvent.court_code + "t20_22i' class='reserve-btn disabled'>예약 불가</button>" +
+                         "</td>" +
+                         "</tr>" +
+                         "</tbody></table></div></div>" +
+                  "</div></form>");
+                  if (schEvent.t6_8 == '0') {
+                      $('#' + schEvent.court_code +'t6_8').css('display','');
+                      $('#' + schEvent.court_code +'t6_8i').css('display','none');
+                  } else {
+                    $('#' + schEvent.court_code +'t6_8').css('display','none');
+                    $('#' + schEvent.court_code +'t6_8i').css('display','');
+                  }
+                  if (schEvent.t8_10 == '0') {
+                    $('#' + schEvent.court_code +'t8_10').css('display','');
+                    $('#' + schEvent.court_code +'t8_10i').css('display','none');
+                  } else {
+                    $('#' + schEvent.court_code +'t8_10').css('display','none');
+                    $('#' + schEvent.court_code +'t8_10i').css('display','');
+                  }
+                  if (schEvent.t10_12 == '0') {
+                    $('#' + schEvent.court_code +'t10_12').css('display','');
+                    $('#' + schEvent.court_code +'t10_12i').css('display','none');
+                  } else {
+                    $('#' + schEvent.court_code +'t10_12').css('display','none');
+                    $('#' + schEvent.court_code +'t10_12i').css('display','');
+                  }
+                  if (schEvent.t12_14 == '0') {
+                    $('#' + schEvent.court_code +'t12_14').css('display','');
+                    $('#' + schEvent.court_code +'t12_14i').css('display','none');
+                  } else {
+                    $('#' + schEvent.court_code +'t12_14').css('display','none');
+                    $('#' + schEvent.court_code +'t12_14i').css('display','');
+                  }
+                  if (schEvent.t14_16 == '0') {
+                    $('#' + schEvent.court_code +'t14_16').css('display','');
+                    $('#' + schEvent.court_code +'t14_16i').css('display','none');
+                  } else {
+                    $('#' + schEvent.court_code +'t14_16').css('display','none');
+                    $('#' + schEvent.court_code +'t14_16i').css('display','');
+                  }
+                  if (schEvent.t16_18 == '0') {
+                    $('#' + schEvent.court_code +'t16_18').css('display','');
+                    $('#' + schEvent.court_code +'t16_18i').css('display','none');
+                  } else {
+                    $('#' + schEvent.court_code +'t16_18').css('display','none');
+                    $('#' + schEvent.court_code +'t16_18i').css('display','');
+                  }
+                  if (schEvent.t18_20 == '0') {
+                    $('#' + schEvent.court_code +'t18_20').css('display','');
+                    $('#' + schEvent.court_code +'t18_20i').css('display','none');
+                  } else {
+                    $('#' + schEvent.court_code +'t18_20').css('display','none');
+                    $('#' + schEvent.court_code +'t18_20i').css('display','');
+                  }
+                  if (schEvent.t20_22 == '0') {
+                    $('#' + schEvent.court_code +'t20_22').css('display','');
+                    $('#' + schEvent.court_code +'t20_22i').css('display','none');
+                  } else {
+                    $('#' + schEvent.court_code +'t20_22').css('display','none');
+                    $('#' + schEvent.court_code +'t20_22i').css('display','');
+                  }
                  }
               }
             })
