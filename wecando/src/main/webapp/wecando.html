@@ -189,17 +189,17 @@
           <hr>
           <div class='defaultDate'><input id='chooseDate' readonly></div>
           <div id='example' style='width: inherit;height: 500px;margin-left: 100px;'>
-            <div style='border: 1px solid black; width:200px; height:100px;margin-top: 60px;'>
+            <div style='width:200px; height:100px;margin-top: 60px;'>
             <p>1. 날짜를 선택하세요
             <i id="non_calendar" class='fa fa-calendar' style='font-size:50px; margin-top:50px;'></i>
             <i id="select_calendar" class='fa fa-calendar' style='font-size:50px; color:green; margin-top:50px; z-index:2;'></i>
             </div>
-            <div style='border: 1px solid red; width:200px; height:100px;margin-left: 200px;margin-top: -100px;'>
+            <div style='width:200px; height:100px;margin-left: 200px;margin-top: -105px;'>
             <p>2. 종목을 선택하세요
             <i id="non_event" class='fa fa-check' style='font-size:50px; margin-top:50px;'></i>
             <i id="select_event" class='fa fa-check' style='font-size:50px; color:green;margin-top:50px;'></i>
             </div>
-            <div style='border: 1px solid yellow; width:230px; height:100px;margin-left: 400px; margin-top: -100px;'>
+            <div style='width:250px; height:100px;margin-left: 400px; margin-top: -105px;'>
             <p>3. 구 또는 학교를 검색해주세요
             <i class='fa fa-university' style='font-size:50px;margin-top:50px;'></i>
             </div>
@@ -612,6 +612,9 @@
            success : function(resultObj) {
              var schEventList = resultObj.schEventList;
              console.log(schEventList);
+             if (resultObj.status == 'failure') {
+            	   swal('Oops...', '해당 학교는 선택한 종목을 지원하지 않습니다.', 'error');
+             } else {
              var show = $('#sch_list');
              show.html('');
              show.css('display','');
@@ -621,7 +624,6 @@
              $('#example').css('display', 'none');
              for (var schEvent of schEventList) {
                document.getElementById('chooseDate').value = schEvent.event_date;
-             console.log(schEvent);
              show.append("<form action='http://localhost:8080/wecando/reserve/ajax/reserveInfo.do' method='post'>" +
               "<input type='hidden' name='select_sch_name' value='" + schEvent.sch_name + "'>" +
               "<input type='hidden' name='select_sch_location' value='" + schEvent.sch_location + "'>" +
@@ -759,7 +761,7 @@
                      $('#' + schEvent.court_code +'t20_22i').css('display','');
                    }
                 }
-                 
+             }
              }
            })
       }
